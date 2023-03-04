@@ -1,5 +1,5 @@
 {
-  "name": "@web3lab/seapad-sdk",
+  "name": "seapad-sdk",
   "version": "1.0.1",
   "description": "SeaPad Sdk",
   "github": "https://github.com/seapad-fund/seapad-sdk",
