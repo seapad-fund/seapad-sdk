@@ -5,8 +5,8 @@ TypeScript SDK for seapad
 
 ```bash
 import { JsonRpcProvider, RawSigner, SuiExecuteTransactionResponse, Ed25519Keypair, Connection } from "@mysten/sui.js";
-import { SeaPadInput } from "../../src/lauchpad/seapad-input";
-import { SeaPadAdapter } from "../../src/lauchpad/seapad-adapter";
+const { SeaPadAdapter, SeaPadInput } = require('seapad-sdk')
+
 
 const PACKAGE_OBJECT_ID = "" //change seapad packageObjectId in here
 const MODULE = ""   //change seapad module in here
