@@ -1,16 +1,7 @@
-import { TypeTag, SuiJsonValue } from "@mysten/sui.js";
+import { MoveCallTransaction } from "@mysten/sui.js";
 import { SeaPadFunc } from "./seapad-func";
 
 export type GasBudget = number | null
-
-export interface SeaPadDataInput {
-    packageObjectId: string;
-    module: string;
-    function: string;
-    typeArguments: string[] | TypeTag[];
-    arguments: SuiJsonValue[];
-    gasBudget: number;
-}
 
 export function getGasBudget(gasBudget?: GasBudget): number {
     if (typeof gasBudget == undefined || gasBudget == null || gasBudget < 1000) {
@@ -32,7 +23,7 @@ export class SeaPadInput extends SeaPadFunc {
     }
 
 
-    changeAdmin(types: { COIN: string; }, args: { adminCap: string; to: string; }, gasBudget?: GasBudget): SeaPadDataInput {
+    changeAdmin(types: { COIN: string; }, args: { adminCap: string; to: string; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
@@ -42,7 +33,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    addProject(types: { COIN: string; }, args: { adminCap: string; round: number; usewhitelist: boolean; softCap: string; hardCap: string; swapRatioSui: string; swapRatioToken: string; maxAllocate: string; vestingType: number; firstVestingTime: string }, gasBudget?: GasBudget): SeaPadDataInput {
+    addProject(types: { COIN: string; }, args: { adminCap: string; round: number; usewhitelist: boolean; softCap: string; hardCap: string; swapRatioSui: string; swapRatioToken: string; maxAllocate: string; vestingType: number; firstVestingTime: string }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
@@ -52,7 +43,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    addMileStone(types: { COIN: string; }, args: { adminCap: string; project: string; time: string; percent: number; }, gasBudget?: GasBudget): SeaPadDataInput {
+    addMileStone(types: { COIN: string; }, args: { adminCap: string; project: string; time: string; percent: number; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
@@ -62,7 +53,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    updateProject(types: { COIN: string; }, args: { adminCap: string; project: string; round: number; usewhitelist: boolean; swapRatioSui: string; swapRatioToken: string; maxAllocate: string; startTime: string; endTime: string; softCap: string; hardCap: string; }, gasBudget?: GasBudget): SeaPadDataInput {
+    updateProject(types: { COIN: string; }, args: { adminCap: string; project: string; round: number; usewhitelist: boolean; swapRatioSui: string; swapRatioToken: string; maxAllocate: string; startTime: string; endTime: string; softCap: string; hardCap: string; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
@@ -72,7 +63,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    saveProfile(types: { COIN: string; }, args: { adminCap: string; project: string; name: string; twitter: string; discord: string; telegram: string; website: string; }, gasBudget?: GasBudget): SeaPadDataInput {
+    saveProfile(types: { COIN: string; }, args: { adminCap: string; project: string; name: string; twitter: string; discord: string; telegram: string; website: string; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
@@ -82,7 +73,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    addWhitelist(types: { COIN: string; }, args: { adminCap: string; project: string; user: string; }, gasBudget?: GasBudget): SeaPadDataInput {
+    addWhitelist(types: { COIN: string; }, args: { adminCap: string; project: string; user: string; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
@@ -92,7 +83,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    startFundRaising(types: { COIN: string; }, args: { adminCap: string; project: string; }, gasBudget?: GasBudget): SeaPadDataInput {
+    startFundRaising(types: { COIN: string; }, args: { adminCap: string; project: string; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
@@ -102,7 +93,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    buy(types: { COIN: string; }, args: { suis: string; amount: string; project: string; }, gasBudget?: GasBudget): SeaPadDataInput {
+    buy(types: { COIN: string; }, args: { suis: string; amount: string; project: string; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
@@ -112,7 +103,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    endFundRaising(types: { COIN: string; }, args: { adminCap: string; project: string; }, gasBudget?: GasBudget): SeaPadDataInput {
+    endFundRaising(types: { COIN: string; }, args: { adminCap: string; project: string; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
@@ -122,7 +113,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    endFund(types: { COIN: string; }, args: { adminCap: string; project: string; }, gasBudget?: GasBudget): SeaPadDataInput {
+    endFund(types: { COIN: string; }, args: { adminCap: string; project: string; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
@@ -132,7 +123,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    distributeRaisedFund(types: { P: string; COIN: string; }, args: { adminCap: string; project: string; projectOwner: string; }, gasBudget?: GasBudget): SeaPadDataInput {
+    distributeRaisedFund(types: { P: string; COIN: string; }, args: { adminCap: string; project: string; projectOwner: string; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
@@ -142,7 +133,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    refundToken(types: { COIN: string; }, args: { cap: string; project: string; projectOwner: string; }, gasBudget?: GasBudget): SeaPadDataInput {
+    refundToken(types: { COIN: string; }, args: { cap: string; project: string; projectOwner: string; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
@@ -152,7 +143,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    depositProject(types: { COIN: string; }, args: { coins: string; value: string; project: string; }, gasBudget?: GasBudget): SeaPadDataInput {
+    depositProject(types: { COIN: string; }, args: { coins: string; value: string; project: string; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
@@ -162,7 +153,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    receiveToken(types: { COIN: string; }, args: { project: string; }, gasBudget?: GasBudget): SeaPadDataInput {
+    receiveToken(types: { COIN: string; }, args: { project: string; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
@@ -172,7 +163,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    claimRefund(types: { COIN: string; }, args: { project: string; }, gasBudget?: GasBudget): SeaPadDataInput {
+    claimRefund(types: { COIN: string; }, args: { project: string; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
@@ -182,7 +173,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    vote(types: { COIN: string; }, args: { project: string; }, gasBudget?: GasBudget): SeaPadDataInput {
+    vote(types: { COIN: string; }, args: { project: string; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
@@ -192,7 +183,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    like(types: { COIN: string; }, args: { project: string; }, gasBudget?: GasBudget): SeaPadDataInput {
+    like(types: { COIN: string; }, args: { project: string; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
@@ -202,7 +193,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    watch(types: { COIN: string; }, args: { project: string; }, gasBudget?: GasBudget): SeaPadDataInput {
+    watch(types: { COIN: string; }, args: { project: string; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,

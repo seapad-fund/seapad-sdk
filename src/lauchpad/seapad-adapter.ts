@@ -1,6 +1,6 @@
-import { JsonRpcProvider, RawSigner, SuiExecuteTransactionResponse } from "@mysten/sui.js";
+import { RawSigner, SuiExecuteTransactionResponse } from "@mysten/sui.js";
 import { SeaPadFunc } from "./seapad-func";
-import { GasBudget, SeaPadDataInput, SeaPadInput } from "./seapad-input";
+import { GasBudget, SeaPadInput } from "./seapad-input";
 
 
 
@@ -9,13 +9,11 @@ export class SeaPadAdapter extends SeaPadFunc {
 
     _seaPadInput: SeaPadInput;
     _signer: RawSigner;
-    _provider: JsonRpcProvider;
 
-    constructor(signer: RawSigner, provider: JsonRpcProvider, packageObjectId: string, module: string) {
+    constructor(signer: RawSigner, packageObjectId: string, module: string) {
         super();
         this._seaPadInput = new SeaPadInput(packageObjectId, module)
         this._signer = signer;
-        this._provider = provider;
     }
 
     async changeAdmin(types: { COIN: string; }, args: { adminCap: string; to: string; }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse> {

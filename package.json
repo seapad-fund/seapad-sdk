@@ -1,15 +1,15 @@
 {
   "name": "seapad-sdk",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "description": "SeaPad Sdk",
   "github": "https://github.com/seapad-fund/seapad-sdk",
   "author": "jimmy.vu <Web3Lab>",
-  "main": "./dist/index.js",
+  "main": "./dist/index.ts",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "source": "./src/index.ts",
-      "require": "./dist/index.js"
+      "require": "./dist/index.ts"
     }
   },
   "engines": {
@@ -37,7 +37,8 @@
     "@nestjs/platform-express": "^9.0.0",
     "reflect-metadata": "^0.1.13",
     "rpc-websockets": "^7.5.1",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "socket.io": "^2.1.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

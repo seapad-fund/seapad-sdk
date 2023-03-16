@@ -1,4 +1,4 @@
-import { JsonRpcProvider, RawSigner, SuiExecuteTransactionResponse, Ed25519Keypair, Connection } from "@mysten/sui.js";
+import { JsonRpcProvider, RawSigner, Ed25519Keypair, Connection } from "@mysten/sui.js";
 import { SeaPadInput } from "../../src/lauchpad/seapad-input";
 import { SeaPadAdapter } from "../../src/lauchpad/seapad-adapter";
 
@@ -16,7 +16,7 @@ export async function test(): Promise<any> {
 
         const keypair = new Ed25519Keypair();
         const signer = new RawSigner(keypair, provider)
-        const seaPadAdapter = new SeaPadAdapter(signer, provider, PACKAGE_OBJECT_ID, MODULE)
+        const seaPadAdapter = new SeaPadAdapter(signer, PACKAGE_OBJECT_ID, MODULE)
         const seaPadInputConvertor = new SeaPadInput(PACKAGE_OBJECT_ID, MODULE)
 
         //call get Input of function -> use for FE

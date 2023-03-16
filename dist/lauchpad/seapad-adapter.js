@@ -4,11 +4,10 @@ exports.SeaPadAdapter = void 0;
 const seapad_func_1 = require("./seapad-func");
 const seapad_input_1 = require("./seapad-input");
 class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
-    constructor(signer, provider, packageObjectId, module) {
+    constructor(signer, packageObjectId, module) {
         super();
         this._seaPadInput = new seapad_input_1.SeaPadInput(packageObjectId, module);
         this._signer = signer;
-        this._provider = provider;
     }
     async changeAdmin(types, args, gasBudget) {
         return await this._signer.executeMoveCall(this._seaPadInput.changeAdmin(types, args, gasBudget));
