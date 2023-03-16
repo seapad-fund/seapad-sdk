@@ -1,14 +1,14 @@
 {
   "name": "seapad-sdk",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "SeaPad Sdk",
   "github": "https://github.com/seapad-fund/seapad-sdk",
   "author": "jimmy.vu <Web3Lab>",
-  "main": "./dist/index.ts",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "source": "./src/index.ts",
+      "source": "./dist/index.ts",
       "require": "./dist/index.ts"
     }
   },
