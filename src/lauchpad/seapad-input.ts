@@ -117,7 +117,7 @@ export class SeaPadInput extends SeaPadFunc {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "end_fund",
+            function: "end_refund",
             typeArguments: [types.COIN],
             arguments: [args.adminCap, args.project],
             gasBudget: getGasBudget(gasBudget)
