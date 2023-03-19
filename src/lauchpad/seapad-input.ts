@@ -113,7 +113,7 @@ export class SeaPadInput extends SeaPadFunc {
             gasBudget: getGasBudget(gasBudget)
         }
     }
-    endFund(types: { COIN: string; }, args: { adminCap: string; project: string; }, gasBudget?: GasBudget): MoveCallTransaction {
+    endRefund(types: { COIN: string; }, args: { adminCap: string; project: string; }, gasBudget?: GasBudget): MoveCallTransaction {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,

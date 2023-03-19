@@ -43,8 +43,8 @@ export class SeaPadAdapter extends SeaPadFunc {
     async endFundRaising(types: { COIN: string; }, args: { adminCap: string; project: string; }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse> {
         return await this._signer.executeMoveCall(this._seaPadInput.endFundRaising(types, args, gasBudget));
     }
-    async endFund(types: { COIN: string; }, args: { adminCap: string; project: string; }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse> {
-        return await this._signer.executeMoveCall(this._seaPadInput.endFund(types, args, gasBudget));
+    async endRefund(types: { COIN: string; }, args: { adminCap: string; project: string; }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse> {
+        return await this._signer.executeMoveCall(this._seaPadInput.endRefund(types, args, gasBudget));
     }
     async distributeRaisedFund(types: { P: string; COIN: string; }, args: { adminCap: string; project: string; projectOwner: string; }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse> {
         return await this._signer.executeMoveCall(this._seaPadInput.distributeRaisedFund(types, args, gasBudget));

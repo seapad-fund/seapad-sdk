@@ -62,7 +62,7 @@ export abstract class SeaPadFunc {
      * @param types <COIN>
      * @param args adminCap: &AdminCap, project: &mut Project<COIN>
      */
-    abstract endFund(types: { COIN: string }, args: { adminCap: string, project: string }, gasBudget?: GasBudget): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>
+    abstract endRefund(types: { COIN: string }, args: { adminCap: string, project: string }, gasBudget?: GasBudget): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>
     /**
      *
      * @param types <P, COIN>
