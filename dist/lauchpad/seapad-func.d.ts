@@ -143,7 +143,6 @@ export declare abstract class SeaPadFunc {
      * @param args admin_cap: &AdminCap, project: &mut Project<COIN>, projectOwner: address,
      */
     abstract distributeRaisedFund(types: {
-        P: string;
         COIN: string;
     }, args: {
         admin_cap: string;
