@@ -157,7 +157,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'distribute_raised_fund',
-            typeArguments: [types.P, types.COIN],
+            typeArguments: [types.COIN],
             arguments: [args.admin_cap, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
