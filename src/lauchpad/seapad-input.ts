@@ -12,6 +12,7 @@ export function getGasBudget(gasBudget?: GasBudget): number {
 }
 
 export class SeaPadInput extends SeaPadFunc {
+
     _packageObjectId: string;
     _module: string;
 
@@ -70,6 +71,16 @@ export class SeaPadInput extends SeaPadFunc {
             function: 'add_milestone',
             typeArguments: [types.COIN],
             arguments: [args.admin_cap, args.project, args.time, args.percent],
+            gasBudget: getGasBudget(gasBudget),
+        };
+    }
+    resetMilestone(types: { COIN: string; }, args: { admin_cap: string; project: string; }, gasBudget?: GasBudget | undefined): MoveCallTransaction {
+        return {
+            packageObjectId: this._packageObjectId,
+            module: this._module,
+            function: 'reset_milestone',
+            typeArguments: [types.COIN],
+            arguments: [args.admin_cap, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
     }

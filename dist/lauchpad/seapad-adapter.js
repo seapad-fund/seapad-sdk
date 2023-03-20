@@ -18,6 +18,9 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
     async addMilestone(types, args, gasBudget) {
         return await this._signer.executeMoveCall(this._seaPadInput.addMilestone(types, args, gasBudget));
     }
+    async resetMilestone(types, args, gasBudget) {
+        return await this._signer.executeMoveCall(this._seaPadInput.resetMilestone(types, args, gasBudget));
+    }
     async setupProject(types, args, gasBudget) {
         return await this._signer.executeMoveCall(this._seaPadInput.setupProject(types, args, gasBudget));
     }

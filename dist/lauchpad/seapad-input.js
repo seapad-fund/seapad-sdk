@@ -52,6 +52,16 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             gasBudget: getGasBudget(gasBudget),
         };
     }
+    resetMilestone(types, args, gasBudget) {
+        return {
+            packageObjectId: this._packageObjectId,
+            module: this._module,
+            function: 'reset_milestone',
+            typeArguments: [types.COIN],
+            arguments: [args.admin_cap, args.project],
+            gasBudget: getGasBudget(gasBudget),
+        };
+    }
     setupProject(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,

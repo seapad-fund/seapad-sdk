@@ -27,6 +27,12 @@ export declare class SeaPadAdapter extends SeaPadFunc {
         time: string;
         percent: number;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
+    resetMilestone(types: {
+        COIN: string;
+    }, args: {
+        admin_cap: string;
+        project: string;
+    }, gasBudget?: GasBudget | undefined): Promise<SuiExecuteTransactionResponse>;
     setupProject(types: {
         COIN: string;
     }, args: {

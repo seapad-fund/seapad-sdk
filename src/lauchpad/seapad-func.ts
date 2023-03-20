@@ -18,7 +18,7 @@ export abstract class SeaPadFunc {
     /**
      *
      * @param types <COIN>
-     * @param args _adminCap: &AdminCap, round: u8, usewhitelist: bool, softCap: u64, hardCap: u64, swapRatioSui: u64, swapRatioToken: u64, maxAllocate: u64, vesting_type: u8, firstVestingTime: u64
+     * @param args admin_cap: &AdminCap, owner: address, vesting_type: u8, coin_metadata: &CoinMetadata<COIN>,
      */
     abstract createProject(
         types: { COIN: string },
@@ -40,10 +40,22 @@ export abstract class SeaPadFunc {
         args: { admin_cap: string; project: string; time: string; percent: number },
         gasBudget?: GasBudget,
     ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+
+     /**
+     *
+     * @param types <COIN>
+     * @param args admin_cap: &AdminCap, project: &mut Project<COIN>,
+     */
+     abstract resetMilestone(
+        types: { COIN: string },
+        args: { admin_cap: string; project: string },
+        gasBudget?: GasBudget,
+    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+
     /**
      *
      * @param types <COIN>
-     * @param args admin_cap: &AdminCap, project: &mut Project<COIN>, round: u8, usewhitelist: bool, swapRatioSui: u64, swapRatioToken: u64, maxAllocate: u64, startTime: u64, endTime: u64, softCap: u64, hardCap: u64
+     * @param args admin_cap: &AdminCap, project: &mut Project<COIN>, round: u8, usewhitelist: bool, swap_ratio_sui: u64, swap_ratio_token: u64, max_allocate: u64, start_time: u64, end_time: u64, soft_cap: u64, hard_cap: u64,
      */
     abstract setupProject(
         types: { COIN: string },

@@ -28,6 +28,12 @@ export declare class SeaPadInput extends SeaPadFunc {
         time: string;
         percent: number;
     }, gasBudget?: GasBudget): MoveCallTransaction;
+    resetMilestone(types: {
+        COIN: string;
+    }, args: {
+        admin_cap: string;
+        project: string;
+    }, gasBudget?: GasBudget | undefined): MoveCallTransaction;
     setupProject(types: {
         COIN: string;
     }, args: {

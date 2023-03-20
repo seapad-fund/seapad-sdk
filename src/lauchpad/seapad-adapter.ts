@@ -1,8 +1,9 @@
-import { RawSigner, SuiExecuteTransactionResponse } from '@mysten/sui.js';
+import { MoveCallTransaction, RawSigner, SuiExecuteTransactionResponse } from '@mysten/sui.js';
 import { SeaPadFunc } from './seapad-func';
 import { GasBudget, SeaPadInput } from './seapad-input';
 
 export class SeaPadAdapter extends SeaPadFunc {
+
     _seaPadInput: SeaPadInput;
     _signer: RawSigner;
 
@@ -42,6 +43,11 @@ export class SeaPadAdapter extends SeaPadFunc {
     ): Promise<SuiExecuteTransactionResponse> {
         return await this._signer.executeMoveCall(
             this._seaPadInput.addMilestone(types, args, gasBudget),
+        );
+    }
+    async resetMilestone(types: { COIN: string; }, args: { admin_cap: string; project: string; }, gasBudget?: GasBudget | undefined): Promise<SuiExecuteTransactionResponse> {
+        return await this._signer.executeMoveCall(
+            this._seaPadInput.resetMilestone(types, args, gasBudget),
         );
     }
     async setupProject(
