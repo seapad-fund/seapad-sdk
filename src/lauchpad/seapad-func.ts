@@ -8,24 +8,24 @@ export abstract class SeaPadFunc {
     /**
      *
      * @param types <COIN>
-     * @param args adminCap: AdminCap, to: address
+     * @param args admin_cap: AdminCap, to: address
      */
     abstract changeAdmin(
         types: { COIN: string },
-        args: { adminCap: string; to: string },
+        args: { admin_cap: string; to: string },
         gasBudget?: GasBudget,
     ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
     /**
      *
      * @param types <COIN>
-     * @param args _adminCap: &AdminCap, round: u8, usewhitelist: bool, softCap: u64, hardCap: u64, swapRatioSui: u64, swapRatioToken: u64, maxAllocate: u64, vestingType: u8, firstVestingTime: u64
+     * @param args _adminCap: &AdminCap, round: u8, usewhitelist: bool, softCap: u64, hardCap: u64, swapRatioSui: u64, swapRatioToken: u64, maxAllocate: u64, vesting_type: u8, firstVestingTime: u64
      */
     abstract createProject(
         types: { COIN: string },
         args: {
-            adminCap: string;
+            admin_cap: string;
             owner: string;
-            vestingType: number;
+            vesting_type: number;
             coin_metadata: string;
         },
         gasBudget?: GasBudget,
@@ -33,22 +33,22 @@ export abstract class SeaPadFunc {
     /**
      *
      * @param types <COIN>
-     * @param args adminCap: &AdminCap, project: &mut Project<COIN>, time: u64, percent: u8,
+     * @param args admin_cap: &AdminCap, project: &mut Project<COIN>, time: u64, percent: u8,
      */
     abstract addMilestone(
         types: { COIN: string },
-        args: { adminCap: string; project: string; time: string; percent: number },
+        args: { admin_cap: string; project: string; time: string; percent: number },
         gasBudget?: GasBudget,
     ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
     /**
      *
      * @param types <COIN>
-     * @param args adminCap: &AdminCap, project: &mut Project<COIN>, round: u8, usewhitelist: bool, swapRatioSui: u64, swapRatioToken: u64, maxAllocate: u64, startTime: u64, endTime: u64, softCap: u64, hardCap: u64
+     * @param args admin_cap: &AdminCap, project: &mut Project<COIN>, round: u8, usewhitelist: bool, swapRatioSui: u64, swapRatioToken: u64, maxAllocate: u64, startTime: u64, endTime: u64, softCap: u64, hardCap: u64
      */
     abstract setupProject(
         types: { COIN: string },
         args: {
-            adminCap: string;
+            admin_cap: string;
             project: string;
             usewhitelist: boolean;
             swap_ratio_sui: number;
@@ -69,7 +69,7 @@ export abstract class SeaPadFunc {
     abstract saveProfile(
         types: { COIN: string },
         args: {
-            adminCap: string;
+            admin_cap: string;
             project: string;
             name: string;
             twitter: string;
@@ -82,27 +82,27 @@ export abstract class SeaPadFunc {
     /**
      *
      * @param types <COIN>
-     * @param args adminCap: &AdminCap, project: &mut Project<COIN>, user: address
+     * @param args admin_cap: &AdminCap, project: &mut Project<COIN>, user: address
      */
     abstract addWhitelist(
         types: { COIN: string },
-        args: { adminCap: string; project: string; user_list: string[] },
+        args: { admin_cap: string; project: string; user_list: string[] },
         gasBudget?: GasBudget,
     ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
 
     abstract removeWhitelist(
         types: { COIN: string },
-        args: { adminCap: string; project: string; user_list: string[] },
+        args: { admin_cap: string; project: string; user_list: string[] },
         gasBudget?: GasBudget,
     ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
     /**
      *
      * @param types <COIN>
-     * @param args adminCap: &AdminCap, project: &mut Project<COIN>
+     * @param args admin_cap: &AdminCap, project: &mut Project<COIN>
      */
     abstract startFundRaising(
         types: { COIN: string },
-        args: { adminCap: string; project: string },
+        args: { admin_cap: string; project: string },
         gasBudget?: GasBudget,
     ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
     /**
@@ -118,31 +118,31 @@ export abstract class SeaPadFunc {
     /**
      *
      * @param types <COIN>
-     * @param args adminCap: &AdminCap, project: &mut Project<COIN>
+     * @param args admin_cap: &AdminCap, project: &mut Project<COIN>
      */
     abstract endFundRaising(
         types: { COIN: string },
-        args: { adminCap: string; project: string },
+        args: { admin_cap: string; project: string },
         gasBudget?: GasBudget,
     ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
     /**
      *
      * @param types <COIN>
-     * @param args adminCap: &AdminCap, project: &mut Project<COIN>
+     * @param args admin_cap: &AdminCap, project: &mut Project<COIN>
      */
     abstract endRefund(
         types: { COIN: string },
-        args: { adminCap: string; project: string },
+        args: { admin_cap: string; project: string },
         gasBudget?: GasBudget,
     ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
     /**
      *
      * @param types <P, COIN>
-     * @param args adminCap: &AdminCap, project: &mut Project<COIN>, projectOwner: address,
+     * @param args admin_cap: &AdminCap, project: &mut Project<COIN>, projectOwner: address,
      */
     abstract distributeRaisedFund(
         types: { P: string; COIN: string },
-        args: { adminCap: string; project: string },
+        args: { admin_cap: string; project: string },
         gasBudget?: GasBudget,
     ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
     /**
@@ -219,7 +219,7 @@ export abstract class SeaPadFunc {
     abstract addMaxAllocate(
         types: { COIN: string },
         args: {
-            adminCap: string;
+            admin_cap: string;
             user: string;
             max_allocate: string;
             project: string;
@@ -230,7 +230,7 @@ export abstract class SeaPadFunc {
     abstract removeMaxAllocate(
         types: { COIN: string },
         args: {
-            adminCap: string;
+            admin_cap: string;
             user: string;
             project: string;
         },

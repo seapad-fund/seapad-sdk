@@ -23,7 +23,7 @@ export async function test(): Promise<any> {
         console.log(`FE get input to add_whitelist`, seaPadInputConvertor.addWhitelist({
             COIN: COIN
         }, {
-            adminCap: "", //enter input
+            admin_cap: "", //enter input
             project: "",//enter input
             user: ""//enter input
         }))
@@ -32,7 +32,7 @@ export async function test(): Promise<any> {
         console.log(`BE call add_whitelist`, await seaPadAdapter.addWhitelist({
             COIN: COIN
         }, {
-            adminCap: "",//enter input
+            admin_cap: "",//enter input
             project: "",//enter input
             user: ""//enter input
         }))

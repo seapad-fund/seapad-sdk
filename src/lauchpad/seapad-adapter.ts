@@ -14,7 +14,7 @@ export class SeaPadAdapter extends SeaPadFunc {
 
     async changeAdmin(
         types: { COIN: string },
-        args: { adminCap: string; to: string },
+        args: { admin_cap: string; to: string },
         gasBudget?: GasBudget,
     ): Promise<SuiExecuteTransactionResponse> {
         return await this._signer.executeMoveCall(
@@ -24,9 +24,9 @@ export class SeaPadAdapter extends SeaPadFunc {
     async createProject(
         types: { COIN: string },
         args: {
-            adminCap: string;
+            admin_cap: string;
             owner: string;
-            vestingType: number;
+            vesting_type: number;
             coin_metadata: string;
         },
         gasBudget?: GasBudget,
@@ -37,7 +37,7 @@ export class SeaPadAdapter extends SeaPadFunc {
     }
     async addMilestone(
         types: { COIN: string },
-        args: { adminCap: string; project: string; time: string; percent: number },
+        args: { admin_cap: string; project: string; time: string; percent: number },
         gasBudget?: GasBudget,
     ): Promise<SuiExecuteTransactionResponse> {
         return await this._signer.executeMoveCall(
@@ -47,7 +47,7 @@ export class SeaPadAdapter extends SeaPadFunc {
     async setupProject(
         types: { COIN: string },
         args: {
-            adminCap: string;
+            admin_cap: string;
             project: string;
             usewhitelist: boolean;
             swap_ratio_sui: number;
@@ -67,7 +67,7 @@ export class SeaPadAdapter extends SeaPadFunc {
     async saveProfile(
         types: { COIN: string },
         args: {
-            adminCap: string;
+            admin_cap: string;
             project: string;
             name: string;
             twitter: string;
@@ -83,7 +83,7 @@ export class SeaPadAdapter extends SeaPadFunc {
     }
     async addWhitelist(
         types: { COIN: string },
-        args: { adminCap: string; project: string; user_list: string[] },
+        args: { admin_cap: string; project: string; user_list: string[] },
         gasBudget?: GasBudget,
     ): Promise<SuiExecuteTransactionResponse> {
         return await this._signer.executeMoveCall(
@@ -93,7 +93,7 @@ export class SeaPadAdapter extends SeaPadFunc {
 
     async removeWhitelist(
         types: { COIN: string },
-        args: { adminCap: string; project: string; user_list: string[] },
+        args: { admin_cap: string; project: string; user_list: string[] },
         gasBudget?: GasBudget,
     ): Promise<SuiExecuteTransactionResponse> {
         return await this._signer.executeMoveCall(
@@ -103,7 +103,7 @@ export class SeaPadAdapter extends SeaPadFunc {
 
     async startFundRaising(
         types: { COIN: string },
-        args: { adminCap: string; project: string },
+        args: { admin_cap: string; project: string },
         gasBudget?: GasBudget,
     ): Promise<SuiExecuteTransactionResponse> {
         return await this._signer.executeMoveCall(
@@ -121,7 +121,7 @@ export class SeaPadAdapter extends SeaPadFunc {
     }
     async endFundRaising(
         types: { COIN: string },
-        args: { adminCap: string; project: string },
+        args: { admin_cap: string; project: string },
         gasBudget?: GasBudget,
     ): Promise<SuiExecuteTransactionResponse> {
         return await this._signer.executeMoveCall(
@@ -130,7 +130,7 @@ export class SeaPadAdapter extends SeaPadFunc {
     }
     async endRefund(
         types: { COIN: string },
-        args: { adminCap: string; project: string },
+        args: { admin_cap: string; project: string },
         gasBudget?: GasBudget,
     ): Promise<SuiExecuteTransactionResponse> {
         return await this._signer.executeMoveCall(
@@ -139,7 +139,7 @@ export class SeaPadAdapter extends SeaPadFunc {
     }
     async distributeRaisedFund(
         types: { P: string; COIN: string },
-        args: { adminCap: string; project: string; projectOwner: string },
+        args: { admin_cap: string; project: string; projectOwner: string },
         gasBudget?: GasBudget,
     ): Promise<SuiExecuteTransactionResponse> {
         return await this._signer.executeMoveCall(
@@ -213,7 +213,7 @@ export class SeaPadAdapter extends SeaPadFunc {
     async addMaxAllocate(
         types: { COIN: string },
         args: {
-            adminCap: string;
+            admin_cap: string;
             user: string;
             max_allocate: string;
             project: string;
@@ -227,7 +227,7 @@ export class SeaPadAdapter extends SeaPadFunc {
 
     async removeMaxAllocate(
         types: { COIN: string },
-        args: { adminCap: string; user: string; project: string },
+        args: { admin_cap: string; user: string; project: string },
         gasBudget?: GasBudget,
     ): Promise<SuiExecuteTransactionResponse> {
         return await this._signer.executeMoveCall(

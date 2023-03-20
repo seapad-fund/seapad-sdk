@@ -23,7 +23,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             module: this._module,
             function: 'abdicate_admin',
             typeArguments: [types.COIN],
-            arguments: [args.adminCap, args.to],
+            arguments: [args.admin_cap, args.to],
             gasBudget: getGasBudget(gasBudget),
         };
     }
@@ -34,9 +34,9 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             function: 'create_project',
             typeArguments: [types.COIN],
             arguments: [
-                args.adminCap,
+                args.admin_cap,
                 args.owner,
-                args.vestingType,
+                args.vesting_type,
                 args.coin_metadata,
             ],
             gasBudget: getGasBudget(gasBudget),
@@ -48,7 +48,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             module: this._module,
             function: 'add_milestone',
             typeArguments: [types.COIN],
-            arguments: [args.adminCap, args.project, args.time, args.percent],
+            arguments: [args.admin_cap, args.project, args.time, args.percent],
             gasBudget: getGasBudget(gasBudget),
         };
     }
@@ -59,7 +59,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             function: 'setup_project',
             typeArguments: [types.COIN],
             arguments: [
-                args.adminCap,
+                args.admin_cap,
                 args.project,
                 args.usewhitelist,
                 args.swap_ratio_sui,
@@ -80,7 +80,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             function: 'save_profile',
             typeArguments: [types.COIN],
             arguments: [
-                args.adminCap,
+                args.admin_cap,
                 args.project,
                 args.name,
                 args.twitter,
@@ -98,7 +98,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             module: this._module,
             function: 'add_whitelist',
             typeArguments: [types.COIN],
-            arguments: [args.adminCap, args.project, args.user_list],
+            arguments: [args.admin_cap, args.project, args.user_list],
             gasBudget: getGasBudget(gasBudget),
         };
     }
@@ -108,7 +108,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             module: this._module,
             function: 'remove_whitelist',
             typeArguments: [types.COIN],
-            arguments: [args.adminCap, args.project, args.user_list],
+            arguments: [args.admin_cap, args.project, args.user_list],
             gasBudget: getGasBudget(gasBudget),
         };
     }
@@ -118,7 +118,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             module: this._module,
             function: 'start_fund_raising',
             typeArguments: [types.COIN],
-            arguments: [args.adminCap, args.project],
+            arguments: [args.admin_cap, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
     }
@@ -138,7 +138,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             module: this._module,
             function: 'end_fund_raising',
             typeArguments: [types.COIN],
-            arguments: [args.adminCap, args.project],
+            arguments: [args.admin_cap, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
     }
@@ -148,7 +148,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             module: this._module,
             function: 'end_refund',
             typeArguments: [types.COIN],
-            arguments: [args.adminCap, args.project],
+            arguments: [args.admin_cap, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
     }
@@ -158,7 +158,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             module: this._module,
             function: 'distribute_raised_fund',
             typeArguments: [types.P, types.COIN],
-            arguments: [args.adminCap, args.project],
+            arguments: [args.admin_cap, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
     }
@@ -238,7 +238,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             module: this._module,
             function: 'add_max_allocate',
             typeArguments: [types.COIN],
-            arguments: [args.adminCap, args.user, args.max_allocate, args.project],
+            arguments: [args.admin_cap, args.user, args.max_allocate, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
     }
@@ -248,7 +248,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             module: this._module,
             function: 'remove_max_allocate',
             typeArguments: [types.COIN],
-            arguments: [args.adminCap, args.user, args.project],
+            arguments: [args.admin_cap, args.user, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
     }
