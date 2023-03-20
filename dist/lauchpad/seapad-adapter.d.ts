@@ -8,21 +8,21 @@ export declare class SeaPadAdapter extends SeaPadFunc {
     changeAdmin(types: {
         COIN: string;
     }, args: {
-        admin_cap: string;
+        adminCap: string;
         to: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
     createProject(types: {
         COIN: string;
     }, args: {
-        admin_cap: string;
+        adminCap: string;
         owner: string;
-        vesting_type: number;
+        vestingType: number;
         coin_metadata: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
     addMilestone(types: {
         COIN: string;
     }, args: {
-        admin_cap: string;
+        adminCap: string;
         project: string;
         time: string;
         percent: number;
@@ -30,7 +30,7 @@ export declare class SeaPadAdapter extends SeaPadFunc {
     setupProject(types: {
         COIN: string;
     }, args: {
-        admin_cap: string;
+        adminCap: string;
         project: string;
         usewhitelist: boolean;
         swap_ratio_sui: number;
@@ -44,7 +44,7 @@ export declare class SeaPadAdapter extends SeaPadFunc {
     saveProfile(types: {
         COIN: string;
     }, args: {
-        admin_cap: string;
+        adminCap: string;
         project: string;
         name: string;
         twitter: string;
@@ -55,21 +55,21 @@ export declare class SeaPadAdapter extends SeaPadFunc {
     addWhitelist(types: {
         COIN: string;
     }, args: {
-        admin_cap: string;
+        adminCap: string;
         project: string;
         user_list: string[];
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
     removeWhitelist(types: {
         COIN: string;
     }, args: {
-        admin_cap: string;
+        adminCap: string;
         project: string;
         user_list: string[];
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
     startFundRaising(types: {
         COIN: string;
     }, args: {
-        admin_cap: string;
+        adminCap: string;
         project: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
     buy(types: {
@@ -82,20 +82,20 @@ export declare class SeaPadAdapter extends SeaPadFunc {
     endFundRaising(types: {
         COIN: string;
     }, args: {
-        admin_cap: string;
+        adminCap: string;
         project: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
     endRefund(types: {
         COIN: string;
     }, args: {
-        admin_cap: string;
+        adminCap: string;
         project: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
     distributeRaisedFund(types: {
         P: string;
         COIN: string;
     }, args: {
-        admin_cap: string;
+        adminCap: string;
         project: string;
         projectOwner: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
@@ -141,7 +141,7 @@ export declare class SeaPadAdapter extends SeaPadFunc {
     addMaxAllocate(types: {
         COIN: string;
     }, args: {
-        admin_cap: string;
+        adminCap: string;
         user: string;
         max_allocate: string;
         project: string;
@@ -149,7 +149,7 @@ export declare class SeaPadAdapter extends SeaPadFunc {
     removeMaxAllocate(types: {
         COIN: string;
     }, args: {
-        admin_cap: string;
+        adminCap: string;
         user: string;
         project: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;

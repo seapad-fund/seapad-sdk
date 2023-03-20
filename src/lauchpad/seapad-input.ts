@@ -226,7 +226,7 @@ export class SeaPadInput extends SeaPadFunc {
         };
     }
     distributeRaisedFund(
-        types: { P: string; COIN: string },
+        types: { COIN: string },
         args: { admin_cap: string; project: string },
         gasBudget?: GasBudget,
     ): MoveCallTransaction {

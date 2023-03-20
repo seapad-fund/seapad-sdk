@@ -138,7 +138,7 @@ export class SeaPadAdapter extends SeaPadFunc {
         );
     }
     async distributeRaisedFund(
-        types: { P: string; COIN: string },
+        types: { COIN: string },
         args: { admin_cap: string; project: string; projectOwner: string },
         gasBudget?: GasBudget,
     ): Promise<SuiExecuteTransactionResponse> {
