@@ -1,6 +1,6 @@
-import { RawSigner, SuiExecuteTransactionResponse } from "@mysten/sui.js";
-import { SeaPadFunc } from "./seapad-func";
-import { GasBudget, SeaPadInput } from "./seapad-input";
+import { RawSigner, SuiExecuteTransactionResponse } from '@mysten/sui.js';
+import { SeaPadFunc } from './seapad-func';
+import { GasBudget, SeaPadInput } from './seapad-input';
 export declare class SeaPadAdapter extends SeaPadFunc {
     _seaPadInput: SeaPadInput;
     _signer: RawSigner;
@@ -11,21 +11,15 @@ export declare class SeaPadAdapter extends SeaPadFunc {
         adminCap: string;
         to: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
-    addProject(types: {
+    createProject(types: {
         COIN: string;
     }, args: {
         adminCap: string;
-        round: number;
-        usewhitelist: boolean;
-        softCap: string;
-        hardCap: string;
-        swapRatioSui: string;
-        swapRatioToken: string;
-        maxAllocate: string;
+        owner: string;
         vestingType: number;
-        firstVestingTime: string;
+        coin_metadata: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
-    addMileStone(types: {
+    addMilestone(types: {
         COIN: string;
     }, args: {
         adminCap: string;
@@ -33,20 +27,19 @@ export declare class SeaPadAdapter extends SeaPadFunc {
         time: string;
         percent: number;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
-    updateProject(types: {
+    setupProject(types: {
         COIN: string;
     }, args: {
         adminCap: string;
         project: string;
-        round: number;
         usewhitelist: boolean;
-        swapRatioSui: string;
-        swapRatioToken: string;
-        maxAllocate: string;
-        startTime: string;
-        endTime: string;
-        softCap: string;
-        hardCap: string;
+        swap_ratio_sui: number;
+        swap_ratio_token: number;
+        max_allocate: number;
+        start_time: number;
+        end_time: number;
+        soft_cap: number;
+        hard_cap: number;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
     saveProfile(types: {
         COIN: string;
@@ -64,7 +57,14 @@ export declare class SeaPadAdapter extends SeaPadFunc {
     }, args: {
         adminCap: string;
         project: string;
-        user: string;
+        user_list: string[];
+    }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
+    removeWhitelist(types: {
+        COIN: string;
+    }, args: {
+        adminCap: string;
+        project: string;
+        user_list: string[];
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
     startFundRaising(types: {
         COIN: string;
@@ -75,7 +75,7 @@ export declare class SeaPadAdapter extends SeaPadFunc {
     buy(types: {
         COIN: string;
     }, args: {
-        suis: string;
+        suis: string[];
         amount: string;
         project: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
@@ -99,7 +99,7 @@ export declare class SeaPadAdapter extends SeaPadFunc {
         project: string;
         projectOwner: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
-    refundToken(types: {
+    refundTokenToOwner(types: {
         COIN: string;
     }, args: {
         cap: string;
@@ -109,11 +109,11 @@ export declare class SeaPadAdapter extends SeaPadFunc {
     depositProject(types: {
         COIN: string;
     }, args: {
-        coins: string;
+        coins: string[];
         value: string;
         project: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
-    receiveToken(types: {
+    userClaimToken(types: {
         COIN: string;
     }, args: {
         project: string;
@@ -136,6 +136,21 @@ export declare class SeaPadAdapter extends SeaPadFunc {
     watch(types: {
         COIN: string;
     }, args: {
+        project: string;
+    }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
+    addMaxAllocate(types: {
+        COIN: string;
+    }, args: {
+        adminCap: string;
+        user: string;
+        max_allocate: string;
+        project: string;
+    }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
+    removeMaxAllocate(types: {
+        COIN: string;
+    }, args: {
+        adminCap: string;
+        user: string;
         project: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
 }

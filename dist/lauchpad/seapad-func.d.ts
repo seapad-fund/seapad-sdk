@@ -1,5 +1,5 @@
-import { MoveCallTransaction, SuiExecuteTransactionResponse } from "@mysten/sui.js";
-import { GasBudget } from "./seapad-input";
+import { MoveCallTransaction, SuiExecuteTransactionResponse } from '@mysten/sui.js';
+import { GasBudget } from './seapad-input';
 export declare abstract class SeaPadFunc {
     /**
      *
@@ -17,26 +17,20 @@ export declare abstract class SeaPadFunc {
      * @param types <COIN>
      * @param args _adminCap: &AdminCap, round: u8, usewhitelist: bool, softCap: u64, hardCap: u64, swapRatioSui: u64, swapRatioToken: u64, maxAllocate: u64, vestingType: u8, firstVestingTime: u64
      */
-    abstract addProject(types: {
+    abstract createProject(types: {
         COIN: string;
     }, args: {
         adminCap: string;
-        round: number;
-        usewhitelist: boolean;
-        softCap: string;
-        hardCap: string;
-        swapRatioSui: string;
-        swapRatioToken: string;
-        maxAllocate: string;
+        owner: string;
         vestingType: number;
-        firstVestingTime: string;
+        coin_metadata: string;
     }, gasBudget?: GasBudget): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
     /**
      *
      * @param types <COIN>
      * @param args adminCap: &AdminCap, project: &mut Project<COIN>, time: u64, percent: u8,
      */
-    abstract addMileStone(types: {
+    abstract addMilestone(types: {
         COIN: string;
     }, args: {
         adminCap: string;
@@ -49,20 +43,19 @@ export declare abstract class SeaPadFunc {
      * @param types <COIN>
      * @param args adminCap: &AdminCap, project: &mut Project<COIN>, round: u8, usewhitelist: bool, swapRatioSui: u64, swapRatioToken: u64, maxAllocate: u64, startTime: u64, endTime: u64, softCap: u64, hardCap: u64
      */
-    abstract updateProject(types: {
+    abstract setupProject(types: {
         COIN: string;
     }, args: {
         adminCap: string;
         project: string;
-        round: number;
         usewhitelist: boolean;
-        swapRatioSui: string;
-        swapRatioToken: string;
-        maxAllocate: string;
-        startTime: string;
-        endTime: string;
-        softCap: string;
-        hardCap: string;
+        swap_ratio_sui: number;
+        swap_ratio_token: number;
+        max_allocate: number;
+        start_time: number;
+        end_time: number;
+        soft_cap: number;
+        hard_cap: number;
     }, gasBudget?: GasBudget): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
     /**
      *
@@ -90,7 +83,14 @@ export declare abstract class SeaPadFunc {
     }, args: {
         adminCap: string;
         project: string;
-        user: string;
+        user_list: string[];
+    }, gasBudget?: GasBudget): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    abstract removeWhitelist(types: {
+        COIN: string;
+    }, args: {
+        adminCap: string;
+        project: string;
+        user_list: string[];
     }, gasBudget?: GasBudget): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
     /**
      *
@@ -111,7 +111,7 @@ export declare abstract class SeaPadFunc {
     abstract buy(types: {
         COIN: string;
     }, args: {
-        suis: string;
+        suis: string[];
         amount: string;
         project: string;
     }, gasBudget?: GasBudget): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
@@ -148,19 +148,17 @@ export declare abstract class SeaPadFunc {
     }, args: {
         adminCap: string;
         project: string;
-        projectOwner: string;
     }, gasBudget?: GasBudget): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
     /**
      *
      * @param types <COIN>
      * @param args cap: &AdminCap, project: &mut Project<COIN>, projectOwner: address,
      */
-    abstract refundToken(types: {
+    abstract refundTokenToOwner(types: {
         COIN: string;
     }, args: {
         cap: string;
         project: string;
-        projectOwner: string;
     }, gasBudget?: GasBudget): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
     /**
      *
@@ -170,7 +168,7 @@ export declare abstract class SeaPadFunc {
     abstract depositProject(types: {
         COIN: string;
     }, args: {
-        coins: string;
+        coins: string[];
         value: string;
         project: string;
     }, gasBudget?: GasBudget): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
@@ -179,7 +177,7 @@ export declare abstract class SeaPadFunc {
      * @param types <COIN>
      * @param args project: &mut Project<COIN>
      */
-    abstract receiveToken(types: {
+    abstract userClaimToken(types: {
         COIN: string;
     }, args: {
         project: string;
@@ -222,6 +220,21 @@ export declare abstract class SeaPadFunc {
     abstract watch(types: {
         COIN: string;
     }, args: {
+        project: string;
+    }, gasBudget?: GasBudget): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    abstract addMaxAllocate(types: {
+        COIN: string;
+    }, args: {
+        adminCap: string;
+        user: string;
+        max_allocate: string;
+        project: string;
+    }, gasBudget?: GasBudget): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    abstract removeMaxAllocate(types: {
+        COIN: string;
+    }, args: {
+        adminCap: string;
+        user: string;
         project: string;
     }, gasBudget?: GasBudget): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
 }

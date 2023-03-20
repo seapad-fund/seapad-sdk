@@ -12,20 +12,23 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
     async changeAdmin(types, args, gasBudget) {
         return await this._signer.executeMoveCall(this._seaPadInput.changeAdmin(types, args, gasBudget));
     }
-    async addProject(types, args, gasBudget) {
-        return await this._signer.executeMoveCall(this._seaPadInput.addProject(types, args, gasBudget));
+    async createProject(types, args, gasBudget) {
+        return await this._signer.executeMoveCall(this._seaPadInput.createProject(types, args, gasBudget));
     }
-    async addMileStone(types, args, gasBudget) {
-        return await this._signer.executeMoveCall(this._seaPadInput.addMileStone(types, args, gasBudget));
+    async addMilestone(types, args, gasBudget) {
+        return await this._signer.executeMoveCall(this._seaPadInput.addMilestone(types, args, gasBudget));
     }
-    async updateProject(types, args, gasBudget) {
-        return await this._signer.executeMoveCall(this._seaPadInput.updateProject(types, args, gasBudget));
+    async setupProject(types, args, gasBudget) {
+        return await this._signer.executeMoveCall(this._seaPadInput.setupProject(types, args, gasBudget));
     }
     async saveProfile(types, args, gasBudget) {
         return await this._signer.executeMoveCall(this._seaPadInput.saveProfile(types, args, gasBudget));
     }
     async addWhitelist(types, args, gasBudget) {
         return await this._signer.executeMoveCall(this._seaPadInput.addWhitelist(types, args, gasBudget));
+    }
+    async removeWhitelist(types, args, gasBudget) {
+        return await this._signer.executeMoveCall(this._seaPadInput.removeWhitelist(types, args, gasBudget));
     }
     async startFundRaising(types, args, gasBudget) {
         return await this._signer.executeMoveCall(this._seaPadInput.startFundRaising(types, args, gasBudget));
@@ -42,14 +45,14 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
     async distributeRaisedFund(types, args, gasBudget) {
         return await this._signer.executeMoveCall(this._seaPadInput.distributeRaisedFund(types, args, gasBudget));
     }
-    async refundToken(types, args, gasBudget) {
-        return await this._signer.executeMoveCall(this._seaPadInput.refundToken(types, args, gasBudget));
+    async refundTokenToOwner(types, args, gasBudget) {
+        return await this._signer.executeMoveCall(this._seaPadInput.refundTokenToOwner(types, args, gasBudget));
     }
     async depositProject(types, args, gasBudget) {
         return await this._signer.executeMoveCall(this._seaPadInput.depositProject(types, args, gasBudget));
     }
-    async receiveToken(types, args, gasBudget) {
-        return await this._signer.executeMoveCall(this._seaPadInput.receiveToken(types, args, gasBudget));
+    async userClaimToken(types, args, gasBudget) {
+        return await this._signer.executeMoveCall(this._seaPadInput.userClaimToken(types, args, gasBudget));
     }
     async claimRefund(types, args, gasBudget) {
         return await this._signer.executeMoveCall(this._seaPadInput.claimRefund(types, args, gasBudget));
@@ -62,6 +65,12 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
     }
     async watch(types, args, gasBudget) {
         return await this._signer.executeMoveCall(this._seaPadInput.watch(types, args, gasBudget));
+    }
+    async addMaxAllocate(types, args, gasBudget) {
+        return await this._signer.executeMoveCall(this._seaPadInput.addMaxAllocate(types, args, gasBudget));
+    }
+    async removeMaxAllocate(types, args, gasBudget) {
+        return await this._signer.executeMoveCall(this._seaPadInput.removeMaxAllocate(types, args, gasBudget));
     }
 }
 exports.SeaPadAdapter = SeaPadAdapter;

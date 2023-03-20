@@ -1,5 +1,5 @@
-import { MoveCallTransaction } from "@mysten/sui.js";
-import { SeaPadFunc } from "./seapad-func";
+import { MoveCallTransaction } from '@mysten/sui.js';
+import { SeaPadFunc } from './seapad-func';
 export type GasBudget = number | null;
 export declare function getGasBudget(gasBudget?: GasBudget): number;
 export declare class SeaPadInput extends SeaPadFunc {
@@ -12,21 +12,15 @@ export declare class SeaPadInput extends SeaPadFunc {
         adminCap: string;
         to: string;
     }, gasBudget?: GasBudget): MoveCallTransaction;
-    addProject(types: {
+    createProject(types: {
         COIN: string;
     }, args: {
         adminCap: string;
-        round: number;
-        usewhitelist: boolean;
-        softCap: string;
-        hardCap: string;
-        swapRatioSui: string;
-        swapRatioToken: string;
-        maxAllocate: string;
+        owner: string;
         vestingType: number;
-        firstVestingTime: string;
+        coin_metadata: string;
     }, gasBudget?: GasBudget): MoveCallTransaction;
-    addMileStone(types: {
+    addMilestone(types: {
         COIN: string;
     }, args: {
         adminCap: string;
@@ -34,20 +28,19 @@ export declare class SeaPadInput extends SeaPadFunc {
         time: string;
         percent: number;
     }, gasBudget?: GasBudget): MoveCallTransaction;
-    updateProject(types: {
+    setupProject(types: {
         COIN: string;
     }, args: {
         adminCap: string;
         project: string;
-        round: number;
         usewhitelist: boolean;
-        swapRatioSui: string;
-        swapRatioToken: string;
-        maxAllocate: string;
-        startTime: string;
-        endTime: string;
-        softCap: string;
-        hardCap: string;
+        swap_ratio_sui: number;
+        swap_ratio_token: number;
+        max_allocate: number;
+        start_time: number;
+        end_time: number;
+        soft_cap: number;
+        hard_cap: number;
     }, gasBudget?: GasBudget): MoveCallTransaction;
     saveProfile(types: {
         COIN: string;
@@ -65,7 +58,14 @@ export declare class SeaPadInput extends SeaPadFunc {
     }, args: {
         adminCap: string;
         project: string;
-        user: string;
+        user_list: string[];
+    }, gasBudget?: GasBudget): MoveCallTransaction;
+    removeWhitelist(types: {
+        COIN: string;
+    }, args: {
+        adminCap: string;
+        project: string;
+        user_list: string[];
     }, gasBudget?: GasBudget): MoveCallTransaction;
     startFundRaising(types: {
         COIN: string;
@@ -76,7 +76,7 @@ export declare class SeaPadInput extends SeaPadFunc {
     buy(types: {
         COIN: string;
     }, args: {
-        suis: string;
+        suis: string[];
         amount: string;
         project: string;
     }, gasBudget?: GasBudget): MoveCallTransaction;
@@ -98,23 +98,21 @@ export declare class SeaPadInput extends SeaPadFunc {
     }, args: {
         adminCap: string;
         project: string;
-        projectOwner: string;
     }, gasBudget?: GasBudget): MoveCallTransaction;
-    refundToken(types: {
+    refundTokenToOwner(types: {
         COIN: string;
     }, args: {
         cap: string;
         project: string;
-        projectOwner: string;
     }, gasBudget?: GasBudget): MoveCallTransaction;
     depositProject(types: {
         COIN: string;
     }, args: {
-        coins: string;
+        coins: string[];
         value: string;
         project: string;
     }, gasBudget?: GasBudget): MoveCallTransaction;
-    receiveToken(types: {
+    userClaimToken(types: {
         COIN: string;
     }, args: {
         project: string;
@@ -137,6 +135,21 @@ export declare class SeaPadInput extends SeaPadFunc {
     watch(types: {
         COIN: string;
     }, args: {
+        project: string;
+    }, gasBudget?: GasBudget): MoveCallTransaction;
+    addMaxAllocate(types: {
+        COIN: string;
+    }, args: {
+        adminCap: string;
+        user: string;
+        max_allocate: string;
+        project: string;
+    }, gasBudget?: GasBudget): MoveCallTransaction;
+    removeMaxAllocate(types: {
+        COIN: string;
+    }, args: {
+        adminCap: string;
+        user: string;
         project: string;
     }, gasBudget?: GasBudget): MoveCallTransaction;
 }

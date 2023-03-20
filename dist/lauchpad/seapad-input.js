@@ -21,180 +21,235 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "change_admin",
+            function: 'abdicate_admin',
             typeArguments: [types.COIN],
             arguments: [args.adminCap, args.to],
-            gasBudget: getGasBudget(gasBudget)
+            gasBudget: getGasBudget(gasBudget),
         };
     }
-    addProject(types, args, gasBudget) {
+    createProject(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "add_project",
+            function: 'create_project',
             typeArguments: [types.COIN],
-            arguments: [args.adminCap, args.round, args.usewhitelist, args.softCap, args.hardCap, args.swapRatioSui, args.swapRatioToken, args.maxAllocate, args.vestingType, args.firstVestingTime],
-            gasBudget: getGasBudget(gasBudget)
+            arguments: [
+                args.adminCap,
+                args.owner,
+                args.vestingType,
+                args.coin_metadata,
+            ],
+            gasBudget: getGasBudget(gasBudget),
         };
     }
-    addMileStone(types, args, gasBudget) {
+    addMilestone(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "add_mile_stone",
+            function: 'add_milestone',
             typeArguments: [types.COIN],
             arguments: [args.adminCap, args.project, args.time, args.percent],
-            gasBudget: getGasBudget(gasBudget)
+            gasBudget: getGasBudget(gasBudget),
         };
     }
-    updateProject(types, args, gasBudget) {
+    setupProject(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "update_project",
+            function: 'setup_project',
             typeArguments: [types.COIN],
-            arguments: [args.adminCap, args.project, args.round, args.usewhitelist, args.swapRatioSui, args.swapRatioToken, args.maxAllocate, args.startTime, args.endTime, args.softCap, args.hardCap],
-            gasBudget: getGasBudget(gasBudget)
+            arguments: [
+                args.adminCap,
+                args.project,
+                args.usewhitelist,
+                args.swap_ratio_sui,
+                args.swap_ratio_token,
+                args.max_allocate,
+                args.start_time,
+                args.end_time,
+                args.soft_cap,
+                args.hard_cap,
+            ],
+            gasBudget: getGasBudget(gasBudget),
         };
     }
     saveProfile(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "save_profile",
+            function: 'save_profile',
             typeArguments: [types.COIN],
-            arguments: [args.adminCap, args.project, args.name, args.twitter, args.discord, args.telegram, args.website, args.website],
-            gasBudget: getGasBudget(gasBudget)
+            arguments: [
+                args.adminCap,
+                args.project,
+                args.name,
+                args.twitter,
+                args.discord,
+                args.telegram,
+                args.website,
+                args.website,
+            ],
+            gasBudget: getGasBudget(gasBudget),
         };
     }
     addWhitelist(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "add_whitelist",
+            function: 'add_whitelist',
             typeArguments: [types.COIN],
-            arguments: [args.adminCap, args.project, args.user],
-            gasBudget: getGasBudget(gasBudget)
+            arguments: [args.adminCap, args.project, args.user_list],
+            gasBudget: getGasBudget(gasBudget),
+        };
+    }
+    removeWhitelist(types, args, gasBudget) {
+        return {
+            packageObjectId: this._packageObjectId,
+            module: this._module,
+            function: 'remove_whitelist',
+            typeArguments: [types.COIN],
+            arguments: [args.adminCap, args.project, args.user_list],
+            gasBudget: getGasBudget(gasBudget),
         };
     }
     startFundRaising(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "start_fund_raising",
+            function: 'start_fund_raising',
             typeArguments: [types.COIN],
             arguments: [args.adminCap, args.project],
-            gasBudget: getGasBudget(gasBudget)
+            gasBudget: getGasBudget(gasBudget),
         };
     }
     buy(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "buy",
+            function: 'buy',
             typeArguments: [types.COIN],
             arguments: [args.suis, args.amount, args.project],
-            gasBudget: getGasBudget(gasBudget)
+            gasBudget: getGasBudget(gasBudget),
         };
     }
     endFundRaising(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "end_fund_raising",
+            function: 'end_fund_raising',
             typeArguments: [types.COIN],
             arguments: [args.adminCap, args.project],
-            gasBudget: getGasBudget(gasBudget)
+            gasBudget: getGasBudget(gasBudget),
         };
     }
     endRefund(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "end_refund",
+            function: 'end_refund',
             typeArguments: [types.COIN],
             arguments: [args.adminCap, args.project],
-            gasBudget: getGasBudget(gasBudget)
+            gasBudget: getGasBudget(gasBudget),
         };
     }
     distributeRaisedFund(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "distribute_raised_fund",
+            function: 'distribute_raised_fund',
             typeArguments: [types.P, types.COIN],
-            arguments: [args.adminCap, args.project, args.projectOwner],
-            gasBudget: getGasBudget(gasBudget)
+            arguments: [args.adminCap, args.project],
+            gasBudget: getGasBudget(gasBudget),
         };
     }
-    refundToken(types, args, gasBudget) {
+    refundTokenToOwner(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "refund_token",
+            function: 'refund_token_to_owner',
             typeArguments: [types.COIN],
-            arguments: [args.cap, args.project, args.projectOwner],
-            gasBudget: getGasBudget(gasBudget)
+            arguments: [args.cap, args.project],
+            gasBudget: getGasBudget(gasBudget),
         };
     }
     depositProject(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "deposit_project",
+            function: 'deposit_by_owner',
             typeArguments: [types.COIN],
             arguments: [args.coins, args.value, args.project],
-            gasBudget: getGasBudget(gasBudget)
+            gasBudget: getGasBudget(gasBudget),
         };
     }
-    receiveToken(types, args, gasBudget) {
+    userClaimToken(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "receive_token",
+            function: 'claim_token',
             typeArguments: [types.COIN],
             arguments: [args.project],
-            gasBudget: getGasBudget(gasBudget)
+            gasBudget: getGasBudget(gasBudget),
         };
     }
     claimRefund(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "claim_refund",
+            function: 'claim_refund',
             typeArguments: [types.COIN],
             arguments: [args.project],
-            gasBudget: getGasBudget(gasBudget)
+            gasBudget: getGasBudget(gasBudget),
         };
     }
     vote(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "vote",
+            function: 'vote',
             typeArguments: [types.COIN],
             arguments: [args.project],
-            gasBudget: getGasBudget(gasBudget)
+            gasBudget: getGasBudget(gasBudget),
         };
     }
     like(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "like",
+            function: 'like',
             typeArguments: [types.COIN],
             arguments: [args.project],
-            gasBudget: getGasBudget(gasBudget)
+            gasBudget: getGasBudget(gasBudget),
         };
     }
     watch(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: "watch",
+            function: 'watch',
             typeArguments: [types.COIN],
             arguments: [args.project],
-            gasBudget: getGasBudget(gasBudget)
+            gasBudget: getGasBudget(gasBudget),
+        };
+    }
+    addMaxAllocate(types, args, gasBudget) {
+        return {
+            packageObjectId: this._packageObjectId,
+            module: this._module,
+            function: 'add_max_allocate',
+            typeArguments: [types.COIN],
+            arguments: [args.adminCap, args.user, args.max_allocate, args.project],
+            gasBudget: getGasBudget(gasBudget),
+        };
+    }
+    removeMaxAllocate(types, args, gasBudget) {
+        return {
+            packageObjectId: this._packageObjectId,
+            module: this._module,
+            function: 'remove_max_allocate',
+            typeArguments: [types.COIN],
+            arguments: [args.adminCap, args.user, args.project],
+            gasBudget: getGasBudget(gasBudget),
         };
     }
 }
