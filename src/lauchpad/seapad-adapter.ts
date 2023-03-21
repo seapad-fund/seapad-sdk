@@ -57,13 +57,13 @@ export class SeaPadAdapter extends SeaPadFunc {
             admin_cap: string;
             project: string;
             usewhitelist: boolean;
-            swap_ratio_sui: number;
-            swap_ratio_token: number;
-            max_allocate: number;
+            swap_ratio_sui: string;
+            swap_ratio_token: string;
+            max_allocate: string;
             start_time: number;
             end_time: number;
-            soft_cap: number;
-            hard_cap: number;
+            soft_cap: string;
+            hard_cap: string;
         },
         gasBudget?: GasBudget,
     ): Promise<SuiExecuteTransactionResponse> {
@@ -242,7 +242,18 @@ export class SeaPadAdapter extends SeaPadFunc {
         );
     }
 
-    async getCoinMetadata(coinType: string) : Promise<CoinMetadata>{
-        return await this._suiProvider.getCoinMetadata(coinType);
+    async getTokenInfo(coinType: string) {
+        const coinMetaData = await this._suiProvider.getCoinMetadata(coinType);
+        const totalSupply = await this._suiProvider.getTotalSupply(coinType);
+
+        return {
+            coin_metadata_object_id: coinMetaData.id,
+            decimal: coinMetaData.decimals,
+            icon_url: coinMetaData.iconUrl,
+            description: coinMetaData.description,
+            symbol: coinMetaData.symbol,
+            total_supply: totalSupply.value
+        }
     }
+
 }
