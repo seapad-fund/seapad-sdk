@@ -252,7 +252,7 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
     }
     refundTokenToOwner(
         types: { COIN: string },
-        args: { cap: string; project: string },
+        args: { admin_cap: string; project: string },
         gasBudget?: GasBudget,
     ): MoveCallTransaction {
         return {
@@ -260,7 +260,7 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
             module: this._module,
             function: 'refund_token_to_owner',
             typeArguments: [types.COIN],
-            arguments: [args.cap, args.project],
+            arguments: [args.admin_cap, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
     }

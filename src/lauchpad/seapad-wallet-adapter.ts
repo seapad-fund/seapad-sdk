@@ -68,7 +68,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndExecuteTra
          const message = this._seaPadInput.distributeRaisedFund(types, args, gasBudget);
         return await this._walletContextState.signAndExecuteTransaction(this.buildTx(message));
     }
-    async refundTokenToOwner(types: { COIN: string; }, args: { cap: string; project: string; }, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionOutput>{
+    async refundTokenToOwner(types: { COIN: string; }, args: { admin_cap: string; project: string; }, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionOutput>{
          const message = this._seaPadInput.refundTokenToOwner(types, args, gasBudget);
         return await this._walletContextState.signAndExecuteTransaction(this.buildTx(message));
     }

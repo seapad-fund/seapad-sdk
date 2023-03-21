@@ -155,7 +155,7 @@ export class SeaPadAdapter extends SeaPadFunc<Promise<SuiExecuteTransactionRespo
     }
     async refundTokenToOwner(
         types: { COIN: string },
-        args: { cap: string; project: string; projectOwner: string },
+        args: { admin_cap: string; project: string; projectOwner: string },
         gasBudget?: GasBudget,
     ): Promise<SuiExecuteTransactionResponse> {
         return await this._signer.executeMoveCall(

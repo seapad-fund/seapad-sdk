@@ -164,7 +164,7 @@ export abstract class SeaPadFunc<T> {
      */
     abstract refundTokenToOwner(
         types: { COIN: string },
-        args: { cap: string; project: string },
+        args: { admin_cap: string; project: string },
         gasBudget?: GasBudget,
     ): T;
     /**
