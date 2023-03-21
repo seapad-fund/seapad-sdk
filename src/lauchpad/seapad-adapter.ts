@@ -39,7 +39,7 @@ export class SeaPadAdapter extends SeaPadFunc {
     }
     async addMilestone(
         types: { COIN: string },
-        args: { admin_cap: string; project: string; time: string; percent: number },
+        args: { admin_cap: string; project: string; time: number; percent: number },
         gasBudget?: GasBudget,
     ): Promise<SuiExecuteTransactionResponse> {
         return await this._signer.executeMoveCall(

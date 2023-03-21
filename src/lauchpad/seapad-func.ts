@@ -37,7 +37,7 @@ export abstract class SeaPadFunc {
      */
     abstract addMilestone(
         types: { COIN: string },
-        args: { admin_cap: string; project: string; time: string; percent: number },
+        args: { admin_cap: string; project: string; time: number; percent: number },
         gasBudget?: GasBudget,
     ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
 

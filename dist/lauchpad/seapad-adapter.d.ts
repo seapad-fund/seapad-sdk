@@ -1,7 +1,8 @@
-import { RawSigner, SuiExecuteTransactionResponse } from '@mysten/sui.js';
+import { RawSigner, SuiExecuteTransactionResponse, Provider } from '@mysten/sui.js';
 import { SeaPadFunc } from './seapad-func';
 import { GasBudget, SeaPadInput } from './seapad-input';
 export declare class SeaPadAdapter extends SeaPadFunc {
+    _suiProvider: Provider;
     _seaPadInput: SeaPadInput;
     _signer: RawSigner;
     constructor(signer: RawSigner, packageObjectId: string, module: string);
@@ -24,7 +25,7 @@ export declare class SeaPadAdapter extends SeaPadFunc {
     }, args: {
         admin_cap: string;
         project: string;
-        time: string;
+        time: number;
         percent: number;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
     resetMilestone(types: {
@@ -39,13 +40,13 @@ export declare class SeaPadAdapter extends SeaPadFunc {
         admin_cap: string;
         project: string;
         usewhitelist: boolean;
-        swap_ratio_sui: number;
-        swap_ratio_token: number;
-        max_allocate: number;
+        swap_ratio_sui: string;
+        swap_ratio_token: string;
+        max_allocate: string;
         start_time: number;
         end_time: number;
-        soft_cap: number;
-        hard_cap: number;
+        soft_cap: string;
+        hard_cap: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
     saveProfile(types: {
         COIN: string;
@@ -158,5 +159,13 @@ export declare class SeaPadAdapter extends SeaPadFunc {
         user: string;
         project: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
+    getTokenInfo(coinType: string): Promise<{
+        coin_metadata_object_id: string | null;
+        decimal: number;
+        icon_url: string | null;
+        description: string;
+        symbol: string;
+        total_supply: number;
+    }>;
 }
 //# sourceMappingURL=seapad-adapter.d.ts.map

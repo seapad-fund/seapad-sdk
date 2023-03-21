@@ -8,6 +8,7 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
         super();
         this._seaPadInput = new seapad_input_1.SeaPadInput(packageObjectId, module);
         this._signer = signer;
+        this._suiProvider = signer.provider;
     }
     async changeAdmin(types, args, gasBudget) {
         return await this._signer.executeMoveCall(this._seaPadInput.changeAdmin(types, args, gasBudget));
@@ -74,6 +75,18 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
     }
     async removeMaxAllocate(types, args, gasBudget) {
         return await this._signer.executeMoveCall(this._seaPadInput.removeMaxAllocate(types, args, gasBudget));
+    }
+    async getTokenInfo(coinType) {
+        const coinMetaData = await this._suiProvider.getCoinMetadata(coinType);
+        const totalSupply = await this._suiProvider.getTotalSupply(coinType);
+        return {
+            coin_metadata_object_id: coinMetaData.id,
+            decimal: coinMetaData.decimals,
+            icon_url: coinMetaData.iconUrl,
+            description: coinMetaData.description,
+            symbol: coinMetaData.symbol,
+            total_supply: totalSupply.value
+        };
     }
 }
 exports.SeaPadAdapter = SeaPadAdapter;
