@@ -2,7 +2,7 @@ import { MoveCallTransaction } from '@mysten/sui.js';
 import { SeaPadFunc } from './seapad-func';
 export type GasBudget = number | null;
 export declare function getGasBudget(gasBudget?: GasBudget): number;
-export declare class SeaPadInput extends SeaPadFunc {
+export declare class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
     _packageObjectId: string;
     _module: string;
     constructor(packageObjectId: string, module: string);
