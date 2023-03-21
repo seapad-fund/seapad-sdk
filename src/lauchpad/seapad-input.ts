@@ -196,7 +196,7 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
     }
     buy(
         types: { COIN: string },
-        args: { suis: string[]; amount: string; project: string },
+        args: { coins: string[]; amount: string; project: string },
         gasBudget?: GasBudget,
     ): MoveCallTransaction {
         return {
@@ -204,7 +204,7 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
             module: this._module,
             function: 'buy',
             typeArguments: [types.COIN],
-            arguments: [args.suis, args.amount, args.project],
+            arguments: [args.coins, args.amount, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
     }

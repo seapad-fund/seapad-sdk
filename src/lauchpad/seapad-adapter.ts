@@ -119,7 +119,7 @@ export class SeaPadAdapter extends SeaPadFunc<Promise<SuiExecuteTransactionRespo
     }
     async buy(
         types: { COIN: string },
-        args: { suis: string[]; amount: string; project: string },
+        args: { coins: string[]; amount: string; project: string },
         gasBudget?: GasBudget,
     ): Promise<SuiExecuteTransactionResponse> {
         return await this._signer.executeMoveCall(
