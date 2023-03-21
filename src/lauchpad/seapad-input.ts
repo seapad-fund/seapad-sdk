@@ -11,7 +11,7 @@ export function getGasBudget(gasBudget?: GasBudget): number {
     }
 }
 
-export class SeaPadInput extends SeaPadFunc {
+export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
 
     _packageObjectId: string;
     _module: string;

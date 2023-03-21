@@ -2,7 +2,7 @@ import { RawSigner, SuiExecuteTransactionResponse,JsonRpcProvider, CoinMetadata,
 import { SeaPadFunc } from './seapad-func';
 import { GasBudget, SeaPadInput } from './seapad-input';
 
-export class SeaPadAdapter extends SeaPadFunc {
+export class SeaPadAdapter extends SeaPadFunc<Promise<SuiExecuteTransactionResponse>> {
     _suiProvider: Provider;
     _seaPadInput: SeaPadInput;
     _signer: RawSigner;

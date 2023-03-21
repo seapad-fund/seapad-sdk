@@ -4,7 +4,7 @@ import {
 } from '@mysten/sui.js';
 import { GasBudget } from './seapad-input';
 
-export abstract class SeaPadFunc {
+export abstract class SeaPadFunc<T> {
     /**
      *
      * @param types <COIN>
@@ -14,7 +14,7 @@ export abstract class SeaPadFunc {
         types: { COIN: string },
         args: { admin_cap: string; to: string },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
     /**
      *
      * @param types <COIN>
@@ -29,7 +29,7 @@ export abstract class SeaPadFunc {
             coin_metadata: string;
         },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
     /**
      *
      * @param types <COIN>
@@ -39,7 +39,7 @@ export abstract class SeaPadFunc {
         types: { COIN: string },
         args: { admin_cap: string; project: string; time: number; percent: number },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
 
      /**
      *
@@ -50,7 +50,7 @@ export abstract class SeaPadFunc {
         types: { COIN: string },
         args: { admin_cap: string; project: string },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
 
     /**
      *
@@ -72,7 +72,7 @@ export abstract class SeaPadFunc {
             hard_cap: string;
         },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
     /**
      *
      * @param types <COIN>
@@ -90,7 +90,7 @@ export abstract class SeaPadFunc {
             website: string;
         },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
     /**
      *
      * @param types <COIN>
@@ -100,13 +100,13 @@ export abstract class SeaPadFunc {
         types: { COIN: string },
         args: { admin_cap: string; project: string; user_list: string[] },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
 
     abstract removeWhitelist(
         types: { COIN: string },
         args: { admin_cap: string; project: string; user_list: string[] },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
     /**
      *
      * @param types <COIN>
@@ -116,7 +116,7 @@ export abstract class SeaPadFunc {
         types: { COIN: string },
         args: { admin_cap: string; project: string },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
     /**
      *
      * @param types <COIN>
@@ -126,7 +126,7 @@ export abstract class SeaPadFunc {
         types: { COIN: string },
         args: { suis: string[]; amount: string; project: string },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
     /**
      *
      * @param types <COIN>
@@ -136,7 +136,7 @@ export abstract class SeaPadFunc {
         types: { COIN: string },
         args: { admin_cap: string; project: string },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
     /**
      *
      * @param types <COIN>
@@ -146,7 +146,7 @@ export abstract class SeaPadFunc {
         types: { COIN: string },
         args: { admin_cap: string; project: string },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
     /**
      *
      * @param types <P, COIN>
@@ -156,7 +156,7 @@ export abstract class SeaPadFunc {
         types: { COIN: string },
         args: { admin_cap: string; project: string },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
     /**
      *
      * @param types <COIN>
@@ -166,7 +166,7 @@ export abstract class SeaPadFunc {
         types: { COIN: string },
         args: { cap: string; project: string },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
     /**
      *
      * @param types <COIN>
@@ -176,7 +176,7 @@ export abstract class SeaPadFunc {
         types: { COIN: string },
         args: { coins: string[]; value: string; project: string },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
     /**
      *
      * @param types <COIN>
@@ -186,7 +186,7 @@ export abstract class SeaPadFunc {
         types: { COIN: string },
         args: { project: string },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
     /**
      *
      * @param types <COIN>
@@ -196,7 +196,7 @@ export abstract class SeaPadFunc {
         types: { COIN: string },
         args: { project: string },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
     /**
      *
      * @param types <COIN>
@@ -206,7 +206,7 @@ export abstract class SeaPadFunc {
         types: { COIN: string },
         args: { project: string },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
     /**
      *
      * @param types <COIN>
@@ -216,7 +216,7 @@ export abstract class SeaPadFunc {
         types: { COIN: string },
         args: { project: string },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
     /**
      *
      * @param types <COIN>
@@ -226,7 +226,7 @@ export abstract class SeaPadFunc {
         types: { COIN: string },
         args: { project: string },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
 
     abstract addMaxAllocate(
         types: { COIN: string },
@@ -237,7 +237,7 @@ export abstract class SeaPadFunc {
             project: string;
         },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
 
     abstract removeMaxAllocate(
         types: { COIN: string },
@@ -247,5 +247,5 @@ export abstract class SeaPadFunc {
             project: string;
         },
         gasBudget?: GasBudget,
-    ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;
+    ): T;
 }
