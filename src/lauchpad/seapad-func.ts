@@ -55,7 +55,7 @@ export abstract class SeaPadFunc {
     /**
      *
      * @param types <COIN>
-     * @param args admin_cap: &AdminCap, project: &mut Project<COIN>, round: u8, usewhitelist: bool, swap_ratio_sui: u64, swap_ratio_token: u64, max_allocate: u64, start_time: u64, end_time: u64, soft_cap: u64, hard_cap: u64,
+     * @param args admin_cap: &AdminCap, project: &mut Project<COIN>, usewhitelist: bool, swap_ratio_sui: u64, swap_ratio_token: u64, max_allocate: u64, start_time: u64, end_time: u64, soft_cap: u64, hard_cap: u64,
      */
     abstract setupProject(
         types: { COIN: string },
