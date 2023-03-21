@@ -55,7 +55,7 @@ export abstract class SeaPadFunc {
     /**
      *
      * @param types <COIN>
-     * @param args admin_cap: &AdminCap, project: &mut Project<COIN>, round: u8, usewhitelist: bool, swap_ratio_sui: u64, swap_ratio_token: u64, max_allocate: u64, start_time: u64, end_time: u64, soft_cap: u64, hard_cap: u64,
+     * @param args admin_cap: &AdminCap, project: &mut Project<COIN>, usewhitelist: bool, swap_ratio_sui: u64, swap_ratio_token: u64, max_allocate: u64, start_time: u64, end_time: u64, soft_cap: u64, hard_cap: u64,
      */
     abstract setupProject(
         types: { COIN: string },
@@ -63,13 +63,13 @@ export abstract class SeaPadFunc {
             admin_cap: string;
             project: string;
             usewhitelist: boolean;
-            swap_ratio_sui: number;
-            swap_ratio_token: number;
-            max_allocate: number;
-            start_time: number;
-            end_time: number;
-            soft_cap: number;
-            hard_cap: number;
+            swap_ratio_sui: string;
+            swap_ratio_token: string;
+            max_allocate: string;
+            start_time: string;
+            end_time: string;
+            soft_cap: string;
+            hard_cap: string;
         },
         gasBudget?: GasBudget,
     ): MoveCallTransaction | Promise<SuiExecuteTransactionResponse>;

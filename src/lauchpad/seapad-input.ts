@@ -90,13 +90,13 @@ export class SeaPadInput extends SeaPadFunc {
             admin_cap: string;
             project: string;
             usewhitelist: boolean;
-            swap_ratio_sui: number;
-            swap_ratio_token: number;
-            max_allocate: number;
-            start_time: number;
-            end_time: number;
-            soft_cap: number;
-            hard_cap: number;
+            swap_ratio_sui: string;
+            swap_ratio_token: string;
+            max_allocate: string;
+            start_time: string;
+            end_time: string;
+            soft_cap: string;
+            hard_cap: string;
         },
         gasBudget?: GasBudget,
     ): MoveCallTransaction {
