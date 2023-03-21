@@ -1,10 +1,9 @@
-import { MoveCallTransaction, RawSigner, SuiExecuteTransactionResponse,JsonRpcProvider } from '@mysten/sui.js';
+import { RawSigner, SuiExecuteTransactionResponse,JsonRpcProvider, CoinMetadata, Provider } from '@mysten/sui.js';
 import { SeaPadFunc } from './seapad-func';
 import { GasBudget, SeaPadInput } from './seapad-input';
 
 export class SeaPadAdapter extends SeaPadFunc {
-    public suiProvider: JsonRpcProvider;
-
+    _suiProvider: Provider;
     _seaPadInput: SeaPadInput;
     _signer: RawSigner;
 
@@ -12,6 +11,7 @@ export class SeaPadAdapter extends SeaPadFunc {
         super();
         this._seaPadInput = new SeaPadInput(packageObjectId, module);
         this._signer = signer;
+        this._suiProvider = signer.provider;
     }
 
     async changeAdmin(
@@ -240,5 +240,9 @@ export class SeaPadAdapter extends SeaPadFunc {
         return await this._signer.executeMoveCall(
             this._seaPadInput.removeMaxAllocate(types, args, gasBudget),
         );
+    }
+
+    async getCoinMetadata(coinType: string) : Promise<CoinMetadata>{
+        return await this._suiProvider.getCoinMetadata(coinType);
     }
 }
