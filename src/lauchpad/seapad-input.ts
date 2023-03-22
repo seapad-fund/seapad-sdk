@@ -89,6 +89,7 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
         args: {
             admin_cap: string;
             project: string;
+            round: number;
             usewhitelist: boolean;
             swap_ratio_sui: string;
             swap_ratio_token: string;

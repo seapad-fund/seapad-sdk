@@ -9,7 +9,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndExecuteTra
     _walletContextState: WalletContextState;
     _seaPadInput: SeaPadInput;
 
-    
+
     constructor(walletContextState: WalletContextState, packageObjectId: string, module: string){
         super();
         this._seaPadInput = new SeaPadInput(packageObjectId, module);
@@ -32,7 +32,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndExecuteTra
          const message = this._seaPadInput.resetMilestone(types, args, gasBudget);
         return await this._walletContextState.signAndExecuteTransaction(this.buildTx(message));
     }
-    async setupProject(types: { COIN: string; }, args: { admin_cap: string; project: string; usewhitelist: boolean; swap_ratio_sui: string; swap_ratio_token: string; max_allocate: string; start_time: number; end_time: number; soft_cap: string; hard_cap: string; }, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionOutput>{
+    async setupProject(types: { COIN: string; }, args: { admin_cap: string; project: string; round: number, usewhitelist: boolean; swap_ratio_sui: string; swap_ratio_token: string; max_allocate: string; start_time: number; end_time: number; soft_cap: string; hard_cap: string; }, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionOutput>{
          const message = this._seaPadInput.setupProject(types, args, gasBudget);
         return await this._walletContextState.signAndExecuteTransaction(this.buildTx(message));
     }
