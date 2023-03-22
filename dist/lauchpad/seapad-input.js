@@ -71,6 +71,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             arguments: [
                 args.admin_cap,
                 args.project,
+                args.round,
                 args.usewhitelist,
                 args.swap_ratio_sui,
                 args.swap_ratio_token,
