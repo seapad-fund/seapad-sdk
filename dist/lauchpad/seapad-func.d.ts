@@ -121,7 +121,7 @@ export declare abstract class SeaPadFunc<T> {
     abstract buy(types: {
         COIN: string;
     }, args: {
-        suis: string[];
+        coins: string[];
         amount: string;
         project: string;
     }, gasBudget?: GasBudget): T;
@@ -166,7 +166,7 @@ export declare abstract class SeaPadFunc<T> {
     abstract refundTokenToOwner(types: {
         COIN: string;
     }, args: {
-        cap: string;
+        admin_cap: string;
         project: string;
     }, gasBudget?: GasBudget): T;
     /**

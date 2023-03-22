@@ -138,7 +138,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             module: this._module,
             function: 'buy',
             typeArguments: [types.COIN],
-            arguments: [args.suis, args.amount, args.project],
+            arguments: [args.coins, args.amount, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
     }
@@ -178,7 +178,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             module: this._module,
             function: 'refund_token_to_owner',
             typeArguments: [types.COIN],
-            arguments: [args.cap, args.project],
+            arguments: [args.admin_cap, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
     }

@@ -83,7 +83,7 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
     buy(types: {
         COIN: string;
     }, args: {
-        suis: string[];
+        coins: string[];
         amount: string;
         project: string;
     }, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionOutput>;
@@ -108,7 +108,7 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
     refundTokenToOwner(types: {
         COIN: string;
     }, args: {
-        cap: string;
+        admin_cap: string;
         project: string;
     }, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionOutput>;
     depositProject(types: {

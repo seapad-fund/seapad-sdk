@@ -82,7 +82,7 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiExecuteTransact
     buy(types: {
         COIN: string;
     }, args: {
-        suis: string[];
+        coins: string[];
         amount: string;
         project: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
@@ -108,7 +108,7 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiExecuteTransact
     refundTokenToOwner(types: {
         COIN: string;
     }, args: {
-        cap: string;
+        admin_cap: string;
         project: string;
         projectOwner: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;

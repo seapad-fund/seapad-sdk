@@ -82,7 +82,7 @@ export declare class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
     buy(types: {
         COIN: string;
     }, args: {
-        suis: string[];
+        coins: string[];
         amount: string;
         project: string;
     }, gasBudget?: GasBudget): MoveCallTransaction;
@@ -107,7 +107,7 @@ export declare class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
     refundTokenToOwner(types: {
         COIN: string;
     }, args: {
-        cap: string;
+        admin_cap: string;
         project: string;
     }, gasBudget?: GasBudget): MoveCallTransaction;
     depositProject(types: {
