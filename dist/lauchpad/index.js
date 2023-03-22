@@ -17,4 +17,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./seapad-adapter"), exports);
 __exportStar(require("./seapad-func"), exports);
 __exportStar(require("./seapad-input"), exports);
+__exportStar(require("./seapad-wallet-adapter"), exports);
 //# sourceMappingURL=index.js.map
