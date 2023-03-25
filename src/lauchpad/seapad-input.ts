@@ -48,7 +48,7 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
     };
   }
   createProject(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
       owner: string;
@@ -61,7 +61,7 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'create_project',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [
         args.admin_cap,
         args.owner,
@@ -72,7 +72,7 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
     };
   }
   addMilestone(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; time: number; percent: number },
     gasBudget?: GasBudget,
   ): MoveCallTransaction {
@@ -80,13 +80,13 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'add_milestone',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.admin_cap, args.project, args.time, args.percent],
       gasBudget: getGasBudget(gasBudget),
     };
   }
   resetMilestone(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     gasBudget?: GasBudget | undefined,
   ): MoveCallTransaction {
@@ -94,13 +94,13 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'reset_milestone',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.admin_cap, args.project],
       gasBudget: getGasBudget(gasBudget),
     };
   }
   setupProject(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
       project: string;
@@ -120,7 +120,7 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'setup_project',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [
         args.admin_cap,
         args.project,
@@ -138,7 +138,7 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
     };
   }
   saveProfile(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
       project: string;
@@ -154,7 +154,7 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'save_profile',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [
         args.admin_cap,
         args.project,
@@ -169,7 +169,7 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
     };
   }
   addWhitelist(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; user_list: string[] },
     gasBudget?: GasBudget,
   ): MoveCallTransaction {
@@ -177,14 +177,14 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'add_whitelist',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.admin_cap, args.project, args.user_list],
       gasBudget: getGasBudget(gasBudget),
     };
   }
 
   removeWhitelist(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; user_list: string[] },
     gasBudget?: GasBudget,
   ): MoveCallTransaction {
@@ -192,13 +192,13 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'remove_whitelist',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.admin_cap, args.project, args.user_list],
       gasBudget: getGasBudget(gasBudget),
     };
   }
   startFundRaising(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     gasBudget?: GasBudget,
   ): MoveCallTransaction {
@@ -206,13 +206,13 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'start_fund_raising',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.admin_cap, args.project],
       gasBudget: getGasBudget(gasBudget),
     };
   }
   buy(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { coins: string[]; amount: string; project: string },
     gasBudget?: GasBudget,
   ): MoveCallTransaction {
@@ -220,13 +220,13 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'buy',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.coins, args.amount, args.project],
       gasBudget: getGasBudget(gasBudget),
     };
   }
   endFundRaising(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     gasBudget?: GasBudget,
   ): MoveCallTransaction {
@@ -234,13 +234,13 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'end_fund_raising',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.admin_cap, args.project],
       gasBudget: getGasBudget(gasBudget),
     };
   }
   endRefund(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     gasBudget?: GasBudget,
   ): MoveCallTransaction {
@@ -248,13 +248,13 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'end_refund',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.admin_cap, args.project],
       gasBudget: getGasBudget(gasBudget),
     };
   }
   distributeRaisedFund(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     gasBudget?: GasBudget,
   ): MoveCallTransaction {
@@ -262,13 +262,13 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'distribute_raised_fund',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.admin_cap, args.project],
       gasBudget: getGasBudget(gasBudget),
     };
   }
   refundTokenToOwner(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     gasBudget?: GasBudget,
   ): MoveCallTransaction {
@@ -276,13 +276,13 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'refund_token_to_owner',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.admin_cap, args.project],
       gasBudget: getGasBudget(gasBudget),
     };
   }
   depositProject(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { coins: string[]; value: string; project: string },
     gasBudget?: GasBudget,
   ): MoveCallTransaction {
@@ -290,13 +290,13 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'deposit_by_owner',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.coins, args.value, args.project],
       gasBudget: getGasBudget(gasBudget),
     };
   }
   userClaimToken(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { project: string },
     gasBudget?: GasBudget,
   ): MoveCallTransaction {
@@ -304,13 +304,13 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'claim_token',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.project],
       gasBudget: getGasBudget(gasBudget),
     };
   }
   claimRefund(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { project: string },
     gasBudget?: GasBudget,
   ): MoveCallTransaction {
@@ -318,13 +318,13 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'claim_refund',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.project],
       gasBudget: getGasBudget(gasBudget),
     };
   }
   vote(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { project: string },
     gasBudget?: GasBudget,
   ): MoveCallTransaction {
@@ -332,13 +332,13 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'vote',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.project],
       gasBudget: getGasBudget(gasBudget),
     };
   }
   like(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { project: string },
     gasBudget?: GasBudget,
   ): MoveCallTransaction {
@@ -346,13 +346,13 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'like',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.project],
       gasBudget: getGasBudget(gasBudget),
     };
   }
   watch(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { project: string },
     gasBudget?: GasBudget,
   ): MoveCallTransaction {
@@ -360,14 +360,14 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'watch',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.project],
       gasBudget: getGasBudget(gasBudget),
     };
   }
 
   addMaxAllocate(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
       user: string;
@@ -380,14 +380,14 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'set_max_allocate',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.admin_cap, args.user, args.max_allocate, args.project],
       gasBudget: getGasBudget(gasBudget),
     };
   }
 
   removeMaxAllocate(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; user: string; project: string },
     gasBudget?: GasBudget,
   ): MoveCallTransaction {
@@ -395,7 +395,7 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       packageObjectId: this._packageObjectId,
       module: this._module,
       function: 'clear_max_allocate',
-      typeArguments: [types.COIN],
+      typeArguments: [types.COIN, types.TOKEN],
       arguments: [args.admin_cap, args.user, args.project],
       gasBudget: getGasBudget(gasBudget),
     };

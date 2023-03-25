@@ -1,8 +1,6 @@
 import {
   RawSigner,
   SuiExecuteTransactionResponse,
-  JsonRpcProvider,
-  CoinMetadata,
   Provider,
 } from '@mysten/sui.js';
 import { SeaPadFunc } from './seapad-func';
@@ -39,7 +37,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     );
   }
   async createProject(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
       owner: string;
@@ -53,7 +51,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     );
   }
   async addMilestone(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; time: number; percent: number },
     gasBudget?: GasBudget,
   ): Promise<SuiExecuteTransactionResponse> {
@@ -62,7 +60,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     );
   }
   async resetMilestone(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     gasBudget?: GasBudget | undefined,
   ): Promise<SuiExecuteTransactionResponse> {
@@ -71,7 +69,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     );
   }
   async setupProject(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
       project: string;
@@ -92,7 +90,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     );
   }
   async saveProfile(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
       project: string;
@@ -109,7 +107,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     );
   }
   async addWhitelist(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; user_list: string[] },
     gasBudget?: GasBudget,
   ): Promise<SuiExecuteTransactionResponse> {
@@ -119,7 +117,7 @@ export class SeaPadAdapter extends SeaPadFunc<
   }
 
   async removeWhitelist(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; user_list: string[] },
     gasBudget?: GasBudget,
   ): Promise<SuiExecuteTransactionResponse> {
@@ -129,7 +127,7 @@ export class SeaPadAdapter extends SeaPadFunc<
   }
 
   async startFundRaising(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     gasBudget?: GasBudget,
   ): Promise<SuiExecuteTransactionResponse> {
@@ -138,7 +136,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     );
   }
   async buy(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { coins: string[]; amount: string; project: string },
     gasBudget?: GasBudget,
   ): Promise<SuiExecuteTransactionResponse> {
@@ -147,7 +145,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     );
   }
   async endFundRaising(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     gasBudget?: GasBudget,
   ): Promise<SuiExecuteTransactionResponse> {
@@ -156,7 +154,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     );
   }
   async endRefund(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     gasBudget?: GasBudget,
   ): Promise<SuiExecuteTransactionResponse> {
@@ -165,7 +163,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     );
   }
   async distributeRaisedFund(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; projectOwner: string },
     gasBudget?: GasBudget,
   ): Promise<SuiExecuteTransactionResponse> {
@@ -174,7 +172,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     );
   }
   async refundTokenToOwner(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; projectOwner: string },
     gasBudget?: GasBudget,
   ): Promise<SuiExecuteTransactionResponse> {
@@ -183,7 +181,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     );
   }
   async depositProject(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { coins: string[]; value: string; project: string },
     gasBudget?: GasBudget,
   ): Promise<SuiExecuteTransactionResponse> {
@@ -192,7 +190,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     );
   }
   async userClaimToken(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { project: string },
     gasBudget?: GasBudget,
   ): Promise<SuiExecuteTransactionResponse> {
@@ -201,7 +199,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     );
   }
   async claimRefund(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { project: string },
     gasBudget?: GasBudget,
   ): Promise<SuiExecuteTransactionResponse> {
@@ -210,7 +208,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     );
   }
   async vote(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { project: string },
     gasBudget?: GasBudget,
   ): Promise<SuiExecuteTransactionResponse> {
@@ -219,7 +217,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     );
   }
   async like(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { project: string },
     gasBudget?: GasBudget,
   ): Promise<SuiExecuteTransactionResponse> {
@@ -228,7 +226,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     );
   }
   async watch(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { project: string },
     gasBudget?: GasBudget,
   ): Promise<SuiExecuteTransactionResponse> {
@@ -238,7 +236,7 @@ export class SeaPadAdapter extends SeaPadFunc<
   }
 
   async addMaxAllocate(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
       user: string;
@@ -253,7 +251,7 @@ export class SeaPadAdapter extends SeaPadFunc<
   }
 
   async removeMaxAllocate(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; user: string; project: string },
     gasBudget?: GasBudget,
   ): Promise<SuiExecuteTransactionResponse> {

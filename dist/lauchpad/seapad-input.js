@@ -22,7 +22,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'abdicate_admin',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.admin_cap, args.to],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -32,7 +32,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'create_project',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [
                 args.admin_cap,
                 args.owner,
@@ -47,7 +47,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'add_milestone',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.admin_cap, args.project, args.time, args.percent],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -57,7 +57,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'reset_milestone',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.admin_cap, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -67,7 +67,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'setup_project',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [
                 args.admin_cap,
                 args.project,
@@ -89,7 +89,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'save_profile',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [
                 args.admin_cap,
                 args.project,
@@ -108,7 +108,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'add_whitelist',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.admin_cap, args.project, args.user_list],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -118,7 +118,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'remove_whitelist',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.admin_cap, args.project, args.user_list],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -128,7 +128,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'start_fund_raising',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.admin_cap, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -138,7 +138,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'buy',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.coins, args.amount, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -148,7 +148,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'end_fund_raising',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.admin_cap, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -158,7 +158,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'end_refund',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.admin_cap, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -168,7 +168,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'distribute_raised_fund',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.admin_cap, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -178,7 +178,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'refund_token_to_owner',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.admin_cap, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -188,7 +188,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'deposit_by_owner',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.coins, args.value, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -198,7 +198,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'claim_token',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.project],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -208,7 +208,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'claim_refund',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.project],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -218,7 +218,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'vote',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.project],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -228,7 +228,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'like',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.project],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -238,7 +238,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'watch',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.project],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -248,7 +248,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'add_max_allocate',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.admin_cap, args.user, args.max_allocate, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
@@ -258,7 +258,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             packageObjectId: this._packageObjectId,
             module: this._module,
             function: 'remove_max_allocate',
-            typeArguments: [types.COIN],
+            typeArguments: [types.COIN,types.TOKEN],
             arguments: [args.admin_cap, args.user, args.project],
             gasBudget: getGasBudget(gasBudget),
         };
