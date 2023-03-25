@@ -244,17 +244,23 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       this.buildTx(message),
     );
   }
+  /**
+   * @deprecated The method should not be used
+   */
   async like(
-    types: { COIN: string; TOKEN: string },
-    args: { project: string },
-    gasBudget?: GasBudget | undefined,
+    _types: { COIN: string; TOKEN: string },
+    _args: { project: string },
+    _gasBudget?: GasBudget | undefined,
   ): Promise<SuiSignAndExecuteTransactionOutput> {
     throw new Error('Contract unsupport');
   }
+  /**
+   * @deprecated The method should not be used
+   */
   async watch(
-    types: { COIN: string; TOKEN: string },
-    args: { project: string },
-    gasBudget?: GasBudget | undefined,
+    _types: { COIN: string; TOKEN: string },
+    _args: { project: string },
+    _gasBudget?: GasBudget | undefined,
   ): Promise<SuiSignAndExecuteTransactionOutput> {
     throw new Error('Contract unsupport');
   }
