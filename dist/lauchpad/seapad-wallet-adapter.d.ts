@@ -1,17 +1,19 @@
-import { SeaPadFunc } from "./seapad-func";
-import { GasBudget, SeaPadInput } from "./seapad-input";
-import { WalletContextState } from "@suiet/wallet-kit";
-import { SuiSignAndExecuteTransactionInput, SuiSignAndExecuteTransactionOutput } from "@mysten/wallet-standard";
-import { MoveCallTransaction } from "@mysten/sui.js";
+import { SeaPadFunc } from './seapad-func';
+import { GasBudget, SeaPadInput } from './seapad-input';
+import { WalletContextState } from '@suiet/wallet-kit';
+import { SuiSignAndExecuteTransactionInput, SuiSignAndExecuteTransactionOutput } from '@mysten/wallet-standard';
+import { MoveCallTransaction } from '@mysten/sui.js';
 export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndExecuteTransactionOutput>> {
     _walletContextState: WalletContextState;
     _seaPadInput: SeaPadInput;
     constructor(walletContextState: WalletContextState, packageObjectId: string, module: string);
-    changeAdmin(types: {
-        COIN: string;
-    }, args: {
+    changeAdmin(args: {
         admin_cap: string;
         to: string;
+    }, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionOutput>;
+    changeOwner(args: {
+        admin_cap: string;
+        new_owner: string;
     }, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionOutput>;
     createProject(types: {
         COIN: string;

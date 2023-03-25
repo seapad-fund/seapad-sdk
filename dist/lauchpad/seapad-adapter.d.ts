@@ -6,11 +6,13 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiExecuteTransact
     _seaPadInput: SeaPadInput;
     _signer: RawSigner;
     constructor(signer: RawSigner, packageObjectId: string, module: string);
-    changeAdmin(types: {
-        COIN: string;
-    }, args: {
+    changeAdmin(args: {
         admin_cap: string;
         to: string;
+    }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
+    changeOwner(args: {
+        admin_cap: string;
+        new_owner: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
     createProject(types: {
         COIN: string;

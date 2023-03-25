@@ -17,13 +17,23 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         this._packageObjectId = packageObjectId;
         this._module = module;
     }
-    changeAdmin(types, args, gasBudget) {
+    changeAdmin(args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: 'abdicate_admin',
-            typeArguments: [types.COIN],
+            function: 'change_admin',
+            typeArguments: [],
             arguments: [args.admin_cap, args.to],
+            gasBudget: getGasBudget(gasBudget),
+        };
+    }
+    changeOwner(args, gasBudget) {
+        return {
+            packageObjectId: this._packageObjectId,
+            module: this._module,
+            function: 'change_admin',
+            typeArguments: [],
+            arguments: [args.admin_cap, args.new_owner],
             gasBudget: getGasBudget(gasBudget),
         };
     }
@@ -247,7 +257,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: 'add_max_allocate',
+            function: 'set_max_allocate',
             typeArguments: [types.COIN],
             arguments: [args.admin_cap, args.user, args.max_allocate, args.project],
             gasBudget: getGasBudget(gasBudget),
@@ -257,7 +267,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         return {
             packageObjectId: this._packageObjectId,
             module: this._module,
-            function: 'remove_max_allocate',
+            function: 'clear_max_allocate',
             typeArguments: [types.COIN],
             arguments: [args.admin_cap, args.user, args.project],
             gasBudget: getGasBudget(gasBudget),

@@ -10,8 +10,11 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
         this._signer = signer;
         this._suiProvider = signer.provider;
     }
-    async changeAdmin(types, args, gasBudget) {
-        return await this._signer.executeMoveCall(this._seaPadInput.changeAdmin(types, args, gasBudget));
+    async changeAdmin(args, gasBudget) {
+        return await this._signer.executeMoveCall(this._seaPadInput.changeAdmin(args, gasBudget));
+    }
+    async changeOwner(args, gasBudget) {
+        return await this._signer.executeMoveCall(this._seaPadInput.changeOwner(args, gasBudget));
     }
     async createProject(types, args, gasBudget) {
         return await this._signer.executeMoveCall(this._seaPadInput.createProject(types, args, gasBudget));
@@ -85,7 +88,7 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
             icon_url: coinMetaData.iconUrl,
             description: coinMetaData.description,
             symbol: coinMetaData.symbol,
-            total_supply: totalSupply.value
+            total_supply: totalSupply.value,
         };
     }
 }

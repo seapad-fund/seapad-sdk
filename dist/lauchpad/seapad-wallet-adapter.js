@@ -9,8 +9,12 @@ class SeapadWalletAdapter extends seapad_func_1.SeaPadFunc {
         this._seaPadInput = new seapad_input_1.SeaPadInput(packageObjectId, module);
         this._walletContextState = walletContextState;
     }
-    async changeAdmin(types, args, gasBudget) {
-        const message = this._seaPadInput.changeAdmin(types, args, gasBudget);
+    async changeAdmin(args, gasBudget) {
+        const message = this._seaPadInput.changeAdmin(args, gasBudget);
+        return await this._walletContextState.signAndExecuteTransaction(this.buildTx(message));
+    }
+    async changeOwner(args, gasBudget) {
+        const message = this._seaPadInput.changeOwner(args, gasBudget);
         return await this._walletContextState.signAndExecuteTransaction(this.buildTx(message));
     }
     async createProject(types, args, gasBudget) {
@@ -82,10 +86,10 @@ class SeapadWalletAdapter extends seapad_func_1.SeaPadFunc {
         return await this._walletContextState.signAndExecuteTransaction(this.buildTx(message));
     }
     async like(types, args, gasBudget) {
-        throw new Error("Contract unsupport");
+        throw new Error('Contract unsupport');
     }
     async watch(types, args, gasBudget) {
-        throw new Error("Contract unsupport");
+        throw new Error('Contract unsupport');
     }
     async addMaxAllocate(types, args, gasBudget) {
         const message = this._seaPadInput.addMaxAllocate(types, args, gasBudget);
@@ -98,9 +102,9 @@ class SeapadWalletAdapter extends seapad_func_1.SeaPadFunc {
     buildTx(message) {
         return {
             transaction: {
-                kind: "moveCall",
-                data: message
-            }
+                kind: 'moveCall',
+                data: message,
+            },
         };
     }
 }

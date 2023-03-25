@@ -6,11 +6,13 @@ export declare class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
     _packageObjectId: string;
     _module: string;
     constructor(packageObjectId: string, module: string);
-    changeAdmin(types: {
-        COIN: string;
-    }, args: {
+    changeAdmin(args: {
         admin_cap: string;
         to: string;
+    }, gasBudget?: GasBudget): MoveCallTransaction;
+    changeOwner(args: {
+        admin_cap: string;
+        new_owner: string;
     }, gasBudget?: GasBudget): MoveCallTransaction;
     createProject(types: {
         COIN: string;

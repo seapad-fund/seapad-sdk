@@ -5,11 +5,18 @@ export declare abstract class SeaPadFunc<T> {
      * @param types <COIN>
      * @param args admin_cap: AdminCap, to: address
      */
-    abstract changeAdmin(types: {
-        COIN: string;
-    }, args: {
+    abstract changeAdmin(args: {
         admin_cap: string;
         to: string;
+    }, gasBudget?: GasBudget): T;
+    /**
+     *
+     * @param types <COIN>
+     * @param args admin_cap: AdminCap, to: address
+     */
+    abstract changeOwner(args: {
+        admin_cap: string;
+        new_owner: string;
     }, gasBudget?: GasBudget): T;
     /**
      *
@@ -38,10 +45,10 @@ export declare abstract class SeaPadFunc<T> {
         percent: number;
     }, gasBudget?: GasBudget): T;
     /**
-    *
-    * @param types <COIN>
-    * @param args admin_cap: &AdminCap, project: &mut Project<COIN>,
-    */
+     *
+     * @param types <COIN>
+     * @param args admin_cap: &AdminCap, project: &mut Project<COIN>,
+     */
     abstract resetMilestone(types: {
         COIN: string;
     }, args: {
