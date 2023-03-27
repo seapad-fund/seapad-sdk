@@ -284,6 +284,21 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     );
   }
 
+  async splitCoin(
+    coinId: string,
+    splits: number[],
+  ): Promise<SuiSignAndExecuteTransactionOutput> {
+    return await this._walletContextState.signAndExecuteTransaction({
+      transaction: {
+        kind: 'splitCoin',
+        data: {
+          coinObjectId: coinId,
+          splitAmounts: splits,
+        },
+      },
+    });
+  }
+
   buildTx(message: MoveCallTransaction): SuiSignAndExecuteTransactionInput {
     return {
       transaction: {

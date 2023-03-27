@@ -1,0 +1,20 @@
+2023-03-25T17:42:43.501840Z  INFO sui::client_commands: [1m----- Certificate ----[0m
+2023-03-25T17:42:43.502631Z  INFO sui::client_commands: Transaction Hash: TransactionDigest(8MtbSezbftFLBfD37hQfpPoueMkyxQNbNxheaEQAPi3h)
+2023-03-25T17:42:43.502643Z  INFO sui::client_commands: Transaction Signature: [Signature(AQ==@TgRvRPO6ACMR0u//TQ7eo7JBOxjeQewDcFaac8RhzZFbV+2MThZYMMl6y993OBe7/6buz1XWq1AEImDkJ43DFA==@A9P7xH1bq0wKJGPem6I5DH0ZD9qcjXLTBTqWtcvpGLo5)]
+2023-03-25T17:42:43.502671Z  INFO sui::client_commands: Signed Authorities Bitmap: RoaringBitmap<[1, 2, 3]>
+2023-03-25T17:42:43.502692Z  INFO sui::client_commands: Transaction Kind : Call
+2023-03-25T17:42:43.502700Z  INFO sui::client_commands: Package ID : 0xfb26c65955dcb611ccf28aa03d544ff8482323f0
+2023-03-25T17:42:43.502707Z  INFO sui::client_commands: Module : project_entries
+2023-03-25T17:42:43.502714Z  INFO sui::client_commands: Function : change_admin
+2023-03-25T17:42:43.502720Z  INFO sui::client_commands: Arguments : ["0x8a8fb92b1f39847ebe21a45f7078398812e3ad43", "0x385514285b7b7499455c8c395c4995baf7ab97ba"]
+2023-03-25T17:42:43.502726Z  INFO sui::client_commands: Type Arguments : []
+2023-03-25T17:42:43.502732Z  INFO sui::client_commands: Sender: 0x928b28cd70cb832e50c6da65ccdb839850bb9a7f
+2023-03-25T17:42:43.502738Z  INFO sui::client_commands: Gas Payment: Object ID: 0x20d6231496766e131dc50aed50d31f0a94ef3289, version: 0xdad0, digest: o#brtatP7nitqVlv9drq1HcKDKhbzOjdCqLzPY8+P6hlU=
+2023-03-25T17:42:43.502747Z  INFO sui::client_commands: Gas Owner: 0x928b28cd70cb832e50c6da65ccdb839850bb9a7f
+2023-03-25T17:42:43.502753Z  INFO sui::client_commands: Gas Price: 1
+2023-03-25T17:42:43.502759Z  INFO sui::client_commands: Gas Budget: 2000
+2023-03-25T17:42:43.502764Z  INFO sui::client_commands: [1m----- Transaction Effects ----[0m
+2023-03-25T17:42:43.502768Z  INFO sui::client_commands: Status : Success
+2023-03-25T17:42:43.502774Z  INFO sui::client_commands: Mutated Objects:
+2023-03-25T17:42:43.502779Z  INFO sui::client_commands:   - ID: 0x20d6231496766e131dc50aed50d31f0a94ef3289 , Owner: Account Address ( 0x928b28cd70cb832e50c6da65ccdb839850bb9a7f )
+2023-03-25T17:42:43.502784Z  INFO sui::client_commands:   - ID: 0x8a8fb92b1f39847ebe21a45f7078398812e3ad43 , Owner: Account Address ( 0x385514285b7b7499455c8c395c4995baf7ab97ba )
