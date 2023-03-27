@@ -99,6 +99,17 @@ class SeapadWalletAdapter extends seapad_func_1.SeaPadFunc {
         const message = this._seaPadInput.removeMaxAllocate(types, args, gasBudget);
         return await this._walletContextState.signAndExecuteTransaction(this.buildTx(message));
     }
+    async splitCoin(coinId, splits) {
+        return await this._walletContextState.signAndExecuteTransaction({
+            transaction: {
+                kind: 'splitCoin',
+                data: {
+                    coinObjectId: coinId,
+                    splitAmounts: splits,
+                },
+            },
+        });
+    }
     buildTx(message) {
         return {
             transaction: {
