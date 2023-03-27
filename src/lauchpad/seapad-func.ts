@@ -212,26 +212,6 @@ export abstract class SeaPadFunc<T> {
     args: { project: string },
     gasBudget?: GasBudget,
   ): T;
-  /**
-   *
-   * @param types <COIN>
-   * @param args project: &mut Project<COIN>
-   */
-  abstract like(
-    types: { COIN: string },
-    args: { project: string },
-    gasBudget?: GasBudget,
-  ): T;
-  /**
-   *
-   * @param types <COIN>
-   * @param args project: &mut Project<COIN>
-   */
-  abstract watch(
-    types: { COIN: string },
-    args: { project: string },
-    gasBudget?: GasBudget,
-  ): T;
 
   abstract addMaxAllocate(
     types: { COIN: string },

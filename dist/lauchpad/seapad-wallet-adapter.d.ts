@@ -136,16 +136,6 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
     }, args: {
         project: string;
     }, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionOutput>;
-    like(types: {
-        COIN: string;
-    }, args: {
-        project: string;
-    }, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionOutput>;
-    watch(types: {
-        COIN: string;
-    }, args: {
-        project: string;
-    }, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionOutput>;
     addMaxAllocate(types: {
         COIN: string;
     }, args: {

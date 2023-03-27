@@ -218,24 +218,6 @@ export class SeaPadAdapter extends SeaPadFunc<
       this._seaPadInput.vote(types, args, gasBudget),
     );
   }
-  async like(
-    types: { COIN: string },
-    args: { project: string },
-    gasBudget?: GasBudget,
-  ): Promise<SuiExecuteTransactionResponse> {
-    return await this._signer.executeMoveCall(
-      this._seaPadInput.like(types, args, gasBudget),
-    );
-  }
-  async watch(
-    types: { COIN: string },
-    args: { project: string },
-    gasBudget?: GasBudget,
-  ): Promise<SuiExecuteTransactionResponse> {
-    return await this._signer.executeMoveCall(
-      this._seaPadInput.watch(types, args, gasBudget),
-    );
-  }
 
   async addMaxAllocate(
     types: { COIN: string },

@@ -233,26 +233,6 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             gasBudget: getGasBudget(gasBudget),
         };
     }
-    like(types, args, gasBudget) {
-        return {
-            packageObjectId: this._packageObjectId,
-            module: this._module,
-            function: 'like',
-            typeArguments: [types.COIN],
-            arguments: [args.project],
-            gasBudget: getGasBudget(gasBudget),
-        };
-    }
-    watch(types, args, gasBudget) {
-        return {
-            packageObjectId: this._packageObjectId,
-            module: this._module,
-            function: 'watch',
-            typeArguments: [types.COIN],
-            arguments: [args.project],
-            gasBudget: getGasBudget(gasBudget),
-        };
-    }
     addMaxAllocate(types, args, gasBudget) {
         return {
             packageObjectId: this._packageObjectId,

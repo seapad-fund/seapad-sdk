@@ -67,12 +67,6 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
     async vote(types, args, gasBudget) {
         return await this._signer.executeMoveCall(this._seaPadInput.vote(types, args, gasBudget));
     }
-    async like(types, args, gasBudget) {
-        return await this._signer.executeMoveCall(this._seaPadInput.like(types, args, gasBudget));
-    }
-    async watch(types, args, gasBudget) {
-        return await this._signer.executeMoveCall(this._seaPadInput.watch(types, args, gasBudget));
-    }
     async addMaxAllocate(types, args, gasBudget) {
         return await this._signer.executeMoveCall(this._seaPadInput.addMaxAllocate(types, args, gasBudget));
     }

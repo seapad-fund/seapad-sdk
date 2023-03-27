@@ -85,12 +85,6 @@ class SeapadWalletAdapter extends seapad_func_1.SeaPadFunc {
         const message = this._seaPadInput.vote(types, args, gasBudget);
         return await this._walletContextState.signAndExecuteTransaction(this.buildTx(message));
     }
-    async like(types, args, gasBudget) {
-        throw new Error('Contract unsupport');
-    }
-    async watch(types, args, gasBudget) {
-        throw new Error('Contract unsupport');
-    }
     async addMaxAllocate(types, args, gasBudget) {
         const message = this._seaPadInput.addMaxAllocate(types, args, gasBudget);
         return await this._walletContextState.signAndExecuteTransaction(this.buildTx(message));

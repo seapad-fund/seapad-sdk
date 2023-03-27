@@ -137,16 +137,6 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiExecuteTransact
     }, args: {
         project: string;
     }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
-    like(types: {
-        COIN: string;
-    }, args: {
-        project: string;
-    }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
-    watch(types: {
-        COIN: string;
-    }, args: {
-        project: string;
-    }, gasBudget?: GasBudget): Promise<SuiExecuteTransactionResponse>;
     addMaxAllocate(types: {
         COIN: string;
     }, args: {

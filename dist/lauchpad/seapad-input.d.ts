@@ -135,16 +135,6 @@ export declare class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
     }, args: {
         project: string;
     }, gasBudget?: GasBudget): MoveCallTransaction;
-    like(types: {
-        COIN: string;
-    }, args: {
-        project: string;
-    }, gasBudget?: GasBudget): MoveCallTransaction;
-    watch(types: {
-        COIN: string;
-    }, args: {
-        project: string;
-    }, gasBudget?: GasBudget): MoveCallTransaction;
     addMaxAllocate(types: {
         COIN: string;
     }, args: {

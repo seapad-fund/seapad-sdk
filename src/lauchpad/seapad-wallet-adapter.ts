@@ -244,20 +244,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       this.buildTx(message),
     );
   }
-  async like(
-    types: { COIN: string },
-    args: { project: string },
-    gasBudget?: GasBudget | undefined,
-  ): Promise<SuiSignAndExecuteTransactionOutput> {
-    throw new Error('Contract unsupport');
-  }
-  async watch(
-    types: { COIN: string },
-    args: { project: string },
-    gasBudget?: GasBudget | undefined,
-  ): Promise<SuiSignAndExecuteTransactionOutput> {
-    throw new Error('Contract unsupport');
-  }
+  
   async addMaxAllocate(
     types: { COIN: string },
     args: {

@@ -337,34 +337,6 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       gasBudget: getGasBudget(gasBudget),
     };
   }
-  like(
-    types: { COIN: string },
-    args: { project: string },
-    gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'like',
-      typeArguments: [types.COIN],
-      arguments: [args.project],
-      gasBudget: getGasBudget(gasBudget),
-    };
-  }
-  watch(
-    types: { COIN: string },
-    args: { project: string },
-    gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'watch',
-      typeArguments: [types.COIN],
-      arguments: [args.project],
-      gasBudget: getGasBudget(gasBudget),
-    };
-  }
 
   addMaxAllocate(
     types: { COIN: string },
