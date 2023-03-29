@@ -1,4 +1,12 @@
 import { GasBudget } from './seapad-input';
+import {
+  SuiTransactionBlockResponseOptions,
+  ExecuteTransactionRequestType
+} from '@mysten/sui.js';
+export type OptionTx = {
+  options?: SuiTransactionBlockResponseOptions;
+  requestType?: ExecuteTransactionRequestType;
+} | undefined
 
 export abstract class SeaPadFunc<T> {
   /**
@@ -8,6 +16,7 @@ export abstract class SeaPadFunc<T> {
    */
   abstract changeAdmin(
     args: { admin_cap: string; to: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
   /**
@@ -17,6 +26,7 @@ export abstract class SeaPadFunc<T> {
    */
   abstract changeOwner(
     args: { admin_cap: string; new_owner: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
   /**
@@ -32,6 +42,7 @@ export abstract class SeaPadFunc<T> {
       vesting_type: number;
       coin_metadata: string;
     },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
   /**
@@ -42,6 +53,7 @@ export abstract class SeaPadFunc<T> {
   abstract addMilestone(
     types: { COIN: string },
     args: { admin_cap: string; project: string; time: number; percent: number },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
 
@@ -53,6 +65,7 @@ export abstract class SeaPadFunc<T> {
   abstract resetMilestone(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
 
@@ -76,6 +89,7 @@ export abstract class SeaPadFunc<T> {
       soft_cap: string;
       hard_cap: string;
     },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
   /**
@@ -94,6 +108,7 @@ export abstract class SeaPadFunc<T> {
       telegram: string;
       website: string;
     },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
   /**
@@ -104,12 +119,14 @@ export abstract class SeaPadFunc<T> {
   abstract addWhitelist(
     types: { COIN: string },
     args: { admin_cap: string; project: string; user_list: string[] },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
 
   abstract removeWhitelist(
     types: { COIN: string },
     args: { admin_cap: string; project: string; user_list: string[] },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
   /**
@@ -120,6 +137,7 @@ export abstract class SeaPadFunc<T> {
   abstract startFundRaising(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
   /**
@@ -130,6 +148,7 @@ export abstract class SeaPadFunc<T> {
   abstract buy(
     types: { COIN: string },
     args: { coins: string[]; amount: string; project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
   /**
@@ -140,6 +159,7 @@ export abstract class SeaPadFunc<T> {
   abstract endFundRaising(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
   /**
@@ -150,6 +170,7 @@ export abstract class SeaPadFunc<T> {
   abstract endRefund(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
   /**
@@ -160,6 +181,7 @@ export abstract class SeaPadFunc<T> {
   abstract distributeRaisedFund(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
   /**
@@ -170,6 +192,7 @@ export abstract class SeaPadFunc<T> {
   abstract refundTokenToOwner(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
   /**
@@ -180,6 +203,7 @@ export abstract class SeaPadFunc<T> {
   abstract depositProject(
     types: { COIN: string },
     args: { coins: string[]; value: string; project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
   /**
@@ -190,6 +214,7 @@ export abstract class SeaPadFunc<T> {
   abstract userClaimToken(
     types: { COIN: string },
     args: { project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
   /**
@@ -200,6 +225,7 @@ export abstract class SeaPadFunc<T> {
   abstract claimRefund(
     types: { COIN: string },
     args: { project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
   /**
@@ -210,6 +236,7 @@ export abstract class SeaPadFunc<T> {
   abstract vote(
     types: { COIN: string },
     args: { project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
 
@@ -221,6 +248,7 @@ export abstract class SeaPadFunc<T> {
       max_allocate: string;
       project: string;
     },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
 
@@ -231,6 +259,7 @@ export abstract class SeaPadFunc<T> {
       user: string;
       project: string;
     },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
 

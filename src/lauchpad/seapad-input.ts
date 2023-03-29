@@ -1,5 +1,5 @@
 import { TransactionBlock } from '@mysten/sui.js';
-import { SeaPadFunc } from './seapad-func';
+import { OptionTx, SeaPadFunc } from './seapad-func';
 
 export type GasBudget = number | null;
 
@@ -26,6 +26,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
 
   changeAdmin(
     args: { admin_cap: string; to: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -46,6 +47,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   }
   changeOwner(
     args: { admin_cap: string; new_owner: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -72,6 +74,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       vesting_type: number;
       coin_metadata: string;
     },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -101,6 +104,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   addMilestone(
     types: { COIN: string },
     args: { admin_cap: string; project: string; time: number; percent: number },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -130,7 +134,8 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   resetMilestone(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
-    gasBudget?: GasBudget | undefined,
+    optionTx?: OptionTx,
+    gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
@@ -163,6 +168,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       soft_cap: string;
       hard_cap: string;
     },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -228,6 +234,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       telegram: string;
       website: string;
     },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -269,6 +276,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   addWhitelist(
     types: { COIN: string },
     args: { admin_cap: string; project: string; user_list: string[] },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -295,6 +303,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   removeWhitelist(
     types: { COIN: string },
     args: { admin_cap: string; project: string; user_list: string[] },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -321,6 +330,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   startFundRaising(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -342,6 +352,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   buy(
     types: { COIN: string },
     args: { coins: string[]; amount: string; project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -367,6 +378,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   endFundRaising(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -388,6 +400,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   endRefund(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -409,6 +422,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   distributeRaisedFund(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -430,6 +444,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   refundTokenToOwner(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -451,6 +466,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   depositProject(
     types: { COIN: string },
     args: { coins: string[]; value: string; project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -476,6 +492,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   userClaimToken(
     types: { COIN: string },
     args: { project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -493,6 +510,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   claimRefund(
     types: { COIN: string },
     args: { project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -510,6 +528,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   vote(
     types: { COIN: string },
     args: { project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -533,6 +552,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       max_allocate: string;
       project: string;
     },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
@@ -563,6 +583,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   removeMaxAllocate(
     types: { COIN: string },
     args: { admin_cap: string; user: string; project: string },
+    optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
