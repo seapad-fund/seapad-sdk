@@ -160,7 +160,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::add_whitelist`,
       arguments: [
-        tx.pure(args.admin_cap), tx.pure(args.project), tx.pure(args.user_list)
+        tx.pure(args.admin_cap), tx.pure(args.project), tx.makeMoveVec({ objects: args.user_list.map((id) => tx.object(id)) })
       ],
       typeArguments: [types.COIN],
     });
@@ -177,7 +177,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::remove_whitelist`,
       arguments: [
-        tx.pure(args.admin_cap), tx.pure(args.project), tx.pure(args.user_list)
+        tx.pure(args.admin_cap), tx.pure(args.project), tx.makeMoveVec({ objects: args.user_list.map((id) => tx.object(id)) })
       ],
       typeArguments: [types.COIN],
     });
@@ -210,7 +210,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::buy`,
       arguments: [
-        tx.pure(args.coins), tx.pure(args.amount), tx.pure(args.project)
+        tx.makeMoveVec({ objects: args.coins.map((id) => tx.object(id)) }), tx.pure(args.amount), tx.pure(args.project)
       ],
       typeArguments: [types.COIN],
     });
@@ -290,7 +290,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::deposit_by_owner`,
       arguments: [
-        tx.pure(args.coins), tx.pure(args.value), tx.pure(args.project)
+        tx.makeMoveVec({ objects: args.coins.map((id) => tx.object(id)) }), tx.pure(args.value), tx.pure(args.project)
       ],
       typeArguments: [types.COIN],
     });
@@ -391,11 +391,9 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
 
   splitCoin(splits: number[]): TransactionBlock {
     const tx = new TransactionBlock();
-    let amount: ({ kind: "Input"; index: number; type?: "object" | "pure" | undefined; value?: any; } | { kind: "GasCoin"; } | { kind: "Result"; index: number; } | { kind: "NestedResult"; index: number; resultIndex: number; })[] = []
-    splits.forEach(ele => {
-      amount.push(tx.pure(ele))
-    })
-    tx.splitCoins(tx.gas, amount);
+    tx.splitCoins(tx.gas, tx.makeMoveVec({ objects: splits.map((id) => tx.pure(id)) }));
     return tx;
   }
+
+
 }
