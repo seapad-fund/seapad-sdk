@@ -260,14 +260,16 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         });
         return tx;
     }
-    splitCoin(amount) {
+    splitCoin(amount, to) {
         const tx = new sui_js_1.TransactionBlock();
-        tx.splitCoins(tx.gas, [tx.pure(amount)]);
+        const [coin] = tx.splitCoins(tx.gas, [tx.pure(amount)]);
+        tx.transferObjects([coin], tx.object(to));
         return tx;
     }
-    splitCoins(amounts) {
+    splitCoins(amounts, to) {
         const tx = new sui_js_1.TransactionBlock();
-        tx.splitCoins(tx.gas, tx.makeMoveVec({ objects: amounts.map((amount) => tx.pure(amount)) }));
+        const [coin] = tx.splitCoins(tx.gas, amounts.map((amount) => tx.pure(amount)));
+        tx.transferObjects([coin], tx.object(to));
         return tx;
     }
 }

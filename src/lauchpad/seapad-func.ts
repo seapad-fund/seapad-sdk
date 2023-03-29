@@ -266,8 +266,8 @@ export abstract class SeaPadFunc<T> {
   ): T;
 
   ///common func
-  abstract splitCoin(amount: number): T;
+  abstract splitCoin(amount: number, to: string): T;
 
-  abstract splitCoins(amounts: string[]): T;
+  abstract splitCoins(amounts: string[], to: string): T;
 
 }

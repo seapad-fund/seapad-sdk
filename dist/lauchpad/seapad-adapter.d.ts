@@ -161,7 +161,7 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
         symbol: string;
         total_supply: number;
     }>;
-    splitCoin(amount: number): Promise<SuiTransactionBlockResponse>;
-    splitCoins(amounts: string[]): Promise<SuiTransactionBlockResponse>;
+    splitCoin(amount: number, to: string): Promise<SuiTransactionBlockResponse>;
+    splitCoins(amounts: string[], to: string): Promise<SuiTransactionBlockResponse>;
 }
 //# sourceMappingURL=seapad-adapter.d.ts.map

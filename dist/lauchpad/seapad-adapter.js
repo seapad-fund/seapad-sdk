@@ -163,14 +163,14 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
             total_supply: totalSupply.value,
         };
     }
-    async splitCoin(amount) {
+    async splitCoin(amount, to) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadInput.splitCoin(amount),
+            transactionBlock: this._seaPadInput.splitCoin(amount, to),
         });
     }
-    async splitCoins(amounts) {
+    async splitCoins(amounts, to) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadInput.splitCoins(amounts),
+            transactionBlock: this._seaPadInput.splitCoins(amounts, to),
         });
     }
 }

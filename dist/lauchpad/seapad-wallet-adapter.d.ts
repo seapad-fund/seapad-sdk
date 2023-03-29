@@ -151,8 +151,8 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
         user: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiSignAndExecuteTransactionBlockOutput>;
-    splitCoin(amount: number): Promise<SuiSignAndExecuteTransactionBlockOutput>;
-    splitCoins(amounts: string[]): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    splitCoin(amount: number, to: string): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    splitCoins(amounts: string[], to: string): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     buildTx(message: TransactionBlock): Omit<SuiSignAndExecuteTransactionBlockInput, 'account' | 'chain'>;
 }
 //# sourceMappingURL=seapad-wallet-adapter.d.ts.map
