@@ -11,10 +11,7 @@ export function getGasBudget(gasBudget?: GasBudget): number {
   }
 }
 
-
-
 export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
-
   _packageObjectId: string;
   _module: string;
 
@@ -32,7 +29,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::change_admin`,
-      arguments: [tx.pure(args.admin_cap), tx.pure(args.to)]
+      arguments: [tx.pure(args.admin_cap), tx.pure(args.to)],
     });
     return tx;
   }
@@ -44,7 +41,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::change_owner`,
-      arguments: [tx.pure(args.admin_cap), tx.pure(args.new_owner)]
+      arguments: [tx.pure(args.admin_cap), tx.pure(args.new_owner)],
     });
     return tx;
   }
@@ -62,7 +59,12 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::create_project`,
-      arguments: [tx.pure(args.admin_cap), tx.pure(args.owner), tx.pure(args.vesting_type), tx.pure(args.coin_metadata)],
+      arguments: [
+        tx.pure(args.admin_cap),
+        tx.pure(args.owner),
+        tx.pure(args.vesting_type),
+        tx.pure(args.coin_metadata),
+      ],
       typeArguments: [types.COIN],
     });
     return tx;
@@ -76,7 +78,12 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::add_milestone`,
-      arguments: [tx.pure(args.admin_cap), tx.pure(args.project), tx.pure(args.time), tx.pure(args.percent)],
+      arguments: [
+        tx.pure(args.admin_cap),
+        tx.pure(args.project),
+        tx.pure(args.time),
+        tx.pure(args.percent),
+      ],
       typeArguments: [types.COIN],
     });
     return tx;
@@ -117,9 +124,17 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::setup_project`,
       arguments: [
-        tx.pure(args.admin_cap), tx.pure(args.project), tx.pure(args.round), tx.pure(args.usewhitelist),
-        tx.pure(args.swap_ratio_sui), tx.pure(args.swap_ratio_token), tx.pure(args.max_allocate), tx.pure(args.start_time),
-        tx.pure(args.end_time), tx.pure(args.soft_cap), tx.pure(args.hard_cap)
+        tx.pure(args.admin_cap),
+        tx.pure(args.project),
+        tx.pure(args.round),
+        tx.pure(args.usewhitelist),
+        tx.pure(args.swap_ratio_sui),
+        tx.pure(args.swap_ratio_token),
+        tx.pure(args.max_allocate),
+        tx.pure(args.start_time),
+        tx.pure(args.end_time),
+        tx.pure(args.soft_cap),
+        tx.pure(args.hard_cap),
       ],
       typeArguments: [types.COIN],
     });
@@ -143,8 +158,13 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::save_profile`,
       arguments: [
-        tx.pure(args.admin_cap), tx.pure(args.project), tx.pure(args.name), tx.pure(args.twitter),
-        tx.pure(args.discord), tx.pure(args.telegram), tx.pure(args.website)
+        tx.pure(args.admin_cap),
+        tx.pure(args.project),
+        tx.pure(args.name),
+        tx.pure(args.twitter),
+        tx.pure(args.discord),
+        tx.pure(args.telegram),
+        tx.pure(args.website),
       ],
       typeArguments: [types.COIN],
     });
@@ -160,7 +180,9 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::add_whitelist`,
       arguments: [
-        tx.pure(args.admin_cap), tx.pure(args.project), tx.makeMoveVec({ objects: args.user_list.map((id) => tx.object(id)) })
+        tx.pure(args.admin_cap),
+        tx.pure(args.project),
+        tx.makeMoveVec({ objects: args.user_list.map((id) => tx.object(id)) }),
       ],
       typeArguments: [types.COIN],
     });
@@ -177,7 +199,9 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::remove_whitelist`,
       arguments: [
-        tx.pure(args.admin_cap), tx.pure(args.project), tx.makeMoveVec({ objects: args.user_list.map((id) => tx.object(id)) })
+        tx.pure(args.admin_cap),
+        tx.pure(args.project),
+        tx.makeMoveVec({ objects: args.user_list.map((id) => tx.object(id)) }),
       ],
       typeArguments: [types.COIN],
     });
@@ -193,9 +217,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::start_fund_raising`,
-      arguments: [
-        tx.pure(args.admin_cap), tx.pure(args.project)
-      ],
+      arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
       typeArguments: [types.COIN],
     });
     return tx;
@@ -210,7 +232,9 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::buy`,
       arguments: [
-        tx.makeMoveVec({ objects: args.coins.map((id) => tx.object(id)) }), tx.pure(args.amount), tx.pure(args.project)
+        tx.makeMoveVec({ objects: args.coins.map((id) => tx.object(id)) }),
+        tx.pure(args.amount),
+        tx.pure(args.project),
       ],
       typeArguments: [types.COIN],
     });
@@ -225,9 +249,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::end_fund_raising`,
-      arguments: [
-        tx.pure(args.admin_cap), tx.pure(args.project)
-      ],
+      arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
       typeArguments: [types.COIN],
     });
     return tx;
@@ -241,9 +263,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::end_refund`,
-      arguments: [
-        tx.pure(args.admin_cap), tx.pure(args.project)
-      ],
+      arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
       typeArguments: [types.COIN],
     });
     return tx;
@@ -257,9 +277,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::distribute_raised_fund`,
-      arguments: [
-        tx.pure(args.admin_cap), tx.pure(args.project)
-      ],
+      arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
       typeArguments: [types.COIN],
     });
     return tx;
@@ -273,9 +291,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::refund_token_to_owner`,
-      arguments: [
-        tx.pure(args.admin_cap), tx.pure(args.project)
-      ],
+      arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
       typeArguments: [types.COIN],
     });
     return tx;
@@ -290,7 +306,9 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::deposit_by_owner`,
       arguments: [
-        tx.makeMoveVec({ objects: args.coins.map((id) => tx.object(id)) }), tx.pure(args.value), tx.pure(args.project)
+        tx.makeMoveVec({ objects: args.coins.map((id) => tx.object(id)) }),
+        tx.pure(args.value),
+        tx.pure(args.project),
       ],
       typeArguments: [types.COIN],
     });
@@ -305,9 +323,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::claim_token`,
-      arguments: [
-        tx.pure(args.project)
-      ],
+      arguments: [tx.pure(args.project)],
       typeArguments: [types.COIN],
     });
     return tx;
@@ -321,9 +337,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::claim_refund`,
-      arguments: [
-        tx.pure(args.project)
-      ],
+      arguments: [tx.pure(args.project)],
       typeArguments: [types.COIN],
     });
     return tx;
@@ -337,9 +351,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::vote`,
-      arguments: [
-        tx.pure(args.project)
-      ],
+      arguments: [tx.pure(args.project)],
       typeArguments: [types.COIN],
     });
     return tx;
@@ -391,9 +403,10 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
 
   splitCoin(splits: number[]): TransactionBlock {
     const tx = new TransactionBlock();
-    tx.splitCoins(tx.gas, tx.makeMoveVec({ objects: splits.map((id) => tx.pure(id)) }));
+    tx.splitCoins(
+      tx.gas,
+      tx.makeMoveVec({ objects: splits.map((id) => tx.pure(id)) }),
+    );
     return tx;
   }
-
-
 }

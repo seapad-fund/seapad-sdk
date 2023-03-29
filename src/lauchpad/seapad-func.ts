@@ -1,12 +1,14 @@
 import { GasBudget } from './seapad-input';
 import {
   SuiTransactionBlockResponseOptions,
-  ExecuteTransactionRequestType
+  ExecuteTransactionRequestType,
 } from '@mysten/sui.js';
-export type OptionTx = {
-  options?: SuiTransactionBlockResponseOptions;
-  requestType?: ExecuteTransactionRequestType;
-} | undefined
+export type OptionTx =
+  | {
+      options?: SuiTransactionBlockResponseOptions;
+      requestType?: ExecuteTransactionRequestType;
+    }
+  | undefined;
 
 export abstract class SeaPadFunc<T> {
   /**
@@ -263,9 +265,6 @@ export abstract class SeaPadFunc<T> {
     gasBudget?: GasBudget,
   ): T;
 
-
   ///common func
-  abstract splitCoin(
-    splits: number[],
-  ): T;
+  abstract splitCoin(splits: number[]): T;
 }
