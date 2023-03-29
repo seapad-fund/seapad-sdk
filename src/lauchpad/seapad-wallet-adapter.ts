@@ -29,9 +29,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.changeAdmin(args, optionTx, gasBudget);
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async changeOwner(
     args: { admin_cap: string; new_owner: string },
@@ -39,9 +39,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.changeOwner(args, optionTx, gasBudget);
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async createProject(
     types: { COIN: string },
@@ -60,9 +60,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
     );
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async addMilestone(
     types: { COIN: string },
@@ -76,9 +76,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
     );
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async resetMilestone(
     types: { COIN: string },
@@ -92,9 +92,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
     );
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async setupProject(
     types: { COIN: string },
@@ -120,9 +120,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
     );
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async saveProfile(
     types: { COIN: string },
@@ -144,9 +144,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
     );
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async addWhitelist(
     types: { COIN: string },
@@ -160,9 +160,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
     );
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async removeWhitelist(
     types: { COIN: string },
@@ -176,9 +176,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
     );
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async startFundRaising(
     types: { COIN: string },
@@ -192,9 +192,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
     );
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async buy(
     types: { COIN: string },
@@ -203,9 +203,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.buy(types, args, optionTx, gasBudget);
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async endFundRaising(
     types: { COIN: string },
@@ -219,9 +219,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
     );
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async endRefund(
     types: { COIN: string },
@@ -235,9 +235,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
     );
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async distributeRaisedFund(
     types: { COIN: string },
@@ -251,9 +251,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
     );
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async refundTokenToOwner(
     types: { COIN: string },
@@ -267,9 +267,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
     );
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async depositProject(
     types: { COIN: string },
@@ -283,9 +283,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
     );
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async userClaimToken(
     types: { COIN: string },
@@ -299,9 +299,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
     );
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async claimRefund(
     types: { COIN: string },
@@ -315,9 +315,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
     );
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async vote(
     types: { COIN: string },
@@ -326,9 +326,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.vote(types, args, optionTx, gasBudget);
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
 
   async addMaxAllocate(
@@ -348,9 +348,9 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
     );
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
   async removeMaxAllocate(
     types: { COIN: string },
@@ -364,27 +364,27 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
     );
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
 
   async splitCoin(
     amount: number,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.splitCoin(amount);
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
 
   async splitCoins(
     amounts: string[],
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.splitCoins(amounts);
-    return await this._walletContextState.signAndExecuteTransactionBlock(
-      this.buildTx(message),
-    );
+    return await this._walletContextState.signAndExecuteTransactionBlock({
+      transactionBlock: message,
+    });
   }
 
   buildTx(
