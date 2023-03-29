@@ -1,4 +1,4 @@
-import { MoveCallTransaction } from '@mysten/sui.js';
+import { TransactionBlock } from '@mysten/sui.js';
 import { SeaPadFunc } from './seapad-func';
 
 export type GasBudget = number | null;
@@ -11,7 +11,10 @@ export function getGasBudget(gasBudget?: GasBudget): number {
   }
 }
 
-export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
+
+
+export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
+
   _packageObjectId: string;
   _module: string;
 
@@ -24,28 +27,42 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
   changeAdmin(
     args: { admin_cap: string; to: string },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'change_admin',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::change_admin`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.admin_cap
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.to
+      }],
       typeArguments: [],
-      arguments: [args.admin_cap, args.to],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
   changeOwner(
     args: { admin_cap: string; new_owner: string },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'change_admin',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::change_owner`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.admin_cap
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.new_owner
+      }],
       typeArguments: [],
-      arguments: [args.admin_cap, args.new_owner],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
   createProject(
     types: { COIN: string },
@@ -56,48 +73,80 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       coin_metadata: string;
     },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'create_project',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::create_project`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.admin_cap
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.owner
+      }, {
+        kind: "Input",
+        index: 2,
+        value: args.vesting_type
+      }, {
+        kind: "Input",
+        index: 3,
+        value: args.coin_metadata
+      }],
       typeArguments: [types.COIN],
-      arguments: [
-        args.admin_cap,
-        args.owner,
-        args.vesting_type,
-        args.coin_metadata,
-      ],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
   addMilestone(
     types: { COIN: string },
     args: { admin_cap: string; project: string; time: number; percent: number },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'add_milestone',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::add_milestone`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.admin_cap
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.project
+      }, {
+        kind: "Input",
+        index: 2,
+        value: args.time
+      }, {
+        kind: "Input",
+        index: 3,
+        value: args.percent
+      }],
       typeArguments: [types.COIN],
-      arguments: [args.admin_cap, args.project, args.time, args.percent],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
   resetMilestone(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
     gasBudget?: GasBudget | undefined,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'reset_milestone',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::reset_milestone`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.admin_cap
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.project
+      }],
       typeArguments: [types.COIN],
-      arguments: [args.admin_cap, args.project],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
   setupProject(
     types: { COIN: string },
@@ -115,27 +164,58 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       hard_cap: string;
     },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'setup_project',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::reset_milestone`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.admin_cap
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.project
+      }, {
+        kind: "Input",
+        index: 2,
+        value: args.round
+      }, {
+        kind: "Input",
+        index: 3,
+        value: args.usewhitelist
+      }, {
+        kind: "Input",
+        index: 4,
+        value: args.swap_ratio_sui
+      }, {
+        kind: "Input",
+        index: 5,
+        value: args.swap_ratio_token
+      }, {
+        kind: "Input",
+        index: 6,
+        value: args.max_allocate
+      }, {
+        kind: "Input",
+        index: 7,
+        value: args.start_time
+      }, {
+        kind: "Input",
+        index: 8,
+        value: args.end_time
+      }, {
+        kind: "Input",
+        index: 9,
+        value: args.soft_cap
+      }, {
+        kind: "Input",
+        index: 10,
+        value: args.hard_cap
+      }],
       typeArguments: [types.COIN],
-      arguments: [
-        args.admin_cap,
-        args.project,
-        args.round,
-        args.usewhitelist,
-        args.swap_ratio_sui,
-        args.swap_ratio_token,
-        args.max_allocate,
-        args.start_time,
-        args.end_time,
-        args.soft_cap,
-        args.hard_cap,
-      ],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
   saveProfile(
     types: { COIN: string },
@@ -149,193 +229,300 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       website: string;
     },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'save_profile',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::save_profile`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.admin_cap
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.project
+      }, {
+        kind: "Input",
+        index: 2,
+        value: args.name
+      }, {
+        kind: "Input",
+        index: 3,
+        value: args.twitter
+      }, {
+        kind: "Input",
+        index: 4,
+        value: args.discord
+      }, {
+        kind: "Input",
+        index: 5,
+        value: args.telegram
+      }, {
+        kind: "Input",
+        index: 6,
+        value: args.website
+      }],
       typeArguments: [types.COIN],
-      arguments: [
-        args.admin_cap,
-        args.project,
-        args.name,
-        args.twitter,
-        args.discord,
-        args.telegram,
-        args.website,
-        args.website,
-      ],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
   addWhitelist(
     types: { COIN: string },
     args: { admin_cap: string; project: string; user_list: string[] },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'add_whitelist',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::add_whitelist`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.admin_cap
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.project
+      }, {
+        kind: "Input",
+        index: 2,
+        value: args.user_list
+      }],
       typeArguments: [types.COIN],
-      arguments: [args.admin_cap, args.project, args.user_list],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
 
   removeWhitelist(
     types: { COIN: string },
     args: { admin_cap: string; project: string; user_list: string[] },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'remove_whitelist',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::removeWhitelist`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.admin_cap
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.project
+      }, {
+        kind: "Input",
+        index: 2,
+        value: args.user_list
+      }],
       typeArguments: [types.COIN],
-      arguments: [args.admin_cap, args.project, args.user_list],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
+
   startFundRaising(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'start_fund_raising',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::removeWhitelist`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.admin_cap
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.project
+      }],
       typeArguments: [types.COIN],
-      arguments: [args.admin_cap, args.project],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
   buy(
     types: { COIN: string },
     args: { coins: string[]; amount: string; project: string },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'buy',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::buy`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.coins
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.amount
+      }, {
+        kind: "Input",
+        index: 2,
+        value: args.project
+      }],
       typeArguments: [types.COIN],
-      arguments: [args.coins, args.amount, args.project],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
   endFundRaising(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'end_fund_raising',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::end_fund_raising`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.admin_cap
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.project
+      }],
       typeArguments: [types.COIN],
-      arguments: [args.admin_cap, args.project],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
   endRefund(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'end_refund',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::end_refund`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.admin_cap
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.project
+      }],
       typeArguments: [types.COIN],
-      arguments: [args.admin_cap, args.project],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
   distributeRaisedFund(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'distribute_raised_fund',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::distribute_raised_fund`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.admin_cap
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.project
+      }],
       typeArguments: [types.COIN],
-      arguments: [args.admin_cap, args.project],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
   refundTokenToOwner(
     types: { COIN: string },
     args: { admin_cap: string; project: string },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'refund_token_to_owner',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::refund_token_to_owner`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.admin_cap
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.project
+      }],
       typeArguments: [types.COIN],
-      arguments: [args.admin_cap, args.project],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
   depositProject(
     types: { COIN: string },
     args: { coins: string[]; value: string; project: string },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'deposit_by_owner',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::deposit_by_owner`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.coins
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.value
+      }, {
+        kind: "Input",
+        index: 2,
+        value: args.project
+      }],
       typeArguments: [types.COIN],
-      arguments: [args.coins, args.value, args.project],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
   userClaimToken(
     types: { COIN: string },
     args: { project: string },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'claim_token',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::claim_token`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.project
+      }],
       typeArguments: [types.COIN],
-      arguments: [args.project],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
   claimRefund(
     types: { COIN: string },
     args: { project: string },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'claim_refund',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::claim_refund`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.project
+      }],
       typeArguments: [types.COIN],
-      arguments: [args.project],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
   vote(
     types: { COIN: string },
     args: { project: string },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'vote',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::vote`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.project
+      }],
       typeArguments: [types.COIN],
-      arguments: [args.project],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
 
   addMaxAllocate(
@@ -347,29 +534,73 @@ export class SeaPadInput extends SeaPadFunc<MoveCallTransaction> {
       project: string;
     },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'set_max_allocate',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::set_max_allocate`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.admin_cap
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.user
+      }, {
+        kind: "Input",
+        index: 2,
+        value: args.max_allocate
+      }, {
+        kind: "Input",
+        index: 3,
+        value: args.project
+      }],
       typeArguments: [types.COIN],
-      arguments: [args.admin_cap, args.user, args.max_allocate, args.project],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
   }
 
   removeMaxAllocate(
     types: { COIN: string },
     args: { admin_cap: string; user: string; project: string },
     gasBudget?: GasBudget,
-  ): MoveCallTransaction {
-    return {
-      packageObjectId: this._packageObjectId,
-      module: this._module,
-      function: 'clear_max_allocate',
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._packageObjectId}::${this._module}::set_max_allocate`,
+      arguments: [{
+        kind: "Input",
+        index: 0,
+        value: args.admin_cap
+      }, {
+        kind: "Input",
+        index: 1,
+        value: args.user
+      }, {
+        kind: "Input",
+        index: 2,
+        value: args.project
+      }],
       typeArguments: [types.COIN],
-      arguments: [args.admin_cap, args.user, args.project],
-      gasBudget: getGasBudget(gasBudget),
-    };
+    });
+    return tx;
+  }
+
+  splitCoin(coinId: string, splits: number[]): TransactionBlock {
+    const tx = new TransactionBlock();
+    let amounts: ({ kind: "Input"; index: number; type?: "object" | "pure" | undefined; value?: any; } | { kind: "GasCoin"; } | { kind: "Result"; index: number; } | { kind: "NestedResult"; index: number; resultIndex: number; })[] = []
+    splits.forEach((obj, i) => {
+      amounts.push({
+        kind: "Input",
+        index: i,
+        value: obj
+      })
+    });
+    tx.splitCoins({
+      kind: "Input",
+      index: 0,
+      value: coinId
+    }, amounts);
+    return tx;
   }
 }

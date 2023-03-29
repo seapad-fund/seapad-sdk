@@ -233,4 +233,11 @@ export abstract class SeaPadFunc<T> {
     },
     gasBudget?: GasBudget,
   ): T;
+
+
+  ///common func
+  abstract splitCoin(
+    coinId: string,
+    splits: number[],
+  ): T;
 }

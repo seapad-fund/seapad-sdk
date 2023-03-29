@@ -234,5 +234,6 @@ export declare abstract class SeaPadFunc<T> {
         user: string;
         project: string;
     }, gasBudget?: GasBudget): T;
+    abstract splitCoin(coinId: string, splits: number[]): T;
 }
 //# sourceMappingURL=seapad-func.d.ts.map
