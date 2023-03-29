@@ -1,13 +1,13 @@
 {
   "name": "seapad-sdk",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "SeaPad Sdk",
   "github": "https://github.com/seapad-fund/seapad-sdk",
   "author": "jimmy.vu <Web3Lab>",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "license": "ISC",
   "scripts": {
@@ -40,8 +40,8 @@
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
     "@types/express": "^4.17.13",
-    "@types/jest": "29.2.4",
-    "@types/node": "18.11.18",
+    "@types/jest": "^29.2.4",
+    "@types/node": "^18.15.0",
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",

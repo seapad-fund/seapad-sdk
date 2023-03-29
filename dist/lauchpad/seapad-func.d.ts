@@ -1,4 +1,9 @@
 import { GasBudget } from './seapad-input';
+import { SuiTransactionBlockResponseOptions, ExecuteTransactionRequestType } from '@mysten/sui.js';
+export type OptionTx = {
+    options?: SuiTransactionBlockResponseOptions;
+    requestType?: ExecuteTransactionRequestType;
+} | undefined;
 export declare abstract class SeaPadFunc<T> {
     /**
      *
@@ -8,7 +13,7 @@ export declare abstract class SeaPadFunc<T> {
     abstract changeAdmin(args: {
         admin_cap: string;
         to: string;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
      * @param types <COIN>
@@ -17,7 +22,7 @@ export declare abstract class SeaPadFunc<T> {
     abstract changeOwner(args: {
         admin_cap: string;
         new_owner: string;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
      * @param types <COIN>
@@ -30,7 +35,7 @@ export declare abstract class SeaPadFunc<T> {
         owner: string;
         vesting_type: number;
         coin_metadata: string;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
      * @param types <COIN>
@@ -43,7 +48,7 @@ export declare abstract class SeaPadFunc<T> {
         project: string;
         time: number;
         percent: number;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
      * @param types <COIN>
@@ -54,7 +59,7 @@ export declare abstract class SeaPadFunc<T> {
     }, args: {
         admin_cap: string;
         project: string;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
      * @param types <COIN>
@@ -74,7 +79,7 @@ export declare abstract class SeaPadFunc<T> {
         end_time: number;
         soft_cap: string;
         hard_cap: string;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
      * @param types <COIN>
@@ -90,7 +95,7 @@ export declare abstract class SeaPadFunc<T> {
         discord: string;
         telegram: string;
         website: string;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
      * @param types <COIN>
@@ -102,14 +107,14 @@ export declare abstract class SeaPadFunc<T> {
         admin_cap: string;
         project: string;
         user_list: string[];
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     abstract removeWhitelist(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
         project: string;
         user_list: string[];
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
      * @param types <COIN>
@@ -120,7 +125,7 @@ export declare abstract class SeaPadFunc<T> {
     }, args: {
         admin_cap: string;
         project: string;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
      * @param types <COIN>
@@ -132,7 +137,7 @@ export declare abstract class SeaPadFunc<T> {
         coins: string[];
         amount: string;
         project: string;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
      * @param types <COIN>
@@ -143,7 +148,7 @@ export declare abstract class SeaPadFunc<T> {
     }, args: {
         admin_cap: string;
         project: string;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
      * @param types <COIN>
@@ -154,7 +159,7 @@ export declare abstract class SeaPadFunc<T> {
     }, args: {
         admin_cap: string;
         project: string;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
      * @param types <P, COIN>
@@ -165,7 +170,7 @@ export declare abstract class SeaPadFunc<T> {
     }, args: {
         admin_cap: string;
         project: string;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
      * @param types <COIN>
@@ -176,7 +181,7 @@ export declare abstract class SeaPadFunc<T> {
     }, args: {
         admin_cap: string;
         project: string;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
      * @param types <COIN>
@@ -188,7 +193,7 @@ export declare abstract class SeaPadFunc<T> {
         coins: string[];
         value: string;
         project: string;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
      * @param types <COIN>
@@ -198,7 +203,7 @@ export declare abstract class SeaPadFunc<T> {
         COIN: string;
     }, args: {
         project: string;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
      * @param types <COIN>
@@ -208,7 +213,7 @@ export declare abstract class SeaPadFunc<T> {
         COIN: string;
     }, args: {
         project: string;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
      * @param types <COIN>
@@ -218,7 +223,7 @@ export declare abstract class SeaPadFunc<T> {
         COIN: string;
     }, args: {
         project: string;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     abstract addMaxAllocate(types: {
         COIN: string;
     }, args: {
@@ -226,14 +231,14 @@ export declare abstract class SeaPadFunc<T> {
         user: string;
         max_allocate: string;
         project: string;
-    }, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     abstract removeMaxAllocate(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
         user: string;
         project: string;
-    }, gasBudget?: GasBudget): T;
-    abstract splitCoin(coinId: string, splits: number[]): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    abstract splitCoin(splits: number[]): T;
 }
 //# sourceMappingURL=seapad-func.d.ts.map

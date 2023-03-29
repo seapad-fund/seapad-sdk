@@ -271,11 +271,10 @@ export class SeapadWalletAdapter extends SeaPadFunc<
   }
 
   async splitCoin(
-    coinId: string,
     splits: number[],
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
-    const message = this._seaPadInput.splitCoin(coinId, splits);
-    return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message),);
+    const message = this._seaPadInput.splitCoin(splits);
+    return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
   }
 
   buildTx(message: TransactionBlock): Omit<SuiSignAndExecuteTransactionBlockInput, 'account' | 'chain'> {

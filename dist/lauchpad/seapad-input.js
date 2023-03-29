@@ -18,466 +18,240 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         this._packageObjectId = packageObjectId;
         this._module = module;
     }
-    changeAdmin(args, gasBudget) {
+    changeAdmin(args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::change_admin`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.admin_cap
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.to
-                }],
-            typeArguments: [],
+            arguments: [tx.pure(args.admin_cap), tx.pure(args.to)]
         });
         return tx;
     }
-    changeOwner(args, gasBudget) {
+    changeOwner(args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::change_owner`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.admin_cap
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.new_owner
-                }],
-            typeArguments: [],
+            arguments: [tx.pure(args.admin_cap), tx.pure(args.new_owner)]
         });
         return tx;
     }
-    createProject(types, args, gasBudget) {
+    createProject(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::create_project`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.admin_cap
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.owner
-                }, {
-                    kind: "Input",
-                    index: 2,
-                    value: args.vesting_type
-                }, {
-                    kind: "Input",
-                    index: 3,
-                    value: args.coin_metadata
-                }],
+            arguments: [tx.pure(args.admin_cap), tx.pure(args.owner), tx.pure(args.vesting_type), tx.pure(args.coin_metadata)],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    addMilestone(types, args, gasBudget) {
+    addMilestone(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::add_milestone`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.admin_cap
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.project
-                }, {
-                    kind: "Input",
-                    index: 2,
-                    value: args.time
-                }, {
-                    kind: "Input",
-                    index: 3,
-                    value: args.percent
-                }],
+            arguments: [tx.pure(args.admin_cap), tx.pure(args.project), tx.pure(args.time), tx.pure(args.percent)],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    resetMilestone(types, args, gasBudget) {
+    resetMilestone(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::reset_milestone`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.admin_cap
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.project
-                }],
+            arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    setupProject(types, args, gasBudget) {
+    setupProject(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::reset_milestone`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.admin_cap
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.project
-                }, {
-                    kind: "Input",
-                    index: 2,
-                    value: args.round
-                }, {
-                    kind: "Input",
-                    index: 3,
-                    value: args.usewhitelist
-                }, {
-                    kind: "Input",
-                    index: 4,
-                    value: args.swap_ratio_sui
-                }, {
-                    kind: "Input",
-                    index: 5,
-                    value: args.swap_ratio_token
-                }, {
-                    kind: "Input",
-                    index: 6,
-                    value: args.max_allocate
-                }, {
-                    kind: "Input",
-                    index: 7,
-                    value: args.start_time
-                }, {
-                    kind: "Input",
-                    index: 8,
-                    value: args.end_time
-                }, {
-                    kind: "Input",
-                    index: 9,
-                    value: args.soft_cap
-                }, {
-                    kind: "Input",
-                    index: 10,
-                    value: args.hard_cap
-                }],
+            target: `${this._packageObjectId}::${this._module}::setup_project`,
+            arguments: [
+                tx.pure(args.admin_cap), tx.pure(args.project), tx.pure(args.round), tx.pure(args.usewhitelist),
+                tx.pure(args.swap_ratio_sui), tx.pure(args.swap_ratio_token), tx.pure(args.max_allocate), tx.pure(args.start_time),
+                tx.pure(args.end_time), tx.pure(args.soft_cap), tx.pure(args.hard_cap)
+            ],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    saveProfile(types, args, gasBudget) {
+    saveProfile(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::save_profile`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.admin_cap
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.project
-                }, {
-                    kind: "Input",
-                    index: 2,
-                    value: args.name
-                }, {
-                    kind: "Input",
-                    index: 3,
-                    value: args.twitter
-                }, {
-                    kind: "Input",
-                    index: 4,
-                    value: args.discord
-                }, {
-                    kind: "Input",
-                    index: 5,
-                    value: args.telegram
-                }, {
-                    kind: "Input",
-                    index: 6,
-                    value: args.website
-                }],
+            arguments: [
+                tx.pure(args.admin_cap), tx.pure(args.project), tx.pure(args.name), tx.pure(args.twitter),
+                tx.pure(args.discord), tx.pure(args.telegram), tx.pure(args.website)
+            ],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    addWhitelist(types, args, gasBudget) {
+    addWhitelist(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::add_whitelist`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.admin_cap
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.project
-                }, {
-                    kind: "Input",
-                    index: 2,
-                    value: args.user_list
-                }],
+            arguments: [
+                tx.pure(args.admin_cap), tx.pure(args.project), tx.pure(args.user_list)
+            ],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    removeWhitelist(types, args, gasBudget) {
+    removeWhitelist(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::removeWhitelist`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.admin_cap
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.project
-                }, {
-                    kind: "Input",
-                    index: 2,
-                    value: args.user_list
-                }],
+            target: `${this._packageObjectId}::${this._module}::remove_whitelist`,
+            arguments: [
+                tx.pure(args.admin_cap), tx.pure(args.project), tx.pure(args.user_list)
+            ],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    startFundRaising(types, args, gasBudget) {
+    startFundRaising(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::removeWhitelist`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.admin_cap
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.project
-                }],
+            target: `${this._packageObjectId}::${this._module}::start_fund_raising`,
+            arguments: [
+                tx.pure(args.admin_cap), tx.pure(args.project)
+            ],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    buy(types, args, gasBudget) {
+    buy(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::buy`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.coins
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.amount
-                }, {
-                    kind: "Input",
-                    index: 2,
-                    value: args.project
-                }],
+            arguments: [
+                tx.pure(args.coins), tx.pure(args.amount), tx.pure(args.project)
+            ],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    endFundRaising(types, args, gasBudget) {
+    endFundRaising(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::end_fund_raising`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.admin_cap
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.project
-                }],
+            arguments: [
+                tx.pure(args.admin_cap), tx.pure(args.project)
+            ],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    endRefund(types, args, gasBudget) {
+    endRefund(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::end_refund`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.admin_cap
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.project
-                }],
+            arguments: [
+                tx.pure(args.admin_cap), tx.pure(args.project)
+            ],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    distributeRaisedFund(types, args, gasBudget) {
+    distributeRaisedFund(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::distribute_raised_fund`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.admin_cap
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.project
-                }],
+            arguments: [
+                tx.pure(args.admin_cap), tx.pure(args.project)
+            ],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    refundTokenToOwner(types, args, gasBudget) {
+    refundTokenToOwner(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::refund_token_to_owner`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.admin_cap
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.project
-                }],
+            arguments: [
+                tx.pure(args.admin_cap), tx.pure(args.project)
+            ],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    depositProject(types, args, gasBudget) {
+    depositProject(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::deposit_by_owner`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.coins
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.value
-                }, {
-                    kind: "Input",
-                    index: 2,
-                    value: args.project
-                }],
+            arguments: [
+                tx.pure(args.coins), tx.pure(args.value), tx.pure(args.project)
+            ],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    userClaimToken(types, args, gasBudget) {
+    userClaimToken(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::claim_token`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.project
-                }],
+            arguments: [
+                tx.pure(args.project)
+            ],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    claimRefund(types, args, gasBudget) {
+    claimRefund(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::claim_refund`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.project
-                }],
+            arguments: [
+                tx.pure(args.project)
+            ],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    vote(types, args, gasBudget) {
+    vote(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::vote`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.project
-                }],
+            arguments: [
+                tx.pure(args.project)
+            ],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    addMaxAllocate(types, args, gasBudget) {
+    addMaxAllocate(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::set_max_allocate`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.admin_cap
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.user
-                }, {
-                    kind: "Input",
-                    index: 2,
-                    value: args.max_allocate
-                }, {
-                    kind: "Input",
-                    index: 3,
-                    value: args.project
-                }],
+            arguments: [
+                tx.pure(args.admin_cap),
+                tx.pure(args.user),
+                tx.pure(args.max_allocate),
+                tx.pure(args.project),
+            ],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    removeMaxAllocate(types, args, gasBudget) {
+    removeMaxAllocate(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::set_max_allocate`,
-            arguments: [{
-                    kind: "Input",
-                    index: 0,
-                    value: args.admin_cap
-                }, {
-                    kind: "Input",
-                    index: 1,
-                    value: args.user
-                }, {
-                    kind: "Input",
-                    index: 2,
-                    value: args.project
-                }],
+            arguments: [
+                tx.pure(args.admin_cap),
+                tx.pure(args.user),
+                tx.pure(args.project),
+            ],
             typeArguments: [types.COIN],
         });
         return tx;
     }
-    splitCoin(coinId, splits) {
+    splitCoin(splits) {
         const tx = new sui_js_1.TransactionBlock();
-        let amounts = [];
-        splits.forEach((obj, i) => {
-            amounts.push({
-                kind: "Input",
-                index: i,
-                value: obj
-            });
+        let amount = [];
+        splits.forEach(ele => {
+            amount.push(tx.pure(ele));
         });
-        tx.splitCoins({
-            kind: "Input",
-            index: 0,
-            value: coinId
-        }, amounts);
+        tx.splitCoins(tx.gas, amount);
         return tx;
     }
 }

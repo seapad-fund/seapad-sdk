@@ -10,68 +10,83 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
         this._signer = signer;
         this._suiProvider = signer.provider;
     }
-    async changeAdmin(args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.changeAdmin(args) });
+    _getOptionTx(optionTx) {
+        if (optionTx) {
+            return optionTx;
+        }
+        return {
+            options: {
+                showInput: true,
+                showEffects: true,
+                showEvents: true,
+                showObjectChanges: false,
+                showBalanceChanges: false,
+            },
+            requestType: "WaitForEffectsCert"
+        };
     }
-    async changeOwner(args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.changeOwner(args) });
+    async changeAdmin(args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.changeAdmin(args), ...this._getOptionTx(optionTx) });
     }
-    async createProject(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.createProject(types, args) });
+    async changeOwner(args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.changeOwner(args), ...this._getOptionTx(optionTx) });
     }
-    async addMilestone(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.addMilestone(types, args) });
+    async createProject(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.createProject(types, args), ...this._getOptionTx(optionTx) });
     }
-    async resetMilestone(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.resetMilestone(types, args) });
+    async addMilestone(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.addMilestone(types, args), ...this._getOptionTx(optionTx) });
     }
-    async setupProject(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.setupProject(types, args) });
+    async resetMilestone(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.resetMilestone(types, args), ...this._getOptionTx(optionTx) });
     }
-    async saveProfile(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.saveProfile(types, args) });
+    async setupProject(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.setupProject(types, args), ...this._getOptionTx(optionTx) });
     }
-    async addWhitelist(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.addWhitelist(types, args) });
+    async saveProfile(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.saveProfile(types, args), ...this._getOptionTx(optionTx) });
     }
-    async removeWhitelist(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.removeWhitelist(types, args) });
+    async addWhitelist(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.addWhitelist(types, args), ...this._getOptionTx(optionTx) });
     }
-    async startFundRaising(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.startFundRaising(types, args) });
+    async removeWhitelist(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.removeWhitelist(types, args), ...this._getOptionTx(optionTx) });
     }
-    async buy(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.buy(types, args) });
+    async startFundRaising(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.startFundRaising(types, args), ...this._getOptionTx(optionTx) });
     }
-    async endFundRaising(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.endFundRaising(types, args) });
+    async buy(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.buy(types, args), ...this._getOptionTx(optionTx) });
     }
-    async endRefund(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.endRefund(types, args) });
+    async endFundRaising(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.endFundRaising(types, args), ...this._getOptionTx(optionTx) });
     }
-    async distributeRaisedFund(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.distributeRaisedFund(types, args) });
+    async endRefund(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.endRefund(types, args), ...this._getOptionTx(optionTx) });
     }
-    async refundTokenToOwner(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.refundTokenToOwner(types, args) });
+    async distributeRaisedFund(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.distributeRaisedFund(types, args), ...this._getOptionTx(optionTx) });
     }
-    async depositProject(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.depositProject(types, args) });
+    async refundTokenToOwner(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.refundTokenToOwner(types, args), ...this._getOptionTx(optionTx) });
     }
-    async userClaimToken(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.userClaimToken(types, args) });
+    async depositProject(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.depositProject(types, args), ...this._getOptionTx(optionTx) });
     }
-    async claimRefund(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.claimRefund(types, args) });
+    async userClaimToken(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.userClaimToken(types, args), ...this._getOptionTx(optionTx) });
     }
-    async vote(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.vote(types, args) });
+    async claimRefund(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.claimRefund(types, args), ...this._getOptionTx(optionTx) });
     }
-    async addMaxAllocate(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.addMaxAllocate(types, args) });
+    async vote(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.vote(types, args), ...this._getOptionTx(optionTx) });
     }
-    async removeMaxAllocate(types, args, gasBudget) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.removeMaxAllocate(types, args) });
+    async addMaxAllocate(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.addMaxAllocate(types, args), ...this._getOptionTx(optionTx) });
+    }
+    async removeMaxAllocate(types, args, optionTx, gasBudget) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.removeMaxAllocate(types, args), ...this._getOptionTx(optionTx) });
     }
     async getTokenInfo(coinType) {
         const coinMetaData = await this._suiProvider.getCoinMetadata({ coinType });
@@ -85,8 +100,8 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
             total_supply: totalSupply.value,
         };
     }
-    async splitCoin(coinId, splits) {
-        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.splitCoin(coinId, splits) });
+    async splitCoin(splits) {
+        return await this._signer.signAndExecuteTransactionBlock({ transactionBlock: this._seaPadInput.splitCoin(splits) });
     }
 }
 exports.SeaPadAdapter = SeaPadAdapter;
