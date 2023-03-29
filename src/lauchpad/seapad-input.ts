@@ -238,6 +238,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
+    tx.splitCoins(tx.gas, [tx.pure(args.amount)]);
     return tx;
   }
   endFundRaising(
