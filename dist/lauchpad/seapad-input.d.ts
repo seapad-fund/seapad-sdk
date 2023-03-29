@@ -150,6 +150,7 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         user: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
-    splitCoin(splits: number[]): TransactionBlock;
+    splitCoin(amount: number): TransactionBlock;
+    splitCoins(amounts: string[]): TransactionBlock;
 }
 //# sourceMappingURL=seapad-input.d.ts.map

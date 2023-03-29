@@ -93,8 +93,12 @@ class SeapadWalletAdapter extends seapad_func_1.SeaPadFunc {
         const message = this._seaPadInput.removeMaxAllocate(types, args, optionTx, gasBudget);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async splitCoin(splits) {
-        const message = this._seaPadInput.splitCoin(splits);
+    async splitCoin(amount) {
+        const message = this._seaPadInput.splitCoin(amount);
+        return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
+    }
+    async splitCoins(amounts) {
+        const message = this._seaPadInput.splitCoins(amounts);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
     buildTx(message) {
@@ -107,7 +111,7 @@ class SeapadWalletAdapter extends seapad_func_1.SeaPadFunc {
                 showObjectChanges: false,
                 showBalanceChanges: false,
             },
-            requestType: "WaitForEffectsCert"
+            requestType: 'WaitForEffectsCert',
         };
     }
 }

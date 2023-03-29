@@ -316,9 +316,15 @@ export class SeaPadAdapter extends SeaPadFunc<
     };
   }
 
-  async splitCoin(value: number): Promise<SuiTransactionBlockResponse> {
+  async splitCoin(amount: number): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.splitCoin(value),
+      transactionBlock: this._seaPadInput.splitCoin(amount),
+    });
+  }
+
+  async splitCoins(amounts: string[]): Promise<SuiTransactionBlockResponse> {
+    return await this._signer.signAndExecuteTransactionBlock({
+      transactionBlock: this._seaPadInput.splitCoins(amounts),
     });
   }
 }

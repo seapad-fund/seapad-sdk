@@ -407,4 +407,13 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
 
     return tx;
   }
+
+  splitCoins(amounts: string[]): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.splitCoins(
+      tx.gas,
+      tx.makeMoveVec({ objects: amounts.map((amount) => tx.pure(amount)) }),
+    );
+    return tx;
+  }
 }

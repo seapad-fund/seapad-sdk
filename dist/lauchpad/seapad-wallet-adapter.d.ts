@@ -2,7 +2,7 @@ import { OptionTx, SeaPadFunc } from './seapad-func';
 import { GasBudget, SeaPadInput } from './seapad-input';
 import { WalletContextState } from '@suiet/wallet-kit';
 import { TransactionBlock } from '@mysten/sui.js';
-import { SuiSignAndExecuteTransactionBlockInput, SuiSignAndExecuteTransactionBlockOutput } from "@mysten/wallet-standard";
+import { SuiSignAndExecuteTransactionBlockInput, SuiSignAndExecuteTransactionBlockOutput } from '@mysten/wallet-standard';
 export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndExecuteTransactionBlockOutput>> {
     _walletContextState: WalletContextState;
     _seaPadInput: SeaPadInput;
@@ -151,7 +151,8 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
         user: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiSignAndExecuteTransactionBlockOutput>;
-    splitCoin(splits: number[]): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    splitCoin(amount: number): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    splitCoins(amounts: string[]): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     buildTx(message: TransactionBlock): Omit<SuiSignAndExecuteTransactionBlockInput, 'account' | 'chain'>;
 }
 //# sourceMappingURL=seapad-wallet-adapter.d.ts.map
