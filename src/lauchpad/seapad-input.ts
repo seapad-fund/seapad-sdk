@@ -401,12 +401,10 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     return tx;
   }
 
-  splitCoin(splits: number[]): TransactionBlock {
+  splitCoin(amount: number): TransactionBlock {
     const tx = new TransactionBlock();
-    tx.splitCoins(
-      tx.gas,
-      tx.makeMoveVec({ objects: splits.map((id) => tx.pure(id)) }),
-    );
+    tx.splitCoins(tx.gas, [tx.pure(amount)]);
+
     return tx;
   }
 }
