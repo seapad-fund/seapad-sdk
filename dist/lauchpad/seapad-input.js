@@ -91,7 +91,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::add_whitelist`,
             arguments: [
-                tx.pure(args.admin_cap), tx.pure(args.project), tx.pure(args.user_list)
+                tx.pure(args.admin_cap), tx.pure(args.project), tx.makeMoveVec({ objects: args.user_list.map((id) => tx.object(id)) })
             ],
             typeArguments: [types.COIN],
         });
@@ -102,7 +102,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::remove_whitelist`,
             arguments: [
-                tx.pure(args.admin_cap), tx.pure(args.project), tx.pure(args.user_list)
+                tx.pure(args.admin_cap), tx.pure(args.project), tx.makeMoveVec({ objects: args.user_list.map((id) => tx.object(id)) })
             ],
             typeArguments: [types.COIN],
         });
@@ -124,7 +124,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::buy`,
             arguments: [
-                tx.pure(args.coins), tx.pure(args.amount), tx.pure(args.project)
+                tx.makeMoveVec({ objects: args.coins.map((id) => tx.object(id)) }), tx.pure(args.amount), tx.pure(args.project)
             ],
             typeArguments: [types.COIN],
         });
@@ -179,7 +179,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::deposit_by_owner`,
             arguments: [
-                tx.pure(args.coins), tx.pure(args.value), tx.pure(args.project)
+                tx.makeMoveVec({ objects: args.coins.map((id) => tx.object(id)) }), tx.pure(args.value), tx.pure(args.project)
             ],
             typeArguments: [types.COIN],
         });
@@ -247,11 +247,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
     }
     splitCoin(splits) {
         const tx = new sui_js_1.TransactionBlock();
-        let amount = [];
-        splits.forEach(ele => {
-            amount.push(tx.pure(ele));
-        });
-        tx.splitCoins(tx.gas, amount);
+        tx.splitCoins(tx.gas, tx.makeMoveVec({ objects: splits.map((id) => tx.pure(id)) }));
         return tx;
     }
 }
