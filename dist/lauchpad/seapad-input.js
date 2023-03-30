@@ -155,7 +155,6 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             ],
             typeArguments: [types.COIN],
         });
-        tx.splitCoins(tx.gas, [tx.pure(args.amount)]);
         return tx;
     }
     endFundRaising(types, args, optionTx, gasBudget) {
