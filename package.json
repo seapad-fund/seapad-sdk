@@ -29,7 +29,7 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
-    "@suiet/wallet-kit": "^0.2.2",
+    "@suiet/wallet-kit": "^0.2.3",
     "reflect-metadata": "^0.1.13",
     "rpc-websockets": "^7.5.1",
     "rxjs": "^7.2.0",
