@@ -43,7 +43,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.changeAdmin(args),
+      transactionBlock: this._seaPadInput.changeAdmin(args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -54,7 +54,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.changeOwner(args),
+      transactionBlock: this._seaPadInput.changeOwner(args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -71,7 +71,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.createProject(types, args),
+      transactionBlock: this._seaPadInput.createProject(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -82,7 +82,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.addMilestone(types, args),
+      transactionBlock: this._seaPadInput.addMilestone(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -93,7 +93,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.resetMilestone(types, args),
+      transactionBlock: this._seaPadInput.resetMilestone(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -116,7 +116,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.setupProject(types, args),
+      transactionBlock: this._seaPadInput.setupProject(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -135,7 +135,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.saveProfile(types, args),
+      transactionBlock: this._seaPadInput.saveProfile(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -146,7 +146,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.addWhitelist(types, args),
+      transactionBlock: this._seaPadInput.addWhitelist(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -158,7 +158,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.removeWhitelist(types, args),
+      transactionBlock: this._seaPadInput.removeWhitelist(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -170,7 +170,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.startFundRaising(types, args),
+      transactionBlock: this._seaPadInput.startFundRaising(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -180,7 +180,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
-    let tx: TransactionBlock = this._seaPadInput.buy(types, args);
+    let tx: TransactionBlock = this._seaPadInput.buy(types, args, optionTx, gasBudget);
     const [coin] = tx.splitCoins(tx.gas, [tx.pure(args.amount)]);
     tx.transferObjects([coin], tx.object(await this._signer.getAddress()));
     return await this._signer.signAndExecuteTransactionBlock({
@@ -195,7 +195,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.endFundRaising(types, args),
+      transactionBlock: this._seaPadInput.endFundRaising(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -206,7 +206,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.endRefund(types, args),
+      transactionBlock: this._seaPadInput.endRefund(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -217,7 +217,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.distributeRaisedFund(types, args),
+      transactionBlock: this._seaPadInput.distributeRaisedFund(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -228,7 +228,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.refundTokenToOwner(types, args),
+      transactionBlock: this._seaPadInput.refundTokenToOwner(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -239,7 +239,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.depositProject(types, args),
+      transactionBlock: this._seaPadInput.depositProject(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -250,7 +250,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.userClaimToken(types, args),
+      transactionBlock: this._seaPadInput.userClaimToken(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -261,7 +261,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.claimRefund(types, args),
+      transactionBlock: this._seaPadInput.claimRefund(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -272,7 +272,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.vote(types, args),
+      transactionBlock: this._seaPadInput.vote(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -289,7 +289,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.addMaxAllocate(types, args),
+      transactionBlock: this._seaPadInput.addMaxAllocate(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }
@@ -301,7 +301,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.removeMaxAllocate(types, args),
+      transactionBlock: this._seaPadInput.removeMaxAllocate(types, args, optionTx, gasBudget),
       ...this._getOptionTx(optionTx),
     });
   }

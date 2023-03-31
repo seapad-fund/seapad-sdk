@@ -24,6 +24,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             target: `${this._packageObjectId}::${this._module}::change_admin`,
             arguments: [tx.pure(args.admin_cap), tx.pure(args.to)],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     changeOwner(args, optionTx, gasBudget) {
@@ -32,6 +33,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             target: `${this._packageObjectId}::${this._module}::change_owner`,
             arguments: [tx.pure(args.admin_cap), tx.pure(args.new_owner)],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     createProject(types, args, optionTx, gasBudget) {
@@ -46,6 +48,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             ],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     addMilestone(types, args, optionTx, gasBudget) {
@@ -60,6 +63,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             ],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     resetMilestone(types, args, optionTx, gasBudget) {
@@ -69,6 +73,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     setupProject(types, args, optionTx, gasBudget) {
@@ -90,6 +95,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             ],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     saveProfile(types, args, optionTx, gasBudget) {
@@ -107,6 +113,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             ],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     addWhitelist(types, args, optionTx, gasBudget) {
@@ -120,6 +127,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             ],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     removeWhitelist(types, args, optionTx, gasBudget) {
@@ -133,6 +141,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             ],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     startFundRaising(types, args, optionTx, gasBudget) {
@@ -142,6 +151,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     buy(types, args, optionTx, gasBudget) {
@@ -155,6 +165,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             ],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     endFundRaising(types, args, optionTx, gasBudget) {
@@ -164,6 +175,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     endRefund(types, args, optionTx, gasBudget) {
@@ -173,6 +185,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     distributeRaisedFund(types, args, optionTx, gasBudget) {
@@ -182,6 +195,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     refundTokenToOwner(types, args, optionTx, gasBudget) {
@@ -191,6 +205,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     depositProject(types, args, optionTx, gasBudget) {
@@ -204,6 +219,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             ],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     userClaimToken(types, args, optionTx, gasBudget) {
@@ -213,6 +229,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             arguments: [tx.pure(args.project)],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     claimRefund(types, args, optionTx, gasBudget) {
@@ -222,6 +239,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             arguments: [tx.pure(args.project)],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     vote(types, args, optionTx, gasBudget) {
@@ -231,6 +249,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             arguments: [tx.pure(args.project)],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     addMaxAllocate(types, args, optionTx, gasBudget) {
@@ -245,6 +264,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             ],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     removeMaxAllocate(types, args, optionTx, gasBudget) {
@@ -258,6 +278,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             ],
             typeArguments: [types.COIN],
         });
+        tx.setGasBudget(getGasBudget(gasBudget));
         return tx;
     }
     splitCoin(amount, to) {

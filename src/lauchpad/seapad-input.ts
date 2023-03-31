@@ -31,6 +31,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       target: `${this._packageObjectId}::${this._module}::change_admin`,
       arguments: [tx.pure(args.admin_cap), tx.pure(args.to)],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
   changeOwner(
@@ -43,6 +44,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       target: `${this._packageObjectId}::${this._module}::change_owner`,
       arguments: [tx.pure(args.admin_cap), tx.pure(args.new_owner)],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
   createProject(
@@ -67,6 +69,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
   addMilestone(
@@ -86,6 +89,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
   resetMilestone(
@@ -100,6 +104,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
   setupProject(
@@ -138,6 +143,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
   saveProfile(
@@ -168,6 +174,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
   addWhitelist(
@@ -186,6 +193,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
 
@@ -205,6 +213,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
 
@@ -220,6 +229,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
   buy(
@@ -238,6 +248,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
   endFundRaising(
@@ -252,6 +263,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
   endRefund(
@@ -266,6 +278,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
   distributeRaisedFund(
@@ -280,6 +293,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
   refundTokenToOwner(
@@ -294,6 +308,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
   depositProject(
@@ -312,6 +327,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
   userClaimToken(
@@ -326,6 +342,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       arguments: [tx.pure(args.project)],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
   claimRefund(
@@ -340,6 +357,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       arguments: [tx.pure(args.project)],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
   vote(
@@ -354,6 +372,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       arguments: [tx.pure(args.project)],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
 
@@ -379,6 +398,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
 
@@ -398,6 +418,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
+    tx.setGasBudget(getGasBudget(gasBudget))
     return tx;
   }
 
