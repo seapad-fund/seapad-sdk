@@ -179,8 +179,11 @@ export class SeaPadAdapter extends SeaPadFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
+    let tx = this._seaPadInput.buy(types, args);
+    const [coin] = tx.splitCoins(tx.gas, [tx.pure(args.amount)]);
+    tx.transferObjects([coin], tx.object(await this._signer.getAddress()));
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadInput.buy(types, args),
+      transactionBlock: tx,
       ...this._getOptionTx(optionTx),
     });
   }

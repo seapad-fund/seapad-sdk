@@ -238,8 +238,6 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
-    const [coin] = tx.splitCoins(tx.gas, [tx.pure(args.amount)]);
-    tx.transferObjects([coin], tx.object(this._packageObjectId));
     return tx;
   }
   endFundRaising(
