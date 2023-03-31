@@ -155,7 +155,7 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     getTokenInfo(coinType: string): Promise<{
         coin_metadata_object_id: string | null;
-        decimal: number;
+        decimals: number;
         icon_url: string | null;
         description: string;
         symbol: string;

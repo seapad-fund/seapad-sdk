@@ -2,6 +2,7 @@ import {
   RawSigner,
   JsonRpcProvider,
   SuiTransactionBlockResponse,
+  TransactionBlock,
 } from '@mysten/sui.js';
 import { OptionTx, SeaPadFunc } from './seapad-func';
 import { GasBudget, SeaPadInput } from './seapad-input';
@@ -179,7 +180,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
-    let tx = this._seaPadInput.buy(types, args);
+    let tx: TransactionBlock = this._seaPadInput.buy(types, args);
     const [coin] = tx.splitCoins(tx.gas, [tx.pure(args.amount)]);
     tx.transferObjects([coin], tx.object(await this._signer.getAddress()));
     return await this._signer.signAndExecuteTransactionBlock({
@@ -311,7 +312,7 @@ export class SeaPadAdapter extends SeaPadFunc<
 
     return {
       coin_metadata_object_id: coinMetaData.id,
-      decimal: coinMetaData.decimals,
+      decimals: coinMetaData.decimals,
       icon_url: coinMetaData.iconUrl,
       description: coinMetaData.description,
       symbol: coinMetaData.symbol,
