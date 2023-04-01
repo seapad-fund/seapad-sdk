@@ -234,7 +234,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   }
   buy(
     types: { COIN: string },
-    args: { coins: string[]; amount: string; project: string },
+    args: { sui: string; amount: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
@@ -242,7 +242,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::buy`,
       arguments: [
-        tx.makeMoveVec({ objects: args.coins.map((id) => tx.object(id)) }),
+        tx.object(args.sui),
         tx.pure(args.amount),
         tx.pure(args.project),
       ],
@@ -313,7 +313,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   }
   depositProject(
     types: { COIN: string },
-    args: { coins: string[]; value: string; project: string },
+    args: { coin: string; value: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
@@ -321,7 +321,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::deposit_by_owner`,
       arguments: [
-        tx.makeMoveVec({ objects: args.coins.map((id) => tx.object(id)) }),
+        tx.object(args.coin),
         tx.pure(args.value),
         tx.pure(args.project),
       ],

@@ -198,7 +198,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<
   }
   async buy(
     types: { COIN: string },
-    args: { coins: string[]; amount: string; project: string },
+    args: { sui: string; amount: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
@@ -273,7 +273,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<
   }
   async depositProject(
     types: { COIN: string },
-    args: { coins: string[]; value: string; project: string },
+    args: { coin: string; value: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {

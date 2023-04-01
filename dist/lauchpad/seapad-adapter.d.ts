@@ -86,7 +86,7 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
     buy(types: {
         COIN: string;
     }, args: {
-        coins: string[];
+        sui: string;
         amount: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
@@ -119,7 +119,7 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
     depositProject(types: {
         COIN: string;
     }, args: {
-        coins: string[];
+        coin: string;
         value: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
