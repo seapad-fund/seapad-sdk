@@ -198,7 +198,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<
   }
   async buy(
     types: { COIN: string },
-    args: { sui: string; amount: string; project: string },
+    args: { coin: string; amount: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
@@ -371,7 +371,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<
 
   async splitCoin(
     amount: number,
-    to: string
+    to: string,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.splitCoin(amount, to);
     return await this._walletContextState.signAndExecuteTransactionBlock(
@@ -381,7 +381,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<
 
   async splitCoins(
     amounts: string[],
-    to: string
+    to: string,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.splitCoins(amounts, to);
     return await this._walletContextState.signAndExecuteTransactionBlock(
