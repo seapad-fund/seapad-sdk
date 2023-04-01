@@ -149,7 +149,7 @@ export abstract class SeaPadFunc<T> {
    */
   abstract buy(
     types: { COIN: string },
-    args: { coins: string[]; amount: string; project: string },
+    args: { coin: string; amount: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
@@ -204,7 +204,7 @@ export abstract class SeaPadFunc<T> {
    */
   abstract depositProject(
     types: { COIN: string },
-    args: { coins: string[]; value: string; project: string },
+    args: { coin: string; value: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
@@ -269,5 +269,4 @@ export abstract class SeaPadFunc<T> {
   abstract splitCoin(amount: number, to: string): T;
 
   abstract splitCoins(amounts: string[], to: string): T;
-
 }
