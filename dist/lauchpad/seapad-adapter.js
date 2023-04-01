@@ -86,7 +86,7 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
         });
     }
     async buy(types, args, optionTx, gasBudget) {
-        let tx = this._seaPadInput.buy(types, args, optionTx, gasBudget);
+        const tx = this._seaPadInput.buy(types, args, optionTx, gasBudget);
         const [coin] = tx.splitCoins(tx.gas, [tx.pure(args.amount)]);
         tx.transferObjects([coin], tx.object(await this._signer.getAddress()));
         return await this._signer.signAndExecuteTransactionBlock({

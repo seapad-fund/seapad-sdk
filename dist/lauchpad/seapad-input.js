@@ -159,7 +159,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::buy`,
             arguments: [
-                tx.object(args.sui),
+                tx.pure(args.coin),
                 tx.pure(args.amount),
                 tx.pure(args.project),
             ],
@@ -213,7 +213,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::deposit_by_owner`,
             arguments: [
-                tx.object(args.coin),
+                tx.pure(args.coin),
                 tx.pure(args.value),
                 tx.pure(args.project),
             ],

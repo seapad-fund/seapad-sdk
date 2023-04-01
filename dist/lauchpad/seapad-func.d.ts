@@ -134,7 +134,7 @@ export declare abstract class SeaPadFunc<T> {
     abstract buy(types: {
         COIN: string;
     }, args: {
-        sui: string;
+        coin: string;
         amount: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
