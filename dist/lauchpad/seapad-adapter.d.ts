@@ -17,14 +17,17 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     createProject(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         owner: string;
         vesting_type: number;
-        coin_metadata: string;
+        coin_decimals: number;
+        token_decimals: number;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     addMilestone(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
@@ -33,12 +36,14 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     resetMilestone(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     setupProject(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
@@ -54,6 +59,7 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     saveProfile(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
@@ -65,6 +71,7 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     addWhitelist(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
@@ -72,6 +79,7 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     removeWhitelist(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
@@ -79,12 +87,14 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     startFundRaising(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     buy(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         coin: string;
         amount: string;
@@ -92,18 +102,21 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     endFundRaising(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     endRefund(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     distributeRaisedFund(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
@@ -111,6 +124,7 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     refundTokenToOwner(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
@@ -118,6 +132,7 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     depositProject(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         coin: string;
         value: string;
@@ -125,21 +140,25 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     userClaimToken(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     claimRefund(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     vote(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     addMaxAllocate(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         user: string;
@@ -148,6 +167,7 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiTransactionBlockResponse>;
     removeMaxAllocate(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         user: string;

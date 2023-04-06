@@ -16,14 +16,17 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     createProject(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         owner: string;
         vesting_type: number;
-        coin_metadata: string;
+        coin_decimals: number;
+        token_decimals: number;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     addMilestone(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
@@ -32,12 +35,14 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     resetMilestone(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     setupProject(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
@@ -53,6 +58,7 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     saveProfile(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
@@ -64,6 +70,7 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     addWhitelist(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
@@ -71,6 +78,7 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     removeWhitelist(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
@@ -78,12 +86,14 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     startFundRaising(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     buy(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         coin: string;
         amount: string;
@@ -91,30 +101,35 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     endFundRaising(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     endRefund(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     distributeRaisedFund(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     refundTokenToOwner(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     depositProject(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         coin: string;
         value: string;
@@ -122,21 +137,25 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     userClaimToken(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     claimRefund(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     vote(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     addMaxAllocate(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         user: string;
@@ -145,6 +164,7 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
     removeMaxAllocate(types: {
         COIN: string;
+        TOKEN: string;
     }, args: {
         admin_cap: string;
         user: string;
