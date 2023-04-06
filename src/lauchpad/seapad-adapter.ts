@@ -68,12 +68,13 @@ export class SeaPadAdapter extends SeaPadFunc<
   }
 
   async createProject(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
       owner: string;
       vesting_type: number;
-      coin_metadata: string;
+      coin_decimals: number;
+      token_decimals: number;
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -89,7 +90,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     });
   }
   async addMilestone(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; time: number; percent: number },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -105,7 +106,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     });
   }
   async resetMilestone(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -121,7 +122,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     });
   }
   async setupProject(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
       project: string;
@@ -149,7 +150,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     });
   }
   async saveProfile(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
       project: string;
@@ -173,7 +174,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     });
   }
   async addWhitelist(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; user_list: string[] },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -190,7 +191,7 @@ export class SeaPadAdapter extends SeaPadFunc<
   }
 
   async removeWhitelist(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; user_list: string[] },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -207,7 +208,7 @@ export class SeaPadAdapter extends SeaPadFunc<
   }
 
   async startFundRaising(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -223,7 +224,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     });
   }
   async buy(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { coin: string; amount: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -242,7 +243,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     });
   }
   async endFundRaising(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -258,7 +259,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     });
   }
   async endRefund(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -274,7 +275,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     });
   }
   async distributeRaisedFund(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; projectOwner: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -290,7 +291,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     });
   }
   async refundTokenToOwner(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; projectOwner: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -306,7 +307,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     });
   }
   async depositProject(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { coin: string; value: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -322,7 +323,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     });
   }
   async userClaimToken(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -338,7 +339,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     });
   }
   async claimRefund(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -354,7 +355,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     });
   }
   async vote(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -371,7 +372,7 @@ export class SeaPadAdapter extends SeaPadFunc<
   }
 
   async addMaxAllocate(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
       user: string;
@@ -393,7 +394,7 @@ export class SeaPadAdapter extends SeaPadFunc<
   }
 
   async removeMaxAllocate(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; user: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,

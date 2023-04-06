@@ -37,12 +37,13 @@ export abstract class SeaPadFunc<T> {
    * @param args admin_cap: &AdminCap, owner: address, vesting_type: u8, coin_metadata: &CoinMetadata<COIN>,
    */
   abstract createProject(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
       owner: string;
       vesting_type: number;
-      coin_metadata: string;
+      coin_decimals: number;
+      token_decimals: number;
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -53,7 +54,7 @@ export abstract class SeaPadFunc<T> {
    * @param args admin_cap: &AdminCap, project: &mut Project<COIN>, time: u64, percent: u8,
    */
   abstract addMilestone(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; time: number; percent: number },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -65,7 +66,7 @@ export abstract class SeaPadFunc<T> {
    * @param args admin_cap: &AdminCap, project: &mut Project<COIN>,
    */
   abstract resetMilestone(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -77,7 +78,7 @@ export abstract class SeaPadFunc<T> {
    * @param args admin_cap: &AdminCap, project: &mut Project<COIN>, usewhitelist: bool, swap_ratio_sui: u64, swap_ratio_token: u64, max_allocate: u64, start_time: u64, end_time: u64, soft_cap: u64, hard_cap: u64,
    */
   abstract setupProject(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
       project: string;
@@ -100,7 +101,7 @@ export abstract class SeaPadFunc<T> {
    * @param args _adminCap: &AdminCap, project: &mut Project<COIN>, name: vector<u8>, twitter: vector<u8>, discord: vector<u8>, telegram: vector<u8>, website: vector<u8>
    */
   abstract saveProfile(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
       project: string;
@@ -119,14 +120,14 @@ export abstract class SeaPadFunc<T> {
    * @param args admin_cap: &AdminCap, project: &mut Project<COIN>, user: address
    */
   abstract addWhitelist(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; user_list: string[] },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
 
   abstract removeWhitelist(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; user_list: string[] },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -137,7 +138,7 @@ export abstract class SeaPadFunc<T> {
    * @param args admin_cap: &AdminCap, project: &mut Project<COIN>
    */
   abstract startFundRaising(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -148,7 +149,7 @@ export abstract class SeaPadFunc<T> {
    * @param args suis: vector<Coin<SUI>>, amount: u64, project: &mut Project<COIN>
    */
   abstract buy(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { coin: string; amount: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -159,7 +160,7 @@ export abstract class SeaPadFunc<T> {
    * @param args admin_cap: &AdminCap, project: &mut Project<COIN>
    */
   abstract endFundRaising(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -170,7 +171,7 @@ export abstract class SeaPadFunc<T> {
    * @param args admin_cap: &AdminCap, project: &mut Project<COIN>
    */
   abstract endRefund(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -181,7 +182,7 @@ export abstract class SeaPadFunc<T> {
    * @param args admin_cap: &AdminCap, project: &mut Project<COIN>, projectOwner: address,
    */
   abstract distributeRaisedFund(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -192,7 +193,7 @@ export abstract class SeaPadFunc<T> {
    * @param args cap: &AdminCap, project: &mut Project<COIN>, projectOwner: address,
    */
   abstract refundTokenToOwner(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -203,7 +204,7 @@ export abstract class SeaPadFunc<T> {
    * @param args coins: vector<Coin<COIN>>, value: u64, project: &mut Project<COIN>
    */
   abstract depositProject(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { coin: string; value: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -214,7 +215,7 @@ export abstract class SeaPadFunc<T> {
    * @param args project: &mut Project<COIN>
    */
   abstract userClaimToken(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -225,7 +226,7 @@ export abstract class SeaPadFunc<T> {
    * @param args project: &mut Project<COIN>
    */
   abstract claimRefund(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -236,14 +237,14 @@ export abstract class SeaPadFunc<T> {
    * @param args project: &mut Project<COIN>
    */
   abstract vote(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: { project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
 
   abstract addMaxAllocate(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
       user: string;
@@ -255,7 +256,7 @@ export abstract class SeaPadFunc<T> {
   ): T;
 
   abstract removeMaxAllocate(
-    types: { COIN: string },
+    types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
       user: string;
