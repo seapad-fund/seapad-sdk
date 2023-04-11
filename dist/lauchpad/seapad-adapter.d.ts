@@ -179,7 +179,7 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
         icon_url: string | null;
         description: string;
         symbol: string;
-        total_supply: number;
+        total_supply: string;
     }>;
     splitCoin(amount: number, to: string): Promise<SuiTransactionBlockResponse>;
     splitCoins(amounts: string[], to: string): Promise<SuiTransactionBlockResponse>;

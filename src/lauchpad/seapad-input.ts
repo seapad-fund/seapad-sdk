@@ -5,7 +5,7 @@ export type GasBudget = number | null;
 
 export function getGasBudget(gasBudget?: GasBudget): number {
   if (typeof gasBudget == undefined || gasBudget == null || gasBudget < 1000) {
-    return 5000;
+    return 10000;
   } else {
     return gasBudget;
   }

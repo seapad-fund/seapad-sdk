@@ -5,7 +5,7 @@ const sui_js_1 = require("@mysten/sui.js");
 const seapad_func_1 = require("./seapad-func");
 function getGasBudget(gasBudget) {
     if (typeof gasBudget == undefined || gasBudget == null || gasBudget < 1000) {
-        return 5000;
+        return 10000;
     }
     else {
         return gasBudget;
