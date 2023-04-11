@@ -4,13 +4,18 @@ import { OptionTx, SeaPadFunc } from './seapad-func';
 export type GasBudget = number | null;
 
 export function getGasBudget(gasBudget?: GasBudget): number {
-  if (typeof gasBudget == undefined || gasBudget == null || gasBudget < 1000) {
-    return 10000;
+  if (
+    typeof gasBudget == undefined ||
+    gasBudget == null ||
+    gasBudget < 50000000
+  ) {
+    return 50000000;
   } else {
     return gasBudget;
   }
 }
-const clock = '0x0000000000000000000000000000000000000000000000000000000000000006';
+const clock =
+  '0x0000000000000000000000000000000000000000000000000000000000000006';
 
 export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   _packageObjectId: string;
