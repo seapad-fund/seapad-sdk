@@ -1,6 +1,6 @@
 {
   "name": "seapad-sdk",
-  "version": "2.0.18",
+  "version": "2.0.20",
   "description": "SeaPad Sdk",
   "github": "https://github.com/seapad-fund/seapad-sdk",
   "author": "jimmy.vu <Web3Lab>",
@@ -25,7 +25,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@mysten/sui.js": "^0.31.0",
+    "@mysten/sui.js": "^0.32.1",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",

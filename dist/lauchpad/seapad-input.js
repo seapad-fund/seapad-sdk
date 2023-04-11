@@ -4,10 +4,8 @@ exports.SeaPadInput = exports.getGasBudget = void 0;
 const sui_js_1 = require("@mysten/sui.js");
 const seapad_func_1 = require("./seapad-func");
 function getGasBudget(gasBudget) {
-    if (typeof gasBudget == undefined ||
-        gasBudget == null ||
-        gasBudget < 50000000) {
-        return 50000000;
+    if (typeof gasBudget == undefined || gasBudget == null || gasBudget < 1000) {
+        return 5000;
     }
     else {
         return gasBudget;
