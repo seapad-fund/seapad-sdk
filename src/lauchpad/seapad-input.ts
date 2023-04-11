@@ -4,7 +4,7 @@ import { OptionTx, SeaPadFunc } from './seapad-func';
 export type GasBudget = number | null;
 
 export function getGasBudget(gasBudget?: GasBudget): number {
-  if (typeof gasBudget == undefined || gasBudget == null || gasBudget < 10000000) {
+  if (typeof gasBudget == undefined || gasBudget == null || gasBudget < 20000000) {
     return 20000000;
   } else {
     return gasBudget;
