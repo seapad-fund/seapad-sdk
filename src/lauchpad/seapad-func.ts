@@ -42,6 +42,7 @@ export abstract class SeaPadFunc<T> {
       admin_cap: string;
       owner: string;
       vesting_type: number;
+      linear_time: number;
       coin_decimals: number;
       token_decimals: number;
     },
