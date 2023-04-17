@@ -1,9 +1,4 @@
-import { GasBudget } from './seapad-sp-input';
-import { SuiTransactionBlockResponseOptions, ExecuteTransactionRequestType } from '@mysten/sui.js';
-export type OptionTx = {
-    options?: SuiTransactionBlockResponseOptions;
-    requestType?: ExecuteTransactionRequestType;
-} | undefined;
+import { GasBudget, OptionTx } from '../common';
 export declare abstract class SeaPadStakePoolFunc<T> {
     /**
      *

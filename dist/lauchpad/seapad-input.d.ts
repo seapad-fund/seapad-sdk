@@ -1,7 +1,6 @@
 import { TransactionBlock } from '@mysten/sui.js';
-import { OptionTx, SeaPadFunc } from './seapad-func';
-export type GasBudget = number | null;
-export declare function getGasBudget(gasBudget?: GasBudget): number;
+import { SeaPadFunc } from './seapad-func';
+import { GasBudget, OptionTx } from '../common';
 export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     _packageObjectId: string;
     _module: string;

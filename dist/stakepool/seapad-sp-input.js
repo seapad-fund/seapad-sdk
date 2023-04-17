@@ -1,19 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SeaPadStakePoolInput = exports.getGasBudget = void 0;
+exports.SeaPadStakePoolInput = void 0;
 const sui_js_1 = require("@mysten/sui.js");
 const seapad_sp_func_1 = require("./seapad-sp-func");
-function getGasBudget(gasBudget) {
-    if (typeof gasBudget == undefined ||
-        gasBudget == null ||
-        gasBudget < 20000000) {
-        return 20000000;
-    }
-    else {
-        return gasBudget;
-    }
-}
-exports.getGasBudget = getGasBudget;
+const common_1 = require("../common");
 const clock = '0x0000000000000000000000000000000000000000000000000000000000000006';
 class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
     constructor(packageObjectId, module) {
@@ -35,7 +25,7 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
             ],
             typeArguments: [types.S, types.R],
         });
-        tx.setGasBudget(getGasBudget(gasBudget));
+        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
     stake(types, args, optionTx, gasBudget) {
@@ -50,7 +40,7 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
             ],
             typeArguments: [types.S, types.R],
         });
-        tx.setGasBudget(getGasBudget(gasBudget));
+        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
     unstake(types, args, optionTx, gasBudget) {
@@ -65,7 +55,7 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
             ],
             typeArguments: [types.S, types.R],
         });
-        tx.setGasBudget(getGasBudget(gasBudget));
+        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
     harvest(types, args, optionTx, gasBudget) {
@@ -79,7 +69,7 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
             ],
             typeArguments: [types.S, types.R],
         });
-        tx.setGasBudget(getGasBudget(gasBudget));
+        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
     depositRewardCoins(types, args, optionTx, gasBudget) {
@@ -94,7 +84,7 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
             ],
             typeArguments: [types.S, types.R],
         });
-        tx.setGasBudget(getGasBudget(gasBudget));
+        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
     enableEmergency(types, args, optionTx, gasBudget) {
@@ -107,7 +97,7 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
             ],
             typeArguments: [types.S, types.R],
         });
-        tx.setGasBudget(getGasBudget(gasBudget));
+        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
     emergencyUnstake(types, args, optionTx, gasBudget) {
@@ -121,7 +111,7 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
             ],
             typeArguments: [types.S, types.R],
         });
-        tx.setGasBudget(getGasBudget(gasBudget));
+        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
     withdrawRewardToTreasury(types, args, optionTx, gasBudget) {
@@ -136,7 +126,7 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
             ],
             typeArguments: [types.S, types.R],
         });
-        tx.setGasBudget(getGasBudget(gasBudget));
+        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
 }

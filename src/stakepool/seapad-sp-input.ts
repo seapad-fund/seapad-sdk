@@ -1,19 +1,8 @@
 import { TransactionBlock } from '@mysten/sui.js';
-import { OptionTx, SeaPadStakePoolFunc } from './seapad-sp-func';
+import { SeaPadStakePoolFunc } from './seapad-sp-func';
+import { GasBudget, OptionTx, getGasBudget } from '../common';
 
-export type GasBudget = number | null;
 
-export function getGasBudget(gasBudget?: GasBudget): number {
-    if (
-        typeof gasBudget == undefined ||
-        gasBudget == null ||
-        gasBudget < 20000000
-    ) {
-        return 20000000;
-    } else {
-        return gasBudget;
-    }
-}
 const clock =
     '0x0000000000000000000000000000000000000000000000000000000000000006';
 

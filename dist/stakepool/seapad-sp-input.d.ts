@@ -1,7 +1,6 @@
 import { TransactionBlock } from '@mysten/sui.js';
-import { OptionTx, SeaPadStakePoolFunc } from './seapad-sp-func';
-export type GasBudget = number | null;
-export declare function getGasBudget(gasBudget?: GasBudget): number;
+import { SeaPadStakePoolFunc } from './seapad-sp-func';
+import { GasBudget, OptionTx } from '../common';
 export declare class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> {
     _packageObjectId: string;
     _module: string;

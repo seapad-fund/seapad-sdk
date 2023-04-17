@@ -1,6 +1,7 @@
 import { RawSigner, JsonRpcProvider, SuiTransactionBlockResponse } from '@mysten/sui.js';
-import { OptionTx, SeaPadStakePoolFunc } from './seapad-sp-func';
-import { GasBudget, SeaPadStakePoolInput } from './seapad-sp-input';
+import { SeaPadStakePoolFunc } from './seapad-sp-func';
+import { SeaPadStakePoolInput } from './seapad-sp-input';
+import { GasBudget, OptionTx } from '../common';
 export declare class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<Promise<SuiTransactionBlockResponse>> {
     _suiProvider: JsonRpcProvider;
     _seaPadStakePoolInput: SeaPadStakePoolInput;

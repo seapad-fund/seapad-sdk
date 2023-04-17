@@ -1,11 +1,12 @@
-import { OptionTx, SeaPadStakePoolFunc } from './seapad-sp-func';
-import { GasBudget, SeaPadStakePoolInput } from './seapad-sp-input';
+import { SeaPadStakePoolFunc } from './seapad-sp-func';
+import { SeaPadStakePoolInput } from './seapad-sp-input';
 import { WalletContextState } from '@suiet/wallet-kit';
 import { TransactionBlock } from '@mysten/sui.js';
 import {
     SuiSignAndExecuteTransactionBlockInput,
     SuiSignAndExecuteTransactionBlockOutput,
 } from '@mysten/wallet-standard';
+import { GasBudget, OptionTx } from '../common';
 
 export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<Promise<SuiSignAndExecuteTransactionBlockOutput>> {
 
