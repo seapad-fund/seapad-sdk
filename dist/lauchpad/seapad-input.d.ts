@@ -21,6 +21,7 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         admin_cap: string;
         owner: string;
         vesting_type: number;
+        linear_time: number | 0;
         coin_decimals: number;
         token_decimals: number;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;
