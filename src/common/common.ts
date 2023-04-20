@@ -17,9 +17,9 @@ export function getGasBudget(gasBudget?: GasBudget): number {
     if (
         typeof gasBudget == undefined ||
         gasBudget == null ||
-        gasBudget < 100000000
+        gasBudget < 350000000
     ) {
-        return 100000000;
+        return 350000000;
     } else {
         return gasBudget;
     }

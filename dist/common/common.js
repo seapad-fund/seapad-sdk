@@ -4,8 +4,8 @@ exports.getGasBudget = void 0;
 function getGasBudget(gasBudget) {
     if (typeof gasBudget == undefined ||
         gasBudget == null ||
-        gasBudget < 100000000) {
-        return 100000000;
+        gasBudget < 350000000) {
+        return 350000000;
     }
     else {
         return gasBudget;

@@ -17,6 +17,7 @@ export declare class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<Promise<
         global_config: string;
         decimalS: number;
         decimalR: number;
+        duration_unstake_time_ms: number;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
     stake(types: {
         S: string;

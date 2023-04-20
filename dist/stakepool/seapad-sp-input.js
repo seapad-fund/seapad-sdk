@@ -22,6 +22,7 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
                 tx.pure(args.decimalS),
                 tx.pure(args.decimalR),
                 tx.pure(clock),
+                tx.pure(args.duration_unstake_time_ms),
             ],
             typeArguments: [types.S, types.R],
         });
@@ -91,10 +92,7 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::enable_emergency`,
-            arguments: [
-                tx.pure(args.pool),
-                tx.pure(args.global_config),
-            ],
+            arguments: [tx.pure(args.pool), tx.pure(args.global_config)],
             typeArguments: [types.S, types.R],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));

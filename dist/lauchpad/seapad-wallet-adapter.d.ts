@@ -98,7 +98,7 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
         COIN: string;
         TOKEN: string;
     }, args: {
-        coin: string;
+        coins: string[];
         amount: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiSignAndExecuteTransactionBlockOutput>;

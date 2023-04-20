@@ -14,6 +14,7 @@ export declare abstract class SeaPadStakePoolFunc<T> {
         global_config: string;
         decimalS: number;
         decimalR: number;
+        duration_unstake_time_ms: number;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *
