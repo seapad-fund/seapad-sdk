@@ -1,8 +1,6 @@
-import { TransactionBlock } from '@mysten/sui.js';
+import { TransactionArgument, TransactionBlock } from '@mysten/sui.js';
 import { SeaPadFunc } from './seapad-func';
 import { GasBudget, OptionTx, getGasBudget } from '../common';
-
-
 
 const clock =
   '0x0000000000000000000000000000000000000000000000000000000000000006';
@@ -246,21 +244,38 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   }
   buy(
     types: { COIN: string; TOKEN: string },
-    args: { coin: string; amount: string; project: string },
+    args: { coins: string[]; amount: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
+    let coin_trans: TransactionArgument;
+
+    if (types.COIN === '0x2::sui::SUI') {
+      const [sui_trans] = tx.splitCoins(tx.gas, [tx.pure(args.amount)]);
+      coin_trans = sui_trans;
+    } else {
+      if (args.coins.length === 1) {
+        coin_trans = tx.pure(args.coins[0]);
+      } else {
+        coin_trans = tx.mergeCoins(
+          tx.object(args.coins.pop() as string),
+          args.coins.map((coin) => tx.object(coin)),
+        );
+      }
+    }
+
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::buy`,
       arguments: [
-        tx.pure(args.coin),
+        coin_trans,
         tx.pure(args.amount),
         tx.pure(args.project),
         tx.object(clock),
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
+
     tx.setGasBudget(getGasBudget(gasBudget));
 
     return tx;

@@ -1,6 +1,5 @@
 import { GasBudget, OptionTx } from '../common';
 
-
 export abstract class SeaPadFunc<T> {
   /**
    *
@@ -142,7 +141,7 @@ export abstract class SeaPadFunc<T> {
    */
   abstract buy(
     types: { COIN: string; TOKEN: string },
-    args: { coin: string; amount: string; project: string },
+    args: { coins: string[]; amount: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
