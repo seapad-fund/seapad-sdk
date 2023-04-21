@@ -1,13 +1,14 @@
 import { SeaPadFunc } from './seapad-func';
 import { SeaPadInput } from './seapad-input';
 import { WalletContextState } from '@suiet/wallet-kit';
-import { TransactionBlock } from '@mysten/sui.js';
+import { JsonRpcProvider, TransactionBlock } from '@mysten/sui.js';
 import { SuiSignAndExecuteTransactionBlockInput, SuiSignAndExecuteTransactionBlockOutput } from '@mysten/wallet-standard';
 import { GasBudget, OptionTx } from '../common';
 export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndExecuteTransactionBlockOutput>> {
     _walletContextState: WalletContextState;
     _seaPadInput: SeaPadInput;
-    constructor(walletContextState: WalletContextState, packageObjectId: string, module: string);
+    _suiProvider: JsonRpcProvider;
+    constructor(walletContextState: WalletContextState, packageObjectId: string, module: string, suiProvider: JsonRpcProvider);
     changeAdmin(args: {
         admin_cap: string;
         to: string;
@@ -98,7 +99,6 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
         COIN: string;
         TOKEN: string;
     }, args: {
-        coins: string[];
         amount: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): Promise<SuiSignAndExecuteTransactionBlockOutput>;
@@ -176,5 +176,22 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
     splitCoin(amount: number, to: string): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     splitCoins(amounts: string[], to: string): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     buildTx(message: TransactionBlock): Omit<SuiSignAndExecuteTransactionBlockInput, 'account' | 'chain'>;
+    /**
+     * Fetch coin owned by an address
+     */
+    getCoins: (walletAddress: string, coinType: string) => Promise<{
+        message: string;
+        status: string;
+        data: any;
+    } | {
+        message: any;
+        status: string;
+        data: null;
+    }>;
+    pickupCoin: (coinType: string, expect_balance: number, userAddress: string) => Promise<{
+        coin: string;
+        isPicked: boolean;
+        coinTrans: any;
+    }>;
 }
 //# sourceMappingURL=seapad-wallet-adapter.d.ts.map
