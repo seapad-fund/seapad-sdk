@@ -13,10 +13,11 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
     }
     registerPool(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
+        const [coin] = tx.splitCoins(tx.object(args.rewards), [tx.pure(args.num_rewards)]);
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::register_pool`,
             arguments: [
-                tx.pure(args.rewards),
+                coin,
                 tx.pure(args.duration),
                 tx.pure(args.global_config),
                 tx.pure(args.decimalS),
@@ -75,11 +76,12 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
     }
     depositRewardCoins(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
+        const [coin] = tx.splitCoins(tx.object(args.reward_coins), [tx.pure(args.num_rewards)]);
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::deposit_reward_coins`,
             arguments: [
                 tx.pure(args.pool),
-                tx.pure(args.reward_coins),
+                coin,
                 tx.pure(args.global_config),
                 tx.pure(clock),
             ],

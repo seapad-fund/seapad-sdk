@@ -30,6 +30,7 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
   async registerPool(
     types: { S: string; R: string },
     args: {
+      num_rewards: string;
       rewards: string;
       duration: string;
       global_config: string;
@@ -100,7 +101,7 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
   }
   async depositRewardCoins(
     types: { S: string; R: string },
-    args: { pool: string; reward_coins: string; global_config: string },
+    args: { pool: string; num_rewards: string; reward_coins: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {

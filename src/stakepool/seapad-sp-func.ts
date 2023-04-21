@@ -4,11 +4,12 @@ export abstract class SeaPadStakePoolFunc<T> {
   /**
    *
    * @param types <S, R>
-   * @param args rewards: Coin<R>, duration: u64, global_config: &GlobalConfig, decimalS: u8, decimalR: u8, system_clock: &Clock
+   * @param args num_rewards, rewards: Coin<R>, duration: u64, global_config: &GlobalConfig, decimalS: u8, decimalR: u8, system_clock: &Clock
    */
   abstract registerPool(
     types: { S: string; R: string },
     args: {
+      num_rewards: string;
       rewards: string;
       duration: string;
       global_config: string;
@@ -64,7 +65,7 @@ export abstract class SeaPadStakePoolFunc<T> {
    */
   abstract depositRewardCoins(
     types: { S: string; R: string },
-    args: { pool: string; reward_coins: string; global_config: string },
+    args: { pool: string; num_rewards: string; reward_coins: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;

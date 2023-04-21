@@ -9,6 +9,7 @@ export declare class SeaPadStakePoolInput extends SeaPadStakePoolFunc<Transactio
         S: string;
         R: string;
     }, args: {
+        num_rewards: string;
         rewards: string;
         duration: string;
         global_config: string;
@@ -44,6 +45,7 @@ export declare class SeaPadStakePoolInput extends SeaPadStakePoolFunc<Transactio
         R: string;
     }, args: {
         pool: string;
+        num_rewards: string;
         reward_coins: string;
         global_config: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;

@@ -1,4 +1,0 @@
-2023-04-16T09:27:12.070755Z  WARN sui::client_commands: Client/Server api version mismatch, client api version : 0.29.1, server api version : 0.31.0
-2023-04-16T09:27:12.479810Z  INFO sui::client_commands:                  Object ID                  |  Version   |                    Digest                    |   Owner Type    |               Object Type               
-2023-04-16T09:27:12.479831Z  INFO sui::client_commands: ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-2023-04-16T09:27:12.479836Z  INFO sui::client_commands: Showing 0 results.
