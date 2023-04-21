@@ -220,14 +220,11 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       Number(args.amount),
       userAddress,
     );
-    console.log(pickCoinTrans);
     if (pickCoinTrans.isPicked) {
       _coins = [pickCoinTrans.coin];
     } else {
       _coins = pickCoinTrans.coinTrans;
     }
-    console.log(_coins);
-
     const message = this._seaPadInput.buy(
       types,
       { ...args, coins: _coins },
@@ -451,7 +448,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<
           cursor: nextCursor,
           limit: 10,
         });
-        data = response.data;
+        data = response.data.filter((coin) => Number(coin.balance) > 0);
         nextCursor = response.nextCursor;
         hasNextPage = response.hasNextPage;
       }
@@ -475,7 +472,6 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     userAddress: string,
   ) => {
     const allCoin = await this.getCoins(userAddress, coinType);
-    console.log(allCoin);
     const coin: any = allCoin.data
       ?.sort((a: any, b: any) => b.balance - a.balance)
       .find((coin: any) => {

@@ -250,6 +250,9 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     let coin_trans: TransactionArgument;
+    if (args.coins === null || undefined || args.coins.length === 0) {
+      throw new Error('Not coin transfer');
+    }
 
     if (args.coins.length === 1) {
       if (types.COIN === '0x2::sui::SUI') {
@@ -266,7 +269,6 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       );
       coin_trans = tx.pure(coin_base);
     }
-    console.log(tx);
 
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::buy`,
