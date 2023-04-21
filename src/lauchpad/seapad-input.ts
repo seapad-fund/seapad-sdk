@@ -192,7 +192,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.project),
-        tx.makeMoveVec({ objects: args.user_list.map((id) => tx.object(id)) }),
+        tx.pure(args.user_list),
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -213,7 +213,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.project),
-        tx.makeMoveVec({ objects: args.user_list.map((id) => tx.object(id)) }),
+        tx.pure(args.user_list),
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
