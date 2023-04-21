@@ -65,7 +65,12 @@ export abstract class SeaPadStakePoolFunc<T> {
    */
   abstract depositRewardCoins(
     types: { S: string; R: string },
-    args: { pool: string; num_rewards: string; reward_coins: string; global_config: string },
+    args: {
+      pool: string;
+      num_rewards: string;
+      reward_coins: string;
+      global_config: string;
+    },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;

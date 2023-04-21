@@ -114,7 +114,12 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
   }
   async depositRewardCoins(
     types: { S: string; R: string },
-    args: { pool: string; num_rewards: string; reward_coins: string; global_config: string },
+    args: {
+      pool: string;
+      num_rewards: string;
+      reward_coins: string;
+      global_config: string;
+    },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
   ): Promise<SuiTransactionBlockResponse> {
