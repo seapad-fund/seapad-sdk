@@ -167,7 +167,9 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 coin_trans = tx.pure(args.coins[0]);
             }
             else {
-                coin_trans = tx.mergeCoins(tx.object(args.coins.pop()), args.coins.map((coin) => tx.object(coin)));
+                const coin_base = args.coins.pop();
+                tx.mergeCoins(tx.object(coin_base), args.coins.map((coin) => tx.object(coin)));
+                coin_trans = tx.pure(coin_base);
             }
         }
         tx.moveCall({
