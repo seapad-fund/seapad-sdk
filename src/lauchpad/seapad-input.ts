@@ -252,19 +252,19 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     let coin_trans: TransactionArgument;
 
     if (args.coins.length === 1) {
-      coin_trans = tx.pure(args.coins[0]);
-    } else {
       if (types.COIN === '0x2::sui::SUI') {
         const [sui_trans] = tx.splitCoins(tx.gas, [tx.pure(args.amount)]);
         coin_trans = sui_trans;
       } else {
-        const coin_base = args.coins.pop() as string;
-        tx.mergeCoins(
-          tx.object(coin_base),
-          args.coins.map((coin) => tx.object(coin)),
-        );
-        coin_trans = tx.pure(coin_base);
+        coin_trans = tx.pure(args.coins[0]);
       }
+    } else {
+      const coin_base = args.coins.pop() as string;
+      tx.mergeCoins(
+        tx.object(coin_base),
+        args.coins.map((coin) => tx.object(coin)),
+      );
+      coin_trans = tx.pure(coin_base);
     }
     console.log(tx);
 

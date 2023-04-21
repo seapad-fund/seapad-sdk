@@ -213,7 +213,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const userAddress = this._walletContextState.account?.address || '';
-    let _coins;
+    let _coins: string[];
 
     const pickCoinTrans = await this.pickupCoin(
       types.COIN,
