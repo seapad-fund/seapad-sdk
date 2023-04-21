@@ -40,8 +40,9 @@ class SeapadWalletAdapter extends seapad_func_1.SeaPadFunc {
             }
         };
         this.pickupCoin = async (coinType, expect_balance, userAddress) => {
-            const coinTrans = await this.getCoins(userAddress, coinType);
-            const coin = coinTrans.data
+            const allCoin = await this.getCoins(userAddress, coinType);
+            console.log(allCoin);
+            const coin = allCoin.data
                 ?.sort((a, b) => b.balance - a.balance)
                 .find((coin) => {
                 return Number(coin.balance) >= expect_balance;
@@ -49,7 +50,7 @@ class SeapadWalletAdapter extends seapad_func_1.SeaPadFunc {
             return {
                 coin: coin?.coinObjectId,
                 isPicked: coin !== undefined,
-                coinTrans: coinTrans.data,
+                coinTrans: allCoin.data,
             };
         };
         this._seaPadInput = new seapad_input_1.SeaPadInput(packageObjectId, module);
@@ -100,12 +101,14 @@ class SeapadWalletAdapter extends seapad_func_1.SeaPadFunc {
         const userAddress = this._walletContextState.account?.address || '';
         let _coins;
         const pickCoinTrans = await this.pickupCoin(types.COIN, Number(args.amount), userAddress);
+        console.log(pickCoinTrans);
         if (pickCoinTrans.isPicked) {
             _coins = [pickCoinTrans.coin];
         }
         else {
             _coins = pickCoinTrans.coinTrans;
         }
+        console.log(_coins);
         const message = this._seaPadInput.buy(types, { ...args, coins: _coins }, optionTx, gasBudget);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
