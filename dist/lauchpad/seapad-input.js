@@ -120,7 +120,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.project),
-                tx.makeMoveVec({ objects: args.user_list.map((id) => tx.object(id)) }),
+                tx.pure(args.user_list),
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
@@ -134,7 +134,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.project),
-                tx.makeMoveVec({ objects: args.user_list.map((id) => tx.object(id)) }),
+                tx.pure(args.user_list),
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
