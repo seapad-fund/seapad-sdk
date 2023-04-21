@@ -258,10 +258,12 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       if (args.coins.length === 1) {
         coin_trans = tx.pure(args.coins[0]);
       } else {
-        coin_trans = tx.mergeCoins(
-          tx.object(args.coins.pop() as string),
+        const coin_base = args.coins.pop() as string;
+        tx.mergeCoins(
+          tx.object(coin_base),
           args.coins.map((coin) => tx.object(coin)),
         );
+        coin_trans = tx.pure(coin_base);
       }
     }
 
