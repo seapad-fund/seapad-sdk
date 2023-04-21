@@ -266,6 +266,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         coin_trans = tx.pure(coin_base);
       }
     }
+    console.log(tx);
 
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::buy`,
