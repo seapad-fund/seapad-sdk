@@ -158,6 +158,9 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
     buy(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         let coin_trans;
+        if (args.coins === null || undefined || args.coins.length === 0) {
+            throw new Error('Not coin transfer');
+        }
         if (args.coins.length === 1) {
             if (types.COIN === '0x2::sui::SUI') {
                 const [sui_trans] = tx.splitCoins(tx.gas, [tx.pure(args.amount)]);
@@ -172,7 +175,6 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             tx.mergeCoins(tx.object(coin_base), args.coins.map((coin) => tx.object(coin)));
             coin_trans = tx.pure(coin_base);
         }
-        console.log(tx);
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::buy`,
             arguments: [
