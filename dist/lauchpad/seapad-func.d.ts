@@ -140,7 +140,7 @@ export declare abstract class SeaPadFunc<T> {
         COIN: string;
         TOKEN: string;
     }, args: {
-        coins: string[];
+        coins: string[] | undefined;
         amount: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
