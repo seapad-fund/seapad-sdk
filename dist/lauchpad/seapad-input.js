@@ -158,13 +158,13 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
     buy(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
         let coin_trans;
-        if (types.COIN === '0x2::sui::SUI') {
-            const [sui_trans] = tx.splitCoins(tx.gas, [tx.pure(args.amount)]);
-            coin_trans = sui_trans;
+        if (args.coins.length === 1) {
+            coin_trans = tx.pure(args.coins[0]);
         }
         else {
-            if (args.coins.length === 1) {
-                coin_trans = tx.pure(args.coins[0]);
+            if (types.COIN === '0x2::sui::SUI') {
+                const [sui_trans] = tx.splitCoins(tx.gas, [tx.pure(args.amount)]);
+                coin_trans = sui_trans;
             }
             else {
                 const coin_base = args.coins.pop();
