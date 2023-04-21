@@ -141,7 +141,7 @@ export abstract class SeaPadFunc<T> {
    */
   abstract buy(
     types: { COIN: string; TOKEN: string },
-    args: { coins: string[]; amount: string; project: string },
+    args: { coins: string[] | undefined; amount: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;

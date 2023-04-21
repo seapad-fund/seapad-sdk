@@ -1,7 +1,11 @@
 import { SeaPadFunc } from './seapad-func';
 import { SeaPadInput } from './seapad-input';
 import { WalletContextState } from '@suiet/wallet-kit';
-import { TransactionBlock } from '@mysten/sui.js';
+import {
+  JsonRpcProvider,
+  PaginatedCoins,
+  TransactionBlock,
+} from '@mysten/sui.js';
 import {
   SuiSignAndExecuteTransactionBlockInput,
   SuiSignAndExecuteTransactionBlockOutput,
@@ -13,15 +17,18 @@ export class SeapadWalletAdapter extends SeaPadFunc<
 > {
   _walletContextState: WalletContextState;
   _seaPadInput: SeaPadInput;
+  _suiProvider: JsonRpcProvider;
 
   constructor(
     walletContextState: WalletContextState,
     packageObjectId: string,
     module: string,
+    suiProvider: JsonRpcProvider,
   ) {
     super();
     this._seaPadInput = new SeaPadInput(packageObjectId, module);
     this._walletContextState = walletContextState;
+    this._suiProvider = suiProvider;
   }
 
   async changeAdmin(
@@ -201,11 +208,30 @@ export class SeapadWalletAdapter extends SeaPadFunc<
   }
   async buy(
     types: { COIN: string; TOKEN: string },
-    args: { coins: string[]; amount: string; project: string },
+    args: { amount: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
-    const message = this._seaPadInput.buy(types, args, optionTx, gasBudget);
+    const userAddress = this._walletContextState.account?.address || '';
+    let _coins;
+
+    const pickCoinTrans = await this.pickupCoin(
+      types.COIN,
+      Number(args.amount),
+      userAddress,
+    );
+    if (pickCoinTrans.isPicked) {
+      _coins = [pickCoinTrans.coin as string];
+    } else {
+      _coins = pickCoinTrans.coinTrans;
+    }
+
+    const message = this._seaPadInput.buy(
+      types,
+      { ...args, coins: _coins },
+      optionTx,
+      gasBudget,
+    );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
     );
@@ -407,4 +433,56 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       requestType: 'WaitForEffectsCert',
     };
   }
+
+  /**
+   * Fetch coin owned by an address
+   */
+  getCoins = async (walletAddress: string, coinType: string) => {
+    try {
+      let data: any = [];
+      let hasNextPage = true;
+      let nextCursor: string | null = null;
+      while (hasNextPage) {
+        const response: PaginatedCoins = await this._suiProvider.getCoins({
+          owner: walletAddress,
+          coinType: coinType,
+          cursor: nextCursor,
+          limit: 10,
+        });
+        data = response.data;
+        nextCursor = response.nextCursor;
+        hasNextPage = response.hasNextPage;
+      }
+
+      return {
+        message: '',
+        status: 'success',
+        data: data,
+      };
+    } catch (error: any) {
+      return {
+        message: error.message,
+        status: 'failed',
+        data: null,
+      };
+    }
+  };
+  pickupCoin = async (
+    coinType: string,
+    expect_balance: number,
+    userAddress: string,
+  ) => {
+    const coinTrans = await this.getCoins(userAddress, coinType);
+    const coin: any = coinTrans.data
+      ?.sort((a: any, b: any) => b.balance - a.balance)
+      .find((coin: any) => {
+        return Number(coin.balance) >= expect_balance;
+      });
+
+    return {
+      coin: coin?.coinObjectId as string,
+      isPicked: coin !== undefined,
+      coinTrans: coinTrans.data,
+    };
+  };
 }
