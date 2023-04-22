@@ -1,23 +1,25 @@
 import { SeaPadStakePoolFunc } from './seapad-sp-func';
 import { SeaPadStakePoolInput } from './seapad-sp-input';
 import { WalletContextState } from '@suiet/wallet-kit';
-import { TransactionBlock } from '@mysten/sui.js';
+import { JsonRpcProvider, TransactionBlock } from '@mysten/sui.js';
 import {
   SuiSignAndExecuteTransactionBlockInput,
   SuiSignAndExecuteTransactionBlockOutput,
 } from '@mysten/wallet-standard';
-import { GasBudget, OptionTx } from '../common';
+import { GasBudget, OptionTx, getCoinObjects } from '../common';
 
 export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
   Promise<SuiSignAndExecuteTransactionBlockOutput>
 > {
   _walletContextState: WalletContextState;
   _seaPadStakePoolInput: SeaPadStakePoolInput;
+  _suiProvider: JsonRpcProvider;
 
   constructor(
     walletContextState: WalletContextState,
     packageObjectId: string,
     module: string,
+    suiProvider: JsonRpcProvider,
   ) {
     super();
     this._seaPadStakePoolInput = new SeaPadStakePoolInput(
@@ -25,13 +27,13 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
       module,
     );
     this._walletContextState = walletContextState;
+    this._suiProvider = suiProvider;
   }
 
   async registerPool(
     types: { S: string; R: string },
     args: {
       num_rewards: string;
-      rewards: string;
       duration: string;
       global_config: string;
       decimalS: number;
@@ -41,9 +43,11 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const userAddress = this._walletContextState.account?.address || '';
+    let _coins: string[] = await getCoinObjects(types.R, args.num_rewards, userAddress, this._suiProvider)
     const message = this._seaPadStakePoolInput.registerPool(
       types,
-      args,
+      { ...args, rewards: _coins },
       optionTx,
       gasBudget,
     );
@@ -53,13 +57,15 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
   }
   async stake(
     types: { S: string; R: string },
-    args: { pool: string; coins: string; global_config: string },
+    args: { pool: string; amount: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const userAddress = this._walletContextState.account?.address || '';
+    let _coins: string[] = await getCoinObjects(types.R, args.amount, userAddress, this._suiProvider)
     const message = this._seaPadStakePoolInput.stake(
       types,
-      args,
+      { ...args, coins: _coins },
       optionTx,
       gasBudget,
     );
@@ -69,13 +75,15 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
   }
   async unstake(
     types: { S: string; R: string },
-    args: { pool: string; stake_amount: string; global_config: string },
+    args: { pool: string; amount: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const userAddress = this._walletContextState.account?.address || '';
+    let _coins: string[] = await getCoinObjects(types.R, args.amount, userAddress, this._suiProvider)
     const message = this._seaPadStakePoolInput.unstake(
       types,
-      args,
+      { ...args, coins: _coins },
       optionTx,
       gasBudget,
     );
@@ -104,15 +112,16 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
     args: {
       pool: string;
       num_rewards: string;
-      reward_coins: string;
       global_config: string;
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const userAddress = this._walletContextState.account?.address || '';
+    let _coins: string[] = await getCoinObjects(types.R, args.num_rewards, userAddress, this._suiProvider)
     const message = this._seaPadStakePoolInput.depositRewardCoins(
       types,
-      args,
+      { ...args, reward_coins: _coins },
       optionTx,
       gasBudget,
     );

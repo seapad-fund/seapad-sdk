@@ -10,7 +10,7 @@ export abstract class SeaPadStakePoolFunc<T> {
     types: { S: string; R: string },
     args: {
       num_rewards: string;
-      rewards: string;
+      rewards: string[] | undefined;
       duration: string;
       global_config: string;
       decimalS: number;
@@ -27,20 +27,21 @@ export abstract class SeaPadStakePoolFunc<T> {
    */
   abstract stake(
     types: { S: string; R: string },
-    args: { pool: string; coins: string; global_config: string },
+    args: { pool: string; coins: string[] | undefined; amount: string, global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
   /**
    *
    * @param types <S, R>
-   * @param args pool: &mut StakePool<S, R>, stake_amount: u64, global_config: &GlobalConfig, system_clock: &Clock
+   * @param args pool: &mut StakePool<S, R>, amount: u64, global_config: &GlobalConfig, system_clock: &Clock
    */
   abstract unstake(
     types: { S: string; R: string },
     args: {
       pool: string;
-      stake_amount: string;
+      coins: string[] | undefined;
+      amount: string;
       global_config: string;
     },
     optionTx?: OptionTx,
@@ -68,7 +69,7 @@ export abstract class SeaPadStakePoolFunc<T> {
     args: {
       pool: string;
       num_rewards: string;
-      reward_coins: string;
+      reward_coins: string[] | undefined;
       global_config: string;
     },
     optionTx?: OptionTx,

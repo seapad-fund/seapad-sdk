@@ -1,19 +1,19 @@
 import { SeaPadStakePoolFunc } from './seapad-sp-func';
 import { SeaPadStakePoolInput } from './seapad-sp-input';
 import { WalletContextState } from '@suiet/wallet-kit';
-import { TransactionBlock } from '@mysten/sui.js';
+import { JsonRpcProvider, TransactionBlock } from '@mysten/sui.js';
 import { SuiSignAndExecuteTransactionBlockInput, SuiSignAndExecuteTransactionBlockOutput } from '@mysten/wallet-standard';
 import { GasBudget, OptionTx } from '../common';
 export declare class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<Promise<SuiSignAndExecuteTransactionBlockOutput>> {
     _walletContextState: WalletContextState;
     _seaPadStakePoolInput: SeaPadStakePoolInput;
-    constructor(walletContextState: WalletContextState, packageObjectId: string, module: string);
+    _suiProvider: JsonRpcProvider;
+    constructor(walletContextState: WalletContextState, packageObjectId: string, module: string, suiProvider: JsonRpcProvider);
     registerPool(types: {
         S: string;
         R: string;
     }, args: {
         num_rewards: string;
-        rewards: string;
         duration: string;
         global_config: string;
         decimalS: number;
@@ -25,7 +25,7 @@ export declare class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<Promise<S
         R: string;
     }, args: {
         pool: string;
-        coins: string;
+        amount: string;
         global_config: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     unstake(types: {
@@ -33,7 +33,7 @@ export declare class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<Promise<S
         R: string;
     }, args: {
         pool: string;
-        stake_amount: string;
+        amount: string;
         global_config: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     harvest(types: {
@@ -49,7 +49,6 @@ export declare class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<Promise<S
     }, args: {
         pool: string;
         num_rewards: string;
-        reward_coins: string;
         global_config: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     enableEmergency(types: {

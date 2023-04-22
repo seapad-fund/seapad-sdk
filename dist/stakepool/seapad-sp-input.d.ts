@@ -10,7 +10,7 @@ export declare class SeaPadStakePoolInput extends SeaPadStakePoolFunc<Transactio
         R: string;
     }, args: {
         num_rewards: string;
-        rewards: string;
+        rewards: string[];
         duration: string;
         global_config: string;
         decimalS: number;
@@ -22,7 +22,8 @@ export declare class SeaPadStakePoolInput extends SeaPadStakePoolFunc<Transactio
         R: string;
     }, args: {
         pool: string;
-        coins: string;
+        coins: string[];
+        amount: string;
         global_config: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
     unstake(types: {
@@ -30,7 +31,8 @@ export declare class SeaPadStakePoolInput extends SeaPadStakePoolFunc<Transactio
         R: string;
     }, args: {
         pool: string;
-        stake_amount: string;
+        coins: string[];
+        amount: string;
         global_config: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
     harvest(types: {
@@ -46,7 +48,7 @@ export declare class SeaPadStakePoolInput extends SeaPadStakePoolFunc<Transactio
     }, args: {
         pool: string;
         num_rewards: string;
-        reward_coins: string;
+        reward_coins: string[];
         global_config: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
     enableEmergency(types: {

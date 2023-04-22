@@ -13,11 +13,11 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
     }
     registerPool(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
-        const [coin] = tx.splitCoins(tx.object(args.rewards), [tx.pure(args.num_rewards)]);
+        let coin_trans = (0, common_1.manageObjectCoin)(types.R, args.rewards, args.num_rewards, tx);
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::register_pool`,
             arguments: [
-                coin,
+                coin_trans,
                 tx.pure(args.duration),
                 tx.pure(args.global_config),
                 tx.pure(args.decimalS),
@@ -32,11 +32,12 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
     }
     stake(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
+        let coin_trans = (0, common_1.manageObjectCoin)(types.R, args.coins, args.amount, tx);
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::stake`,
             arguments: [
                 tx.pure(args.pool),
-                tx.pure(args.coins),
+                coin_trans,
                 tx.pure(args.global_config),
                 tx.pure(clock),
             ],
@@ -47,11 +48,12 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
     }
     unstake(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
+        let coin_trans = (0, common_1.manageObjectCoin)(types.R, args.coins, args.amount, tx);
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::unstake`,
             arguments: [
                 tx.pure(args.pool),
-                tx.pure(args.stake_amount),
+                coin_trans,
                 tx.pure(args.global_config),
                 tx.pure(clock),
             ],
@@ -76,12 +78,12 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
     }
     depositRewardCoins(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
-        const [coin] = tx.splitCoins(tx.object(args.reward_coins), [tx.pure(args.num_rewards)]);
+        let coin_trans = (0, common_1.manageObjectCoin)(types.R, args.reward_coins, args.num_rewards, tx);
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::deposit_reward_coins`,
             arguments: [
                 tx.pure(args.pool),
-                coin,
+                coin_trans,
                 tx.pure(args.global_config),
                 tx.pure(clock),
             ],

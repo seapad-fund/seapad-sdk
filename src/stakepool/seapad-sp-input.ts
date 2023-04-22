@@ -1,6 +1,6 @@
-import { TransactionBlock } from '@mysten/sui.js';
+import { TransactionArgument, TransactionBlock } from '@mysten/sui.js';
 import { SeaPadStakePoolFunc } from './seapad-sp-func';
-import { GasBudget, OptionTx, getGasBudget } from '../common';
+import { GasBudget, OptionTx, getGasBudget, manageObjectCoin } from '../common';
 
 const clock =
   '0x0000000000000000000000000000000000000000000000000000000000000006';
@@ -19,7 +19,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
     types: { S: string; R: string },
     args: {
       num_rewards: string;
-      rewards: string;
+      rewards: string[];
       duration: string;
       global_config: string;
       decimalS: number;
@@ -30,11 +30,12 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
     gasBudget?: GasBudget | undefined,
   ): TransactionBlock {
     const tx = new TransactionBlock();
-    const [coin] = tx.splitCoins(tx.object(args.rewards), [tx.pure(args.num_rewards)])
+    let coin_trans: TransactionArgument = manageObjectCoin(types.R, args.rewards, args.num_rewards, tx)
+
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::register_pool`,
       arguments: [
-        coin,
+        coin_trans,
         tx.pure(args.duration),
         tx.pure(args.global_config),
         tx.pure(args.decimalS),
@@ -49,16 +50,17 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
   }
   stake(
     types: { S: string; R: string },
-    args: { pool: string; coins: string; global_config: string },
+    args: { pool: string; coins: string[]; amount: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
   ): TransactionBlock {
     const tx = new TransactionBlock();
+    let coin_trans: TransactionArgument = manageObjectCoin(types.R, args.coins, args.amount, tx)
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::stake`,
       arguments: [
         tx.pure(args.pool),
-        tx.pure(args.coins),
+        coin_trans,
         tx.pure(args.global_config),
         tx.pure(clock),
       ],
@@ -69,16 +71,17 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
   }
   unstake(
     types: { S: string; R: string },
-    args: { pool: string; stake_amount: string; global_config: string },
+    args: { pool: string; coins: string[]; amount: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
   ): TransactionBlock {
     const tx = new TransactionBlock();
+    let coin_trans: TransactionArgument = manageObjectCoin(types.R, args.coins, args.amount, tx)
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::unstake`,
       arguments: [
         tx.pure(args.pool),
-        tx.pure(args.stake_amount),
+        coin_trans,
         tx.pure(args.global_config),
         tx.pure(clock),
       ],
@@ -108,17 +111,18 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
   }
   depositRewardCoins(
     types: { S: string; R: string },
-    args: { pool: string; num_rewards: string; reward_coins: string; global_config: string },
+    args: { pool: string; num_rewards: string; reward_coins: string[]; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
   ): TransactionBlock {
     const tx = new TransactionBlock();
-    const [coin] = tx.splitCoins(tx.object(args.reward_coins), [tx.pure(args.num_rewards)])
+    let coin_trans: TransactionArgument = manageObjectCoin(types.R, args.reward_coins, args.num_rewards, tx)
+
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::deposit_reward_coins`,
       arguments: [
         tx.pure(args.pool),
-        coin,
+        coin_trans,
         tx.pure(args.global_config),
         tx.pure(clock),
       ],

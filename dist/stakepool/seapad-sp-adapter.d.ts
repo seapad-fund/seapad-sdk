@@ -13,7 +13,6 @@ export declare class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<Promise<
         R: string;
     }, args: {
         num_rewards: string;
-        rewards: string;
         duration: string;
         global_config: string;
         decimalS: number;
@@ -25,7 +24,7 @@ export declare class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<Promise<
         R: string;
     }, args: {
         pool: string;
-        coins: string;
+        amount: string;
         global_config: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
     unstake(types: {
@@ -33,7 +32,7 @@ export declare class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<Promise<
         R: string;
     }, args: {
         pool: string;
-        stake_amount: string;
+        amount: string;
         global_config: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
     harvest(types: {
@@ -49,7 +48,6 @@ export declare class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<Promise<
     }, args: {
         pool: string;
         num_rewards: string;
-        reward_coins: string;
         global_config: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
     enableEmergency(types: {

@@ -6,7 +6,7 @@ import {
 } from '@mysten/sui.js';
 import { SeaPadFunc } from './seapad-func';
 import { SeaPadInput } from './seapad-input';
-import { GasBudget, OptionTx } from '../common';
+import { GasBudget, OptionTx, getCoinObjects } from '../common';
 
 export class SeaPadAdapter extends SeaPadFunc<
   Promise<SuiTransactionBlockResponse>
@@ -227,20 +227,20 @@ export class SeaPadAdapter extends SeaPadFunc<
   }
   async buy(
     types: { COIN: string; TOKEN: string },
-    args: { coins: string[]; amount: string; project: string },
+    args: { amount: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
-    const tx: TransactionBlock = this._seaPadInput.buy(
-      types,
-      args,
-      optionTx,
-      gasBudget,
-    );
-    const [coin] = tx.splitCoins(tx.gas, [tx.pure(args.amount)]);
-    tx.transferObjects([coin], tx.object(await this._signer.getAddress()));
+
+    const userAddress = await this._signer.getAddress();
+    let _coins: string[] = await getCoinObjects(types.COIN, args.amount, userAddress, this._suiProvider)
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: tx,
+      transactionBlock: this._seaPadInput.buy(
+        types,
+        { ...args, coins: _coins },
+        optionTx,
+        gasBudget,
+      ),
       ...this._getOptionTx(optionTx),
     });
   }

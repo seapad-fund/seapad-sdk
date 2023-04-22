@@ -1,6 +1,6 @@
 import { TransactionArgument, TransactionBlock } from '@mysten/sui.js';
 import { SeaPadFunc } from './seapad-func';
-import { GasBudget, OptionTx, getGasBudget } from '../common';
+import { GasBudget, OptionTx, getGasBudget, manageObjectCoin } from '../common';
 
 const clock =
   '0x0000000000000000000000000000000000000000000000000000000000000006';
@@ -249,26 +249,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
-    let coin_trans: TransactionArgument;
-    if (args.coins === null || undefined || args.coins.length === 0) {
-      throw new Error('Not coin transfer');
-    }
-
-    if (args.coins.length === 1) {
-      if (types.COIN === '0x2::sui::SUI') {
-        const [sui_trans] = tx.splitCoins(tx.gas, [tx.pure(args.amount)]);
-        coin_trans = sui_trans;
-      } else {
-        coin_trans = tx.pure(args.coins[0]);
-      }
-    } else {
-      const coin_base = args.coins.pop() as string;
-      tx.mergeCoins(
-        tx.object(coin_base),
-        args.coins.map((coin) => tx.object(coin)),
-      );
-      coin_trans = tx.pure(coin_base);
-    }
+    let coin_trans: TransactionArgument = manageObjectCoin(types.COIN, args.coins, args.amount, tx)
 
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::buy`,

@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SeapadWalletAdapter = void 0;
 const seapad_func_1 = require("./seapad-func");
 const seapad_input_1 = require("./seapad-input");
+const common_1 = require("../common");
 class SeapadWalletAdapter extends seapad_func_1.SeaPadFunc {
     constructor(walletContextState, packageObjectId, module, suiProvider) {
         super();
@@ -98,14 +99,7 @@ class SeapadWalletAdapter extends seapad_func_1.SeaPadFunc {
     }
     async buy(types, args, optionTx, gasBudget) {
         const userAddress = this._walletContextState.account?.address || '';
-        let _coins;
-        const pickCoinTrans = await this.pickupCoin(types.COIN, Number(args.amount), userAddress);
-        if (pickCoinTrans.isPicked) {
-            _coins = [pickCoinTrans.coin];
-        }
-        else {
-            _coins = pickCoinTrans.coinTrans;
-        }
+        let _coins = await (0, common_1.getCoinObjects)(types.COIN, args.amount, userAddress, this._suiProvider);
         const message = this._seaPadInput.buy(types, { ...args, coins: _coins }, optionTx, gasBudget);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }

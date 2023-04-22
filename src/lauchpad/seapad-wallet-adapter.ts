@@ -10,7 +10,7 @@ import {
   SuiSignAndExecuteTransactionBlockInput,
   SuiSignAndExecuteTransactionBlockOutput,
 } from '@mysten/wallet-standard';
-import { GasBudget, OptionTx } from '../common';
+import { GasBudget, OptionTx, getCoinObjects } from '../common';
 
 export class SeapadWalletAdapter extends SeaPadFunc<
   Promise<SuiSignAndExecuteTransactionBlockOutput>
@@ -213,18 +213,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const userAddress = this._walletContextState.account?.address || '';
-    let _coins: string[];
-
-    const pickCoinTrans = await this.pickupCoin(
-      types.COIN,
-      Number(args.amount),
-      userAddress,
-    );
-    if (pickCoinTrans.isPicked) {
-      _coins = [pickCoinTrans.coin];
-    } else {
-      _coins = pickCoinTrans.coinTrans;
-    }
+    let _coins: string[] = await getCoinObjects(types.COIN, args.amount, userAddress, this._suiProvider)
     const message = this._seaPadInput.buy(
       types,
       { ...args, coins: _coins },

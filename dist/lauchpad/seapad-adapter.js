@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SeaPadAdapter = void 0;
 const seapad_func_1 = require("./seapad-func");
 const seapad_input_1 = require("./seapad-input");
+const common_1 = require("../common");
 class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
     constructor(signer, packageObjectId, module) {
         super();
@@ -86,11 +87,10 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
         });
     }
     async buy(types, args, optionTx, gasBudget) {
-        const tx = this._seaPadInput.buy(types, args, optionTx, gasBudget);
-        const [coin] = tx.splitCoins(tx.gas, [tx.pure(args.amount)]);
-        tx.transferObjects([coin], tx.object(await this._signer.getAddress()));
+        const userAddress = await this._signer.getAddress();
+        let _coins = await (0, common_1.getCoinObjects)(types.COIN, args.amount, userAddress, this._suiProvider);
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: tx,
+            transactionBlock: this._seaPadInput.buy(types, { ...args, coins: _coins }, optionTx, gasBudget),
             ...this._getOptionTx(optionTx),
         });
     }
