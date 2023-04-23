@@ -72,7 +72,7 @@ export const pickupCoin = async (
         return ele?.coinObjectId
     })
 
-    if (totalBalance < expect_balance) {
+    if ((coinType !== "0x2::sui::SUI" && totalBalance < expect_balance) || (coinType === "0x2::sui::SUI" && totalBalance < expect_balance + getGasBudget())) {
         throw new Error('Not enough balance');
     }
 
@@ -96,15 +96,16 @@ export function manageObjectCoin(coin_type: string, coins: string[], amount: str
             const [sui_trans] = tx.splitCoins(tx.gas, [tx.pure(amount)]);
             coin_trans = sui_trans;
         } else {
-            coin_trans = tx.pure(coins[0]);
+            const [_coin_trans] = tx.splitCoins(tx.pure(coins[0]), [tx.pure(amount)]);
+            coin_trans = _coin_trans;
         }
     } else {
-        const coin_base = coins.pop() as string;
-        tx.mergeCoins(
-            tx.object(coin_base),
+        const [mergeObj] = tx.mergeCoins(
+            tx.object(coins.pop() as string),
             coins.map((coin) => tx.object(coin)),
         );
-        coin_trans = tx.pure(coin_base);
+        const [splitCoin] = tx.splitCoins(mergeObj, [tx.pure(amount)]);
+        coin_trans = splitCoin
     }
     //check balance
     return coin_trans
