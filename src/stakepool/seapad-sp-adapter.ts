@@ -49,6 +49,7 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
       decimalS: number;
       decimalR: number;
       duration_unstake_time_ms: number;
+      max_stake: string;
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
@@ -89,12 +90,10 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
   ): Promise<SuiTransactionBlockResponse> {
-    const userAddress = await this._signer.getAddress();
-    let _coins: string[] = await getCoinObjects(types.R, args.amount, userAddress, this._suiProvider)
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadStakePoolInput.unstake(
         types,
-        { ...args, coins: _coins },
+        args,
         optionTx,
         gasBudget,
       ),

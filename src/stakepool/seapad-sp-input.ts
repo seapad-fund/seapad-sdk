@@ -25,6 +25,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
       decimalS: number;
       decimalR: number;
       duration_unstake_time_ms: number;
+      max_stake: string;
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
@@ -42,6 +43,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
         tx.pure(args.decimalR),
         tx.pure(clock),
         tx.pure(args.duration_unstake_time_ms),
+        tx.pure(args.max_stake)
       ],
       typeArguments: [types.S, types.R],
     });
@@ -71,17 +73,16 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
   }
   unstake(
     types: { S: string; R: string },
-    args: { pool: string; coins: string[]; amount: string; global_config: string },
+    args: { pool: string; amount: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
   ): TransactionBlock {
     const tx = new TransactionBlock();
-    let coin_trans: TransactionArgument = manageObjectCoin(types.R, args.coins, args.amount, tx)
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::unstake`,
       arguments: [
         tx.pure(args.pool),
-        coin_trans,
+        tx.pure(args.amount),
         tx.pure(args.global_config),
         tx.pure(clock),
       ],
