@@ -12,7 +12,7 @@ export declare const getCoins: (walletAddress: string, coinType: string, suiProv
 export declare const pickupCoin: (coinType: string, expect_balance: number, userAddress: string, suiProvider: JsonRpcProvider) => Promise<{
     coin: string;
     isPicked: boolean;
-    coinTrans: any;
+    coinTrans: string[];
 }>;
 export declare function manageObjectCoin(coin_type: string, coins: string[], amount: string, tx: TransactionBlock): TransactionArgument;
 export declare function getCoinObjects(coin_type: string, amount: string, address: string, suiProvider: JsonRpcProvider): Promise<string[]>;

@@ -45,10 +45,19 @@ const pickupCoin = async (coinType, expect_balance, userAddress, suiProvider) =>
         .find((coin) => {
         return Number(coin.balance) >= expect_balance;
     });
+    let totalBalance = 0;
+    const coins = allCoin?.map((ele) => {
+        totalBalance += Number(ele?.balance);
+        return ele?.coinObjectId;
+    });
+    if (totalBalance < expect_balance) {
+        throw new Error('Not enough balance');
+    }
+    console.log(totalBalance, coins);
     return {
         coin: coin?.coinObjectId,
         isPicked: coin !== undefined,
-        coinTrans: allCoin
+        coinTrans: coins
     };
 };
 exports.pickupCoin = pickupCoin;
@@ -71,6 +80,7 @@ function manageObjectCoin(coin_type, coins, amount, tx) {
         tx.mergeCoins(tx.object(coin_base), coins.map((coin) => tx.object(coin)));
         coin_trans = tx.pure(coin_base);
     }
+    //check balance
     return coin_trans;
 }
 exports.manageObjectCoin = manageObjectCoin;
