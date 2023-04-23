@@ -48,7 +48,7 @@ const pickupCoin = async (coinType, expect_balance, userAddress, suiProvider) =>
     return {
         coin: coin?.coinObjectId,
         isPicked: coin !== undefined,
-        coinTrans: allCoin.data
+        coinTrans: allCoin
     };
 };
 exports.pickupCoin = pickupCoin;

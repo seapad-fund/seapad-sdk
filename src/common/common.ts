@@ -70,7 +70,7 @@ export const pickupCoin = async (
     return {
         coin: coin?.coinObjectId as string,
         isPicked: coin !== undefined,
-        coinTrans: allCoin.data
+        coinTrans: allCoin
     };
 };
 

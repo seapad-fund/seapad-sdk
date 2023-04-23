@@ -176,22 +176,5 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
     splitCoin(amount: number, to: string): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     splitCoins(amounts: string[], to: string): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     buildTx(message: TransactionBlock): Omit<SuiSignAndExecuteTransactionBlockInput, 'account' | 'chain'>;
-    /**
-     * Fetch coin owned by an address
-     */
-    getCoins: (walletAddress: string, coinType: string) => Promise<{
-        message: string;
-        status: string;
-        data: any;
-    } | {
-        message: any;
-        status: string;
-        data: null;
-    }>;
-    pickupCoin: (coinType: string, expect_balance: number, userAddress: string) => Promise<{
-        coin: string;
-        isPicked: boolean;
-        coinTrans: any;
-    }>;
 }
 //# sourceMappingURL=seapad-wallet-adapter.d.ts.map

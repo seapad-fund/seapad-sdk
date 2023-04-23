@@ -7,52 +7,6 @@ const common_1 = require("../common");
 class SeapadWalletAdapter extends seapad_func_1.SeaPadFunc {
     constructor(walletContextState, packageObjectId, module, suiProvider) {
         super();
-        /**
-         * Fetch coin owned by an address
-         */
-        this.getCoins = async (walletAddress, coinType) => {
-            try {
-                let data = [];
-                let hasNextPage = true;
-                let nextCursor = null;
-                while (hasNextPage) {
-                    const response = await this._suiProvider.getCoins({
-                        owner: walletAddress,
-                        coinType: coinType,
-                        cursor: nextCursor,
-                        limit: 10,
-                    });
-                    data = response.data.filter((coin) => Number(coin.balance) > 0);
-                    nextCursor = response.nextCursor;
-                    hasNextPage = response.hasNextPage;
-                }
-                return {
-                    message: '',
-                    status: 'success',
-                    data: data,
-                };
-            }
-            catch (error) {
-                return {
-                    message: error.message,
-                    status: 'failed',
-                    data: null,
-                };
-            }
-        };
-        this.pickupCoin = async (coinType, expect_balance, userAddress) => {
-            const allCoin = await this.getCoins(userAddress, coinType);
-            const coin = allCoin.data
-                ?.sort((a, b) => b.balance - a.balance)
-                .find((coin) => {
-                return Number(coin.balance) >= expect_balance;
-            });
-            return {
-                coin: coin?.coinObjectId,
-                isPicked: coin !== undefined,
-                coinTrans: allCoin.data,
-            };
-        };
         this._seaPadInput = new seapad_input_1.SeaPadInput(packageObjectId, module);
         this._walletContextState = walletContextState;
         this._suiProvider = suiProvider;
