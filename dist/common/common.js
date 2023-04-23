@@ -25,7 +25,7 @@ const getCoins = async (walletAddress, coinType, suiProvider) => {
                 owner: walletAddress,
                 coinType: coinType,
                 cursor: nextCursor,
-                limit: 1000,
+                limit: 100,
             });
             data = response.data.filter((coin) => Number(coin.balance) > 0);
             nextCursor = response.nextCursor;
@@ -40,7 +40,7 @@ const getCoins = async (walletAddress, coinType, suiProvider) => {
 exports.getCoins = getCoins;
 const pickupCoin = async (coinType, expect_balance, userAddress, suiProvider) => {
     const allCoin = await (0, exports.getCoins)(userAddress, coinType, suiProvider);
-    const coin = allCoin.data
+    const coin = allCoin
         ?.sort((a, b) => b.balance - a.balance)
         .find((coin) => {
         return Number(coin.balance) >= expect_balance;

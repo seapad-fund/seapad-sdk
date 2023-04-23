@@ -42,7 +42,7 @@ export const getCoins = async (walletAddress: string, coinType: string, suiProvi
                 owner: walletAddress,
                 coinType: coinType,
                 cursor: nextCursor,
-                limit: 1000,
+                limit: 100,
             });
             data = response.data.filter((coin) => Number(coin.balance) > 0);
             nextCursor = response.nextCursor;
@@ -61,7 +61,7 @@ export const pickupCoin = async (
     suiProvider: JsonRpcProvider
 ) => {
     const allCoin = await getCoins(userAddress, coinType, suiProvider);
-    const coin: any = allCoin.data
+    const coin: any = allCoin
         ?.sort((a: any, b: any) => b.balance - a.balance)
         .find((coin: any) => {
             return Number(coin.balance) >= expect_balance;
