@@ -16,6 +16,7 @@ export declare class SeaPadStakePoolInput extends SeaPadStakePoolFunc<Transactio
         decimalS: number;
         decimalR: number;
         duration_unstake_time_ms: number;
+        max_stake: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
     stake(types: {
         S: string;
@@ -31,7 +32,6 @@ export declare class SeaPadStakePoolInput extends SeaPadStakePoolFunc<Transactio
         R: string;
     }, args: {
         pool: string;
-        coins: string[];
         amount: string;
         global_config: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;

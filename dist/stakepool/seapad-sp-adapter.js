@@ -43,10 +43,8 @@ class SeaPadStakePoolAdapter extends seapad_sp_func_1.SeaPadStakePoolFunc {
         });
     }
     async unstake(types, args, optionTx, gasBudget) {
-        const userAddress = await this._signer.getAddress();
-        let _coins = await (0, common_1.getCoinObjects)(types.R, args.amount, userAddress, this._suiProvider);
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadStakePoolInput.unstake(types, { ...args, coins: _coins }, optionTx, gasBudget),
+            transactionBlock: this._seaPadStakePoolInput.unstake(types, args, optionTx, gasBudget),
             ...this._getOptionTx(optionTx),
         });
     }

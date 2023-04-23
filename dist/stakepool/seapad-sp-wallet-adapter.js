@@ -24,9 +24,7 @@ class SeapadWalletSpAdapter extends seapad_sp_func_1.SeaPadStakePoolFunc {
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
     async unstake(types, args, optionTx, gasBudget) {
-        const userAddress = this._walletContextState.account?.address || '';
-        let _coins = await (0, common_1.getCoinObjects)(types.R, args.amount, userAddress, this._suiProvider);
-        const message = this._seaPadStakePoolInput.unstake(types, { ...args, coins: _coins }, optionTx, gasBudget);
+        const message = this._seaPadStakePoolInput.unstake(types, args, optionTx, gasBudget);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
     async harvest(types, args, optionTx, gasBudget) {

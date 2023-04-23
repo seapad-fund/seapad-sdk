@@ -24,6 +24,7 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
                 tx.pure(args.decimalR),
                 tx.pure(clock),
                 tx.pure(args.duration_unstake_time_ms),
+                tx.pure(args.max_stake)
             ],
             typeArguments: [types.S, types.R],
         });
@@ -48,12 +49,11 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
     }
     unstake(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
-        let coin_trans = (0, common_1.manageObjectCoin)(types.R, args.coins, args.amount, tx);
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::unstake`,
             arguments: [
                 tx.pure(args.pool),
-                coin_trans,
+                tx.pure(args.amount),
                 tx.pure(args.global_config),
                 tx.pure(clock),
             ],
