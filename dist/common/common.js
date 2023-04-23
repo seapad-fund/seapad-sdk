@@ -54,7 +54,7 @@ const pickupCoin = async (coinType, expect_balance, userAddress, suiProvider) =>
 exports.pickupCoin = pickupCoin;
 function manageObjectCoin(coin_type, coins, amount, tx) {
     let coin_trans;
-    if (coins === null || typeof coins === undefined || coins.length === 0) {
+    if (coins === null || coins === undefined || coins.length === 0) {
         throw new Error('Not coin transfer');
     }
     if (coins.length === 1) {

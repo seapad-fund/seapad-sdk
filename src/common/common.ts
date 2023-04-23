@@ -76,7 +76,7 @@ export const pickupCoin = async (
 
 export function manageObjectCoin(coin_type: string, coins: string[], amount: string, tx: TransactionBlock): TransactionArgument {
     let coin_trans: TransactionArgument;
-    if (coins === null || typeof coins === undefined || coins.length === 0) {
+    if (coins === null || coins === undefined || coins.length === 0) {
         throw new Error('Not coin transfer');
     }
 
