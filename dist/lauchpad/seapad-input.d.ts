@@ -5,7 +5,7 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     _module: string;
     _packageObjectId: string;
     constructor(packageObjectId: string, module: string);
-    _getPackageObjectId: (packageObjectId?: string | null) => string | any;
+    _getPackageObjectId: (packageObjectId?: string | null) => string;
     changeAdmin(args: {
         admin_cap: string;
         to: string;

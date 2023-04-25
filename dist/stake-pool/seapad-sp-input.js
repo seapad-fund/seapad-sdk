@@ -12,7 +12,7 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
             if (packageObjectId != null && packageObjectId != undefined) {
                 return packageObjectId;
             }
-            return this._getPackageObjectId;
+            return this._packageObjectId;
         };
         this._packageObjectId = packageObjectId;
         this._module = module;

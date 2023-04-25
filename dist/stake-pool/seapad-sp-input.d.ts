@@ -5,7 +5,7 @@ export declare class SeaPadStakePoolInput extends SeaPadStakePoolFunc<Transactio
     _packageObjectId: string;
     _module: string;
     constructor(packageObjectId: string, module: string);
-    _getPackageObjectId: (packageObjectId?: string | null) => string | any;
+    _getPackageObjectId: (packageObjectId?: string | null) => string;
     registerPool(types: {
         S: string;
         R: string;

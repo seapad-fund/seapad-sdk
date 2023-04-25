@@ -12,7 +12,7 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
             if (packageObjectId != null && packageObjectId != undefined) {
                 return packageObjectId;
             }
-            return this._getPackageObjectId;
+            return this._packageObjectId;
         };
         this._packageObjectId = packageObjectId;
         this._module = module;

@@ -5,7 +5,7 @@ export declare class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlo
     _packageObjectId: string;
     _module: string;
     constructor(packageObjectId: string, module: string);
-    _getPackageObjectId: (packageObjectId?: string | null) => string | any;
+    _getPackageObjectId: (packageObjectId?: string | null) => string;
     changeAdmin(args: {
         admin_cap: string;
         to: string;

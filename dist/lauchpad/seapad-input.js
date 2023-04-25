@@ -12,7 +12,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             if (packageObjectId != null && packageObjectId != undefined) {
                 return packageObjectId;
             }
-            return this._getPackageObjectId;
+            return this._packageObjectId;
         };
         this._packageObjectId = packageObjectId;
         this._module = module;
