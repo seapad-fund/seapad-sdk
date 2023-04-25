@@ -131,7 +131,8 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         COIN: string;
         TOKEN: string;
     }, args: {
-        coin: string;
+        amount: string;
+        coins: string[];
         value: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget): TransactionBlock;

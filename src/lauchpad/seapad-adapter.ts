@@ -310,14 +310,16 @@ export class SeaPadAdapter extends SeaPadFunc<
   }
   async depositProject(
     types: { COIN: string; TOKEN: string },
-    args: { coin: string; value: string; project: string },
+    args: { amount: string; value: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): Promise<SuiTransactionBlockResponse> {
+    const userAddress = await this._signer.getAddress();
+    let _coins: string[] = await getCoinObjects(types.COIN, args.amount, userAddress, this._suiProvider)
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadInput.depositProject(
         types,
-        args,
+        { ...args, coins: _coins },
         optionTx,
         gasBudget,
       ),

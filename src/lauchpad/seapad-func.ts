@@ -196,7 +196,7 @@ export abstract class SeaPadFunc<T> {
    */
   abstract depositProject(
     types: { COIN: string; TOKEN: string },
-    args: { coin: string; value: string; project: string },
+    args: { amount: string; coins?: string[]; value: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): T;
