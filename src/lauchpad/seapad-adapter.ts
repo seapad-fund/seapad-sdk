@@ -346,7 +346,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     packageObjectId?: string | null
   ): Promise<SuiTransactionBlockResponse> {
     const userAddress = await this._signer.getAddress();
-    let _coins: string[] = await getCoinObjects(types.COIN, args.value, userAddress, this._suiProvider)
+    let _coins: string[] = await getCoinObjects(types.TOKEN, args.value, userAddress, this._suiProvider)
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadInput.depositProject(
         types,
