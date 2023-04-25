@@ -80,7 +80,7 @@ export class SeapadWalletNftPoolAdapter extends SeaPadNftPoolFunc<
       this.buildTx(message),
     );
   }
-  async addWhitelist(types: { COIN: string; }, args: { admin_cap: string; pool: string; white: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+  async addWhitelist(types: { COIN: string; }, args: { admin_cap: string; pool: string; tos: string[]; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadNftPoolInput.addWhitelist(types, args, optionTx, gasBudget);
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),

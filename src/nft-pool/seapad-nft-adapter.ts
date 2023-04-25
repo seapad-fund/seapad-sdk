@@ -112,7 +112,7 @@ export class SeaPadNftPoolAdapter extends SeaPadNftPoolFunc<
       ...this._getOptionTx(optionTx),
     });
   }
-  async addWhitelist(types: { COIN: string; }, args: { admin_cap: string; pool: string; white: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse> {
+  async addWhitelist(types: { COIN: string; }, args: { admin_cap: string; pool: string; tos: string[]; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadNftPoolInput.addWhitelist(
         types,

@@ -134,7 +134,7 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.pool),
-                tx.pure(args.white)
+                tx.pure(args.tos)
             ],
             typeArguments: [types.COIN]
         });

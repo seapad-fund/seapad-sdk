@@ -70,7 +70,7 @@ export declare class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlo
     }, args: {
         admin_cap: string;
         pool: string;
-        white: string;
+        tos: string[];
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
     withdrawFund(types: {
         COIN: string;

@@ -103,14 +103,14 @@ export declare abstract class SeaPadNftPoolFunc<T> {
     /**
      *
      * @param types <COIN>
-     * @param args _adminCap: &NftAdminCap, pool: &mut NftPool<COIN>, white: address
+     * @param args _adminCap: &NftAdminCap, pool: &mut NftPool<COIN>, tos: address
      */
     abstract addWhitelist(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
         pool: string;
-        white: string;
+        tos: string[];
     }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
     /**
      *

@@ -133,14 +133,14 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
   }
-  addWhitelist(types: { COIN: string; }, args: { admin_cap: string; pool: string; white: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock {
+  addWhitelist(types: { COIN: string; }, args: { admin_cap: string; pool: string; tos: string[]; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::add_whitelist`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.pool),
-        tx.pure(args.white)
+        tx.pure(args.tos)
       ],
       typeArguments: [types.COIN]
     });
