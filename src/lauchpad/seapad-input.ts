@@ -336,12 +336,12 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   }
   depositProject(
     types: { COIN: string; TOKEN: string },
-    args: { amount: string; coins: string[]; value: string; project: string },
+    args: { coins: string[]; value: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
-    let coin_trans: TransactionArgument = manageObjectCoin(types.COIN, args.coins, args.amount, tx)
+    let coin_trans: TransactionArgument = manageObjectCoin(types.COIN, args.coins, args.value, tx)
 
     tx.moveCall({
       target: `${this._packageObjectId}::${this._module}::deposit_by_owner`,

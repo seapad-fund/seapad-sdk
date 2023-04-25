@@ -217,7 +217,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
     }
     depositProject(types, args, optionTx, gasBudget) {
         const tx = new sui_js_1.TransactionBlock();
-        let coin_trans = (0, common_1.manageObjectCoin)(types.COIN, args.coins, args.amount, tx);
+        let coin_trans = (0, common_1.manageObjectCoin)(types.COIN, args.coins, args.value, tx);
         tx.moveCall({
             target: `${this._packageObjectId}::${this._module}::deposit_by_owner`,
             arguments: [

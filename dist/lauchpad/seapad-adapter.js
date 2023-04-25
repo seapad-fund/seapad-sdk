@@ -120,7 +120,7 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
     }
     async depositProject(types, args, optionTx, gasBudget) {
         const userAddress = await this._signer.getAddress();
-        let _coins = await (0, common_1.getCoinObjects)(types.COIN, args.amount, userAddress, this._suiProvider);
+        let _coins = await (0, common_1.getCoinObjects)(types.COIN, args.value, userAddress, this._suiProvider);
         return await this._signer.signAndExecuteTransactionBlock({
             transactionBlock: this._seaPadInput.depositProject(types, { ...args, coins: _coins }, optionTx, gasBudget),
             ...this._getOptionTx(optionTx),
