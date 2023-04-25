@@ -20,7 +20,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
     if (packageObjectId != null && packageObjectId != undefined) {
       return packageObjectId
     }
-    return this._getPackageObjectId
+    return this._packageObjectId
   }
 
   changeAdmin(args: { admin_cap: string; to: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {

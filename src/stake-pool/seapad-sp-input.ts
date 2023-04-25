@@ -19,7 +19,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
     if (packageObjectId != null && packageObjectId != undefined) {
       return packageObjectId
     }
-    return this._getPackageObjectId
+    return this._packageObjectId
   }
 
   registerPool(

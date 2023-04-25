@@ -19,7 +19,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     if (packageObjectId != null && packageObjectId != undefined) {
       return packageObjectId
     }
-    return this._getPackageObjectId
+    return this._packageObjectId
   }
 
   changeAdmin(
