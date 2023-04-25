@@ -377,7 +377,6 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     return tx;
   }
   depositProject(
-
     types: { COIN: string; TOKEN: string },
     args: { coins: string[]; value: string; project: string },
     optionTx?: OptionTx,
@@ -386,7 +385,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     const coin_trans: TransactionArgument = manageObjectCoin(
-      types.COIN,
+      types.TOKEN,
       args.coins,
       args.value,
       tx,
