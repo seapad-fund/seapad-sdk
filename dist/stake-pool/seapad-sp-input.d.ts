@@ -5,6 +5,7 @@ export declare class SeaPadStakePoolInput extends SeaPadStakePoolFunc<Transactio
     _packageObjectId: string;
     _module: string;
     constructor(packageObjectId: string, module: string);
+    _getPackageObjectId: (packageObjectId?: string | null) => string | any;
     registerPool(types: {
         S: string;
         R: string;
@@ -17,7 +18,7 @@ export declare class SeaPadStakePoolInput extends SeaPadStakePoolFunc<Transactio
         decimalR: number;
         duration_unstake_time_ms: number;
         max_stake: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     stake(types: {
         S: string;
         R: string;
@@ -26,7 +27,7 @@ export declare class SeaPadStakePoolInput extends SeaPadStakePoolFunc<Transactio
         coins: string[];
         amount: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     unstake(types: {
         S: string;
         R: string;
@@ -34,14 +35,14 @@ export declare class SeaPadStakePoolInput extends SeaPadStakePoolFunc<Transactio
         pool: string;
         amount: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     harvest(types: {
         S: string;
         R: string;
     }, args: {
         pool: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     depositRewardCoins(types: {
         S: string;
         R: string;
@@ -50,14 +51,14 @@ export declare class SeaPadStakePoolInput extends SeaPadStakePoolFunc<Transactio
         num_rewards: string;
         reward_coins: string[];
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     enableEmergency(types: {
         S: string;
         R: string;
     }, args: {
         pool: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     emergencyUnstake(types: {
         S: string;
         R: string;
@@ -65,7 +66,7 @@ export declare class SeaPadStakePoolInput extends SeaPadStakePoolFunc<Transactio
         pool: string;
         amount: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     withdrawRewardToTreasury(types: {
         S: string;
         R: string;
@@ -73,6 +74,6 @@ export declare class SeaPadStakePoolInput extends SeaPadStakePoolFunc<Transactio
         pool: string;
         amount: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
 }
 //# sourceMappingURL=seapad-sp-input.d.ts.map

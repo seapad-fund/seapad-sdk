@@ -10,7 +10,7 @@ export declare class SeaPadNftPoolAdapter extends SeaPadNftPoolFunc<Promise<SuiT
     changeAdmin(args: {
         admin_cap: string;
         to: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     createPool(types: {
         COIN: string;
     }, args: {
@@ -24,7 +24,7 @@ export declare class SeaPadNftPoolAdapter extends SeaPadNftPoolFunc<Promise<SuiT
         allocate: string;
         start_time: string;
         end_time: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     addTemplate(types: {
         COIN: string;
     }, args: {
@@ -35,13 +35,13 @@ export declare class SeaPadNftPoolAdapter extends SeaPadNftPoolFunc<Promise<SuiT
         url: string;
         price: string;
         type: number;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     startPool(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     buyNft(types: {
         COIN: string;
     }, args: {
@@ -49,43 +49,43 @@ export declare class SeaPadNftPoolAdapter extends SeaPadNftPoolFunc<Promise<SuiT
         nft_types: string;
         nft_amounts: string;
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     stopPool(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     claimNft(types: {
         COIN: string;
     }, args: {
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     claimRefund(types: {
         COIN: string;
     }, args: {
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     addWhitelist(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
         pool: string;
         tos: string[];
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     withdrawFund(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
         pool: string;
         amt: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     changeTreasuryAdmin(types: {
         COIN: string;
     }, args: {
         admin_treasury_cap: string;
         to: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     _getOptionTx(optionTx: OptionTx): OptionTx;
 }
 //# sourceMappingURL=seapad-nft-adapter.d.ts.map

@@ -53,6 +53,7 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null
   ): Promise<SuiTransactionBlockResponse> {
     const userAddress = await this._signer.getAddress();
     let _coins: string[] = await getCoinObjects(types.R, args.num_rewards, userAddress, this._suiProvider)
@@ -62,6 +63,7 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
         { ...args, rewards: _coins },
         optionTx,
         gasBudget,
+        packageObjectId
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -71,6 +73,7 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
     args: { pool: string; amount: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null
   ): Promise<SuiTransactionBlockResponse> {
     const userAddress = await this._signer.getAddress();
     let _coins: string[] = await getCoinObjects(types.R, args.amount, userAddress, this._suiProvider)
@@ -80,6 +83,7 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
         { ...args, coins: _coins },
         optionTx,
         gasBudget,
+        packageObjectId
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -89,6 +93,7 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
     args: { pool: string; amount: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadStakePoolInput.unstake(
@@ -96,6 +101,7 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
         args,
         optionTx,
         gasBudget,
+        packageObjectId
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -105,6 +111,7 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
     args: { pool: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadStakePoolInput.harvest(
@@ -112,6 +119,7 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
         args,
         optionTx,
         gasBudget,
+        packageObjectId
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -125,6 +133,7 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null
   ): Promise<SuiTransactionBlockResponse> {
     const userAddress = await this._signer.getAddress();
     let _coins: string[] = await getCoinObjects(types.R, args.num_rewards, userAddress, this._suiProvider)
@@ -134,6 +143,7 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
         { ...args, reward_coins: _coins },
         optionTx,
         gasBudget,
+        packageObjectId
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -143,6 +153,7 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
     args: { pool: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadStakePoolInput.enableEmergency(
@@ -150,6 +161,7 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
         args,
         optionTx,
         gasBudget,
+        packageObjectId
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -159,6 +171,7 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
     args: { pool: string; amount: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadStakePoolInput.emergencyUnstake(
@@ -166,6 +179,7 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
         args,
         optionTx,
         gasBudget,
+        packageObjectId
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -175,6 +189,7 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
     args: { pool: string; amount: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadStakePoolInput.withdrawRewardToTreasury(
@@ -182,6 +197,7 @@ export class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<
         args,
         optionTx,
         gasBudget,
+        packageObjectId
       ),
       ...this._getOptionTx(optionTx),
     });

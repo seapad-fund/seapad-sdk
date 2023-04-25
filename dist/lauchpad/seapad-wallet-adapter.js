@@ -11,92 +11,92 @@ class SeapadWalletAdapter extends seapad_func_1.SeaPadFunc {
         this._walletContextState = walletContextState;
         this._suiProvider = suiProvider;
     }
-    async changeAdmin(args, optionTx, gasBudget) {
-        const message = this._seaPadInput.changeAdmin(args, optionTx, gasBudget);
+    async changeAdmin(args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.changeAdmin(args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async changeOwner(args, optionTx, gasBudget) {
-        const message = this._seaPadInput.changeOwner(args, optionTx, gasBudget);
+    async changeOwner(args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.changeOwner(args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async createProject(types, args, optionTx, gasBudget) {
-        const message = this._seaPadInput.createProject(types, args, optionTx, gasBudget);
+    async createProject(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.createProject(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async addMilestone(types, args, optionTx, gasBudget) {
-        const message = this._seaPadInput.addMilestone(types, args, optionTx, gasBudget);
+    async addMilestone(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.addMilestone(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async resetMilestone(types, args, optionTx, gasBudget) {
-        const message = this._seaPadInput.resetMilestone(types, args, optionTx, gasBudget);
+    async resetMilestone(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.resetMilestone(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async setupProject(types, args, optionTx, gasBudget) {
-        const message = this._seaPadInput.setupProject(types, args, optionTx, gasBudget);
+    async setupProject(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.setupProject(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async saveProfile(types, args, optionTx, gasBudget) {
-        const message = this._seaPadInput.saveProfile(types, args, optionTx, gasBudget);
+    async saveProfile(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.saveProfile(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async addWhitelist(types, args, optionTx, gasBudget) {
-        const message = this._seaPadInput.addWhitelist(types, args, optionTx, gasBudget);
+    async addWhitelist(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.addWhitelist(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async removeWhitelist(types, args, optionTx, gasBudget) {
-        const message = this._seaPadInput.removeWhitelist(types, args, optionTx, gasBudget);
+    async removeWhitelist(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.removeWhitelist(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async startFundRaising(types, args, optionTx, gasBudget) {
-        const message = this._seaPadInput.startFundRaising(types, args, optionTx, gasBudget);
+    async startFundRaising(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.startFundRaising(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async buy(types, args, optionTx, gasBudget) {
+    async buy(types, args, optionTx, gasBudget, packageObjectId) {
         const userAddress = this._walletContextState.account?.address || '';
         let _coins = await (0, common_1.getCoinObjects)(types.COIN, args.amount, userAddress, this._suiProvider);
-        const message = this._seaPadInput.buy(types, { ...args, coins: _coins }, optionTx, gasBudget);
+        const message = this._seaPadInput.buy(types, { ...args, coins: _coins }, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async endFundRaising(types, args, optionTx, gasBudget) {
-        const message = this._seaPadInput.endFundRaising(types, args, optionTx, gasBudget);
+    async endFundRaising(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.endFundRaising(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async endRefund(types, args, optionTx, gasBudget) {
-        const message = this._seaPadInput.endRefund(types, args, optionTx, gasBudget);
+    async endRefund(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.endRefund(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async distributeRaisedFund(types, args, optionTx, gasBudget) {
-        const message = this._seaPadInput.distributeRaisedFund(types, args, optionTx, gasBudget);
+    async distributeRaisedFund(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.distributeRaisedFund(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async refundTokenToOwner(types, args, optionTx, gasBudget) {
-        const message = this._seaPadInput.refundTokenToOwner(types, args, optionTx, gasBudget);
+    async refundTokenToOwner(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.refundTokenToOwner(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async depositProject(types, args, optionTx, gasBudget) {
+    async depositProject(types, args, optionTx, gasBudget, packageObjectId) {
         const userAddress = this._walletContextState.account?.address || '';
         let _coins = await (0, common_1.getCoinObjects)(types.COIN, args.value, userAddress, this._suiProvider);
-        const message = this._seaPadInput.depositProject(types, { ...args, coins: _coins }, optionTx, gasBudget);
+        const message = this._seaPadInput.depositProject(types, { ...args, coins: _coins }, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async userClaimToken(types, args, optionTx, gasBudget) {
-        const message = this._seaPadInput.userClaimToken(types, args, optionTx, gasBudget);
+    async userClaimToken(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.userClaimToken(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async claimRefund(types, args, optionTx, gasBudget) {
-        const message = this._seaPadInput.claimRefund(types, args, optionTx, gasBudget);
+    async claimRefund(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.claimRefund(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async vote(types, args, optionTx, gasBudget) {
-        const message = this._seaPadInput.vote(types, args, optionTx, gasBudget);
+    async vote(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.vote(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async addMaxAllocate(types, args, optionTx, gasBudget) {
-        const message = this._seaPadInput.addMaxAllocate(types, args, optionTx, gasBudget);
+    async addMaxAllocate(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.addMaxAllocate(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async removeMaxAllocate(types, args, optionTx, gasBudget) {
-        const message = this._seaPadInput.removeMaxAllocate(types, args, optionTx, gasBudget);
+    async removeMaxAllocate(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadInput.removeMaxAllocate(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
     async splitCoin(amount, to) {

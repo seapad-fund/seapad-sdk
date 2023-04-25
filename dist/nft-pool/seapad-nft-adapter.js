@@ -11,71 +11,71 @@ class SeaPadNftPoolAdapter extends seapad_nft_func_1.SeaPadNftPoolFunc {
         this._signer = signer;
         this._suiProvider = signer.provider;
     }
-    async changeAdmin(args, optionTx, gasBudget) {
+    async changeAdmin(args, optionTx, gasBudget, packageObjectId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadNftPoolInput.changeAdmin(args, optionTx, gasBudget),
+            transactionBlock: this._seaPadNftPoolInput.changeAdmin(args, optionTx, gasBudget, packageObjectId),
             ...this._getOptionTx(optionTx),
         });
     }
-    async createPool(types, args, optionTx, gasBudget) {
+    async createPool(types, args, optionTx, gasBudget, packageObjectId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadNftPoolInput.createPool(types, args, optionTx, gasBudget),
+            transactionBlock: this._seaPadNftPoolInput.createPool(types, args, optionTx, gasBudget, packageObjectId),
             ...this._getOptionTx(optionTx),
         });
     }
-    async addTemplate(types, args, optionTx, gasBudget) {
+    async addTemplate(types, args, optionTx, gasBudget, packageObjectId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadNftPoolInput.addTemplate(types, args, optionTx, gasBudget),
+            transactionBlock: this._seaPadNftPoolInput.addTemplate(types, args, optionTx, gasBudget, packageObjectId),
             ...this._getOptionTx(optionTx),
         });
     }
-    async startPool(types, args, optionTx, gasBudget) {
+    async startPool(types, args, optionTx, gasBudget, packageObjectId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadNftPoolInput.startPool(types, args, optionTx, gasBudget),
+            transactionBlock: this._seaPadNftPoolInput.startPool(types, args, optionTx, gasBudget, packageObjectId),
             ...this._getOptionTx(optionTx),
         });
     }
-    async buyNft(types, args, optionTx, gasBudget) {
+    async buyNft(types, args, optionTx, gasBudget, packageObjectId) {
         const userAddress = await this._signer.getAddress();
         let _coins = await (0, common_1.getCoinObjects)(types.COIN, args.amount, userAddress, this._suiProvider);
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadNftPoolInput.buyNft(types, { ...args, coins: _coins }, optionTx, gasBudget),
+            transactionBlock: this._seaPadNftPoolInput.buyNft(types, { ...args, coins: _coins }, optionTx, gasBudget, packageObjectId),
             ...this._getOptionTx(optionTx),
         });
     }
-    async stopPool(types, args, optionTx, gasBudget) {
+    async stopPool(types, args, optionTx, gasBudget, packageObjectId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadNftPoolInput.stopPool(types, args, optionTx, gasBudget),
+            transactionBlock: this._seaPadNftPoolInput.stopPool(types, args, optionTx, gasBudget, packageObjectId),
             ...this._getOptionTx(optionTx),
         });
     }
-    async claimNft(types, args, optionTx, gasBudget) {
+    async claimNft(types, args, optionTx, gasBudget, packageObjectId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadNftPoolInput.claimNft(types, args, optionTx, gasBudget),
+            transactionBlock: this._seaPadNftPoolInput.claimNft(types, args, optionTx, gasBudget, packageObjectId),
             ...this._getOptionTx(optionTx),
         });
     }
-    async claimRefund(types, args, optionTx, gasBudget) {
+    async claimRefund(types, args, optionTx, gasBudget, packageObjectId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadNftPoolInput.claimRefund(types, args, optionTx, gasBudget),
+            transactionBlock: this._seaPadNftPoolInput.claimRefund(types, args, optionTx, gasBudget, packageObjectId),
             ...this._getOptionTx(optionTx),
         });
     }
-    async addWhitelist(types, args, optionTx, gasBudget) {
+    async addWhitelist(types, args, optionTx, gasBudget, packageObjectId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadNftPoolInput.addWhitelist(types, args, optionTx, gasBudget),
+            transactionBlock: this._seaPadNftPoolInput.addWhitelist(types, args, optionTx, gasBudget, packageObjectId),
             ...this._getOptionTx(optionTx),
         });
     }
-    async withdrawFund(types, args, optionTx, gasBudget) {
+    async withdrawFund(types, args, optionTx, gasBudget, packageObjectId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadNftPoolInput.withdrawFund(types, args, optionTx, gasBudget),
+            transactionBlock: this._seaPadNftPoolInput.withdrawFund(types, args, optionTx, gasBudget, packageObjectId),
             ...this._getOptionTx(optionTx),
         });
     }
-    async changeTreasuryAdmin(types, args, optionTx, gasBudget) {
+    async changeTreasuryAdmin(types, args, optionTx, gasBudget, packageObjectId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadNftPoolInput.changeTreasuryAdmin(types, args, optionTx, gasBudget),
+            transactionBlock: this._seaPadNftPoolInput.changeTreasuryAdmin(types, args, optionTx, gasBudget, packageObjectId),
             ...this._getOptionTx(optionTx),
         });
     }

@@ -5,10 +5,11 @@ export declare class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlo
     _packageObjectId: string;
     _module: string;
     constructor(packageObjectId: string, module: string);
+    _getPackageObjectId: (packageObjectId?: string | null) => string | any;
     changeAdmin(args: {
         admin_cap: string;
         to: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     createPool(types: {
         COIN: string;
     }, args: {
@@ -22,7 +23,7 @@ export declare class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlo
         allocate: string;
         start_time: string;
         end_time: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     addTemplate(types: {
         COIN: string;
     }, args: {
@@ -33,13 +34,13 @@ export declare class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlo
         url: string;
         price: string;
         type: number;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     startPool(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     buyNft(types: {
         COIN: string;
     }, args: {
@@ -48,42 +49,42 @@ export declare class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlo
         nft_types: string;
         nft_amounts: string;
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     stopPool(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     claimNft(types: {
         COIN: string;
     }, args: {
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     claimRefund(types: {
         COIN: string;
     }, args: {
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     addWhitelist(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
         pool: string;
         tos: string[];
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     withdrawFund(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
         pool: string;
         amt: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     changeTreasuryAdmin(types: {
         COIN: string;
     }, args: {
         admin_treasury_cap: string;
         to: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
 }
 //# sourceMappingURL=seapad-nft-input.d.ts.map

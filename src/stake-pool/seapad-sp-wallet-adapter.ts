@@ -43,6 +43,7 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const userAddress = this._walletContextState.account?.address || '';
     let _coins: string[] = await getCoinObjects(types.R, args.num_rewards, userAddress, this._suiProvider)
@@ -51,6 +52,7 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
       { ...args, rewards: _coins },
       optionTx,
       gasBudget,
+      packageObjectId
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -61,6 +63,7 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
     args: { pool: string; amount: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const userAddress = this._walletContextState.account?.address || '';
     let _coins: string[] = await getCoinObjects(types.R, args.amount, userAddress, this._suiProvider)
@@ -69,6 +72,7 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
       { ...args, coins: _coins },
       optionTx,
       gasBudget,
+      packageObjectId
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -79,12 +83,14 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
     args: { pool: string; amount: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadStakePoolInput.unstake(
       types,
       args,
       optionTx,
       gasBudget,
+      packageObjectId
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -95,12 +101,14 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
     args: { pool: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadStakePoolInput.harvest(
       types,
       args,
       optionTx,
       gasBudget,
+      packageObjectId
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -115,6 +123,7 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const userAddress = this._walletContextState.account?.address || '';
     let _coins: string[] = await getCoinObjects(types.R, args.num_rewards, userAddress, this._suiProvider)
@@ -123,6 +132,7 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
       { ...args, reward_coins: _coins },
       optionTx,
       gasBudget,
+      packageObjectId
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -133,12 +143,14 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
     args: { pool: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadStakePoolInput.enableEmergency(
       types,
       args,
       optionTx,
       gasBudget,
+      packageObjectId
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -149,12 +161,14 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
     args: { pool: string; amount: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadStakePoolInput.emergencyUnstake(
       types,
       args,
       optionTx,
       gasBudget,
+      packageObjectId
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -165,12 +179,14 @@ export class SeapadWalletSpAdapter extends SeaPadStakePoolFunc<
     args: { pool: string; amount: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadStakePoolInput.withdrawRewardToTreasury(
       types,
       args,
       optionTx,
       gasBudget,
+      packageObjectId
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),

@@ -19,7 +19,7 @@ export declare class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<Promise<
         decimalR: number;
         duration_unstake_time_ms: number;
         max_stake: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     stake(types: {
         S: string;
         R: string;
@@ -27,7 +27,7 @@ export declare class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<Promise<
         pool: string;
         amount: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     unstake(types: {
         S: string;
         R: string;
@@ -35,14 +35,14 @@ export declare class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<Promise<
         pool: string;
         amount: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     harvest(types: {
         S: string;
         R: string;
     }, args: {
         pool: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     depositRewardCoins(types: {
         S: string;
         R: string;
@@ -50,14 +50,14 @@ export declare class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<Promise<
         pool: string;
         num_rewards: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     enableEmergency(types: {
         S: string;
         R: string;
     }, args: {
         pool: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     emergencyUnstake(types: {
         S: string;
         R: string;
@@ -65,7 +65,7 @@ export declare class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<Promise<
         pool: string;
         amount: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     withdrawRewardToTreasury(types: {
         S: string;
         R: string;
@@ -73,6 +73,6 @@ export declare class SeaPadStakePoolAdapter extends SeaPadStakePoolFunc<Promise<
         pool: string;
         amount: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
 }
 //# sourceMappingURL=seapad-sp-adapter.d.ts.map

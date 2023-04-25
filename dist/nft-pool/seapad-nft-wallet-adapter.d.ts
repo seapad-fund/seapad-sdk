@@ -12,7 +12,7 @@ export declare class SeapadWalletNftPoolAdapter extends SeaPadNftPoolFunc<Promis
     changeAdmin(args: {
         admin_cap: string;
         to: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     createPool(types: {
         COIN: string;
     }, args: {
@@ -26,7 +26,7 @@ export declare class SeapadWalletNftPoolAdapter extends SeaPadNftPoolFunc<Promis
         allocate: string;
         start_time: string;
         end_time: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     addTemplate(types: {
         COIN: string;
     }, args: {
@@ -37,13 +37,13 @@ export declare class SeapadWalletNftPoolAdapter extends SeaPadNftPoolFunc<Promis
         url: string;
         price: string;
         type: number;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     startPool(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     buyNft(types: {
         COIN: string;
     }, args: {
@@ -51,43 +51,43 @@ export declare class SeapadWalletNftPoolAdapter extends SeaPadNftPoolFunc<Promis
         nft_types: string;
         nft_amounts: string;
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     stopPool(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     claimNft(types: {
         COIN: string;
     }, args: {
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     claimRefund(types: {
         COIN: string;
     }, args: {
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     addWhitelist(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
         pool: string;
         tos: string[];
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     withdrawFund(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
         pool: string;
         amt: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     changeTreasuryAdmin(types: {
         COIN: string;
     }, args: {
         admin_treasury_cap: string;
         to: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     buildTx(message: TransactionBlock): Omit<SuiSignAndExecuteTransactionBlockInput, 'account' | 'chain'>;
 }
 //# sourceMappingURL=seapad-nft-wallet-adapter.d.ts.map

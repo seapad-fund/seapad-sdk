@@ -8,31 +8,37 @@ const clock = '0x000000000000000000000000000000000000000000000000000000000000000
 class SeaPadInput extends seapad_func_1.SeaPadFunc {
     constructor(packageObjectId, module) {
         super();
+        this._getPackageObjectId = (packageObjectId) => {
+            if (packageObjectId != null && packageObjectId != undefined) {
+                return packageObjectId;
+            }
+            return this._getPackageObjectId;
+        };
         this._packageObjectId = packageObjectId;
         this._module = module;
     }
-    changeAdmin(args, optionTx, gasBudget) {
+    changeAdmin(args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::change_admin`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::change_admin`,
             arguments: [tx.pure(args.admin_cap), tx.pure(args.to)],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    changeOwner(args, optionTx, gasBudget) {
+    changeOwner(args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::change_owner`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::change_owner`,
             arguments: [tx.pure(args.admin_cap), tx.pure(args.new_owner)],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    createProject(types, args, optionTx, gasBudget) {
+    createProject(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::create_project`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::create_project`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.owner),
@@ -46,10 +52,10 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    addMilestone(types, args, optionTx, gasBudget) {
+    addMilestone(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::add_milestone`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_milestone`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.project),
@@ -62,20 +68,20 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    resetMilestone(types, args, optionTx, gasBudget) {
+    resetMilestone(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::reset_milestone`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::reset_milestone`,
             arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    setupProject(types, args, optionTx, gasBudget) {
+    setupProject(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::setup_project`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::setup_project`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.project),
@@ -95,10 +101,10 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    saveProfile(types, args, optionTx, gasBudget) {
+    saveProfile(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::save_profile`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::save_profile`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.project),
@@ -113,10 +119,10 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    addWhitelist(types, args, optionTx, gasBudget) {
+    addWhitelist(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::add_whitelist`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_whitelist`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.project),
@@ -127,10 +133,10 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    removeWhitelist(types, args, optionTx, gasBudget) {
+    removeWhitelist(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::remove_whitelist`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::remove_whitelist`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.project),
@@ -141,10 +147,10 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    startFundRaising(types, args, optionTx, gasBudget) {
+    startFundRaising(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::start_fund_raising`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::start_fund_raising`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.project),
@@ -155,11 +161,11 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    buy(types, args, optionTx, gasBudget) {
+    buy(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
-        let coin_trans = (0, common_1.manageObjectCoin)(types.COIN, args.coins, args.amount, tx);
+        const coin_trans = (0, common_1.manageObjectCoin)(types.COIN, args.coins, args.amount, tx);
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::buy`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::buy`,
             arguments: [
                 coin_trans,
                 tx.pure(args.amount),
@@ -171,10 +177,10 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    endFundRaising(types, args, optionTx, gasBudget) {
+    endFundRaising(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::end_fund_raising`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::end_fund_raising`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.project),
@@ -185,85 +191,81 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    endRefund(types, args, optionTx, gasBudget) {
+    endRefund(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::end_refund`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::end_refund`,
             arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    distributeRaisedFund(types, args, optionTx, gasBudget) {
+    distributeRaisedFund(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::distribute_raised_fund`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::distribute_raised_fund`,
             arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    refundTokenToOwner(types, args, optionTx, gasBudget) {
+    refundTokenToOwner(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::refund_token_to_owner`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::refund_token_to_owner`,
             arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    depositProject(types, args, optionTx, gasBudget) {
+    depositProject(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
-        let coin_trans = (0, common_1.manageObjectCoin)(types.COIN, args.coins, args.value, tx);
+        const coin_trans = (0, common_1.manageObjectCoin)(types.COIN, args.coins, args.value, tx);
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::deposit_by_owner`,
-            arguments: [
-                coin_trans,
-                tx.pure(args.value),
-                tx.pure(args.project),
-            ],
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::deposit_by_owner`,
+            arguments: [coin_trans, tx.pure(args.value), tx.pure(args.project)],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    userClaimToken(types, args, optionTx, gasBudget) {
+    userClaimToken(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::claim_token`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::claim_token`,
             arguments: [tx.pure(args.project), tx.object(clock)],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    claimRefund(types, args, optionTx, gasBudget) {
+    claimRefund(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::claim_refund`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::claim_refund`,
             arguments: [tx.pure(args.project)],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    vote(types, args, optionTx, gasBudget) {
+    vote(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::vote`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::vote`,
             arguments: [tx.pure(args.project)],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    addMaxAllocate(types, args, optionTx, gasBudget) {
+    addMaxAllocate(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::set_max_allocate`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::set_max_allocate`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.user),
@@ -275,10 +277,10 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    removeMaxAllocate(types, args, optionTx, gasBudget) {
+    removeMaxAllocate(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._packageObjectId}::${this._module}::set_max_allocate`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::set_max_allocate`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.user),

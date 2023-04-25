@@ -20,6 +20,7 @@ export abstract class SeaPadStakePoolFunc<T> {
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
   /**
    *
@@ -31,6 +32,7 @@ export abstract class SeaPadStakePoolFunc<T> {
     args: { pool: string; coins: string[] | undefined; amount: string, global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
   /**
    *
@@ -46,6 +48,7 @@ export abstract class SeaPadStakePoolFunc<T> {
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
   /**
    *
@@ -57,6 +60,7 @@ export abstract class SeaPadStakePoolFunc<T> {
     args: { pool: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
 
   /**
@@ -74,6 +78,7 @@ export abstract class SeaPadStakePoolFunc<T> {
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
 
   /**
@@ -89,6 +94,7 @@ export abstract class SeaPadStakePoolFunc<T> {
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
   /**
    *
@@ -104,6 +110,7 @@ export abstract class SeaPadStakePoolFunc<T> {
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
   /**
    *
@@ -115,5 +122,6 @@ export abstract class SeaPadStakePoolFunc<T> {
     args: { pool: string; amount: string; global_config: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
 }

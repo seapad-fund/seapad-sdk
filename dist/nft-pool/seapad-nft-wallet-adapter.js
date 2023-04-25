@@ -11,50 +11,50 @@ class SeapadWalletNftPoolAdapter extends seapad_nft_func_1.SeaPadNftPoolFunc {
         this._walletContextState = walletContextState;
         this._suiProvider = suiProvider;
     }
-    async changeAdmin(args, optionTx, gasBudget) {
-        const message = this._seaPadNftPoolInput.changeAdmin(args, optionTx, gasBudget);
+    async changeAdmin(args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadNftPoolInput.changeAdmin(args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async createPool(types, args, optionTx, gasBudget) {
-        const message = this._seaPadNftPoolInput.createPool(types, args, optionTx, gasBudget);
+    async createPool(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadNftPoolInput.createPool(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async addTemplate(types, args, optionTx, gasBudget) {
-        const message = this._seaPadNftPoolInput.addTemplate(types, args, optionTx, gasBudget);
+    async addTemplate(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadNftPoolInput.addTemplate(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async startPool(types, args, optionTx, gasBudget) {
-        const message = this._seaPadNftPoolInput.startPool(types, args, optionTx, gasBudget);
+    async startPool(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadNftPoolInput.startPool(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async buyNft(types, args, optionTx, gasBudget) {
+    async buyNft(types, args, optionTx, gasBudget, packageObjectId) {
         const userAddress = this._walletContextState.account?.address || '';
         let _coins = await (0, common_1.getCoinObjects)(types.COIN, args.amount, userAddress, this._suiProvider);
-        const message = this._seaPadNftPoolInput.buyNft(types, { ...args, coins: _coins }, optionTx, gasBudget);
+        const message = this._seaPadNftPoolInput.buyNft(types, { ...args, coins: _coins }, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async stopPool(types, args, optionTx, gasBudget) {
-        const message = this._seaPadNftPoolInput.stopPool(types, args, optionTx, gasBudget);
+    async stopPool(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadNftPoolInput.stopPool(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async claimNft(types, args, optionTx, gasBudget) {
-        const message = this._seaPadNftPoolInput.claimNft(types, args, optionTx, gasBudget);
+    async claimNft(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadNftPoolInput.claimNft(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async claimRefund(types, args, optionTx, gasBudget) {
-        const message = this._seaPadNftPoolInput.claimRefund(types, args, optionTx, gasBudget);
+    async claimRefund(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadNftPoolInput.claimRefund(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async addWhitelist(types, args, optionTx, gasBudget) {
-        const message = this._seaPadNftPoolInput.addWhitelist(types, args, optionTx, gasBudget);
+    async addWhitelist(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadNftPoolInput.addWhitelist(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async withdrawFund(types, args, optionTx, gasBudget) {
-        const message = this._seaPadNftPoolInput.withdrawFund(types, args, optionTx, gasBudget);
+    async withdrawFund(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadNftPoolInput.withdrawFund(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async changeTreasuryAdmin(types, args, optionTx, gasBudget) {
-        const message = this._seaPadNftPoolInput.changeTreasuryAdmin(types, args, optionTx, gasBudget);
+    async changeTreasuryAdmin(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadNftPoolInput.changeTreasuryAdmin(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
     buildTx(message) {

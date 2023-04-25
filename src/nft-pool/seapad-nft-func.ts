@@ -10,6 +10,7 @@ export abstract class SeaPadNftPoolFunc<T> {
     args: { admin_cap: string; to: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
 
   /**
@@ -33,6 +34,7 @@ export abstract class SeaPadNftPoolFunc<T> {
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
   /**
    *
@@ -44,6 +46,7 @@ export abstract class SeaPadNftPoolFunc<T> {
     args: { admin_cap: string, pool: string, name: string, description: string, url: string, price: string, type: number },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
 
   /**
@@ -56,6 +59,7 @@ export abstract class SeaPadNftPoolFunc<T> {
     args: { admin_cap: string, pool: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
 
   /**
@@ -74,6 +78,7 @@ export abstract class SeaPadNftPoolFunc<T> {
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
   /**
    *
@@ -87,6 +92,7 @@ export abstract class SeaPadNftPoolFunc<T> {
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
   /**
    *
@@ -98,6 +104,7 @@ export abstract class SeaPadNftPoolFunc<T> {
     args: { pool: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
   /**
     *
@@ -109,6 +116,7 @@ export abstract class SeaPadNftPoolFunc<T> {
     args: { pool: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
   /**
    *
@@ -120,6 +128,7 @@ export abstract class SeaPadNftPoolFunc<T> {
     args: { admin_cap: string, pool: string, tos: string[] },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
   /**
    *
@@ -131,6 +140,7 @@ export abstract class SeaPadNftPoolFunc<T> {
     args: { admin_cap: string, pool: string, amt: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
   /**
    *
@@ -142,5 +152,6 @@ export abstract class SeaPadNftPoolFunc<T> {
     args: { admin_treasury_cap: string; to: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
+    packageObjectId?: string | null
   ): T;
 }

@@ -8,7 +8,7 @@ export declare abstract class SeaPadNftPoolFunc<T> {
     abstract changeAdmin(args: {
         admin_cap: string;
         to: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
      * @param types <COIN>
@@ -27,7 +27,7 @@ export declare abstract class SeaPadNftPoolFunc<T> {
         allocate: string;
         start_time: string;
         end_time: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
      * @param types <COIN>
@@ -43,7 +43,7 @@ export declare abstract class SeaPadNftPoolFunc<T> {
         url: string;
         price: string;
         type: number;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
      * @param types <COIN>
@@ -54,7 +54,7 @@ export declare abstract class SeaPadNftPoolFunc<T> {
     }, args: {
         admin_cap: string;
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
      * @param types <COIN>
@@ -68,7 +68,7 @@ export declare abstract class SeaPadNftPoolFunc<T> {
         nft_types: string;
         nft_amounts: string;
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
      * @param types <COIN>
@@ -79,7 +79,7 @@ export declare abstract class SeaPadNftPoolFunc<T> {
     }, args: {
         admin_cap: string;
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
      * @param types <COIN>
@@ -89,7 +89,7 @@ export declare abstract class SeaPadNftPoolFunc<T> {
         COIN: string;
     }, args: {
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
       *
       * @param types <COIN>
@@ -99,7 +99,7 @@ export declare abstract class SeaPadNftPoolFunc<T> {
         COIN: string;
     }, args: {
         pool: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
      * @param types <COIN>
@@ -111,7 +111,7 @@ export declare abstract class SeaPadNftPoolFunc<T> {
         admin_cap: string;
         pool: string;
         tos: string[];
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
      * @param types <COIN>
@@ -123,7 +123,7 @@ export declare abstract class SeaPadNftPoolFunc<T> {
         admin_cap: string;
         pool: string;
         amt: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
      * @param types <COIN>
@@ -134,6 +134,6 @@ export declare abstract class SeaPadNftPoolFunc<T> {
     }, args: {
         admin_treasury_cap: string;
         to: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
 }
 //# sourceMappingURL=seapad-nft-func.d.ts.map

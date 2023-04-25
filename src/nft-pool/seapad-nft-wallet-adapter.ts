@@ -30,70 +30,70 @@ export class SeapadWalletNftPoolAdapter extends SeaPadNftPoolFunc<
     this._walletContextState = walletContextState;
     this._suiProvider = suiProvider;
   }
-  async changeAdmin(args: { admin_cap: string; to: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
-    const message = this._seaPadNftPoolInput.changeAdmin(args, optionTx, gasBudget);
+  async changeAdmin(args: { admin_cap: string; to: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const message = this._seaPadNftPoolInput.changeAdmin(args, optionTx, gasBudget, packageObjectId);
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
     );
   }
-  async createPool(types: { COIN: string; }, args: { admin_cap: string; owner: string; soft_cap: string; hard_cap: string; round: number; use_whitelist: boolean; vesting_time: string; allocate: string; start_time: string; end_time: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
-    const message = this._seaPadNftPoolInput.createPool(types, args, optionTx, gasBudget);
+  async createPool(types: { COIN: string; }, args: { admin_cap: string; owner: string; soft_cap: string; hard_cap: string; round: number; use_whitelist: boolean; vesting_time: string; allocate: string; start_time: string; end_time: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const message = this._seaPadNftPoolInput.createPool(types, args, optionTx, gasBudget, packageObjectId);
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
     );
   }
-  async addTemplate(types: { COIN: string; }, args: { admin_cap: string; pool: string; name: string; description: string; url: string; price: string; type: number; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
-    const message = this._seaPadNftPoolInput.addTemplate(types, args, optionTx, gasBudget);
+  async addTemplate(types: { COIN: string; }, args: { admin_cap: string; pool: string; name: string; description: string; url: string; price: string; type: number; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const message = this._seaPadNftPoolInput.addTemplate(types, args, optionTx, gasBudget, packageObjectId);
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
     );
   }
-  async startPool(types: { COIN: string; }, args: { admin_cap: string; pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
-    const message = this._seaPadNftPoolInput.startPool(types, args, optionTx, gasBudget);
+  async startPool(types: { COIN: string; }, args: { admin_cap: string; pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const message = this._seaPadNftPoolInput.startPool(types, args, optionTx, gasBudget, packageObjectId);
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
     );
   }
-  async buyNft(types: { COIN: string; }, args: { amount: string; nft_types: string; nft_amounts: string; pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+  async buyNft(types: { COIN: string; }, args: { amount: string; nft_types: string; nft_amounts: string; pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const userAddress = this._walletContextState.account?.address || '';
     let _coins: string[] = await getCoinObjects(types.COIN, args.amount, userAddress, this._suiProvider)
-    const message = this._seaPadNftPoolInput.buyNft(types, { ...args, coins: _coins }, optionTx, gasBudget);
+    const message = this._seaPadNftPoolInput.buyNft(types, { ...args, coins: _coins }, optionTx, gasBudget, packageObjectId);
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
     );
   }
-  async stopPool(types: { COIN: string; }, args: { admin_cap: string; pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
-    const message = this._seaPadNftPoolInput.stopPool(types, args, optionTx, gasBudget);
+  async stopPool(types: { COIN: string; }, args: { admin_cap: string; pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const message = this._seaPadNftPoolInput.stopPool(types, args, optionTx, gasBudget, packageObjectId);
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
     );
   }
-  async claimNft(types: { COIN: string; }, args: { pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
-    const message = this._seaPadNftPoolInput.claimNft(types, args, optionTx, gasBudget);
+  async claimNft(types: { COIN: string; }, args: { pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const message = this._seaPadNftPoolInput.claimNft(types, args, optionTx, gasBudget, packageObjectId);
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
     );
   }
-  async claimRefund(types: { COIN: string; }, args: { pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
-    const message = this._seaPadNftPoolInput.claimRefund(types, args, optionTx, gasBudget);
+  async claimRefund(types: { COIN: string; }, args: { pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const message = this._seaPadNftPoolInput.claimRefund(types, args, optionTx, gasBudget, packageObjectId);
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
     );
   }
-  async addWhitelist(types: { COIN: string; }, args: { admin_cap: string; pool: string; tos: string[]; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
-    const message = this._seaPadNftPoolInput.addWhitelist(types, args, optionTx, gasBudget);
+  async addWhitelist(types: { COIN: string; }, args: { admin_cap: string; pool: string; tos: string[]; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const message = this._seaPadNftPoolInput.addWhitelist(types, args, optionTx, gasBudget, packageObjectId);
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
     );
   }
-  async withdrawFund(types: { COIN: string; }, args: { admin_cap: string; pool: string; amt: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
-    const message = this._seaPadNftPoolInput.withdrawFund(types, args, optionTx, gasBudget);
+  async withdrawFund(types: { COIN: string; }, args: { admin_cap: string; pool: string; amt: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const message = this._seaPadNftPoolInput.withdrawFund(types, args, optionTx, gasBudget, packageObjectId);
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
     );
   }
-  async changeTreasuryAdmin(types: { COIN: string; }, args: { admin_treasury_cap: string; to: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
-    const message = this._seaPadNftPoolInput.changeTreasuryAdmin(types, args, optionTx, gasBudget);
+  async changeTreasuryAdmin(types: { COIN: string; }, args: { admin_treasury_cap: string; to: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const message = this._seaPadNftPoolInput.changeTreasuryAdmin(types, args, optionTx, gasBudget, packageObjectId);
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
     );

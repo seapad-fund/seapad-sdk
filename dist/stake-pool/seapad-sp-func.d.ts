@@ -17,7 +17,7 @@ export declare abstract class SeaPadStakePoolFunc<T> {
         decimalR: number;
         duration_unstake_time_ms: number;
         max_stake: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
      * @param types <S, R>
@@ -31,7 +31,7 @@ export declare abstract class SeaPadStakePoolFunc<T> {
         coins: string[] | undefined;
         amount: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
      * @param types <S, R>
@@ -44,7 +44,7 @@ export declare abstract class SeaPadStakePoolFunc<T> {
         pool: string;
         amount: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
      * @param types <S, R>
@@ -56,7 +56,7 @@ export declare abstract class SeaPadStakePoolFunc<T> {
     }, args: {
         pool: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
      * @param types <S, R>
@@ -70,7 +70,7 @@ export declare abstract class SeaPadStakePoolFunc<T> {
         num_rewards: string;
         reward_coins: string[] | undefined;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
      * @param types <S, R>
@@ -82,7 +82,7 @@ export declare abstract class SeaPadStakePoolFunc<T> {
     }, args: {
         pool: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
      * @param types <S, R>
@@ -95,7 +95,7 @@ export declare abstract class SeaPadStakePoolFunc<T> {
         pool: string;
         amount: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
      * @param types <S, R>
@@ -108,6 +108,6 @@ export declare abstract class SeaPadStakePoolFunc<T> {
         pool: string;
         amount: string;
         global_config: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget): T;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
 }
 //# sourceMappingURL=seapad-sp-func.d.ts.map

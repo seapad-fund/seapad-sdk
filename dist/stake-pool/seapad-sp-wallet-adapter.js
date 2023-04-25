@@ -11,42 +11,42 @@ class SeapadWalletSpAdapter extends seapad_sp_func_1.SeaPadStakePoolFunc {
         this._walletContextState = walletContextState;
         this._suiProvider = suiProvider;
     }
-    async registerPool(types, args, optionTx, gasBudget) {
+    async registerPool(types, args, optionTx, gasBudget, packageObjectId) {
         const userAddress = this._walletContextState.account?.address || '';
         let _coins = await (0, common_1.getCoinObjects)(types.R, args.num_rewards, userAddress, this._suiProvider);
-        const message = this._seaPadStakePoolInput.registerPool(types, { ...args, rewards: _coins }, optionTx, gasBudget);
+        const message = this._seaPadStakePoolInput.registerPool(types, { ...args, rewards: _coins }, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async stake(types, args, optionTx, gasBudget) {
+    async stake(types, args, optionTx, gasBudget, packageObjectId) {
         const userAddress = this._walletContextState.account?.address || '';
         let _coins = await (0, common_1.getCoinObjects)(types.R, args.amount, userAddress, this._suiProvider);
-        const message = this._seaPadStakePoolInput.stake(types, { ...args, coins: _coins }, optionTx, gasBudget);
+        const message = this._seaPadStakePoolInput.stake(types, { ...args, coins: _coins }, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async unstake(types, args, optionTx, gasBudget) {
-        const message = this._seaPadStakePoolInput.unstake(types, args, optionTx, gasBudget);
+    async unstake(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadStakePoolInput.unstake(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async harvest(types, args, optionTx, gasBudget) {
-        const message = this._seaPadStakePoolInput.harvest(types, args, optionTx, gasBudget);
+    async harvest(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadStakePoolInput.harvest(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async depositRewardCoins(types, args, optionTx, gasBudget) {
+    async depositRewardCoins(types, args, optionTx, gasBudget, packageObjectId) {
         const userAddress = this._walletContextState.account?.address || '';
         let _coins = await (0, common_1.getCoinObjects)(types.R, args.num_rewards, userAddress, this._suiProvider);
-        const message = this._seaPadStakePoolInput.depositRewardCoins(types, { ...args, reward_coins: _coins }, optionTx, gasBudget);
+        const message = this._seaPadStakePoolInput.depositRewardCoins(types, { ...args, reward_coins: _coins }, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async enableEmergency(types, args, optionTx, gasBudget) {
-        const message = this._seaPadStakePoolInput.enableEmergency(types, args, optionTx, gasBudget);
+    async enableEmergency(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadStakePoolInput.enableEmergency(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async emergencyUnstake(types, args, optionTx, gasBudget) {
-        const message = this._seaPadStakePoolInput.emergencyUnstake(types, args, optionTx, gasBudget);
+    async emergencyUnstake(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadStakePoolInput.emergencyUnstake(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async withdrawRewardToTreasury(types, args, optionTx, gasBudget) {
-        const message = this._seaPadStakePoolInput.withdrawRewardToTreasury(types, args, optionTx, gasBudget);
+    async withdrawRewardToTreasury(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadStakePoolInput.withdrawRewardToTreasury(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
     buildTx(message) {
