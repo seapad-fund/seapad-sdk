@@ -14,7 +14,7 @@ export class SeaPadAdapter extends SeaPadFunc<
   _seaPadInput: SeaPadInput;
   _signer: RawSigner;
 
-  constructor(signer: RawSigner, packageObjectId: string, module: string) {
+  constructor(signer: RawSigner, module: string) {
     super();
     this._seaPadInput = new SeaPadInput(module);
     this._signer = signer;
