@@ -6,42 +6,43 @@ const clock =
   '0x0000000000000000000000000000000000000000000000000000000000000006';
 
 export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
-  _packageObjectId: string;
   _module: string;
 
-  constructor(packageObjectId: string, module: string) {
+  constructor(module: string) {
     super();
-    this._packageObjectId = packageObjectId;
     this._module = module;
   }
 
   changeAdmin(
+    packageId: string,
     args: { admin_cap: string; to: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::change_admin`,
+      target: `${packageId}::${this._module}::change_admin`,
       arguments: [tx.pure(args.admin_cap), tx.pure(args.to)],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
   }
   changeOwner(
+    packageId: string,
     args: { admin_cap: string; new_owner: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::change_owner`,
+      target: `${packageId}::${this._module}::change_owner`,
       arguments: [tx.pure(args.admin_cap), tx.pure(args.new_owner)],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
   }
   createProject(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
@@ -56,7 +57,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::create_project`,
+      target: `${packageId}::${this._module}::create_project`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.owner),
@@ -71,6 +72,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     return tx;
   }
   addMilestone(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; time: number; percent: number },
     optionTx?: OptionTx,
@@ -78,7 +80,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::add_milestone`,
+      target: `${packageId}::${this._module}::add_milestone`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.project),
@@ -92,6 +94,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     return tx;
   }
   resetMilestone(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
@@ -99,7 +102,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::reset_milestone`,
+      target: `${packageId}::${this._module}::reset_milestone`,
       arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -108,6 +111,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     return tx;
   }
   setupProject(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
@@ -127,7 +131,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::setup_project`,
+      target: `${packageId}::${this._module}::setup_project`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.project),
@@ -149,6 +153,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     return tx;
   }
   saveProfile(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
@@ -164,7 +169,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::save_profile`,
+      target: `${packageId}::${this._module}::save_profile`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.project),
@@ -181,6 +186,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     return tx;
   }
   addWhitelist(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; user_list: string[] },
     optionTx?: OptionTx,
@@ -188,7 +194,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::add_whitelist`,
+      target: `${packageId}::${this._module}::add_whitelist`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.project),
@@ -202,6 +208,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   }
 
   removeWhitelist(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string; user_list: string[] },
     optionTx?: OptionTx,
@@ -209,7 +216,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::remove_whitelist`,
+      target: `${packageId}::${this._module}::remove_whitelist`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.project),
@@ -223,6 +230,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   }
 
   startFundRaising(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
@@ -230,7 +238,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::start_fund_raising`,
+      target: `${packageId}::${this._module}::start_fund_raising`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.project),
@@ -243,16 +251,22 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     return tx;
   }
   buy(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: { coins: string[]; amount: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
-    let coin_trans: TransactionArgument = manageObjectCoin(types.COIN, args.coins, args.amount, tx)
+    const coin_trans: TransactionArgument = manageObjectCoin(
+      types.COIN,
+      args.coins,
+      args.amount,
+      tx,
+    );
 
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::buy`,
+      target: `${packageId}::${this._module}::buy`,
       arguments: [
         coin_trans,
         tx.pure(args.amount),
@@ -267,6 +281,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     return tx;
   }
   endFundRaising(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
@@ -274,7 +289,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::end_fund_raising`,
+      target: `${packageId}::${this._module}::end_fund_raising`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.project),
@@ -287,6 +302,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     return tx;
   }
   endRefund(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
@@ -294,7 +310,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::end_refund`,
+      target: `${packageId}::${this._module}::end_refund`,
       arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -303,6 +319,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     return tx;
   }
   distributeRaisedFund(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
@@ -310,7 +327,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::distribute_raised_fund`,
+      target: `${packageId}::${this._module}::distribute_raised_fund`,
       arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -319,6 +336,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     return tx;
   }
   refundTokenToOwner(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
@@ -326,7 +344,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::refund_token_to_owner`,
+      target: `${packageId}::${this._module}::refund_token_to_owner`,
       arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -335,21 +353,23 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     return tx;
   }
   depositProject(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: { coins: string[]; value: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
   ): TransactionBlock {
     const tx = new TransactionBlock();
-    let coin_trans: TransactionArgument = manageObjectCoin(types.COIN, args.coins, args.value, tx)
+    const coin_trans: TransactionArgument = manageObjectCoin(
+      types.COIN,
+      args.coins,
+      args.value,
+      tx,
+    );
 
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::deposit_by_owner`,
-      arguments: [
-        coin_trans,
-        tx.pure(args.value),
-        tx.pure(args.project),
-      ],
+      target: `${packageId}::${this._module}::deposit_by_owner`,
+      arguments: [coin_trans, tx.pure(args.value), tx.pure(args.project)],
       typeArguments: [types.COIN, types.TOKEN],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
@@ -357,6 +377,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     return tx;
   }
   userClaimToken(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: { project: string },
     optionTx?: OptionTx,
@@ -364,7 +385,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::claim_token`,
+      target: `${packageId}::${this._module}::claim_token`,
       arguments: [tx.pure(args.project), tx.object(clock)],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -373,6 +394,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     return tx;
   }
   claimRefund(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: { project: string },
     optionTx?: OptionTx,
@@ -380,7 +402,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::claim_refund`,
+      target: `${packageId}::${this._module}::claim_refund`,
       arguments: [tx.pure(args.project)],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -389,6 +411,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     return tx;
   }
   vote(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: { project: string },
     optionTx?: OptionTx,
@@ -396,7 +419,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::vote`,
+      target: `${packageId}::${this._module}::vote`,
       arguments: [tx.pure(args.project)],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -406,6 +429,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   }
 
   addMaxAllocate(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: {
       admin_cap: string;
@@ -418,7 +442,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::set_max_allocate`,
+      target: `${packageId}::${this._module}::set_max_allocate`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.user),
@@ -433,6 +457,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   }
 
   removeMaxAllocate(
+    packageId: string,
     types: { COIN: string; TOKEN: string },
     args: { admin_cap: string; user: string; project: string },
     optionTx?: OptionTx,
@@ -440,7 +465,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
   ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._packageObjectId}::${this._module}::set_max_allocate`,
+      target: `${packageId}::${this._module}::set_max_allocate`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.user),
