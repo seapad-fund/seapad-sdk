@@ -37,9 +37,9 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 tx.pure(args.admin_cap),
                 tx.pure(args.owner),
                 tx.pure(args.vesting_type),
-                tx.pure(args.linear_time),
                 tx.pure(args.coin_decimals),
                 tx.pure(args.token_decimals),
+                tx.pure(args.linear_time),
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });

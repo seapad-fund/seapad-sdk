@@ -3,7 +3,6 @@ import { SeaPadInput } from './seapad-input';
 import { WalletContextState } from '@suiet/wallet-kit';
 import {
   JsonRpcProvider,
-  PaginatedCoins,
   TransactionBlock,
 } from '@mysten/sui.js';
 import {
