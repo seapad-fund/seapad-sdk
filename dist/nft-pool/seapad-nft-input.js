@@ -33,12 +33,10 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.owner),
-                tx.pure(args.soft_cap),
-                tx.pure(args.hard_cap),
+                tx.pure(args.soft_cap_percent),
                 tx.pure(args.round),
                 tx.pure(args.use_whitelist),
-                tx.pure(args.vesting_time),
-                tx.pure(args.allocate),
+                tx.pure(args.vesting_time_ms),
                 tx.pure(args.start_time),
                 tx.pure(args.end_time),
                 tx.pure(clock),
@@ -48,19 +46,26 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    addTemplate(types, args, optionTx, gasBudget, packageObjectId) {
+    addCollection(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_template`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.pool),
-                tx.pure(args.name),
-                tx.pure(args.description),
-                tx.pure(args.url),
+                tx.pure(args.cap),
+                tx.pure(args.allocate),
                 tx.pure(args.price),
                 tx.pure(args.type),
-                tx.pure(clock)
+                tx.pure(args.name),
+                tx.pure(args.link),
+                tx.pure(args.image_url),
+                tx.pure(args.description),
+                tx.pure(args.project_url),
+                tx.pure(args.project_url),
+                tx.pure(args.edition),
+                tx.pure(args.thumbnail_url),
+                tx.pure(args.creator)
             ],
             typeArguments: [types.COIN]
         });

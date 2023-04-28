@@ -36,14 +36,14 @@ export class SeapadWalletNftPoolAdapter extends SeaPadNftPoolFunc<
       this.buildTx(message),
     );
   }
-  async createPool(types: { COIN: string; }, args: { admin_cap: string; owner: string; soft_cap: string; hard_cap: string; round: number; use_whitelist: boolean; vesting_time: string; allocate: string; start_time: string; end_time: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+  async createPool(types: { COIN: string; }, args: { admin_cap: string; owner: string; soft_cap_percent: number; round: number; use_whitelist: boolean; vesting_time_ms: string; start_time: string; end_time: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadNftPoolInput.createPool(types, args, optionTx, gasBudget, packageObjectId);
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
     );
   }
-  async addTemplate(types: { COIN: string; }, args: { admin_cap: string; pool: string; name: string; description: string; url: string; price: string; type: number; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
-    const message = this._seaPadNftPoolInput.addTemplate(types, args, optionTx, gasBudget, packageObjectId);
+  async addCollection(types: { COIN: string; }, args: { admin_cap: string, pool: string, cap: string, allocate: string, price: string, type: number, name: string, link: string, image_url: string, description: string, project_url: string, edition: string, thumbnail_url: string, creator: string }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const message = this._seaPadNftPoolInput.addCollection(types, args, optionTx, gasBudget, packageObjectId);
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
     );

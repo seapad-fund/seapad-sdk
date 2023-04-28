@@ -32,19 +32,17 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
   }
-  createPool(types: { COIN: string; }, args: { admin_cap: string; owner: string; soft_cap: string; hard_cap: string; round: number; use_whitelist: boolean; vesting_time: string; allocate: string; start_time: string; end_time: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
+  createPool(types: { COIN: string; }, args: { admin_cap: string; owner: string; soft_cap_percent: number; round: number; use_whitelist: boolean; vesting_time_ms: string; start_time: string; end_time: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::create_pool`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.owner),
-        tx.pure(args.soft_cap),
-        tx.pure(args.hard_cap),
+        tx.pure(args.soft_cap_percent),
         tx.pure(args.round),
         tx.pure(args.use_whitelist),
-        tx.pure(args.vesting_time),
-        tx.pure(args.allocate),
+        tx.pure(args.vesting_time_ms),
         tx.pure(args.start_time),
         tx.pure(args.end_time),
         tx.pure(clock),
@@ -54,19 +52,26 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
   }
-  addTemplate(types: { COIN: string; }, args: { admin_cap: string; pool: string; name: string; description: string; url: string; price: string; type: number; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
+  addCollection(types: { COIN: string; }, args: { admin_cap: string, pool: string, cap: string, allocate: string, price: string, type: number, name: string, link: string, image_url: string, description: string, project_url: string, edition: string, thumbnail_url: string, creator: string }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_template`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.pool),
-        tx.pure(args.name),
-        tx.pure(args.description),
-        tx.pure(args.url),
+        tx.pure(args.cap),
+        tx.pure(args.allocate),
         tx.pure(args.price),
         tx.pure(args.type),
-        tx.pure(clock)
+        tx.pure(args.name),
+        tx.pure(args.link),
+        tx.pure(args.image_url),
+        tx.pure(args.description),
+        tx.pure(args.project_url),
+        tx.pure(args.project_url),
+        tx.pure(args.edition),
+        tx.pure(args.thumbnail_url),
+        tx.pure(args.creator)
       ],
       typeArguments: [types.COIN]
     });

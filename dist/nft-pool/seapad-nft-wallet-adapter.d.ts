@@ -18,25 +18,30 @@ export declare class SeapadWalletNftPoolAdapter extends SeaPadNftPoolFunc<Promis
     }, args: {
         admin_cap: string;
         owner: string;
-        soft_cap: string;
-        hard_cap: string;
+        soft_cap_percent: number;
         round: number;
         use_whitelist: boolean;
-        vesting_time: string;
-        allocate: string;
+        vesting_time_ms: string;
         start_time: string;
         end_time: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
-    addTemplate(types: {
+    addCollection(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
         pool: string;
-        name: string;
-        description: string;
-        url: string;
+        cap: string;
+        allocate: string;
         price: string;
         type: number;
+        name: string;
+        link: string;
+        image_url: string;
+        description: string;
+        project_url: string;
+        edition: string;
+        thumbnail_url: string;
+        creator: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     startPool(types: {
         COIN: string;

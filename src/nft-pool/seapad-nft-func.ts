@@ -16,19 +16,17 @@ export abstract class SeaPadNftPoolFunc<T> {
   /**
    *
    * @param types <COIN>
-   * @param args adminCap: &NftAdminCap, owner: address, soft_cap: u64, hard_cap: u64, round: u8, use_whitelist: bool, vesting_time: u64, allocate: u64, start_time: u64, end_time: u64, system_clock: &Clock
+   * @param args adminCap: &NftAdminCap, owner: address, soft_cap_percent: u64, round: u8, use_whitelist: bool, vesting_time: u64, allocate: u64, start_time: u64, end_time: u64, system_clock: &Clock
    */
   abstract createPool(
     types: { COIN: string },
     args: {
       admin_cap: string,
       owner: string,
-      soft_cap: string,
-      hard_cap: string,
+      soft_cap_percent: number,
       round: number,
       use_whitelist: boolean,
-      vesting_time: string,
-      allocate: string,
+      vesting_time_ms: string,
       start_time: string,
       end_time: string,
     },
@@ -39,11 +37,26 @@ export abstract class SeaPadNftPoolFunc<T> {
   /**
    *
    * @param types <COIN>
-   * @param args _adminCap: &NftAdminCap, pool: &mut NftPool<COIN>, name: vector<u8>, description: vector<u8>, url: vector<u8>, price: u64, type: u8
+   * @param args _adminCap: &NftAdminCap, pool: &mut NftPool<COIN>, cap: u64, //max of NFT to sale allocate: u64,    //max allocate per user price: u64,   //price with coin type: u8, //collection type name: string, link: string, image_url: string, description: string, project_url: string, edition: u64, thumbnail_url: string, creator: string,
    */
-  abstract addTemplate(
+  abstract addCollection(
     types: { COIN: string },
-    args: { admin_cap: string, pool: string, name: string, description: string, url: string, price: string, type: number },
+    args: {
+      admin_cap: string,
+      pool: string,
+      cap: string,
+      allocate: string,
+      price: string,
+      type: number,
+      name: string,
+      link: string,
+      image_url: string,
+      description: string,
+      project_url: string,
+      edition: string,
+      thumbnail_url: string,
+      creator: string
+    },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null
@@ -65,7 +78,7 @@ export abstract class SeaPadNftPoolFunc<T> {
   /**
    *
    * @param types <COIN>
-   * @param args coin_in: &mut Coin<COIN>, nft_types:  vector<u8>,  nft_amounts: vector<u64>, pool: &mut NftPool<COIN>, system_clock: &Clock
+   * @param args coin_in: &mut Coin<COIN>, nft_types:  string,  nft_amounts: vector<u64>, pool: &mut NftPool<COIN>, system_clock: &Clock
    */
   abstract buyNft(
     types: { COIN: string },

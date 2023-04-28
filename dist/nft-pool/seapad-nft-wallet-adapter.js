@@ -19,8 +19,8 @@ class SeapadWalletNftPoolAdapter extends seapad_nft_func_1.SeaPadNftPoolFunc {
         const message = this._seaPadNftPoolInput.createPool(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async addTemplate(types, args, optionTx, gasBudget, packageObjectId) {
-        const message = this._seaPadNftPoolInput.addTemplate(types, args, optionTx, gasBudget, packageObjectId);
+    async addCollection(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadNftPoolInput.addCollection(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
     async startPool(types, args, optionTx, gasBudget, packageObjectId) {

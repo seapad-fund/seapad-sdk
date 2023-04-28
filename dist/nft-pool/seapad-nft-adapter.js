@@ -23,9 +23,9 @@ class SeaPadNftPoolAdapter extends seapad_nft_func_1.SeaPadNftPoolFunc {
             ...this._getOptionTx(optionTx),
         });
     }
-    async addTemplate(types, args, optionTx, gasBudget, packageObjectId) {
+    async addCollection(types, args, optionTx, gasBudget, packageObjectId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadNftPoolInput.addTemplate(types, args, optionTx, gasBudget, packageObjectId),
+            transactionBlock: this._seaPadNftPoolInput.addCollection(types, args, optionTx, gasBudget, packageObjectId),
             ...this._getOptionTx(optionTx),
         });
     }
