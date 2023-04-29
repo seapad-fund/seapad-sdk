@@ -55,7 +55,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
   addCollection(types: { COIN: string; }, args: { admin_cap: string, pool: string, cap: string, allocate: string, price: string, type: number, name: string, link: string, image_url: string, description: string, project_url: string, edition: string, thumbnail_url: string, creator: string }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_template`,
+      target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_collection`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.pool),

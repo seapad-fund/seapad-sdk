@@ -49,7 +49,7 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
     addCollection(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_template`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_collection`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.pool),
