@@ -5,7 +5,10 @@ import {
     TransactionArgument,
     PaginatedCoins,
     JsonRpcProvider,
+
 } from '@mysten/sui.js';
+
+import Decimal from 'decimal.js';
 
 export type OptionTx =
     | {
@@ -126,4 +129,12 @@ export async function getCoinObjects(coin_type: string, amount: string, address:
         coins = pickCoinTrans.coinTrans;
     }
     return coins
+}
+
+export function calculateAmount(a: string[], b: string[]): string {
+    let total = new Decimal(0)
+    a.map((ele, i)=> {
+        total = new Decimal(ele).mul(new Decimal(b[i]))
+    })
+    return total.toFixed(0)
 }

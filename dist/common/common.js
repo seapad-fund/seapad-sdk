@@ -1,6 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getCoinObjects = exports.manageObjectCoin = exports.pickupCoin = exports.getCoins = exports.getGasBudget = void 0;
+exports.calculateAmount = exports.getCoinObjects = exports.manageObjectCoin = exports.pickupCoin = exports.getCoins = exports.getGasBudget = void 0;
+const decimal_js_1 = __importDefault(require("decimal.js"));
 function getGasBudget(gasBudget) {
     if (typeof gasBudget == undefined ||
         gasBudget == null ||
@@ -97,4 +101,12 @@ async function getCoinObjects(coin_type, amount, address, suiProvider) {
     return coins;
 }
 exports.getCoinObjects = getCoinObjects;
+function calculateAmount(a, b) {
+    let total = new decimal_js_1.default(0);
+    a.map((ele, i) => {
+        total = new decimal_js_1.default(ele).mul(new decimal_js_1.default(b[i]));
+    });
+    return total.toFixed(0);
+}
+exports.calculateAmount = calculateAmount;
 //# sourceMappingURL=common.js.map

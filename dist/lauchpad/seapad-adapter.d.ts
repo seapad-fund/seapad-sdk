@@ -174,11 +174,11 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     getTokenInfo(coinType: string): Promise<{
-        coin_metadata_object_id: string | null;
-        decimals: number;
-        icon_url: string | null;
-        description: string;
-        symbol: string;
+        coin_metadata_object_id: string | null | undefined;
+        decimals: number | undefined;
+        icon_url: string | null | undefined;
+        description: string | undefined;
+        symbol: string | undefined;
         total_supply: string;
     }>;
     splitCoin(amount: number, to: string): Promise<SuiTransactionBlockResponse>;

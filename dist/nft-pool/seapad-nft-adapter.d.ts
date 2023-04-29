@@ -50,9 +50,8 @@ export declare class SeaPadNftPoolAdapter extends SeaPadNftPoolFunc<Promise<SuiT
     buyNft(types: {
         COIN: string;
     }, args: {
-        amount: string;
-        nft_types: string;
-        nft_amounts: string;
+        nft_types: string[];
+        nft_amounts: string[];
         pool: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     stopPool(types: {

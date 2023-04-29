@@ -84,9 +84,9 @@ export abstract class SeaPadNftPoolFunc<T> {
     types: { COIN: string },
     args: {
       amount: string,
-      coins: string[],
-      nft_types: string,
-      nft_amounts: string,
+      coins: string[] | undefined,
+      nft_types: string[],
+      nft_amounts: string[],
       pool: string
     },
     optionTx?: OptionTx,

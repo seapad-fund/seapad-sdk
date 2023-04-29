@@ -51,8 +51,8 @@ export declare class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlo
     }, args: {
         amount: string;
         coins: string[];
-        nft_types: string;
-        nft_amounts: string;
+        nft_types: string[];
+        nft_amounts: string[];
         pool: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     stopPool(types: {

@@ -9,7 +9,7 @@ import {
   SuiSignAndExecuteTransactionBlockInput,
   SuiSignAndExecuteTransactionBlockOutput,
 } from '@mysten/wallet-standard';
-import { GasBudget, OptionTx, getCoinObjects } from '../common';
+import { GasBudget, OptionTx, calculateAmount, getCoinObjects } from '../common';
 
 export class SeapadWalletNftPoolAdapter extends SeaPadNftPoolFunc<
   Promise<SuiSignAndExecuteTransactionBlockOutput>
@@ -54,10 +54,12 @@ export class SeapadWalletNftPoolAdapter extends SeaPadNftPoolFunc<
       this.buildTx(message),
     );
   }
-  async buyNft(types: { COIN: string; }, args: { amount: string; nft_types: string; nft_amounts: string; pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+  async buyNft(types: { COIN: string; }, args: { nft_types: string[]; nft_amounts: string[]; pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const userAddress = this._walletContextState.account?.address || '';
-    let _coins: string[] = await getCoinObjects(types.COIN, args.amount, userAddress, this._suiProvider)
-    const message = this._seaPadNftPoolInput.buyNft(types, { ...args, coins: _coins }, optionTx, gasBudget, packageObjectId);
+    const amount = calculateAmount(args.nft_amounts, args.nft_types)
+    const _coins: string[] = await getCoinObjects(types.COIN, amount, userAddress, this._suiProvider)
+
+    const message = this._seaPadNftPoolInput.buyNft(types, { ...args, coins: _coins, amount }, optionTx, gasBudget, packageObjectId);
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
     );

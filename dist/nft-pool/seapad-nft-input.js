@@ -62,7 +62,6 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
                 tx.pure(args.image_url),
                 tx.pure(args.description),
                 tx.pure(args.project_url),
-                tx.pure(args.project_url),
                 tx.pure(args.edition),
                 tx.pure(args.thumbnail_url),
                 tx.pure(args.creator)

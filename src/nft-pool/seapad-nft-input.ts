@@ -68,7 +68,6 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
         tx.pure(args.image_url),
         tx.pure(args.description),
         tx.pure(args.project_url),
-        tx.pure(args.project_url),
         tx.pure(args.edition),
         tx.pure(args.thumbnail_url),
         tx.pure(args.creator)
@@ -91,7 +90,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
   }
-  buyNft(types: { COIN: string; }, args: { amount: string; coins: string[]; nft_types: string; nft_amounts: string; pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
+  buyNft(types: { COIN: string; }, args: { amount: string, coins: string[]; nft_types: string[]; nft_amounts: string[]; pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
     const tx = new TransactionBlock();
     let coin_trans: TransactionArgument = manageObjectCoin(types.COIN, args.coins, args.amount, tx)
 

@@ -6,7 +6,7 @@ import {
   SuiJsonValue,
 } from '@mysten/sui.js';
 import { SeaPadNftPoolFunc } from './seapad-nft-func';
-import { GasBudget, OptionTx, getCoinObjects } from '../common';
+import { GasBudget, OptionTx, calculateAmount, getCoinObjects } from '../common';
 import { SeaPadNftPoolInput } from './seapad-nft-input';
 
 export class SeaPadNftPoolAdapter extends SeaPadNftPoolFunc<
@@ -70,13 +70,14 @@ export class SeaPadNftPoolAdapter extends SeaPadNftPoolFunc<
       ...this._getOptionTx(optionTx),
     });
   }
-  async buyNft(types: { COIN: string; }, args: { amount: string; nft_types: string; nft_amounts: string; pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse> {
+  async buyNft(types: { COIN: string; }, args: { nft_types: string[]; nft_amounts: string[]; pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse> {
     const userAddress = await this._signer.getAddress();
-    let _coins: string[] = await getCoinObjects(types.COIN, args.amount, userAddress, this._suiProvider)
+    const amount = calculateAmount(args.nft_amounts, args.nft_types)
+    const _coins: string[] = await getCoinObjects(types.COIN, amount, userAddress, this._suiProvider)
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadNftPoolInput.buyNft(
         types,
-        { ...args, coins: _coins },
+        { ...args, coins: _coins, amount },
         optionTx,
         gasBudget,
         packageObjectId

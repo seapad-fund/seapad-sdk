@@ -160,12 +160,12 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
         const coinMetaData = await this._suiProvider.getCoinMetadata({ coinType });
         const totalSupply = await this._suiProvider.getTotalSupply({ coinType });
         return {
-            coin_metadata_object_id: coinMetaData.id,
-            decimals: coinMetaData.decimals,
-            icon_url: coinMetaData.iconUrl,
-            description: coinMetaData.description,
-            symbol: coinMetaData.symbol,
-            total_supply: totalSupply.value,
+            coin_metadata_object_id: coinMetaData?.id,
+            decimals: coinMetaData?.decimals,
+            icon_url: coinMetaData?.iconUrl,
+            description: coinMetaData?.description,
+            symbol: coinMetaData?.symbol,
+            total_supply: totalSupply?.value,
         };
     }
     async splitCoin(amount, to) {

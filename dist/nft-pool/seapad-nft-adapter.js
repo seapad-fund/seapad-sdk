@@ -37,9 +37,10 @@ class SeaPadNftPoolAdapter extends seapad_nft_func_1.SeaPadNftPoolFunc {
     }
     async buyNft(types, args, optionTx, gasBudget, packageObjectId) {
         const userAddress = await this._signer.getAddress();
-        let _coins = await (0, common_1.getCoinObjects)(types.COIN, args.amount, userAddress, this._suiProvider);
+        const amount = (0, common_1.calculateAmount)(args.nft_amounts, args.nft_types);
+        const _coins = await (0, common_1.getCoinObjects)(types.COIN, amount, userAddress, this._suiProvider);
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadNftPoolInput.buyNft(types, { ...args, coins: _coins }, optionTx, gasBudget, packageObjectId),
+            transactionBlock: this._seaPadNftPoolInput.buyNft(types, { ...args, coins: _coins, amount }, optionTx, gasBudget, packageObjectId),
             ...this._getOptionTx(optionTx),
         });
     }

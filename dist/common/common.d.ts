@@ -16,4 +16,5 @@ export declare const pickupCoin: (coinType: string, expect_balance: number, user
 }>;
 export declare function manageObjectCoin(coin_type: string, coins: string[], amount: string, tx: TransactionBlock): TransactionArgument;
 export declare function getCoinObjects(coin_type: string, amount: string, address: string, suiProvider: JsonRpcProvider): Promise<string[]>;
+export declare function calculateAmount(a: string[], b: string[]): string;
 //# sourceMappingURL=common.d.ts.map

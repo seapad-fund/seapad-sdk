@@ -460,12 +460,12 @@ export class SeaPadAdapter extends SeaPadFunc<
     const totalSupply = await this._suiProvider.getTotalSupply({ coinType });
 
     return {
-      coin_metadata_object_id: coinMetaData.id,
-      decimals: coinMetaData.decimals,
-      icon_url: coinMetaData.iconUrl,
-      description: coinMetaData.description,
-      symbol: coinMetaData.symbol,
-      total_supply: totalSupply.value,
+      coin_metadata_object_id: coinMetaData?.id,
+      decimals: coinMetaData?.decimals,
+      icon_url: coinMetaData?.iconUrl,
+      description: coinMetaData?.description,
+      symbol: coinMetaData?.symbol,
+      total_supply: totalSupply?.value,
     };
   }
 
