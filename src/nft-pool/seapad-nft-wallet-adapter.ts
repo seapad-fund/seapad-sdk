@@ -88,6 +88,12 @@ export class SeapadWalletNftPoolAdapter extends SeaPadNftPoolFunc<
       this.buildTx(message),
     );
   }
+  async removeWhitelist(types: { COIN: string; }, args: { admin_cap: string; pool: string; froms: string[]; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const message = this._seaPadNftPoolInput.removeWhitelist(types, args, optionTx, gasBudget, packageObjectId);
+    return await this._walletContextState.signAndExecuteTransactionBlock(
+      this.buildTx(message),
+    );
+  }
   async withdrawFund(types: { COIN: string; }, args: { admin_cap: string; pool: string; amt: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadNftPoolInput.withdrawFund(types, args, optionTx, gasBudget, packageObjectId);
     return await this._walletContextState.signAndExecuteTransactionBlock(

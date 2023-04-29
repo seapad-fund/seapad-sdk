@@ -78,6 +78,7 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.pool),
+                tx.pure(clock)
             ],
             typeArguments: [types.COIN]
         });
@@ -94,6 +95,7 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
                 tx.pure(args.nft_types),
                 tx.pure(args.nft_amounts),
                 tx.pure(args.pool),
+                tx.pure(clock)
             ],
             typeArguments: [types.COIN]
         });
@@ -106,7 +108,8 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::stop_pool`,
             arguments: [
                 tx.pure(args.admin_cap),
-                tx.pure(args.pool)
+                tx.pure(args.pool),
+                tx.pure(clock)
             ],
             typeArguments: [types.COIN]
         });
@@ -118,7 +121,8 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::claim_nft`,
             arguments: [
-                tx.pure(args.pool)
+                tx.pure(args.pool),
+                tx.pure(clock)
             ],
             typeArguments: [types.COIN]
         });
@@ -130,7 +134,8 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::claim_refund`,
             arguments: [
-                tx.pure(args.pool)
+                tx.pure(args.pool),
+                tx.pure(clock)
             ],
             typeArguments: [types.COIN]
         });
@@ -145,6 +150,20 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
                 tx.pure(args.admin_cap),
                 tx.pure(args.pool),
                 tx.pure(args.tos)
+            ],
+            typeArguments: [types.COIN]
+        });
+        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        return tx;
+    }
+    removeWhitelist(types, args, optionTx, gasBudget, packageObjectId) {
+        const tx = new sui_js_1.TransactionBlock();
+        tx.moveCall({
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::remove_whitelist`,
+            arguments: [
+                tx.pure(args.admin_cap),
+                tx.pure(args.pool),
+                tx.pure(args.froms)
             ],
             typeArguments: [types.COIN]
         });

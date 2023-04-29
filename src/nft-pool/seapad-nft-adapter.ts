@@ -133,6 +133,20 @@ export class SeaPadNftPoolAdapter extends SeaPadNftPoolFunc<
       ...this._getOptionTx(optionTx),
     });
   }
+
+  async removeWhitelist(types: { COIN: string; }, args: { admin_cap: string; pool: string; froms: string[]; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse> {
+    return await this._signer.signAndExecuteTransactionBlock({
+      transactionBlock: this._seaPadNftPoolInput.removeWhitelist(
+        types,
+        args,
+        optionTx,
+        gasBudget,
+        packageObjectId
+      ),
+      ...this._getOptionTx(optionTx),
+    });
+  }
+
   async withdrawFund(types: { COIN: string; }, args: { admin_cap: string; pool: string; amt: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadNftPoolInput.withdrawFund(

@@ -50,6 +50,10 @@ class SeapadWalletNftPoolAdapter extends seapad_nft_func_1.SeaPadNftPoolFunc {
         const message = this._seaPadNftPoolInput.addWhitelist(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
+    async removeWhitelist(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._seaPadNftPoolInput.removeWhitelist(types, args, optionTx, gasBudget, packageObjectId);
+        return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
+    }
     async withdrawFund(types, args, optionTx, gasBudget, packageObjectId) {
         const message = this._seaPadNftPoolInput.withdrawFund(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));

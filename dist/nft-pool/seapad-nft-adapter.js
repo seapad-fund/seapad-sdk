@@ -68,6 +68,12 @@ class SeaPadNftPoolAdapter extends seapad_nft_func_1.SeaPadNftPoolFunc {
             ...this._getOptionTx(optionTx),
         });
     }
+    async removeWhitelist(types, args, optionTx, gasBudget, packageObjectId) {
+        return await this._signer.signAndExecuteTransactionBlock({
+            transactionBlock: this._seaPadNftPoolInput.removeWhitelist(types, args, optionTx, gasBudget, packageObjectId),
+            ...this._getOptionTx(optionTx),
+        });
+    }
     async withdrawFund(types, args, optionTx, gasBudget, packageObjectId) {
         return await this._signer.signAndExecuteTransactionBlock({
             transactionBlock: this._seaPadNftPoolInput.withdrawFund(types, args, optionTx, gasBudget, packageObjectId),

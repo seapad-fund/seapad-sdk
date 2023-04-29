@@ -79,6 +79,13 @@ export declare class SeapadWalletNftPoolAdapter extends SeaPadNftPoolFunc<Promis
         pool: string;
         tos: string[];
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    removeWhitelist(types: {
+        COIN: string;
+    }, args: {
+        admin_cap: string;
+        pool: string;
+        froms: string[];
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     withdrawFund(types: {
         COIN: string;
     }, args: {
