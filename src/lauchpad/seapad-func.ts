@@ -10,7 +10,7 @@ export abstract class SeaPadFunc<T> {
     args: { admin_cap: string; to: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -21,7 +21,7 @@ export abstract class SeaPadFunc<T> {
     args: { admin_cap: string; new_owner: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -37,10 +37,11 @@ export abstract class SeaPadFunc<T> {
       linear_time: number;
       coin_decimals: number;
       token_decimals: number;
+      require_kyc: boolean;
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -52,7 +53,7 @@ export abstract class SeaPadFunc<T> {
     args: { admin_cap: string; project: string; time: number; percent: number },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
 
   /**
@@ -65,7 +66,7 @@ export abstract class SeaPadFunc<T> {
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
 
   /**
@@ -90,7 +91,7 @@ export abstract class SeaPadFunc<T> {
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -110,7 +111,7 @@ export abstract class SeaPadFunc<T> {
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -122,7 +123,7 @@ export abstract class SeaPadFunc<T> {
     args: { admin_cap: string; project: string; user_list: string[] },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
 
   abstract removeWhitelist(
@@ -130,7 +131,7 @@ export abstract class SeaPadFunc<T> {
     args: { admin_cap: string; project: string; user_list: string[] },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -142,7 +143,7 @@ export abstract class SeaPadFunc<T> {
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -151,10 +152,15 @@ export abstract class SeaPadFunc<T> {
    */
   abstract buy(
     types: { COIN: string; TOKEN: string },
-    args: { coins: string[] | undefined; amount: string; project: string },
+    args: {
+      coins: string[] | undefined;
+      amount: string;
+      project: string;
+      kyc: string;
+    },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -166,7 +172,7 @@ export abstract class SeaPadFunc<T> {
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -178,7 +184,7 @@ export abstract class SeaPadFunc<T> {
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -190,7 +196,7 @@ export abstract class SeaPadFunc<T> {
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -202,7 +208,7 @@ export abstract class SeaPadFunc<T> {
     args: { admin_cap: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -214,7 +220,7 @@ export abstract class SeaPadFunc<T> {
     args: { coins?: string[]; value: string; project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -226,7 +232,7 @@ export abstract class SeaPadFunc<T> {
     args: { project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -238,7 +244,7 @@ export abstract class SeaPadFunc<T> {
     args: { project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -250,7 +256,7 @@ export abstract class SeaPadFunc<T> {
     args: { project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
 
   abstract addMaxAllocate(
@@ -263,7 +269,7 @@ export abstract class SeaPadFunc<T> {
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
 
   abstract removeMaxAllocate(
@@ -275,7 +281,7 @@ export abstract class SeaPadFunc<T> {
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
 
   ///common func

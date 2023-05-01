@@ -6,7 +6,6 @@ const clock =
   '0x0000000000000000000000000000000000000000000000000000000000000006';
 
 export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
-
   _packageObjectId: string;
   _module: string;
 
@@ -18,24 +17,49 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
 
   _getPackageObjectId = (packageObjectId?: string | null) => {
     if (packageObjectId != null && packageObjectId != undefined) {
-      return packageObjectId
+      return packageObjectId;
     }
-    return this._packageObjectId
-  }
+    return this._packageObjectId;
+  };
 
-  changeAdmin(args: { admin_cap: string; to: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
+  changeAdmin(
+    args: { admin_cap: string; to: string },
+    optionTx?: OptionTx,
+    gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null,
+  ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::change_admin`,
+      target: `${this._getPackageObjectId(packageObjectId)}::${
+        this._module
+      }::change_admin`,
       arguments: [tx.pure(args.admin_cap), tx.pure(args.to)],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
   }
-  createPool(types: { COIN: string; }, args: { admin_cap: string; owner: string; soft_cap_percent: number; round: number; use_whitelist: boolean; vesting_time_ms: string; start_time: string; end_time: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
+  createPool(
+    types: { COIN: string },
+    args: {
+      admin_cap: string;
+      owner: string;
+      soft_cap_percent: number;
+      round: number;
+      use_whitelist: boolean;
+      vesting_time_ms: string;
+      start_time: string;
+      end_time: string;
+      require_kyc: boolean;
+    },
+    optionTx?: OptionTx,
+    gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null,
+  ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::create_pool`,
+      target: `${this._getPackageObjectId(packageObjectId)}::${
+        this._module
+      }::create_pool`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.owner),
@@ -46,16 +70,40 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
         tx.pure(args.start_time),
         tx.pure(args.end_time),
         tx.pure(clock),
+        tx.pure(args.require_kyc),
       ],
       typeArguments: [types.COIN],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
   }
-  addCollection(types: { COIN: string; }, args: { admin_cap: string, pool: string, cap: string, allocate: string, price: string, type: number, name: string, link: string, image_url: string, description: string, project_url: string, edition: string, thumbnail_url: string, creator: string }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
+  addCollection(
+    types: { COIN: string },
+    args: {
+      admin_cap: string;
+      pool: string;
+      cap: string;
+      allocate: string;
+      price: string;
+      type: number;
+      name: string;
+      link: string;
+      image_url: string;
+      description: string;
+      project_url: string;
+      edition: string;
+      thumbnail_url: string;
+      creator: string;
+    },
+    optionTx?: OptionTx,
+    gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null,
+  ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_collection`,
+      target: `${this._getPackageObjectId(packageObjectId)}::${
+        this._module
+      }::add_collection`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.pool),
@@ -70,142 +118,208 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
         tx.pure(args.project_url),
         tx.pure(args.edition),
         tx.pure(args.thumbnail_url),
-        tx.pure(args.creator)
+        tx.pure(args.creator),
       ],
-      typeArguments: [types.COIN]
+      typeArguments: [types.COIN],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
   }
-  startPool(types: { COIN: string; }, args: { admin_cap: string; pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
+  startPool(
+    types: { COIN: string },
+    args: { admin_cap: string; pool: string },
+    optionTx?: OptionTx,
+    gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null,
+  ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::start_pool`,
-      arguments: [
-        tx.pure(args.admin_cap),
-        tx.pure(args.pool),
-        tx.pure(clock)
-      ],
-      typeArguments: [types.COIN]
+      target: `${this._getPackageObjectId(packageObjectId)}::${
+        this._module
+      }::start_pool`,
+      arguments: [tx.pure(args.admin_cap), tx.pure(args.pool), tx.pure(clock)],
+      typeArguments: [types.COIN],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
   }
-  buyNft(types: { COIN: string; }, args: { amount: string, coins: string[]; nft_types: string[]; nft_amounts: string[]; pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
+  buyNft(
+    types: { COIN: string },
+    args: {
+      amount: string;
+      coins: string[];
+      nft_types: string[];
+      nft_amounts: string[];
+      pool: string;
+      kyc: string;
+    },
+    optionTx?: OptionTx,
+    gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null,
+  ): TransactionBlock {
     const tx = new TransactionBlock();
-    let coin_trans: TransactionArgument = manageObjectCoin(types.COIN, args.coins, args.amount, tx)
+    const coin_trans: TransactionArgument = manageObjectCoin(
+      types.COIN,
+      args.coins,
+      args.amount,
+      tx,
+    );
 
     tx.moveCall({
-      target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::buy_nft`,
+      target: `${this._getPackageObjectId(packageObjectId)}::${
+        this._module
+      }::buy_nft`,
       arguments: [
         coin_trans,
         tx.pure(args.nft_types),
         tx.pure(args.nft_amounts),
         tx.pure(args.pool),
-        tx.pure(clock)
+        tx.pure(clock),
+        tx.pure(args.kyc),
       ],
-      typeArguments: [types.COIN]
+      typeArguments: [types.COIN],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
   }
-  stopPool(types: { COIN: string; }, args: { admin_cap: string; pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
+  stopPool(
+    types: { COIN: string },
+    args: { admin_cap: string; pool: string },
+    optionTx?: OptionTx,
+    gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null,
+  ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::stop_pool`,
+      target: `${this._getPackageObjectId(packageObjectId)}::${
+        this._module
+      }::stop_pool`,
+      arguments: [tx.pure(args.admin_cap), tx.pure(args.pool), tx.pure(clock)],
+      typeArguments: [types.COIN],
+    });
+    tx.setGasBudget(getGasBudget(gasBudget));
+    return tx;
+  }
+  claimNft(
+    types: { COIN: string },
+    args: { pool: string },
+    optionTx?: OptionTx,
+    gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null,
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._getPackageObjectId(packageObjectId)}::${
+        this._module
+      }::claim_nft`,
+      arguments: [tx.pure(args.pool), tx.pure(clock)],
+      typeArguments: [types.COIN],
+    });
+    tx.setGasBudget(getGasBudget(gasBudget));
+    return tx;
+  }
+  claimRefund(
+    types: { COIN: string },
+    args: { pool: string },
+    optionTx?: OptionTx,
+    gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null,
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._getPackageObjectId(packageObjectId)}::${
+        this._module
+      }::claim_refund`,
+      arguments: [tx.pure(args.pool), tx.pure(clock)],
+      typeArguments: [types.COIN],
+    });
+    tx.setGasBudget(getGasBudget(gasBudget));
+    return tx;
+  }
+  addWhitelist(
+    types: { COIN: string },
+    args: { admin_cap: string; pool: string; tos: string[] },
+    optionTx?: OptionTx,
+    gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null,
+  ): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._getPackageObjectId(packageObjectId)}::${
+        this._module
+      }::add_whitelist`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.pool),
-        tx.pure(clock)
+        tx.pure(args.tos),
       ],
-      typeArguments: [types.COIN]
-    });
-    tx.setGasBudget(getGasBudget(gasBudget));
-    return tx;
-  }
-  claimNft(types: { COIN: string; }, args: { pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
-    const tx = new TransactionBlock();
-    tx.moveCall({
-      target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::claim_nft`,
-      arguments: [
-        tx.pure(args.pool),
-        tx.pure(clock)
-      ],
-      typeArguments: [types.COIN]
-    });
-    tx.setGasBudget(getGasBudget(gasBudget));
-    return tx;
-  }
-  claimRefund(types: { COIN: string; }, args: { pool: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
-    const tx = new TransactionBlock();
-    tx.moveCall({
-      target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::claim_refund`,
-      arguments: [
-        tx.pure(args.pool),
-        tx.pure(clock)
-      ],
-      typeArguments: [types.COIN]
-    });
-    tx.setGasBudget(getGasBudget(gasBudget));
-    return tx;
-  }
-  addWhitelist(types: { COIN: string; }, args: { admin_cap: string; pool: string; tos: string[]; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
-    const tx = new TransactionBlock();
-    tx.moveCall({
-      target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_whitelist`,
-      arguments: [
-        tx.pure(args.admin_cap),
-        tx.pure(args.pool),
-        tx.pure(args.tos)
-      ],
-      typeArguments: [types.COIN]
+      typeArguments: [types.COIN],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
   }
 
-  removeWhitelist(types: { COIN: string; }, args: { admin_cap: string; pool: string; froms: string[]; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
+  removeWhitelist(
+    types: { COIN: string },
+    args: { admin_cap: string; pool: string; froms: string[] },
+    optionTx?: OptionTx,
+    gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null,
+  ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::remove_whitelist`,
+      target: `${this._getPackageObjectId(packageObjectId)}::${
+        this._module
+      }::remove_whitelist`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.pool),
-        tx.pure(args.froms)
+        tx.pure(args.froms),
       ],
-      typeArguments: [types.COIN]
+      typeArguments: [types.COIN],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
   }
 
-  withdrawFund(types: { COIN: string; }, args: { admin_cap: string; pool: string; amt: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
+  withdrawFund(
+    types: { COIN: string },
+    args: { admin_cap: string; pool: string; amt: string },
+    optionTx?: OptionTx,
+    gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null,
+  ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_whitelist`,
+      target: `${this._getPackageObjectId(packageObjectId)}::${
+        this._module
+      }::add_whitelist`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.pool),
-        tx.pure(args.amt)
+        tx.pure(args.amt),
       ],
-      typeArguments: [types.COIN]
+      typeArguments: [types.COIN],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
   }
-  changeTreasuryAdmin(types: { COIN: string; }, args: { admin_treasury_cap: string; to: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock {
+  changeTreasuryAdmin(
+    types: { COIN: string },
+    args: { admin_treasury_cap: string; to: string },
+    optionTx?: OptionTx,
+    gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null,
+  ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
-      target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_whitelist`,
-      arguments: [
-        tx.pure(args.admin_treasury_cap),
-        tx.pure(args.to),
-      ],
-      typeArguments: [types.COIN]
+      target: `${this._getPackageObjectId(packageObjectId)}::${
+        this._module
+      }::add_whitelist`,
+      arguments: [tx.pure(args.admin_treasury_cap), tx.pure(args.to)],
+      typeArguments: [types.COIN],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
   }
-
-
 }

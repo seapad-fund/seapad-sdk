@@ -10,7 +10,7 @@ export abstract class SeaPadNftPoolFunc<T> {
     args: { admin_cap: string; to: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
 
   /**
@@ -21,18 +21,19 @@ export abstract class SeaPadNftPoolFunc<T> {
   abstract createPool(
     types: { COIN: string },
     args: {
-      admin_cap: string,
-      owner: string,
-      soft_cap_percent: number,
-      round: number,
-      use_whitelist: boolean,
-      vesting_time_ms: string,
-      start_time: string,
-      end_time: string,
+      admin_cap: string;
+      owner: string;
+      soft_cap_percent: number;
+      round: number;
+      use_whitelist: boolean;
+      vesting_time_ms: string;
+      start_time: string;
+      end_time: string;
+      require_kyc: boolean;
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -42,24 +43,24 @@ export abstract class SeaPadNftPoolFunc<T> {
   abstract addCollection(
     types: { COIN: string },
     args: {
-      admin_cap: string,
-      pool: string,
-      cap: string,
-      allocate: string,
-      price: string,
-      type: number,
-      name: string,
-      link: string,
-      image_url: string,
-      description: string,
-      project_url: string,
-      edition: string,
-      thumbnail_url: string,
-      creator: string
+      admin_cap: string;
+      pool: string;
+      cap: string;
+      allocate: string;
+      price: string;
+      type: number;
+      name: string;
+      link: string;
+      image_url: string;
+      description: string;
+      project_url: string;
+      edition: string;
+      thumbnail_url: string;
+      creator: string;
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
 
   /**
@@ -69,10 +70,10 @@ export abstract class SeaPadNftPoolFunc<T> {
    */
   abstract startPool(
     types: { COIN: string },
-    args: { admin_cap: string, pool: string },
+    args: { admin_cap: string; pool: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
 
   /**
@@ -83,15 +84,16 @@ export abstract class SeaPadNftPoolFunc<T> {
   abstract buyNft(
     types: { COIN: string },
     args: {
-      amount: string,
-      coins: string[] | undefined,
-      nft_types: string[],
-      nft_amounts: string[],
-      pool: string
+      amount: string;
+      coins: string[] | undefined;
+      nft_types: string[];
+      nft_amounts: string[];
+      pool: string;
+      kyc: string;
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -101,11 +103,12 @@ export abstract class SeaPadNftPoolFunc<T> {
   abstract stopPool(
     types: { COIN: string },
     args: {
-      admin_cap: string, pool: string
+      admin_cap: string;
+      pool: string;
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -117,19 +120,19 @@ export abstract class SeaPadNftPoolFunc<T> {
     args: { pool: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
-    *
-    * @param types <COIN>
-    * @param args pool: &mut NftPool<COIN>, system_clock: &Clock
-    */
+   *
+   * @param types <COIN>
+   * @param args pool: &mut NftPool<COIN>, system_clock: &Clock
+   */
   abstract claimRefund(
     types: { COIN: string },
     args: { pool: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -138,23 +141,23 @@ export abstract class SeaPadNftPoolFunc<T> {
    */
   abstract addWhitelist(
     types: { COIN: string },
-    args: { admin_cap: string, pool: string, tos: string[] },
+    args: { admin_cap: string; pool: string; tos: string[] },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
 
   /**
- *
- * @param types <COIN>
- * @param args _adminCap: &NftAdminCap, pool: &mut NftPool<COIN>, tos: address
- */
+   *
+   * @param types <COIN>
+   * @param args _adminCap: &NftAdminCap, pool: &mut NftPool<COIN>, tos: address
+   */
   abstract removeWhitelist(
     types: { COIN: string },
-    args: { admin_cap: string, pool: string, froms: string[] },
+    args: { admin_cap: string; pool: string; froms: string[] },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -163,10 +166,10 @@ export abstract class SeaPadNftPoolFunc<T> {
    */
   abstract withdrawFund(
     types: { COIN: string },
-    args: { admin_cap: string, pool: string, amt: string },
+    args: { admin_cap: string; pool: string; amt: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
   /**
    *
@@ -178,6 +181,6 @@ export abstract class SeaPadNftPoolFunc<T> {
     args: { admin_treasury_cap: string; to: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
-    packageObjectId?: string | null
+    packageObjectId?: string | null,
   ): T;
 }
