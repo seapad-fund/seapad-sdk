@@ -22,6 +22,7 @@ export declare class SeaPadNftPoolAdapter extends SeaPadNftPoolFunc<Promise<SuiT
         vesting_time_ms: string;
         start_time: string;
         end_time: string;
+        require_kyc: boolean;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     addCollection(types: {
         COIN: string;
@@ -53,6 +54,7 @@ export declare class SeaPadNftPoolAdapter extends SeaPadNftPoolFunc<Promise<SuiT
         nft_types: string[];
         nft_amounts: string[];
         pool: string;
+        kyc: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     stopPool(types: {
         COIN: string;

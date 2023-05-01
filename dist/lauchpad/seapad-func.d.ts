@@ -33,6 +33,7 @@ export declare abstract class SeaPadFunc<T> {
         linear_time: number;
         coin_decimals: number;
         token_decimals: number;
+        require_kyc: boolean;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
@@ -143,6 +144,7 @@ export declare abstract class SeaPadFunc<T> {
         coins: string[] | undefined;
         amount: string;
         project: string;
+        kyc: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *

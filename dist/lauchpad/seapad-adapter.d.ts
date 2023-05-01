@@ -26,6 +26,7 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
         linear_time: number;
         coin_decimals: number;
         token_decimals: number;
+        require_kyc: boolean;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     addMilestone(types: {
         COIN: string;
@@ -100,6 +101,7 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
     }, args: {
         amount: string;
         project: string;
+        kyc: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     endFundRaising(types: {
         COIN: string;

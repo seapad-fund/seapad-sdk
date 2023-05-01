@@ -24,6 +24,7 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         linear_time: number | 0;
         coin_decimals: number;
         token_decimals: number;
+        require_kyc: boolean;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): TransactionBlock;
     addMilestone(types: {
         COIN: string;
@@ -99,6 +100,7 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         coins: string[];
         amount: string;
         project: string;
+        kyc: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): TransactionBlock;
     endFundRaising(types: {
         COIN: string;

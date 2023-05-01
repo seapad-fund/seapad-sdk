@@ -25,6 +25,7 @@ export declare abstract class SeaPadNftPoolFunc<T> {
         vesting_time_ms: string;
         start_time: string;
         end_time: string;
+        require_kyc: boolean;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
@@ -73,6 +74,7 @@ export declare abstract class SeaPadNftPoolFunc<T> {
         nft_types: string[];
         nft_amounts: string[];
         pool: string;
+        kyc: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
@@ -96,10 +98,10 @@ export declare abstract class SeaPadNftPoolFunc<T> {
         pool: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
-      *
-      * @param types <COIN>
-      * @param args pool: &mut NftPool<COIN>, system_clock: &Clock
-      */
+     *
+     * @param types <COIN>
+     * @param args pool: &mut NftPool<COIN>, system_clock: &Clock
+     */
     abstract claimRefund(types: {
         COIN: string;
     }, args: {
@@ -118,10 +120,10 @@ export declare abstract class SeaPadNftPoolFunc<T> {
         tos: string[];
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
-   *
-   * @param types <COIN>
-   * @param args _adminCap: &NftAdminCap, pool: &mut NftPool<COIN>, tos: address
-   */
+     *
+     * @param types <COIN>
+     * @param args _adminCap: &NftAdminCap, pool: &mut NftPool<COIN>, tos: address
+     */
     abstract removeWhitelist(types: {
         COIN: string;
     }, args: {

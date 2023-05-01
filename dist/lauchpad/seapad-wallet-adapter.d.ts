@@ -27,6 +27,7 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
         linear_time: number;
         coin_decimals: number;
         token_decimals: number;
+        require_kyc: boolean;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     addMilestone(types: {
         COIN: string;
@@ -101,6 +102,7 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
     }, args: {
         amount: string;
         project: string;
+        kyc: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     endFundRaising(types: {
         COIN: string;

@@ -21,6 +21,7 @@ export declare class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlo
         vesting_time_ms: string;
         start_time: string;
         end_time: string;
+        require_kyc: boolean;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     addCollection(types: {
         COIN: string;
@@ -54,6 +55,7 @@ export declare class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlo
         nft_types: string[];
         nft_amounts: string[];
         pool: string;
+        kyc: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     stopPool(types: {
         COIN: string;

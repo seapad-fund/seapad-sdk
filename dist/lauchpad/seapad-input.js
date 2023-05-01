@@ -46,6 +46,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 tx.pure(args.coin_decimals),
                 tx.pure(args.token_decimals),
                 tx.pure(args.linear_time),
+                tx.pure(args.require_kyc),
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
@@ -171,6 +172,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 tx.pure(args.amount),
                 tx.pure(args.project),
                 tx.object(clock),
+                tx.pure(args.kyc),
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
