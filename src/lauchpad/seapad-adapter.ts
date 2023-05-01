@@ -2,7 +2,6 @@ import {
   RawSigner,
   JsonRpcProvider,
   SuiTransactionBlockResponse,
-  TransactionBlock,
 } from '@mysten/sui.js';
 import { SeaPadFunc } from './seapad-func';
 import { SeaPadInput } from './seapad-input';

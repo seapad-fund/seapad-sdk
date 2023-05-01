@@ -2,8 +2,6 @@ import {
   RawSigner,
   JsonRpcProvider,
   SuiTransactionBlockResponse,
-  TransactionBlock,
-  SuiJsonValue,
 } from '@mysten/sui.js';
 import { SeaPadNftPoolFunc } from './seapad-nft-func';
 import {
