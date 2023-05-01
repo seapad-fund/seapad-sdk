@@ -17,8 +17,8 @@ function getGasBudget(gasBudget) {
 }
 exports.getGasBudget = getGasBudget;
 /**
-   * Fetch coin owned by an address
-   */
+ * Fetch coin owned by an address
+ */
 const getCoins = async (walletAddress, coinType, suiProvider) => {
     try {
         let data = [];
@@ -54,14 +54,16 @@ const pickupCoin = async (coinType, expect_balance, userAddress, suiProvider) =>
         totalBalance += Number(ele?.balance);
         return ele?.coinObjectId;
     });
-    if ((coinType !== "0x2::sui::SUI" && totalBalance < expect_balance) || (coinType === "0x2::sui::SUI" && totalBalance < expect_balance + getGasBudget())) {
+    if ((coinType !== '0x2::sui::SUI' && totalBalance < expect_balance) ||
+        (coinType === '0x2::sui::SUI' &&
+            totalBalance < expect_balance + getGasBudget())) {
         throw new Error('Not enough balance');
     }
     console.log(totalBalance, coins);
     return {
         coin: coin?.coinObjectId,
         isPicked: coin !== undefined,
-        coinTrans: coins
+        coinTrans: coins,
     };
 };
 exports.pickupCoin = pickupCoin;

@@ -6,8 +6,8 @@ export type OptionTx = {
 export type GasBudget = number | null;
 export declare function getGasBudget(gasBudget?: GasBudget): number;
 /**
-   * Fetch coin owned by an address
-   */
+ * Fetch coin owned by an address
+ */
 export declare const getCoins: (walletAddress: string, coinType: string, suiProvider: JsonRpcProvider) => Promise<any>;
 export declare const pickupCoin: (coinType: string, expect_balance: number, userAddress: string, suiProvider: JsonRpcProvider) => Promise<{
     coin: string;
