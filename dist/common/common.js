@@ -8,8 +8,8 @@ const decimal_js_1 = __importDefault(require("decimal.js"));
 function getGasBudget(gasBudget) {
     if (typeof gasBudget == undefined ||
         gasBudget == null ||
-        gasBudget < 350000000) {
-        return 350000000;
+        gasBudget < 100000000) {
+        return 300000000;
     }
     else {
         return gasBudget;
