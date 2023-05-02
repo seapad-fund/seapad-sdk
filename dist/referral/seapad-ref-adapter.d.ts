@@ -14,13 +14,11 @@ export declare class SeaPadReferralAdapter extends SeaPadReferralFunc<Promise<Su
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     createProject(types: {
         COIN: string;
-        TOKEN: string;
     }, args: {
         admin_cap: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     upsertReferal(types: {
         COIN: string;
-        TOKEN: string;
     }, args: {
         admin_cap: string;
         referral: string;
@@ -29,7 +27,6 @@ export declare class SeaPadReferralAdapter extends SeaPadReferralFunc<Promise<Su
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     removeReferal(types: {
         COIN: string;
-        TOKEN: string;
     }, args: {
         admin_cap: string;
         referral: string;
@@ -37,27 +34,23 @@ export declare class SeaPadReferralAdapter extends SeaPadReferralFunc<Promise<Su
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     startClaimProject(types: {
         COIN: string;
-        TOKEN: string;
     }, args: {
         admin_cap: string;
         referral: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     claimReward(types: {
         COIN: string;
-        TOKEN: string;
     }, args: {
         referral: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     closeProject(types: {
         COIN: string;
-        TOKEN: string;
     }, args: {
         admin_cap: string;
         referral: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     depositProjectFund(types: {
         COIN: string;
-        TOKEN: string;
     }, args: {
         admin_cap: string;
         amount: string;
@@ -65,7 +58,6 @@ export declare class SeaPadReferralAdapter extends SeaPadReferralFunc<Promise<Su
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     withdrawProjectFund(types: {
         COIN: string;
-        TOKEN: string;
     }, args: {
         admin_cap: string;
         referral: string;

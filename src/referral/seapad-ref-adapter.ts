@@ -56,7 +56,7 @@ export class SeaPadReferralAdapter extends SeaPadReferralFunc<
 
 
   async createProject(
-    types: { COIN: string; TOKEN: string },
+    types: { COIN: string;  },
     args: {
       admin_cap: string;
     },
@@ -77,7 +77,7 @@ export class SeaPadReferralAdapter extends SeaPadReferralFunc<
   }
 
   async upsertReferal(
-    types: { COIN: string; TOKEN: string },
+    types: { COIN: string;  },
     args: { admin_cap: string; referral: string; users: string[]; rewards: string[] },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -95,7 +95,7 @@ export class SeaPadReferralAdapter extends SeaPadReferralFunc<
     });
   }
   async removeReferal(
-    types: { COIN: string; TOKEN: string },
+    types: { COIN: string;  },
     args: { admin_cap: string; referral: string, users: string[] },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -114,7 +114,7 @@ export class SeaPadReferralAdapter extends SeaPadReferralFunc<
   }
 
   async startClaimProject(
-    types: { COIN: string; TOKEN: string },
+    types: { COIN: string;  },
     args: { admin_cap: string; referral: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -133,7 +133,7 @@ export class SeaPadReferralAdapter extends SeaPadReferralFunc<
   }
 
   async claimReward(
-    types: { COIN: string; TOKEN: string },
+    types: { COIN: string;  },
     args: { referral: string; },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -152,7 +152,7 @@ export class SeaPadReferralAdapter extends SeaPadReferralFunc<
   }
 
   async closeProject(
-    types: { COIN: string; TOKEN: string },
+    types: { COIN: string;  },
     args: { admin_cap: string; referral: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -170,7 +170,7 @@ export class SeaPadReferralAdapter extends SeaPadReferralFunc<
     });
   }
   async depositProjectFund(
-    types: { COIN: string; TOKEN: string },
+    types: { COIN: string;  },
     args: { admin_cap: string; amount: string; referral: string; },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -195,7 +195,7 @@ export class SeaPadReferralAdapter extends SeaPadReferralFunc<
     });
   }
   async withdrawProjectFund(
-    types: { COIN: string; TOKEN: string },
+    types: { COIN: string;  },
     args: { admin_cap: string; referral: string; to: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
