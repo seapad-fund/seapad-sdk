@@ -59,7 +59,7 @@ const pickupCoin = async (coinType, expect_balance, userAddress, suiProvider) =>
             totalBalance < expect_balance + getGasBudget())) {
         throw new Error('Not enough balance');
     }
-    console.log(totalBalance, coins);
+    // console.log(totalBalance, coins);
     return {
         coin: coin?.coinObjectId,
         isPicked: coin !== undefined,
