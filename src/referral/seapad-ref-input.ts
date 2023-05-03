@@ -42,6 +42,7 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
     types: { COIN: string; },
     args: {
       admin_cap: string;
+      distribute_time_ms: string;
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
@@ -155,6 +156,7 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
         }::claim_reward`,
       arguments: [
         tx.pure(args.referral),
+        tx.object(clock),
       ],
       typeArguments: [types.COIN],
     });

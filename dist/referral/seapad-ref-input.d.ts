@@ -14,6 +14,7 @@ export declare class SeaPadReferralInput extends SeaPadReferralFunc<TransactionB
         COIN: string;
     }, args: {
         admin_cap: string;
+        distribute_time_ms: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): TransactionBlock;
     upsertReferral(types: {
         COIN: string;

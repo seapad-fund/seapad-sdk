@@ -59,6 +59,7 @@ export class SeaPadReferralAdapter extends SeaPadReferralFunc<
     types: { COIN: string;  },
     args: {
       admin_cap: string;
+      distribute_time_ms: string;
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,

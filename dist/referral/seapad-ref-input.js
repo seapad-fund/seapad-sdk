@@ -101,6 +101,7 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::claim_reward`,
             arguments: [
                 tx.pure(args.referral),
+                tx.object(clock),
             ],
             typeArguments: [types.COIN],
         });
