@@ -32,6 +32,7 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::create_project`,
             arguments: [
                 tx.pure(args.admin_cap),
+                tx.pure(args.distribute_time_ms),
             ],
             typeArguments: [types.COIN],
         });

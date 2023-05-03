@@ -54,6 +54,7 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
         }::create_project`,
       arguments: [
         tx.pure(args.admin_cap),
+        tx.pure(args.distribute_time_ms),
       ],
       typeArguments: [types.COIN],
     });
