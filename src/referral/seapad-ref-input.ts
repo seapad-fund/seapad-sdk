@@ -59,7 +59,7 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
   }
-  upsertReferal(
+  upsertReferral(
     types: { COIN: string; },
     args: { admin_cap: string; referral: string; users: string[]; rewards: string[] },
     optionTx?: OptionTx,
@@ -69,7 +69,7 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module
-        }::upsert_referal`,
+        }::upsert_referral`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.referral),
@@ -82,7 +82,7 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
   }
-  removeReferal(
+  removeReferral(
     types: { COIN: string; },
     args: { admin_cap: string; referral: string, users: string[] },
     optionTx?: OptionTx,
@@ -92,7 +92,7 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module
-        }::remove_referal`,
+        }::remove_referral`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.referral),

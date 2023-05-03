@@ -18,7 +18,7 @@ export declare class SeapadReferralWalletAdapter extends SeaPadReferralFunc<Prom
     }, args: {
         admin_cap: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
-    upsertReferal(types: {
+    upsertReferral(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
@@ -26,7 +26,7 @@ export declare class SeapadReferralWalletAdapter extends SeaPadReferralFunc<Prom
         users: string[];
         rewards: string[];
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;
-    removeReferal(types: {
+    removeReferral(types: {
         COIN: string;
     }, args: {
         admin_cap: string;

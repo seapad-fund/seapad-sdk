@@ -15,7 +15,7 @@ export declare class SeaPadReferralInput extends SeaPadReferralFunc<TransactionB
     }, args: {
         admin_cap: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): TransactionBlock;
-    upsertReferal(types: {
+    upsertReferral(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
@@ -23,7 +23,7 @@ export declare class SeaPadReferralInput extends SeaPadReferralFunc<TransactionB
         users: string[];
         rewards: string[];
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): TransactionBlock;
-    removeReferal(types: {
+    removeReferral(types: {
         COIN: string;
     }, args: {
         admin_cap: string;

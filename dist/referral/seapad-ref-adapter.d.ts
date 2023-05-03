@@ -17,7 +17,7 @@ export declare class SeaPadReferralAdapter extends SeaPadReferralFunc<Promise<Su
     }, args: {
         admin_cap: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
-    upsertReferal(types: {
+    upsertReferral(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
@@ -25,7 +25,7 @@ export declare class SeaPadReferralAdapter extends SeaPadReferralFunc<Promise<Su
         users: string[];
         rewards: string[];
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
-    removeReferal(types: {
+    removeReferral(types: {
         COIN: string;
     }, args: {
         admin_cap: string;

@@ -31,9 +31,9 @@ export abstract class SeaPadReferralFunc<T> {
   /**
    *
    * @param types <COIN>
-   * @param args _admin: &RAdminCap, referral: &mut Referal<COIN>, users: vector<address>, rewards: vector<u64>
+   * @param args _admin: &RAdminCap, referral: &mut Referral<COIN>, users: vector<address>, rewards: vector<u64>
    */
-  abstract upsertReferal(
+  abstract upsertReferral(
     types: { COIN: string; },
     args: { admin_cap: string; referral: string; users: string[]; rewards: string[] },
     optionTx?: OptionTx,
@@ -44,9 +44,9 @@ export abstract class SeaPadReferralFunc<T> {
   /**
    *
    * @param types <COIN>
-   * @param args _admin: &RAdminCap, referral: &mut Referal<COIN>, users: vector<address>,
+   * @param args _admin: &RAdminCap, referral: &mut Referral<COIN>, users: vector<address>,
    */
-  abstract removeReferal(
+  abstract removeReferral(
     types: { COIN: string; },
     args: { admin_cap: string; referral: string, users: string[] },
     optionTx?: OptionTx,
@@ -56,7 +56,7 @@ export abstract class SeaPadReferralFunc<T> {
  /**
    *
    * @param types <COIN>
-   * @param args _admin: &RAdminCap, distribute_time_ms: u64, referral: &mut Referal<COIN>
+   * @param args _admin: &RAdminCap, distribute_time_ms: u64, referral: &mut Referral<COIN>
    */
  abstract updateDistributeTime(
   types: { COIN: string; },
@@ -69,7 +69,7 @@ export abstract class SeaPadReferralFunc<T> {
   /**
    *
    * @param types <COIN>
-   * @param args _admin: &RAdminCap, referral: &mut Referal<COIN>
+   * @param args _admin: &RAdminCap, referral: &mut Referral<COIN>
    */
   abstract startClaimProject(
     types: { COIN: string; },
@@ -84,7 +84,7 @@ export abstract class SeaPadReferralFunc<T> {
   /**
    *
    * @param types <COIN>
-   * @param args referral: &mut Referal<COIN>
+   * @param args referral: &mut Referral<COIN>
    */
   abstract claimReward(
     types: { COIN: string; },
@@ -98,7 +98,7 @@ export abstract class SeaPadReferralFunc<T> {
   /**
    *
    * @param types <COIN>
-   * @param args _admin: &RAdminCap, referral: &mut Referal<COIN>
+   * @param args _admin: &RAdminCap, referral: &mut Referral<COIN>
    */
   abstract closeProject(
     types: { COIN: string; },
@@ -110,7 +110,7 @@ export abstract class SeaPadReferralFunc<T> {
   /**
    *
    * @param types
-   * @param args _admin: &RAdminCap, referral: &mut Referal<COIN>, to: address
+   * @param args _admin: &RAdminCap, referral: &mut Referral<COIN>, to: address
    * @param optionTx
    * @param gasBudget
    * @param packageObjectId
@@ -125,7 +125,7 @@ export abstract class SeaPadReferralFunc<T> {
   /**
    *
    * @param types <COIN>
-   * @param args _admin: &RAdminCap, referral: &mut Referal<COIN>, fund: Coin<COIN>
+   * @param args _admin: &RAdminCap, referral: &mut Referral<COIN>, fund: Coin<COIN>
    */
   abstract depositProjectFund(
     types: { COIN: string; },

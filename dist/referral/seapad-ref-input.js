@@ -38,10 +38,10 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    upsertReferal(types, args, optionTx, gasBudget, packageObjectId) {
+    upsertReferral(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::upsert_referal`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::upsert_referral`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.referral),
@@ -54,10 +54,10 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    removeReferal(types, args, optionTx, gasBudget, packageObjectId) {
+    removeReferral(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::remove_referal`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::remove_referral`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.referral),

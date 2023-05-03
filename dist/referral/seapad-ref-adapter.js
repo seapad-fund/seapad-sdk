@@ -38,15 +38,15 @@ class SeaPadReferralAdapter extends seapad_ref_func_1.SeaPadReferralFunc {
             ...this._getOptionTx(optionTx),
         });
     }
-    async upsertReferal(types, args, optionTx, gasBudget, packageObjectId) {
+    async upsertReferral(types, args, optionTx, gasBudget, packageObjectId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadReferralInput.upsertReferal(types, args, optionTx, gasBudget, packageObjectId),
+            transactionBlock: this._seaPadReferralInput.upsertReferral(types, args, optionTx, gasBudget, packageObjectId),
             ...this._getOptionTx(optionTx),
         });
     }
-    async removeReferal(types, args, optionTx, gasBudget, packageObjectId) {
+    async removeReferral(types, args, optionTx, gasBudget, packageObjectId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadReferralInput.removeReferal(types, args, optionTx, gasBudget, packageObjectId),
+            transactionBlock: this._seaPadReferralInput.removeReferral(types, args, optionTx, gasBudget, packageObjectId),
             ...this._getOptionTx(optionTx),
         });
     }

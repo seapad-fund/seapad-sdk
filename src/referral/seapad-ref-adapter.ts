@@ -76,7 +76,7 @@ export class SeaPadReferralAdapter extends SeaPadReferralFunc<
     });
   }
 
-  async upsertReferal(
+  async upsertReferral(
     types: { COIN: string;  },
     args: { admin_cap: string; referral: string; users: string[]; rewards: string[] },
     optionTx?: OptionTx,
@@ -84,7 +84,7 @@ export class SeaPadReferralAdapter extends SeaPadReferralFunc<
     packageObjectId?: string | null,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadReferralInput.upsertReferal(
+      transactionBlock: this._seaPadReferralInput.upsertReferral(
         types,
         args,
         optionTx,
@@ -94,7 +94,7 @@ export class SeaPadReferralAdapter extends SeaPadReferralFunc<
       ...this._getOptionTx(optionTx),
     });
   }
-  async removeReferal(
+  async removeReferral(
     types: { COIN: string;  },
     args: { admin_cap: string; referral: string, users: string[] },
     optionTx?: OptionTx,
@@ -102,7 +102,7 @@ export class SeaPadReferralAdapter extends SeaPadReferralFunc<
     packageObjectId?: string | null,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
-      transactionBlock: this._seaPadReferralInput.removeReferal(
+      transactionBlock: this._seaPadReferralInput.removeReferral(
         types,
         args,
         optionTx,

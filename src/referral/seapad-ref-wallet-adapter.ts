@@ -65,8 +65,8 @@ export class SeapadReferralWalletAdapter extends SeaPadReferralFunc<
       this.buildTx(message),
     );
   }
-  async upsertReferal(types: { COIN: string; }, args: { admin_cap: string; referral: string; users: string[]; rewards: string[]; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
-    const message = this._SeaPadReferralInput.upsertReferal(
+  async upsertReferral(types: { COIN: string; }, args: { admin_cap: string; referral: string; users: string[]; rewards: string[]; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const message = this._SeaPadReferralInput.upsertReferral(
       types,
       args,
       optionTx,
@@ -77,8 +77,8 @@ export class SeapadReferralWalletAdapter extends SeaPadReferralFunc<
       this.buildTx(message),
     );
   }
-  async removeReferal(types: { COIN: string; }, args: { admin_cap: string; referral: string; users: string[]; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
-    const message = this._SeaPadReferralInput.removeReferal(
+  async removeReferral(types: { COIN: string; }, args: { admin_cap: string; referral: string; users: string[]; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const message = this._SeaPadReferralInput.removeReferral(
       types,
       args,
       optionTx,
