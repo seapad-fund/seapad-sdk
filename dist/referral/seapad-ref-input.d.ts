@@ -30,6 +30,13 @@ export declare class SeaPadReferralInput extends SeaPadReferralFunc<TransactionB
         referral: string;
         users: string[];
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): TransactionBlock;
+    updateDistributeTime(types: {
+        COIN: string;
+    }, args: {
+        admin_cap: string;
+        distribute_time_ms: string;
+        referral: string;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null | undefined): TransactionBlock;
     startClaimProject(types: {
         COIN: string;
     }, args: {

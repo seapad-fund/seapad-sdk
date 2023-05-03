@@ -33,6 +33,13 @@ export declare class SeapadReferralWalletAdapter extends SeaPadReferralFunc<Prom
         referral: string;
         users: string[];
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    updateDistributeTime(types: {
+        COIN: string;
+    }, args: {
+        admin_cap: string;
+        distribute_time_ms: string;
+        referral: string;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     startClaimProject(types: {
         COIN: string;
     }, args: {

@@ -27,6 +27,10 @@ class SeapadReferralWalletAdapter extends seapad_ref_func_1.SeaPadReferralFunc {
         const message = this._SeaPadReferralInput.removeReferal(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
+    async updateDistributeTime(types, args, optionTx, gasBudget, packageObjectId) {
+        const message = this._SeaPadReferralInput.updateDistributeTime(types, args, optionTx, gasBudget, packageObjectId);
+        return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
+    }
     async startClaimProject(types, args, optionTx, gasBudget, packageObjectId) {
         const message = this._SeaPadReferralInput.startClaimProject(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));

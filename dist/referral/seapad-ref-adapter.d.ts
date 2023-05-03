@@ -32,6 +32,13 @@ export declare class SeaPadReferralAdapter extends SeaPadReferralFunc<Promise<Su
         referral: string;
         users: string[];
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
+    updateDistributeTime(types: {
+        COIN: string;
+    }, args: {
+        admin_cap: string;
+        distribute_time_ms: string;
+        referral: string;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     startClaimProject(types: {
         COIN: string;
     }, args: {

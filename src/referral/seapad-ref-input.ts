@@ -6,6 +6,7 @@ const clock =
   '0x0000000000000000000000000000000000000000000000000000000000000006';
 
 export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
+
   _module: string;
   _packageObjectId: string;
 
@@ -103,7 +104,22 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
 
     return tx;
   }
+  updateDistributeTime(types: { COIN: string; }, args: { admin_cap: string; distribute_time_ms: string; referral: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null | undefined): TransactionBlock {
+    const tx = new TransactionBlock();
+    tx.moveCall({
+      target: `${this._getPackageObjectId(packageObjectId)}::${this._module
+        }::update_distribute_time`,
+      arguments: [
+        tx.pure(args.admin_cap),
+        tx.pure(args.distribute_time_ms),
+        tx.pure(args.referral),
+      ],
+      typeArguments: [types.COIN],
+    });
+    tx.setGasBudget(getGasBudget(gasBudget));
 
+    return tx;
+  }
   startClaimProject(
     types: { COIN: string; },
     args: { admin_cap: string; referral: string },

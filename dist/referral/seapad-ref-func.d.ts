@@ -12,12 +12,13 @@ export declare abstract class SeaPadReferralFunc<T> {
     /**
      *
      * @param types <COIN>
-     * @param args admin_cap: &AdminCap
+     * @param args admin_cap: &AdminCap, distribute_time_ms
      */
     abstract createProject(types: {
         COIN: string;
     }, args: {
         admin_cap: string;
+        distribute_time_ms: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *
@@ -43,6 +44,18 @@ export declare abstract class SeaPadReferralFunc<T> {
         admin_cap: string;
         referral: string;
         users: string[];
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
+    /**
+      *
+      * @param types <COIN>
+      * @param args _admin: &RAdminCap, distribute_time_ms: u64, referral: &mut Referal<COIN>
+      */
+    abstract updateDistributeTime(types: {
+        COIN: string;
+    }, args: {
+        admin_cap: string;
+        distribute_time_ms: string;
+        referral: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
      *

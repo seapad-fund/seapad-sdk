@@ -113,6 +113,26 @@ export class SeaPadReferralAdapter extends SeaPadReferralFunc<
     });
   }
 
+  async updateDistributeTime(
+    types: { COIN: string;  },
+    args: { admin_cap: string; distribute_time_ms: string; referral: string },
+    optionTx?: OptionTx,
+    gasBudget?: GasBudget,
+    packageObjectId?: string | null,
+  ): Promise<SuiTransactionBlockResponse> {
+    return await this._signer.signAndExecuteTransactionBlock({
+      transactionBlock: this._seaPadReferralInput.updateDistributeTime(
+        types,
+        args,
+        optionTx,
+        gasBudget,
+        packageObjectId,
+      ),
+      ...this._getOptionTx(optionTx),
+    });
+  }
+
+
   async startClaimProject(
     types: { COIN: string;  },
     args: { admin_cap: string; referral: string },

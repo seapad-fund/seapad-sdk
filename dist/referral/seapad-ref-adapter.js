@@ -50,6 +50,12 @@ class SeaPadReferralAdapter extends seapad_ref_func_1.SeaPadReferralFunc {
             ...this._getOptionTx(optionTx),
         });
     }
+    async updateDistributeTime(types, args, optionTx, gasBudget, packageObjectId) {
+        return await this._signer.signAndExecuteTransactionBlock({
+            transactionBlock: this._seaPadReferralInput.updateDistributeTime(types, args, optionTx, gasBudget, packageObjectId),
+            ...this._getOptionTx(optionTx),
+        });
+    }
     async startClaimProject(types, args, optionTx, gasBudget, packageObjectId) {
         return await this._signer.signAndExecuteTransactionBlock({
             transactionBlock: this._seaPadReferralInput.startClaimProject(types, args, optionTx, gasBudget, packageObjectId),

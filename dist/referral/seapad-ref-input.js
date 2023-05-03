@@ -68,6 +68,20 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
+    updateDistributeTime(types, args, optionTx, gasBudget, packageObjectId) {
+        const tx = new sui_js_1.TransactionBlock();
+        tx.moveCall({
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::update_distribute_time`,
+            arguments: [
+                tx.pure(args.admin_cap),
+                tx.pure(args.distribute_time_ms),
+                tx.pure(args.referral),
+            ],
+            typeArguments: [types.COIN],
+        });
+        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        return tx;
+    }
     startClaimProject(types, args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
