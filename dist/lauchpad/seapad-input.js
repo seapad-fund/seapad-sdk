@@ -5,8 +5,9 @@ const sui_js_1 = require("@mysten/sui.js");
 const seapad_func_1 = require("./seapad-func");
 const common_1 = require("../common");
 const clock = '0x0000000000000000000000000000000000000000000000000000000000000006';
+const version_default = "0x24750c4da43beea085caa121477f36eeb529255c867773069d64de153f3a6a09";
 class SeaPadInput extends seapad_func_1.SeaPadFunc {
-    constructor(packageObjectId, module) {
+    constructor(packageObjectId, module, version) {
         super();
         this._getPackageObjectId = (packageObjectId) => {
             if (packageObjectId != null && packageObjectId != undefined) {
@@ -16,12 +17,17 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         };
         this._packageObjectId = packageObjectId;
         this._module = module;
+        this._version = version?.length ? version : version_default;
     }
     changeAdmin(args, optionTx, gasBudget, packageObjectId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::change_admin`,
-            arguments: [tx.pure(args.admin_cap), tx.pure(args.to)],
+            arguments: [
+                tx.pure(args.admin_cap),
+                tx.pure(args.to),
+                tx.pure(this._version)
+            ],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
@@ -30,7 +36,11 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::change_owner`,
-            arguments: [tx.pure(args.admin_cap), tx.pure(args.new_owner)],
+            arguments: [
+                tx.pure(args.admin_cap),
+                tx.pure(args.new_owner),
+                tx.pure(this._version)
+            ],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
@@ -47,6 +57,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 tx.pure(args.token_decimals),
                 tx.pure(args.linear_time),
                 tx.pure(args.require_kyc),
+                tx.pure(this._version)
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
@@ -63,6 +74,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 tx.pure(args.time),
                 tx.pure(args.percent),
                 tx.object(clock),
+                tx.pure(this._version)
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
@@ -73,7 +85,11 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::reset_milestone`,
-            arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
+            arguments: [
+                tx.pure(args.admin_cap),
+                tx.pure(args.project),
+                tx.pure(this._version)
+            ],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
@@ -96,6 +112,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 tx.pure(args.soft_cap),
                 tx.pure(args.hard_cap),
                 tx.object(clock),
+                tx.pure(this._version)
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
@@ -114,6 +131,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 tx.pure(args.discord),
                 tx.pure(args.telegram),
                 tx.pure(args.website),
+                tx.pure(this._version)
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
@@ -128,6 +146,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 tx.pure(args.admin_cap),
                 tx.pure(args.project),
                 tx.pure(args.user_list),
+                tx.pure(this._version)
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
@@ -142,6 +161,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 tx.pure(args.admin_cap),
                 tx.pure(args.project),
                 tx.pure(args.user_list),
+                tx.pure(this._version)
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
@@ -156,6 +176,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 tx.pure(args.admin_cap),
                 tx.pure(args.project),
                 tx.object(clock),
+                tx.pure(this._version)
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
@@ -173,6 +194,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 tx.pure(args.project),
                 tx.object(clock),
                 tx.pure(args.kyc),
+                tx.pure(this._version)
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
@@ -187,6 +209,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 tx.pure(args.admin_cap),
                 tx.pure(args.project),
                 tx.object(clock),
+                tx.pure(this._version)
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
@@ -197,7 +220,11 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::end_refund`,
-            arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
+            arguments: [
+                tx.pure(args.admin_cap),
+                tx.pure(args.project),
+                tx.pure(this._version)
+            ],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
@@ -207,7 +234,11 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::distribute_raised_fund`,
-            arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
+            arguments: [
+                tx.pure(args.admin_cap),
+                tx.pure(args.project),
+                tx.pure(this._version)
+            ],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
@@ -217,7 +248,11 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::refund_token_to_owner`,
-            arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
+            arguments: [
+                tx.pure(args.admin_cap),
+                tx.pure(args.project),
+                tx.pure(this._version)
+            ],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
@@ -228,7 +263,11 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         const coin_trans = (0, common_1.manageObjectCoin)(types.TOKEN, args.coins, args.value, tx);
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::deposit_by_owner`,
-            arguments: [coin_trans, tx.pure(args.value), tx.pure(args.project)],
+            arguments: [
+                coin_trans, tx.pure(args.value),
+                tx.pure(args.project),
+                tx.pure(this._version)
+            ],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
@@ -238,7 +277,11 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::claim_token`,
-            arguments: [tx.pure(args.project), tx.object(clock)],
+            arguments: [
+                tx.pure(args.project),
+                tx.object(clock),
+                tx.pure(this._version)
+            ],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
@@ -248,7 +291,10 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::claim_refund`,
-            arguments: [tx.pure(args.project)],
+            arguments: [
+                tx.pure(args.project),
+                tx.pure(this._version)
+            ],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
@@ -258,7 +304,10 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::vote`,
-            arguments: [tx.pure(args.project)],
+            arguments: [
+                tx.pure(args.project),
+                tx.pure(this._version)
+            ],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
@@ -273,6 +322,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 tx.pure(args.user),
                 tx.pure(args.max_allocate),
                 tx.pure(args.project),
+                tx.pure(this._version)
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
@@ -287,6 +337,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 tx.pure(args.admin_cap),
                 tx.pure(args.user),
                 tx.pure(args.project),
+                tx.pure(this._version)
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });

@@ -2,9 +2,10 @@ import { TransactionBlock } from '@mysten/sui.js';
 import { SeaPadFunc } from './seapad-func';
 import { GasBudget, OptionTx } from '../common';
 export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
+    _version?: string;
     _module: string;
     _packageObjectId: string;
-    constructor(packageObjectId: string, module: string);
+    constructor(packageObjectId: string, module: string, version?: string);
     _getPackageObjectId: (packageObjectId?: string | null) => string;
     changeAdmin(args: {
         admin_cap: string;

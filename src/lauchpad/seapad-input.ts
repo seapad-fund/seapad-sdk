@@ -4,15 +4,17 @@ import { GasBudget, OptionTx, getGasBudget, manageObjectCoin } from '../common';
 
 const clock =
   '0x0000000000000000000000000000000000000000000000000000000000000006';
-
+const version_default = "0x24750c4da43beea085caa121477f36eeb529255c867773069d64de153f3a6a09"
 export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
+  _version?: string;
   _module: string;
   _packageObjectId: string;
 
-  constructor(packageObjectId: string, module: string) {
+  constructor(packageObjectId: string, module: string, version?: string) {
     super();
     this._packageObjectId = packageObjectId;
     this._module = module;
+    this._version = version?.length? version: version_default
   }
 
   _getPackageObjectId = (packageObjectId?: string | null) => {
@@ -33,7 +35,11 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
       }::change_admin`,
-      arguments: [tx.pure(args.admin_cap), tx.pure(args.to)],
+      arguments: [
+        tx.pure(args.admin_cap),
+        tx.pure(args.to),
+        tx.pure(this._version)
+      ],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
@@ -49,7 +55,11 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
       }::change_owner`,
-      arguments: [tx.pure(args.admin_cap), tx.pure(args.new_owner)],
+      arguments: [
+        tx.pure(args.admin_cap),
+        tx.pure(args.new_owner),
+        tx.pure(this._version)
+      ],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
     return tx;
@@ -82,6 +92,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         tx.pure(args.token_decimals),
         tx.pure(args.linear_time),
         tx.pure(args.require_kyc),
+        tx.pure(this._version)
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -106,6 +117,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         tx.pure(args.time),
         tx.pure(args.percent),
         tx.object(clock),
+        tx.pure(this._version)
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -124,7 +136,11 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
       }::reset_milestone`,
-      arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
+      arguments: [
+        tx.pure(args.admin_cap),
+        tx.pure(args.project),
+        tx.pure(this._version)
+      ],
       typeArguments: [types.COIN, types.TOKEN],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
@@ -168,6 +184,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         tx.pure(args.soft_cap),
         tx.pure(args.hard_cap),
         tx.object(clock),
+        tx.pure(this._version)
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -203,6 +220,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         tx.pure(args.discord),
         tx.pure(args.telegram),
         tx.pure(args.website),
+        tx.pure(this._version)
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -226,6 +244,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         tx.pure(args.admin_cap),
         tx.pure(args.project),
         tx.pure(args.user_list),
+        tx.pure(this._version)
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -250,6 +269,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         tx.pure(args.admin_cap),
         tx.pure(args.project),
         tx.pure(args.user_list),
+        tx.pure(this._version)
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -274,6 +294,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         tx.pure(args.admin_cap),
         tx.pure(args.project),
         tx.object(clock),
+        tx.pure(this._version)
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -306,6 +327,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         tx.pure(args.project),
         tx.object(clock),
         tx.pure(args.kyc),
+        tx.pure(this._version)
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -330,6 +352,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         tx.pure(args.admin_cap),
         tx.pure(args.project),
         tx.object(clock),
+        tx.pure(this._version)
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -349,7 +372,11 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
       }::end_refund`,
-      arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
+      arguments: [
+        tx.pure(args.admin_cap),
+        tx.pure(args.project),
+        tx.pure(this._version)
+      ],
       typeArguments: [types.COIN, types.TOKEN],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
@@ -368,7 +395,11 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
       }::distribute_raised_fund`,
-      arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
+      arguments: [
+        tx.pure(args.admin_cap),
+        tx.pure(args.project),
+        tx.pure(this._version)
+      ],
       typeArguments: [types.COIN, types.TOKEN],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
@@ -387,7 +418,11 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
       }::refund_token_to_owner`,
-      arguments: [tx.pure(args.admin_cap), tx.pure(args.project)],
+      arguments: [
+        tx.pure(args.admin_cap),
+        tx.pure(args.project),
+        tx.pure(this._version)
+      ],
       typeArguments: [types.COIN, types.TOKEN],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
@@ -413,7 +448,11 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
       }::deposit_by_owner`,
-      arguments: [coin_trans, tx.pure(args.value), tx.pure(args.project)],
+      arguments: [
+        coin_trans, tx.pure(args.value),
+        tx.pure(args.project),
+        tx.pure(this._version)
+      ],
       typeArguments: [types.COIN, types.TOKEN],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
@@ -432,7 +471,11 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
       }::claim_token`,
-      arguments: [tx.pure(args.project), tx.object(clock)],
+      arguments: [
+        tx.pure(args.project),
+        tx.object(clock),
+        tx.pure(this._version)
+      ],
       typeArguments: [types.COIN, types.TOKEN],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
@@ -451,7 +494,10 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
       }::claim_refund`,
-      arguments: [tx.pure(args.project)],
+      arguments: [
+        tx.pure(args.project),
+        tx.pure(this._version)
+      ],
       typeArguments: [types.COIN, types.TOKEN],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
@@ -470,7 +516,10 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
       }::vote`,
-      arguments: [tx.pure(args.project)],
+      arguments: [
+        tx.pure(args.project),
+        tx.pure(this._version)
+      ],
       typeArguments: [types.COIN, types.TOKEN],
     });
     tx.setGasBudget(getGasBudget(gasBudget));
@@ -500,6 +549,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         tx.pure(args.user),
         tx.pure(args.max_allocate),
         tx.pure(args.project),
+        tx.pure(this._version)
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -524,6 +574,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         tx.pure(args.admin_cap),
         tx.pure(args.user),
         tx.pure(args.project),
+        tx.pure(this._version)
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });

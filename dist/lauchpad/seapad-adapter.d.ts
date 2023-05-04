@@ -6,7 +6,7 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
     _suiProvider: JsonRpcProvider;
     _seaPadInput: SeaPadInput;
     _signer: RawSigner;
-    constructor(signer: RawSigner, packageObjectId: string, module: string);
+    constructor(signer: RawSigner, packageObjectId: string, module: string, version?: string);
     _getOptionTx(optionTx: OptionTx): OptionTx;
     changeAdmin(args: {
         admin_cap: string;

@@ -5,9 +5,9 @@ const seapad_func_1 = require("./seapad-func");
 const seapad_input_1 = require("./seapad-input");
 const common_1 = require("../common");
 class SeapadWalletAdapter extends seapad_func_1.SeaPadFunc {
-    constructor(walletContextState, packageObjectId, module, suiProvider) {
+    constructor(walletContextState, packageObjectId, module, suiProvider, version) {
         super();
-        this._seaPadInput = new seapad_input_1.SeaPadInput(packageObjectId, module);
+        this._seaPadInput = new seapad_input_1.SeaPadInput(packageObjectId, module, version);
         this._walletContextState = walletContextState;
         this._suiProvider = suiProvider;
     }

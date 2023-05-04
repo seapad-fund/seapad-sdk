@@ -8,7 +8,7 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
     _walletContextState: WalletContextState;
     _seaPadInput: SeaPadInput;
     _suiProvider: JsonRpcProvider;
-    constructor(walletContextState: WalletContextState, packageObjectId: string, module: string, suiProvider: JsonRpcProvider);
+    constructor(walletContextState: WalletContextState, packageObjectId: string, module: string, suiProvider: JsonRpcProvider, version?: string);
     changeAdmin(args: {
         admin_cap: string;
         to: string;

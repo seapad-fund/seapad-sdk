@@ -20,9 +20,10 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     packageObjectId: string,
     module: string,
     suiProvider: JsonRpcProvider,
+    version?: string
   ) {
     super();
-    this._seaPadInput = new SeaPadInput(packageObjectId, module);
+    this._seaPadInput = new SeaPadInput(packageObjectId, module, version);
     this._walletContextState = walletContextState;
     this._suiProvider = suiProvider;
   }

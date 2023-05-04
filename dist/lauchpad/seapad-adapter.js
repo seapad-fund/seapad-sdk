@@ -5,9 +5,9 @@ const seapad_func_1 = require("./seapad-func");
 const seapad_input_1 = require("./seapad-input");
 const common_1 = require("../common");
 class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
-    constructor(signer, packageObjectId, module) {
+    constructor(signer, packageObjectId, module, version) {
         super();
-        this._seaPadInput = new seapad_input_1.SeaPadInput(packageObjectId, module);
+        this._seaPadInput = new seapad_input_1.SeaPadInput(packageObjectId, module, version);
         this._signer = signer;
         this._suiProvider = signer.provider;
     }
