@@ -25,6 +25,9 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
         owner: string;
         vesting_type: number;
         linear_time: number;
+        cliff_time: string;
+        tge: string;
+        unlock_percent: string;
         coin_decimals: number;
         token_decimals: number;
         require_kyc: boolean;

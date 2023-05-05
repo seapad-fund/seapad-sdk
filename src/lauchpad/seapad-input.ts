@@ -71,6 +71,9 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       owner: string;
       vesting_type: number;
       linear_time: number | 0;
+      cliff_time: string;
+      tge: string;
+      unlock_percent: string;
       coin_decimals: number;
       token_decimals: number;
       require_kyc: boolean;
@@ -88,6 +91,9 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         tx.pure(args.admin_cap),
         tx.pure(args.owner),
         tx.pure(args.vesting_type),
+        tx.pure(args.cliff_time),
+        tx.pure(args.tge),
+        tx.pure(args.unlock_percent),
         tx.pure(args.coin_decimals),
         tx.pure(args.token_decimals),
         tx.pure(args.linear_time),

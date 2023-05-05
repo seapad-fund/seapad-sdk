@@ -23,6 +23,9 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
         admin_cap: string;
         owner: string;
         vesting_type: number;
+        cliff_time: string;
+        tge: string;
+        unlock_percent: string;
         linear_time: number;
         coin_decimals: number;
         token_decimals: number;

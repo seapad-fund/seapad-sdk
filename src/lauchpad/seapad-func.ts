@@ -26,7 +26,18 @@ export abstract class SeaPadFunc<T> {
   /**
    *
    * @param types <COIN>
-   * @param args admin_cap: &AdminCap, owner: address, vesting_type: u8, coin_metadata: &CoinMetadata<COIN>,
+   * @param argsadminCap: &AdminCap,
+                                                 owner: address,
+                                                 vesting_type: u8,
+                                                 cliff_time: u64,
+                                                 tge: u64,
+                                                 unlock_percent: u64,
+                                                 coin_decimals: u8,
+                                                 token_decimals: u8,
+                                                 linear_time_ms: u64,
+                                                 require_kyc: bool,
+                                                 version: &mut Version,
+                                                 clock: &Clock,
    */
   abstract createProject(
     types: { COIN: string; TOKEN: string },
@@ -34,6 +45,9 @@ export abstract class SeaPadFunc<T> {
       admin_cap: string;
       owner: string;
       vesting_type: number;
+      cliff_time: string;
+      tge: string;
+      unlock_percent: string;
       linear_time: number;
       coin_decimals: number;
       token_decimals: number;
