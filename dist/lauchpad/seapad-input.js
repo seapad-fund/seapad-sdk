@@ -5,7 +5,7 @@ const sui_js_1 = require("@mysten/sui.js");
 const seapad_func_1 = require("./seapad-func");
 const common_1 = require("../common");
 const clock = '0x0000000000000000000000000000000000000000000000000000000000000006';
-const version_default = "0x24750c4da43beea085caa121477f36eeb529255c867773069d64de153f3a6a09";
+const version_default = "0xcbc5e76386b5c1af9f7e14bd18c5741c4974751c83277f6d4fe0eda4db776469";
 class SeaPadInput extends seapad_func_1.SeaPadFunc {
     constructor(packageObjectId, module, version) {
         super();
@@ -56,9 +56,9 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 tx.pure(args.cliff_time),
                 tx.pure(args.tge),
                 tx.pure(args.unlock_percent),
+                tx.pure(args.linear_time),
                 tx.pure(args.coin_decimals),
                 tx.pure(args.token_decimals),
-                tx.pure(args.linear_time),
                 tx.pure(args.require_kyc),
                 tx.pure(this._version),
                 tx.object(clock)
