@@ -15,6 +15,12 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             }
             return this._packageObjectId;
         };
+        this._getVersionId = (versionId) => {
+            if (versionId != null && versionId != undefined) {
+                return versionId;
+            }
+            return this._version;
+        };
         this._packageObjectId = packageObjectId;
         this._module = module;
         this._version = version?.length ? version : version_default;
@@ -187,7 +193,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    buy(types, args, optionTx, gasBudget, packageObjectId) {
+    buy(types, args, optionTx, gasBudget, packageObjectId, versionId) {
         const tx = new sui_js_1.TransactionBlock();
         const coin_trans = (0, common_1.manageObjectCoin)(types.COIN, args.coins, args.amount, tx);
         tx.moveCall({
@@ -198,14 +204,14 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 tx.pure(args.project),
                 tx.object(clock),
                 tx.pure(args.kyc),
-                tx.pure(this._version)
+                tx.pure(this._getVersionId(versionId))
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    endFundRaising(types, args, optionTx, gasBudget, packageObjectId) {
+    endFundRaising(types, args, optionTx, gasBudget, packageObjectId, versionId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::end_fund_raising`,
@@ -213,49 +219,49 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
                 tx.pure(args.admin_cap),
                 tx.pure(args.project),
                 tx.object(clock),
-                tx.pure(this._version)
+                tx.pure(this._getVersionId(versionId))
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    endRefund(types, args, optionTx, gasBudget, packageObjectId) {
+    endRefund(types, args, optionTx, gasBudget, packageObjectId, versionId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::end_refund`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.project),
-                tx.pure(this._version)
+                tx.pure(this._getVersionId(versionId))
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    distributeRaisedFund(types, args, optionTx, gasBudget, packageObjectId) {
+    distributeRaisedFund(types, args, optionTx, gasBudget, packageObjectId, versionId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::distribute_raised_fund`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.project),
-                tx.pure(this._version)
+                tx.pure(this._getVersionId(versionId))
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    refundTokenToOwner(types, args, optionTx, gasBudget, packageObjectId) {
+    refundTokenToOwner(types, args, optionTx, gasBudget, packageObjectId, versionId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::refund_token_to_owner`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.project),
-                tx.pure(this._version)
+                tx.pure(this._getVersionId(versionId))
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
@@ -277,27 +283,27 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    userClaimToken(types, args, optionTx, gasBudget, packageObjectId) {
+    userClaimToken(types, args, optionTx, gasBudget, packageObjectId, versionId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::claim_token`,
             arguments: [
                 tx.pure(args.project),
                 tx.object(clock),
-                tx.pure(this._version)
+                tx.pure(this._getVersionId(versionId))
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });
         tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
         return tx;
     }
-    claimRefund(types, args, optionTx, gasBudget, packageObjectId) {
+    claimRefund(types, args, optionTx, gasBudget, packageObjectId, versionId) {
         const tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::claim_refund`,
             arguments: [
                 tx.pure(args.project),
-                tx.pure(this._version)
+                tx.pure(this._getVersionId(versionId))
             ],
             typeArguments: [types.COIN, types.TOKEN],
         });

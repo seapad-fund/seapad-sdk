@@ -106,35 +106,35 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
         amount: string;
         project: string;
         kyc: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     endFundRaising(types: {
         COIN: string;
         TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     endRefund(types: {
         COIN: string;
         TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     distributeRaisedFund(types: {
         COIN: string;
         TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     refundTokenToOwner(types: {
         COIN: string;
         TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     depositProject(types: {
         COIN: string;
         TOKEN: string;
@@ -147,13 +147,13 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
         TOKEN: string;
     }, args: {
         project: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     claimRefund(types: {
         COIN: string;
         TOKEN: string;
     }, args: {
         project: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     vote(types: {
         COIN: string;
         TOKEN: string;

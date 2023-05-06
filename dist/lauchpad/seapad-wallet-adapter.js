@@ -51,26 +51,26 @@ class SeapadWalletAdapter extends seapad_func_1.SeaPadFunc {
         const message = this._seaPadInput.startFundRaising(types, args, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async buy(types, args, optionTx, gasBudget, packageObjectId) {
+    async buy(types, args, optionTx, gasBudget, packageObjectId, versionId) {
         const userAddress = this._walletContextState.account?.address || '';
         const _coins = await (0, common_1.getCoinObjects)(types.COIN, args.amount, userAddress, this._suiProvider);
-        const message = this._seaPadInput.buy(types, { ...args, coins: _coins }, optionTx, gasBudget, packageObjectId);
+        const message = this._seaPadInput.buy(types, { ...args, coins: _coins }, optionTx, gasBudget, packageObjectId, versionId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async endFundRaising(types, args, optionTx, gasBudget, packageObjectId) {
-        const message = this._seaPadInput.endFundRaising(types, args, optionTx, gasBudget, packageObjectId);
+    async endFundRaising(types, args, optionTx, gasBudget, packageObjectId, versionId) {
+        const message = this._seaPadInput.endFundRaising(types, args, optionTx, gasBudget, packageObjectId, versionId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async endRefund(types, args, optionTx, gasBudget, packageObjectId) {
-        const message = this._seaPadInput.endRefund(types, args, optionTx, gasBudget, packageObjectId);
+    async endRefund(types, args, optionTx, gasBudget, packageObjectId, versionId) {
+        const message = this._seaPadInput.endRefund(types, args, optionTx, gasBudget, packageObjectId, versionId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async distributeRaisedFund(types, args, optionTx, gasBudget, packageObjectId) {
-        const message = this._seaPadInput.distributeRaisedFund(types, args, optionTx, gasBudget, packageObjectId);
+    async distributeRaisedFund(types, args, optionTx, gasBudget, packageObjectId, versionId) {
+        const message = this._seaPadInput.distributeRaisedFund(types, args, optionTx, gasBudget, packageObjectId, versionId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async refundTokenToOwner(types, args, optionTx, gasBudget, packageObjectId) {
-        const message = this._seaPadInput.refundTokenToOwner(types, args, optionTx, gasBudget, packageObjectId);
+    async refundTokenToOwner(types, args, optionTx, gasBudget, packageObjectId, versionId) {
+        const message = this._seaPadInput.refundTokenToOwner(types, args, optionTx, gasBudget, packageObjectId, versionId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
     async depositProject(types, args, optionTx, gasBudget, packageObjectId) {
@@ -79,12 +79,12 @@ class SeapadWalletAdapter extends seapad_func_1.SeaPadFunc {
         const message = this._seaPadInput.depositProject(types, { ...args, coins: _coins }, optionTx, gasBudget, packageObjectId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async userClaimToken(types, args, optionTx, gasBudget, packageObjectId) {
-        const message = this._seaPadInput.userClaimToken(types, args, optionTx, gasBudget, packageObjectId);
+    async userClaimToken(types, args, optionTx, gasBudget, packageObjectId, versionId) {
+        const message = this._seaPadInput.userClaimToken(types, args, optionTx, gasBudget, packageObjectId, versionId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
-    async claimRefund(types, args, optionTx, gasBudget, packageObjectId) {
-        const message = this._seaPadInput.claimRefund(types, args, optionTx, gasBudget, packageObjectId);
+    async claimRefund(types, args, optionTx, gasBudget, packageObjectId, versionId) {
+        const message = this._seaPadInput.claimRefund(types, args, optionTx, gasBudget, packageObjectId, versionId);
         return await this._walletContextState.signAndExecuteTransactionBlock(this.buildTx(message));
     }
     async vote(types, args, optionTx, gasBudget, packageObjectId) {

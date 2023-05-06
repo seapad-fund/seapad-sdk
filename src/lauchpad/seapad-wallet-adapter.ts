@@ -241,6 +241,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
+    versionId?: string | null,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const userAddress = this._walletContextState.account?.address || '';
     const _coins: string[] = await getCoinObjects(
@@ -255,6 +256,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
       packageObjectId,
+      versionId
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -266,6 +268,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
+    versionId?: string | null,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.endFundRaising(
       types,
@@ -273,6 +276,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
       packageObjectId,
+      versionId
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -284,13 +288,15 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
-  ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    versionId?: string | null,
+    ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.endRefund(
       types,
       args,
       optionTx,
       gasBudget,
       packageObjectId,
+      versionId
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -302,13 +308,15 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
-  ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    versionId?: string | null,
+    ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.distributeRaisedFund(
       types,
       args,
       optionTx,
       gasBudget,
       packageObjectId,
+      versionId
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -320,13 +328,15 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
-  ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    versionId?: string | null,
+    ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.refundTokenToOwner(
       types,
       args,
       optionTx,
       gasBudget,
       packageObjectId,
+      versionId
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -363,13 +373,15 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
-  ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    versionId?: string | null,
+    ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.userClaimToken(
       types,
       args,
       optionTx,
       gasBudget,
       packageObjectId,
+      versionId
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -381,13 +393,15 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
-  ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    versionId?: string | null,
+    ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.claimRefund(
       types,
       args,
       optionTx,
       gasBudget,
       packageObjectId,
+      versionId
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),

@@ -23,6 +23,12 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     }
     return this._packageObjectId;
   };
+  _getVersionId = (versionId?: string | null) => {
+    if (versionId != null && versionId != undefined) {
+      return versionId;
+    }
+    return this._version;
+  };
 
   changeAdmin(
     args: { admin_cap: string; to: string },
@@ -315,6 +321,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
+    versionId?: string | null,
   ): TransactionBlock {
     const tx = new TransactionBlock();
     const coin_trans: TransactionArgument = manageObjectCoin(
@@ -334,7 +341,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         tx.pure(args.project),
         tx.object(clock),
         tx.pure(args.kyc),
-        tx.pure(this._version)
+        tx.pure(this._getVersionId(versionId))
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -349,7 +356,8 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
-  ): TransactionBlock {
+    versionId?: string | null,
+    ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
@@ -359,7 +367,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         tx.pure(args.admin_cap),
         tx.pure(args.project),
         tx.object(clock),
-        tx.pure(this._version)
+        tx.pure(this._getVersionId(versionId))
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -373,7 +381,8 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
-  ): TransactionBlock {
+    versionId?: string | null,
+    ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
@@ -382,7 +391,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.project),
-        tx.pure(this._version)
+        tx.pure(this._getVersionId(versionId))
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -396,7 +405,8 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
-  ): TransactionBlock {
+    versionId?: string | null,
+    ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
@@ -405,7 +415,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.project),
-        tx.pure(this._version)
+        tx.pure(this._getVersionId(versionId))
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -419,7 +429,8 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
-  ): TransactionBlock {
+    versionId?: string | null,
+    ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
@@ -428,7 +439,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.project),
-        tx.pure(this._version)
+        tx.pure(this._getVersionId(versionId))
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -472,7 +483,8 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
-  ): TransactionBlock {
+    versionId?: string | null,
+    ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
@@ -481,7 +493,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       arguments: [
         tx.pure(args.project),
         tx.object(clock),
-        tx.pure(this._version)
+        tx.pure(this._getVersionId(versionId))
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
@@ -495,7 +507,8 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
-  ): TransactionBlock {
+    versionId?: string | null,
+    ): TransactionBlock {
     const tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
@@ -503,7 +516,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       }::claim_refund`,
       arguments: [
         tx.pure(args.project),
-        tx.pure(this._version)
+        tx.pure(this._getVersionId(versionId))
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });

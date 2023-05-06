@@ -254,6 +254,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
+    versionId?: string | null,
   ): Promise<SuiTransactionBlockResponse> {
     const userAddress = await this._signer.getAddress();
     const _coins: string[] = await getCoinObjects(
@@ -269,6 +270,7 @@ export class SeaPadAdapter extends SeaPadFunc<
         optionTx,
         gasBudget,
         packageObjectId,
+        versionId
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -279,7 +281,8 @@ export class SeaPadAdapter extends SeaPadFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
-  ): Promise<SuiTransactionBlockResponse> {
+    versionId?: string | null,
+    ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadInput.endFundRaising(
         types,
@@ -287,6 +290,7 @@ export class SeaPadAdapter extends SeaPadFunc<
         optionTx,
         gasBudget,
         packageObjectId,
+        versionId
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -297,6 +301,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
+    versionId?: string | null,
   ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadInput.endRefund(
@@ -305,6 +310,7 @@ export class SeaPadAdapter extends SeaPadFunc<
         optionTx,
         gasBudget,
         packageObjectId,
+        versionId
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -315,7 +321,8 @@ export class SeaPadAdapter extends SeaPadFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
-  ): Promise<SuiTransactionBlockResponse> {
+    versionId?: string | null,
+    ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadInput.distributeRaisedFund(
         types,
@@ -323,6 +330,7 @@ export class SeaPadAdapter extends SeaPadFunc<
         optionTx,
         gasBudget,
         packageObjectId,
+        versionId
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -333,7 +341,8 @@ export class SeaPadAdapter extends SeaPadFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
-  ): Promise<SuiTransactionBlockResponse> {
+    versionId?: string | null,
+    ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadInput.refundTokenToOwner(
         types,
@@ -341,6 +350,7 @@ export class SeaPadAdapter extends SeaPadFunc<
         optionTx,
         gasBudget,
         packageObjectId,
+        versionId
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -376,7 +386,8 @@ export class SeaPadAdapter extends SeaPadFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
-  ): Promise<SuiTransactionBlockResponse> {
+    versionId?: string | null,
+    ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadInput.userClaimToken(
         types,
@@ -384,6 +395,7 @@ export class SeaPadAdapter extends SeaPadFunc<
         optionTx,
         gasBudget,
         packageObjectId,
+        versionId
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -394,7 +406,8 @@ export class SeaPadAdapter extends SeaPadFunc<
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
-  ): Promise<SuiTransactionBlockResponse> {
+    versionId?: string | null,
+    ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadInput.claimRefund(
         types,
@@ -402,6 +415,7 @@ export class SeaPadAdapter extends SeaPadFunc<
         optionTx,
         gasBudget,
         packageObjectId,
+        versionId
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -443,6 +457,7 @@ export class SeaPadAdapter extends SeaPadFunc<
         args,
         optionTx,
         gasBudget,
+        packageObjectId
       ),
       ...this._getOptionTx(optionTx),
     });

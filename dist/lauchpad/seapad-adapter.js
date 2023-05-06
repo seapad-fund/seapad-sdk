@@ -86,35 +86,35 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
             ...this._getOptionTx(optionTx),
         });
     }
-    async buy(types, args, optionTx, gasBudget, packageObjectId) {
+    async buy(types, args, optionTx, gasBudget, packageObjectId, versionId) {
         const userAddress = await this._signer.getAddress();
         const _coins = await (0, common_1.getCoinObjects)(types.COIN, args.amount, userAddress, this._suiProvider);
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadInput.buy(types, { ...args, coins: _coins }, optionTx, gasBudget, packageObjectId),
+            transactionBlock: this._seaPadInput.buy(types, { ...args, coins: _coins }, optionTx, gasBudget, packageObjectId, versionId),
             ...this._getOptionTx(optionTx),
         });
     }
-    async endFundRaising(types, args, optionTx, gasBudget, packageObjectId) {
+    async endFundRaising(types, args, optionTx, gasBudget, packageObjectId, versionId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadInput.endFundRaising(types, args, optionTx, gasBudget, packageObjectId),
+            transactionBlock: this._seaPadInput.endFundRaising(types, args, optionTx, gasBudget, packageObjectId, versionId),
             ...this._getOptionTx(optionTx),
         });
     }
-    async endRefund(types, args, optionTx, gasBudget, packageObjectId) {
+    async endRefund(types, args, optionTx, gasBudget, packageObjectId, versionId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadInput.endRefund(types, args, optionTx, gasBudget, packageObjectId),
+            transactionBlock: this._seaPadInput.endRefund(types, args, optionTx, gasBudget, packageObjectId, versionId),
             ...this._getOptionTx(optionTx),
         });
     }
-    async distributeRaisedFund(types, args, optionTx, gasBudget, packageObjectId) {
+    async distributeRaisedFund(types, args, optionTx, gasBudget, packageObjectId, versionId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadInput.distributeRaisedFund(types, args, optionTx, gasBudget, packageObjectId),
+            transactionBlock: this._seaPadInput.distributeRaisedFund(types, args, optionTx, gasBudget, packageObjectId, versionId),
             ...this._getOptionTx(optionTx),
         });
     }
-    async refundTokenToOwner(types, args, optionTx, gasBudget, packageObjectId) {
+    async refundTokenToOwner(types, args, optionTx, gasBudget, packageObjectId, versionId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadInput.refundTokenToOwner(types, args, optionTx, gasBudget, packageObjectId),
+            transactionBlock: this._seaPadInput.refundTokenToOwner(types, args, optionTx, gasBudget, packageObjectId, versionId),
             ...this._getOptionTx(optionTx),
         });
     }
@@ -126,15 +126,15 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
             ...this._getOptionTx(optionTx),
         });
     }
-    async userClaimToken(types, args, optionTx, gasBudget, packageObjectId) {
+    async userClaimToken(types, args, optionTx, gasBudget, packageObjectId, versionId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadInput.userClaimToken(types, args, optionTx, gasBudget, packageObjectId),
+            transactionBlock: this._seaPadInput.userClaimToken(types, args, optionTx, gasBudget, packageObjectId, versionId),
             ...this._getOptionTx(optionTx),
         });
     }
-    async claimRefund(types, args, optionTx, gasBudget, packageObjectId) {
+    async claimRefund(types, args, optionTx, gasBudget, packageObjectId, versionId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadInput.claimRefund(types, args, optionTx, gasBudget, packageObjectId),
+            transactionBlock: this._seaPadInput.claimRefund(types, args, optionTx, gasBudget, packageObjectId, versionId),
             ...this._getOptionTx(optionTx),
         });
     }
@@ -146,7 +146,7 @@ class SeaPadAdapter extends seapad_func_1.SeaPadFunc {
     }
     async addMaxAllocate(types, args, optionTx, gasBudget, packageObjectId) {
         return await this._signer.signAndExecuteTransactionBlock({
-            transactionBlock: this._seaPadInput.addMaxAllocate(types, args, optionTx, gasBudget),
+            transactionBlock: this._seaPadInput.addMaxAllocate(types, args, optionTx, gasBudget, packageObjectId),
             ...this._getOptionTx(optionTx),
         });
     }

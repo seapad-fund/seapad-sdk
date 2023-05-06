@@ -7,6 +7,7 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     _packageObjectId: string;
     constructor(packageObjectId: string, module: string, version?: string);
     _getPackageObjectId: (packageObjectId?: string | null) => string;
+    _getVersionId: (versionId?: string | null) => string | undefined;
     changeAdmin(args: {
         admin_cap: string;
         to: string;
@@ -105,35 +106,35 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         amount: string;
         project: string;
         kyc: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): TransactionBlock;
     endFundRaising(types: {
         COIN: string;
         TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): TransactionBlock;
     endRefund(types: {
         COIN: string;
         TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): TransactionBlock;
     distributeRaisedFund(types: {
         COIN: string;
         TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): TransactionBlock;
     refundTokenToOwner(types: {
         COIN: string;
         TOKEN: string;
     }, args: {
         admin_cap: string;
         project: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): TransactionBlock;
     depositProject(types: {
         COIN: string;
         TOKEN: string;
@@ -147,13 +148,13 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         TOKEN: string;
     }, args: {
         project: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): TransactionBlock;
     claimRefund(types: {
         COIN: string;
         TOKEN: string;
     }, args: {
         project: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): TransactionBlock;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): TransactionBlock;
     vote(types: {
         COIN: string;
         TOKEN: string;
