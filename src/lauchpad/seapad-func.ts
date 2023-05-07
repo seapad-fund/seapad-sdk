@@ -207,7 +207,7 @@ export abstract class SeaPadFunc<T> {
    */
   abstract distributeRaisedFund(
     types: { COIN: string; TOKEN: string },
-    args: { admin_cap: string; project: string },
+    args: { project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
@@ -219,7 +219,7 @@ export abstract class SeaPadFunc<T> {
    */
   abstract refundTokenToOwner(
     types: { COIN: string; TOKEN: string },
-    args: { admin_cap: string; project: string },
+    args: { project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,

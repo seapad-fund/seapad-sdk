@@ -20,7 +20,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     packageObjectId: string,
     module: string,
     suiProvider: JsonRpcProvider,
-    version?: string
+    version?: string,
   ) {
     super();
     this._seaPadInput = new SeaPadInput(packageObjectId, module, version);
@@ -256,7 +256,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
       packageObjectId,
-      versionId
+      versionId,
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -276,7 +276,7 @@ export class SeapadWalletAdapter extends SeaPadFunc<
       optionTx,
       gasBudget,
       packageObjectId,
-      versionId
+      versionId,
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -289,14 +289,14 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
     versionId?: string | null,
-    ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+  ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.endRefund(
       types,
       args,
       optionTx,
       gasBudget,
       packageObjectId,
-      versionId
+      versionId,
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -304,19 +304,19 @@ export class SeapadWalletAdapter extends SeaPadFunc<
   }
   async distributeRaisedFund(
     types: { COIN: string; TOKEN: string },
-    args: { admin_cap: string; project: string },
+    args: { project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
     versionId?: string | null,
-    ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+  ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.distributeRaisedFund(
       types,
       args,
       optionTx,
       gasBudget,
       packageObjectId,
-      versionId
+      versionId,
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -324,19 +324,19 @@ export class SeapadWalletAdapter extends SeaPadFunc<
   }
   async refundTokenToOwner(
     types: { COIN: string; TOKEN: string },
-    args: { admin_cap: string; project: string },
+    args: { project: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
     versionId?: string | null,
-    ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+  ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.refundTokenToOwner(
       types,
       args,
       optionTx,
       gasBudget,
       packageObjectId,
-      versionId
+      versionId,
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -374,14 +374,14 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
     versionId?: string | null,
-    ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+  ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.userClaimToken(
       types,
       args,
       optionTx,
       gasBudget,
       packageObjectId,
-      versionId
+      versionId,
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),
@@ -394,14 +394,14 @@ export class SeapadWalletAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
     versionId?: string | null,
-    ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+  ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const message = this._seaPadInput.claimRefund(
       types,
       args,
       optionTx,
       gasBudget,
       packageObjectId,
-      versionId
+      versionId,
     );
     return await this._walletContextState.signAndExecuteTransactionBlock(
       this.buildTx(message),

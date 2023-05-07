@@ -14,7 +14,12 @@ export class SeaPadAdapter extends SeaPadFunc<
   _seaPadInput: SeaPadInput;
   _signer: RawSigner;
 
-  constructor(signer: RawSigner, packageObjectId: string, module: string, version?: string) {
+  constructor(
+    signer: RawSigner,
+    packageObjectId: string,
+    module: string,
+    version?: string,
+  ) {
     super();
     this._seaPadInput = new SeaPadInput(packageObjectId, module, version);
     this._signer = signer;
@@ -270,7 +275,7 @@ export class SeaPadAdapter extends SeaPadFunc<
         optionTx,
         gasBudget,
         packageObjectId,
-        versionId
+        versionId,
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -282,7 +287,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
     versionId?: string | null,
-    ): Promise<SuiTransactionBlockResponse> {
+  ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadInput.endFundRaising(
         types,
@@ -290,7 +295,7 @@ export class SeaPadAdapter extends SeaPadFunc<
         optionTx,
         gasBudget,
         packageObjectId,
-        versionId
+        versionId,
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -310,19 +315,19 @@ export class SeaPadAdapter extends SeaPadFunc<
         optionTx,
         gasBudget,
         packageObjectId,
-        versionId
+        versionId,
       ),
       ...this._getOptionTx(optionTx),
     });
   }
   async distributeRaisedFund(
     types: { COIN: string; TOKEN: string },
-    args: { admin_cap: string; project: string; projectOwner: string },
+    args: { project: string; projectOwner: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
     versionId?: string | null,
-    ): Promise<SuiTransactionBlockResponse> {
+  ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadInput.distributeRaisedFund(
         types,
@@ -330,19 +335,19 @@ export class SeaPadAdapter extends SeaPadFunc<
         optionTx,
         gasBudget,
         packageObjectId,
-        versionId
+        versionId,
       ),
       ...this._getOptionTx(optionTx),
     });
   }
   async refundTokenToOwner(
     types: { COIN: string; TOKEN: string },
-    args: { admin_cap: string; project: string; projectOwner: string },
+    args: { project: string; projectOwner: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
     versionId?: string | null,
-    ): Promise<SuiTransactionBlockResponse> {
+  ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadInput.refundTokenToOwner(
         types,
@@ -350,7 +355,7 @@ export class SeaPadAdapter extends SeaPadFunc<
         optionTx,
         gasBudget,
         packageObjectId,
-        versionId
+        versionId,
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -387,7 +392,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
     versionId?: string | null,
-    ): Promise<SuiTransactionBlockResponse> {
+  ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadInput.userClaimToken(
         types,
@@ -395,7 +400,7 @@ export class SeaPadAdapter extends SeaPadFunc<
         optionTx,
         gasBudget,
         packageObjectId,
-        versionId
+        versionId,
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -407,7 +412,7 @@ export class SeaPadAdapter extends SeaPadFunc<
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
     versionId?: string | null,
-    ): Promise<SuiTransactionBlockResponse> {
+  ): Promise<SuiTransactionBlockResponse> {
     return await this._signer.signAndExecuteTransactionBlock({
       transactionBlock: this._seaPadInput.claimRefund(
         types,
@@ -415,7 +420,7 @@ export class SeaPadAdapter extends SeaPadFunc<
         optionTx,
         gasBudget,
         packageObjectId,
-        versionId
+        versionId,
       ),
       ...this._getOptionTx(optionTx),
     });
@@ -457,7 +462,7 @@ export class SeaPadAdapter extends SeaPadFunc<
         args,
         optionTx,
         gasBudget,
-        packageObjectId
+        packageObjectId,
       ),
       ...this._getOptionTx(optionTx),
     });
