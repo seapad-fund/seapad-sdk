@@ -1,6 +1,6 @@
 import { TransactionArgument, TransactionBlock } from '@mysten/sui.js';
 import { SeaPadNftPoolFunc } from './seapad-nft-func';
-import { GasBudget, OptionTx, getGasBudget, manageObjectCoin } from '../common';
+import { GasBudget, OptionTx, configGasBudget, getGasBudget, manageObjectCoin } from '../common';
 
 const clock =
   '0x0000000000000000000000000000000000000000000000000000000000000006';
@@ -28,14 +28,14 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
       }::change_admin`,
       arguments: [tx.pure(args.admin_cap), tx.pure(args.to)],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   createPool(
@@ -55,7 +55,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -74,7 +74,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   addCollection(
@@ -99,7 +99,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -122,7 +122,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   startPool(
@@ -132,7 +132,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -140,7 +140,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
       arguments: [tx.pure(args.admin_cap), tx.pure(args.pool), tx.pure(clock)],
       typeArguments: [types.COIN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   buyNft(
@@ -157,7 +157,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     const coin_trans: TransactionArgument = manageObjectCoin(
       types.COIN,
       args.coins,
@@ -179,7 +179,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   stopPool(
@@ -189,7 +189,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -197,7 +197,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
       arguments: [tx.pure(args.admin_cap), tx.pure(args.pool), tx.pure(clock)],
       typeArguments: [types.COIN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   claimNft(
@@ -207,7 +207,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -215,7 +215,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
       arguments: [tx.pure(args.pool), tx.pure(clock)],
       typeArguments: [types.COIN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   claimRefund(
@@ -225,7 +225,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -233,7 +233,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
       arguments: [tx.pure(args.pool), tx.pure(clock)],
       typeArguments: [types.COIN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   addWhitelist(
@@ -243,7 +243,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -255,7 +255,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
 
@@ -266,7 +266,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -278,7 +278,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
 
@@ -289,7 +289,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -301,7 +301,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   changeTreasuryAdmin(
@@ -311,7 +311,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -319,7 +319,7 @@ export class SeaPadNftPoolInput extends SeaPadNftPoolFunc<TransactionBlock> {
       arguments: [tx.pure(args.admin_treasury_cap), tx.pure(args.to)],
       typeArguments: [types.COIN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
 }

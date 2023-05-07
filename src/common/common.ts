@@ -11,9 +11,9 @@ import Decimal from 'decimal.js';
 
 export type OptionTx =
   | {
-      options?: SuiTransactionBlockResponseOptions;
-      requestType?: ExecuteTransactionRequestType;
-    }
+    options?: SuiTransactionBlockResponseOptions;
+    requestType?: ExecuteTransactionRequestType;
+  }
   | undefined;
 
 export type GasBudget = number | null;
@@ -29,6 +29,21 @@ export function getGasBudget(gasBudget?: GasBudget): number {
     return gasBudget;
   }
 }
+
+export function configGasBudget(tx: TransactionBlock, gasBudget?: GasBudget): TransactionBlock {
+  if (
+    typeof gasBudget == undefined ||
+    gasBudget == null ||
+    gasBudget < 100000000
+  ) {
+    return tx
+  } else {
+   tx.setGasBudget(gasBudget);
+   return tx
+  }
+}
+
+
 
 /**
  * Fetch coin owned by an address

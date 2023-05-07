@@ -1,6 +1,6 @@
 import { TransactionArgument, TransactionBlock } from '@mysten/sui.js';
 import { SeaPadFunc } from './seapad-func';
-import { GasBudget, OptionTx, getGasBudget, manageObjectCoin } from '../common';
+import { GasBudget, OptionTx, configGasBudget, getGasBudget, manageObjectCoin } from '../common';
 
 const clock =
   '0x0000000000000000000000000000000000000000000000000000000000000006';
@@ -36,7 +36,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -47,7 +47,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         tx.pure(this._version)
       ],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   changeOwner(
@@ -56,7 +56,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -67,7 +67,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         tx.pure(this._version)
       ],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   createProject(
@@ -88,7 +88,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -109,7 +109,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   addMilestone(
@@ -119,7 +119,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -134,7 +134,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   resetMilestone(
@@ -144,7 +144,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -156,7 +156,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
 
     return tx;
   }
@@ -179,7 +179,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -201,7 +201,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
 
     return tx;
   }
@@ -220,7 +220,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -237,7 +237,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
 
     return tx;
   }
@@ -248,7 +248,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -261,7 +261,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
 
     return tx;
   }
@@ -273,7 +273,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -286,7 +286,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
 
     return tx;
   }
@@ -298,7 +298,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -311,7 +311,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
 
     return tx;
   }
@@ -323,7 +323,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     packageObjectId?: string | null,
     versionId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     const coin_trans: TransactionArgument = manageObjectCoin(
       types.COIN,
       args.coins,
@@ -346,7 +346,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       typeArguments: [types.COIN, types.TOKEN],
     });
 
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
 
     return tx;
   }
@@ -358,7 +358,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     packageObjectId?: string | null,
     versionId?: string | null,
     ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -371,7 +371,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
 
     return tx;
   }
@@ -383,7 +383,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     packageObjectId?: string | null,
     versionId?: string | null,
     ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -395,7 +395,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
 
     return tx;
   }
@@ -407,7 +407,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     packageObjectId?: string | null,
     versionId?: string | null,
     ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -419,7 +419,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
 
     return tx;
   }
@@ -431,7 +431,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     packageObjectId?: string | null,
     versionId?: string | null,
     ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -443,7 +443,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
 
     return tx;
   }
@@ -454,7 +454,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     const coin_trans: TransactionArgument = manageObjectCoin(
       types.TOKEN,
       args.coins,
@@ -473,7 +473,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
 
     return tx;
   }
@@ -485,7 +485,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     packageObjectId?: string | null,
     versionId?: string | null,
     ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -497,7 +497,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
 
     return tx;
   }
@@ -509,7 +509,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     packageObjectId?: string | null,
     versionId?: string | null,
     ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -520,7 +520,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
 
     return tx;
   }
@@ -531,7 +531,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -542,7 +542,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
 
     return tx;
   }
@@ -559,7 +559,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -573,7 +573,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
 
     return tx;
   }
@@ -585,7 +585,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
@@ -598,20 +598,20 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
       ],
       typeArguments: [types.COIN, types.TOKEN],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
 
     return tx;
   }
 
   splitCoin(amount: number, to: string): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     const [coin] = tx.splitCoins(tx.gas, [tx.pure(amount)]);
     tx.transferObjects([coin], tx.object(to));
     return tx;
   }
 
   splitCoins(amounts: string[], to: string): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     const [coin] = tx.splitCoins(
       tx.gas,
       amounts.map((amount) => tx.pure(amount)),

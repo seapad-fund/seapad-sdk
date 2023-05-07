@@ -1,6 +1,6 @@
 import { TransactionArgument, TransactionBlock } from '@mysten/sui.js';
 import { SeaPadStakePoolFunc } from './seapad-sp-func';
-import { GasBudget, OptionTx, getGasBudget, manageObjectCoin } from '../common';
+import { GasBudget, OptionTx, configGasBudget, getGasBudget, manageObjectCoin } from '../common';
 
 const clock =
   '0x0000000000000000000000000000000000000000000000000000000000000006';
@@ -38,7 +38,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     let coin_trans: TransactionArgument = manageObjectCoin(types.R, args.rewards, args.num_rewards, tx)
 
     tx.moveCall({
@@ -55,7 +55,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
       ],
       typeArguments: [types.S, types.R],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   stake(
@@ -65,7 +65,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     let coin_trans: TransactionArgument = manageObjectCoin(types.R, args.coins, args.amount, tx)
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::stake`,
@@ -77,7 +77,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
       ],
       typeArguments: [types.S, types.R],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   unstake(
@@ -87,7 +87,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::unstake`,
       arguments: [
@@ -98,7 +98,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
       ],
       typeArguments: [types.S, types.R],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   harvest(
@@ -108,7 +108,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::harvest`,
       arguments: [
@@ -118,7 +118,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
       ],
       typeArguments: [types.S, types.R],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   depositRewardCoins(
@@ -128,7 +128,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     let coin_trans: TransactionArgument = manageObjectCoin(types.R, args.reward_coins, args.num_rewards, tx)
 
     tx.moveCall({
@@ -141,7 +141,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
       ],
       typeArguments: [types.S, types.R],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   enableEmergency(
@@ -151,13 +151,13 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::enable_emergency`,
       arguments: [tx.pure(args.pool), tx.pure(args.global_config)],
       typeArguments: [types.S, types.R],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   emergencyUnstake(
@@ -167,7 +167,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::emergency_unstake`,
       arguments: [
@@ -177,7 +177,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
       ],
       typeArguments: [types.S, types.R],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
   withdrawRewardToTreasury(
@@ -187,7 +187,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null
   ): TransactionBlock {
-    const tx = new TransactionBlock();
+    let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::withdraw_reward_to_treasury`,
       arguments: [
@@ -198,7 +198,7 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
       ],
       typeArguments: [types.S, types.R],
     });
-    tx.setGasBudget(getGasBudget(gasBudget));
+    tx = configGasBudget(tx, gasBudget)
     return tx;
   }
 }
