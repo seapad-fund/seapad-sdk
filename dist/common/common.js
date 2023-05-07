@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.calculateAmount = exports.getCoinObjects = exports.manageObjectCoin = exports.pickupCoin = exports.getCoins = exports.getGasBudget = void 0;
+exports.calculateAmount = exports.getCoinObjects = exports.manageObjectCoin = exports.pickupCoin = exports.getCoins = exports.configGasBudget = exports.getGasBudget = void 0;
 const decimal_js_1 = __importDefault(require("decimal.js"));
 function getGasBudget(gasBudget) {
     if (typeof gasBudget == undefined ||
@@ -16,6 +16,18 @@ function getGasBudget(gasBudget) {
     }
 }
 exports.getGasBudget = getGasBudget;
+function configGasBudget(tx, gasBudget) {
+    if (typeof gasBudget == undefined ||
+        gasBudget == null ||
+        gasBudget < 100000000) {
+        return tx;
+    }
+    else {
+        tx.setGasBudget(gasBudget);
+        return tx;
+    }
+}
+exports.configGasBudget = configGasBudget;
 /**
  * Fetch coin owned by an address
  */

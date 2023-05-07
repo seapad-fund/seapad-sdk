@@ -18,16 +18,16 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
         this._module = module;
     }
     changeAdmin(args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::change_admin`,
             arguments: [tx.pure(args.admin_cap), tx.pure(args.to)],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     createPool(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::create_pool`,
             arguments: [
@@ -44,11 +44,11 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
             ],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     addCollection(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_collection`,
             arguments: [
@@ -69,21 +69,21 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
             ],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     startPool(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::start_pool`,
             arguments: [tx.pure(args.admin_cap), tx.pure(args.pool), tx.pure(clock)],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     buyNft(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         const coin_trans = (0, common_1.manageObjectCoin)(types.COIN, args.coins, args.amount, tx);
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::buy_nft`,
@@ -97,41 +97,41 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
             ],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     stopPool(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::stop_pool`,
             arguments: [tx.pure(args.admin_cap), tx.pure(args.pool), tx.pure(clock)],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     claimNft(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::claim_nft`,
             arguments: [tx.pure(args.pool), tx.pure(clock)],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     claimRefund(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::claim_refund`,
             arguments: [tx.pure(args.pool), tx.pure(clock)],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     addWhitelist(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_whitelist`,
             arguments: [
@@ -141,11 +141,11 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
             ],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     removeWhitelist(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::remove_whitelist`,
             arguments: [
@@ -155,11 +155,11 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
             ],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     withdrawFund(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_whitelist`,
             arguments: [
@@ -169,17 +169,17 @@ class SeaPadNftPoolInput extends seapad_nft_func_1.SeaPadNftPoolFunc {
             ],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     changeTreasuryAdmin(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_whitelist`,
             arguments: [tx.pure(args.admin_treasury_cap), tx.pure(args.to)],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
 }

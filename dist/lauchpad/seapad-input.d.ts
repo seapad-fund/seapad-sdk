@@ -125,14 +125,12 @@ export declare class SeaPadInput extends SeaPadFunc<TransactionBlock> {
         COIN: string;
         TOKEN: string;
     }, args: {
-        admin_cap: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): TransactionBlock;
     refundTokenToOwner(types: {
         COIN: string;
         TOKEN: string;
     }, args: {
-        admin_cap: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): TransactionBlock;
     depositProject(types: {

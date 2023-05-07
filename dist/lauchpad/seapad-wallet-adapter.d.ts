@@ -125,14 +125,12 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
         COIN: string;
         TOKEN: string;
     }, args: {
-        admin_cap: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     refundTokenToOwner(types: {
         COIN: string;
         TOKEN: string;
     }, args: {
-        admin_cap: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null, versionId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     depositProject(types: {

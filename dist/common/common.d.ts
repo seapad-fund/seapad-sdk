@@ -5,6 +5,7 @@ export type OptionTx = {
 } | undefined;
 export type GasBudget = number | null;
 export declare function getGasBudget(gasBudget?: GasBudget): number;
+export declare function configGasBudget(tx: TransactionBlock, gasBudget?: GasBudget): TransactionBlock;
 /**
  * Fetch coin owned by an address
  */

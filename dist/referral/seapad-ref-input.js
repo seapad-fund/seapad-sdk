@@ -18,16 +18,16 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
         this._module = module;
     }
     changeAdmin(args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::change_admin`,
             arguments: [tx.pure(args.admin_cap), tx.pure(args.to)],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     createProject(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::create_project`,
             arguments: [
@@ -36,11 +36,11 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
             ],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     upsertReferral(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::upsert_referral`,
             arguments: [
@@ -52,11 +52,11 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
             ],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     removeReferral(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::remove_referral`,
             arguments: [
@@ -66,11 +66,11 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
             ],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     updateDistributeTime(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::update_distribute_time`,
             arguments: [
@@ -80,11 +80,11 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
             ],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     startClaimProject(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::start_claim_project`,
             arguments: [
@@ -93,11 +93,11 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
             ],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     claimReward(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::claim_reward`,
             arguments: [
@@ -106,11 +106,11 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
             ],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     closeProject(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::close_project`,
             arguments: [
@@ -119,11 +119,11 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
             ],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     depositProjectFund(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         const coin_trans = (0, common_1.manageObjectCoin)(types.COIN, args.coins, args.amount, tx);
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::deposit_project_fund`,
@@ -134,11 +134,11 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
             ],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
     withdrawProjectFund(types, args, optionTx, gasBudget, packageObjectId) {
-        const tx = new sui_js_1.TransactionBlock();
+        let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::withdraw_project_fund`,
             arguments: [
@@ -148,7 +148,7 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
             ],
             typeArguments: [types.COIN],
         });
-        tx.setGasBudget((0, common_1.getGasBudget)(gasBudget));
+        tx = (0, common_1.configGasBudget)(tx, gasBudget);
         return tx;
     }
 }

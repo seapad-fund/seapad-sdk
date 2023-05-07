@@ -193,7 +193,6 @@ export declare abstract class SeaPadFunc<T> {
         COIN: string;
         TOKEN: string;
     }, args: {
-        admin_cap: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
@@ -205,7 +204,6 @@ export declare abstract class SeaPadFunc<T> {
         COIN: string;
         TOKEN: string;
     }, args: {
-        admin_cap: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     /**
