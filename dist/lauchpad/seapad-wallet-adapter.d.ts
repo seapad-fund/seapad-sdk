@@ -163,8 +163,8 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
         TOKEN: string;
     }, args: {
         admin_cap: string;
-        user: string;
-        max_allocate: string;
+        users: string;
+        max_allocates: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     removeMaxAllocate(types: {
@@ -172,7 +172,7 @@ export declare class SeapadWalletAdapter extends SeaPadFunc<Promise<SuiSignAndEx
         TOKEN: string;
     }, args: {
         admin_cap: string;
-        user: string;
+        users: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     splitCoin(amount: number, to: string): Promise<SuiSignAndExecuteTransactionBlockOutput>;

@@ -257,8 +257,8 @@ export declare abstract class SeaPadFunc<T> {
         TOKEN: string;
     }, args: {
         admin_cap: string;
-        user: string;
-        max_allocate: string;
+        users: string;
+        max_allocates: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     abstract removeMaxAllocate(types: {
@@ -266,7 +266,7 @@ export declare abstract class SeaPadFunc<T> {
         TOKEN: string;
     }, args: {
         admin_cap: string;
-        user: string;
+        users: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
     abstract splitCoin(amount: number, to: string): T;

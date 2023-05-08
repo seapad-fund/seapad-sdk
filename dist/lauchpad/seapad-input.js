@@ -325,8 +325,8 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_max_allocate`,
             arguments: [
                 tx.pure(args.admin_cap),
-                tx.pure(args.user),
-                tx.pure(args.max_allocate),
+                tx.pure(args.users),
+                tx.pure(args.max_allocates),
                 tx.pure(args.project),
                 tx.pure(this._version),
             ],
@@ -341,7 +341,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::remove_max_allocate`,
             arguments: [
                 tx.pure(args.admin_cap),
-                tx.pure(args.user),
+                tx.pure(args.users),
                 tx.pure(args.project),
                 tx.pure(this._version),
             ],

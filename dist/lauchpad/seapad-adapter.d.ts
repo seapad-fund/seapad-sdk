@@ -164,8 +164,8 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
         TOKEN: string;
     }, args: {
         admin_cap: string;
-        user: string;
-        max_allocate: string;
+        users: string;
+        max_allocates: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     removeMaxAllocate(types: {
@@ -173,7 +173,7 @@ export declare class SeaPadAdapter extends SeaPadFunc<Promise<SuiTransactionBloc
         TOKEN: string;
     }, args: {
         admin_cap: string;
-        user: string;
+        users: string;
         project: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     getTokenInfo(coinType: string): Promise<{
