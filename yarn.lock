@@ -5739,22 +5739,6 @@ schema-utils@^3.1.0, schema-utils@^3.1.1:
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
 
-seapad-sdk@2.2.18:
-  version "2.2.18"
-  resolved "https://registry.yarnpkg.com/seapad-sdk/-/seapad-sdk-2.2.18.tgz#6d83fb75ef893bdf2eb0b95ba0ebfdd838872921"
-  integrity sha512-t2inYyVP3OMKXXR0sr9/qGAlAKvfPi6hPkLVaead4DB7TGwrQUh8GZf98/5ntSS48zEr6ctRytfKfB6BKuNaBA==
-  dependencies:
-    "@mysten/sui.js" "^0.33.0"
-    "@nestjs/common" "^9.0.0"
-    "@nestjs/core" "^9.0.0"
-    "@nestjs/platform-express" "^9.0.0"
-    "@suiet/wallet-kit" "^0.2.10"
-    decimal.js "^10.4.3"
-    reflect-metadata "^0.1.13"
-    rpc-websockets "^7.5.1"
-    rxjs "^7.2.0"
-    socket.io "^2.1.1"
-
 semver@7.x, semver@^7.3.4, semver@^7.3.5, semver@^7.3.7, semver@^7.3.8:
   version "7.3.8"
   resolved "https://registry.npmjs.org/semver/-/semver-7.3.8.tgz"

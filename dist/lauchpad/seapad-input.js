@@ -322,7 +322,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
     addMaxAllocate(types, args, optionTx, gasBudget, packageObjectId) {
         let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::set_max_allocate`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::add_max_allocate`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.user),
@@ -338,7 +338,7 @@ class SeaPadInput extends seapad_func_1.SeaPadFunc {
     removeMaxAllocate(types, args, optionTx, gasBudget, packageObjectId) {
         let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::clear_max_allocate`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::remove_max_allocate`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.user),
