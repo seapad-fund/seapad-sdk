@@ -586,7 +586,7 @@ export class SeaPadInput extends SeaPadFunc<TransactionBlock> {
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${
         this._module
-      }::set_max_allocate`,
+      }::clear_max_allocate`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.user),
