@@ -42,7 +42,7 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
     upsertReferral(types, args, optionTx, gasBudget, packageObjectId) {
         let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::upsert_referral`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::upsert_Referral`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.referral),
@@ -58,7 +58,7 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
     removeReferral(types, args, optionTx, gasBudget, packageObjectId) {
         let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::remove_referral`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::remove_Referral`,
             arguments: [
                 tx.pure(args.admin_cap),
                 tx.pure(args.referral),
