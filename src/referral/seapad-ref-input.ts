@@ -71,7 +71,7 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
     let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module
-        }::upsert_referral`,
+        }::upsert_Referral`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.referral),
@@ -94,7 +94,7 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
     let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module
-        }::remove_referral`,
+        }::remove_Referral`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.referral),
