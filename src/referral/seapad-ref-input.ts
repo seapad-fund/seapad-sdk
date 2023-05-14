@@ -51,7 +51,7 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
     let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module
-        }::create_project`,
+        }::create`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.distribute_time_ms),
@@ -71,7 +71,7 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
     let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module
-        }::upsert_Referral`,
+        }::upsert`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.referral),
@@ -94,7 +94,7 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
     let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module
-        }::remove_Referral`,
+        }::remove`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.referral),
@@ -176,7 +176,7 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
     let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module
-        }::close_project`,
+        }::close`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.referral),
@@ -204,7 +204,7 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
 
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module
-        }::deposit_project_fund`,
+        }::deposit_fund`,
       arguments: [
         tx.pure(args.referral),
         coin_trans,
@@ -226,7 +226,7 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
     let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module
-        }::withdraw_project_fund`,
+        }::withdraw_fund`,
       arguments: [
         tx.pure(args.admin_cap),
         tx.pure(args.referral),
