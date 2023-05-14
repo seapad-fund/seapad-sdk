@@ -128,7 +128,6 @@ class SeaPadReferralInput extends seapad_ref_func_1.SeaPadReferralFunc {
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::deposit_project_fund`,
             arguments: [
-                tx.pure(args.admin_cap),
                 tx.pure(args.referral),
                 coin_trans,
             ],

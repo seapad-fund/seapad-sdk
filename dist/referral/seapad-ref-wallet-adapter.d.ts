@@ -68,7 +68,6 @@ export declare class SeapadReferralWalletAdapter extends SeaPadReferralFunc<Prom
     depositProjectFund(types: {
         COIN: string;
     }, args: {
-        admin_cap: string;
         referral: string;
         amount: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput>;

@@ -58,7 +58,6 @@ export declare class SeaPadReferralInput extends SeaPadReferralFunc<TransactionB
     depositProjectFund(types: {
         COIN: string;
     }, args: {
-        admin_cap: string;
         coins: string[];
         amount: string;
         referral: string;

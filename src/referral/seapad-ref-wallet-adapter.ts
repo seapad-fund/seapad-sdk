@@ -152,7 +152,7 @@ export class SeapadReferralWalletAdapter extends SeaPadReferralFunc<
       this.buildTx(message),
     );
   }
-  async depositProjectFund(types: { COIN: string; }, args: { admin_cap: string; referral: string; amount: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+  async depositProjectFund(types: { COIN: string; }, args: { referral: string; amount: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null | undefined): Promise<SuiSignAndExecuteTransactionBlockOutput> {
     const userAddress = this._walletContextState.account?.address || '';
     const _coins: string[] = await getCoinObjects(
       types.COIN,

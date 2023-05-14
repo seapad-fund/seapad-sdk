@@ -129,7 +129,7 @@ export abstract class SeaPadReferralFunc<T> {
    */
   abstract depositProjectFund(
     types: { COIN: string; },
-    args: { admin_cap: string; referral: string, amount: string, coins: string[] | undefined },
+    args: { referral: string, amount: string, coins: string[] | undefined },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,

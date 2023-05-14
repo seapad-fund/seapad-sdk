@@ -192,7 +192,7 @@ export class SeaPadReferralAdapter extends SeaPadReferralFunc<
   }
   async depositProjectFund(
     types: { COIN: string;  },
-    args: { admin_cap: string; amount: string; referral: string; },
+    args: { amount: string; referral: string; },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,

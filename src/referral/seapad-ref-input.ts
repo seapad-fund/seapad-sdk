@@ -189,7 +189,7 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
   }
   depositProjectFund(
     types: { COIN: string; },
-    args: { admin_cap: string; coins: string[]; amount: string; referral: string; },
+    args: { coins: string[]; amount: string; referral: string; },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,
     packageObjectId?: string | null,
@@ -206,7 +206,6 @@ export class SeaPadReferralInput extends SeaPadReferralFunc<TransactionBlock> {
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module
         }::deposit_project_fund`,
       arguments: [
-        tx.pure(args.admin_cap),
         tx.pure(args.referral),
         coin_trans,
       ],
