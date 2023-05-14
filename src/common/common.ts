@@ -93,9 +93,7 @@ export const pickupCoin = async (
   });
 
   if (
-    (coinType !== '0x2::sui::SUI' && totalBalance < expect_balance) ||
-    (coinType === '0x2::sui::SUI' &&
-      totalBalance < expect_balance + getGasBudget())
+    totalBalance < expect_balance
   ) {
     throw new Error('Not enough balance');
   }

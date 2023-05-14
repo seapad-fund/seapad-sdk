@@ -66,9 +66,7 @@ const pickupCoin = async (coinType, expect_balance, userAddress, suiProvider) =>
         totalBalance += Number(ele?.balance);
         return ele?.coinObjectId;
     });
-    if ((coinType !== '0x2::sui::SUI' && totalBalance < expect_balance) ||
-        (coinType === '0x2::sui::SUI' &&
-            totalBalance < expect_balance + getGasBudget())) {
+    if (totalBalance < expect_balance) {
         throw new Error('Not enough balance');
     }
     // console.log(totalBalance, coins);
