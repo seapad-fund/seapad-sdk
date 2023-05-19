@@ -74,8 +74,8 @@ class SeaPadTierInput extends seapad_tier_func_1.SeaPadTierFunc {
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::unlock`,
             arguments: [
-                tx.pure(args.pool),
                 tx.pure(args.amount),
+                tx.pure(args.pool),
                 tx.pure(clock),
             ],
             typeArguments: [types.TOKEN],
