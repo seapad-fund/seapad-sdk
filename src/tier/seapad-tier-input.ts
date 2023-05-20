@@ -82,7 +82,7 @@ export class SeaPadTierInput extends SeaPadTierFunc<TransactionBlock> {
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module
         }::lock`,
       arguments: [
-        tx.pure(coin_trans),
+        coin_trans,
         tx.pure(args.pool),
         tx.pure(clock),
       ],
