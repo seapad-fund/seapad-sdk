@@ -11,7 +11,7 @@ import {
   OptionTx,
 } from '../common';
 
-export class SeapadWalletNftPoolAdapter extends SeaPadNftCampaignFunc<
+export class SeapadWalletNftCampaignAdapter extends SeaPadNftCampaignFunc<
   Promise<SuiSignAndExecuteTransactionBlockOutput>
 > {
   _walletContextState: WalletContextState;

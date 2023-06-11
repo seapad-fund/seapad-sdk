@@ -4,7 +4,7 @@ import { WalletContextState } from '@suiet/wallet-kit';
 import { JsonRpcProvider, TransactionBlock } from '@mysten/sui.js';
 import { SuiSignAndExecuteTransactionBlockInput, SuiSignAndExecuteTransactionBlockOutput } from '@mysten/wallet-standard';
 import { GasBudget, OptionTx } from '../common';
-export declare class SeapadWalletNftPoolAdapter extends SeaPadNftCampaignFunc<Promise<SuiSignAndExecuteTransactionBlockOutput>> {
+export declare class SeapadWalletNftCampaignAdapter extends SeaPadNftCampaignFunc<Promise<SuiSignAndExecuteTransactionBlockOutput>> {
     _walletContextState: WalletContextState;
     _seaPadNftCampaignInput: SeaPadNftCampaignInput;
     _suiProvider: JsonRpcProvider;

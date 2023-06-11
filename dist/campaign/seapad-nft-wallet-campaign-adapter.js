@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SeapadWalletNftPoolAdapter = void 0;
+exports.SeapadWalletNftCampaignAdapter = void 0;
 const seapad_nft_campaign_func_1 = require("./seapad-nft-campaign-func");
 const seapad_nft_campaign_input_1 = require("./seapad-nft-campaign-input");
-class SeapadWalletNftPoolAdapter extends seapad_nft_campaign_func_1.SeaPadNftCampaignFunc {
+class SeapadWalletNftCampaignAdapter extends seapad_nft_campaign_func_1.SeaPadNftCampaignFunc {
     constructor(walletContextState, packageObjectId, module, suiProvider) {
         super();
         this._seaPadNftCampaignInput = new seapad_nft_campaign_input_1.SeaPadNftCampaignInput(packageObjectId, module);
@@ -28,5 +28,5 @@ class SeapadWalletNftPoolAdapter extends seapad_nft_campaign_func_1.SeaPadNftCam
         };
     }
 }
-exports.SeapadWalletNftPoolAdapter = SeapadWalletNftPoolAdapter;
+exports.SeapadWalletNftCampaignAdapter = SeapadWalletNftCampaignAdapter;
 //# sourceMappingURL=seapad-nft-wallet-campaign-adapter.js.map
