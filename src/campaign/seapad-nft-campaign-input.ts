@@ -33,7 +33,7 @@ export class SeaPadNftCampaignInput extends SeaPadNftCampaignFunc<TransactionBlo
     let tx = new TransactionBlock();
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module
-        }::nft_campaign`,
+        }::claimNft`,
       arguments: [tx.pure(args.campaign), tx.pure(clock)],
       typeArguments: [],
     });

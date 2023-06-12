@@ -20,7 +20,7 @@ class SeaPadNftCampaignInput extends seapad_nft_campaign_func_1.SeaPadNftCampaig
     claimNft(types, args, optionTx, gasBudget, packageObjectId) {
         let tx = new sui_js_1.TransactionBlock();
         tx.moveCall({
-            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::nft_campaign`,
+            target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::claimNft`,
             arguments: [tx.pure(args.campaign), tx.pure(clock)],
             typeArguments: [],
         });
