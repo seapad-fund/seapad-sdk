@@ -34,7 +34,7 @@ export class SeaPadNftCampaignInput extends SeaPadNftCampaignFunc<TransactionBlo
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module
         }::claimNft`,
-      arguments: [tx.pure(args.campaign), tx.pure(clock)],
+      arguments: [tx.pure(args.campaign)],
       typeArguments: [],
     });
     tx = configGasBudget(tx, gasBudget)
