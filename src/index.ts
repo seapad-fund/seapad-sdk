@@ -5,3 +5,4 @@ export * from './referral';
 export * from './tier';
 export * from './common';
 export * from './campaign';
+export * from './claim-portal';
