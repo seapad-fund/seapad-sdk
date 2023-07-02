@@ -65,7 +65,7 @@ export class SeaPadClaimPortalInput extends SeaPadClaimPortalFunc<TransactionBlo
     packageObjectId?: string | null,
   ): TransactionBlock {
     let tx = new TransactionBlock();
-    const coins: TransactionArgument = manageObjectCoin(
+    const _coins: TransactionArgument = manageObjectCoin(
       types.COIN,
       args.coins,
       args.totalFund,
@@ -78,7 +78,7 @@ export class SeaPadClaimPortalInput extends SeaPadClaimPortalFunc<TransactionBlo
         tx.pure(args.admin),
         tx.pure(args.owners),
         tx.pure(args.values),
-        coins,
+        _coins,
         tx.pure(args.project),
         tx.pure(args.registry),
         tx.pure(args.version),

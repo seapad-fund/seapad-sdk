@@ -33,14 +33,14 @@ class SeaPadClaimPortalInput extends seapad_claim_portal_func_1.SeaPadClaimPorta
     }
     addFunds(types, args, optionTx, gasBudget, packageObjectId) {
         let tx = new sui_js_1.TransactionBlock();
-        const coins = (0, common_1.manageObjectCoin)(types.COIN, args.coins, args.totalFund, tx);
+        const _coins = (0, common_1.manageObjectCoin)(types.COIN, args.coins, args.totalFund, tx);
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::addFunds`,
             arguments: [
                 tx.pure(args.admin),
                 tx.pure(args.owners),
                 tx.pure(args.values),
-                coins,
+                _coins,
                 tx.pure(args.project),
                 tx.pure(args.registry),
                 tx.pure(args.version),

@@ -17,4 +17,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./seapad-claim-portal-func"), exports);
 __exportStar(require("./seapad-claim-portal-input"), exports);
 __exportStar(require("./seapad-claim-portal-wallet-adapter"), exports);
+__exportStar(require("./seapad-claim-portal-adapter"), exports);
 //# sourceMappingURL=index.js.map

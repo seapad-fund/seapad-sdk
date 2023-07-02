@@ -20,7 +20,6 @@ export abstract class SeaPadClaimPortalFunc<T> {
       admin: string,
       owners: string[],
       values: string[],
-      totalFund: string,
       project: string,
       registry: string,
       version: string

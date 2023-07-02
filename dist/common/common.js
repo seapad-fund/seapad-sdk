@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.calculateAmount = exports.getCoinObjects = exports.manageObjectCoin = exports.pickupCoin = exports.getCoins = exports.configGasBudget = exports.getGasBudget = void 0;
+exports.calculateAmountSameType = exports.calculateAmount = exports.getCoinObjects = exports.manageObjectCoin = exports.pickupCoin = exports.getCoins = exports.configGasBudget = exports.getGasBudget = void 0;
 const decimal_js_1 = __importDefault(require("decimal.js"));
 function getGasBudget(gasBudget) {
     if (typeof gasBudget == undefined ||
@@ -116,9 +116,17 @@ exports.getCoinObjects = getCoinObjects;
 function calculateAmount(a, b) {
     let total = new decimal_js_1.default(0);
     a.map((ele, i) => {
-        total = new decimal_js_1.default(ele).mul(new decimal_js_1.default(b[i]));
+        total = total.add(new decimal_js_1.default(ele).mul(new decimal_js_1.default(b[i])));
     });
     return total.toFixed(0);
 }
 exports.calculateAmount = calculateAmount;
+function calculateAmountSameType(a) {
+    let total = new decimal_js_1.default(0);
+    a.map((ele) => {
+        total = total.add(new decimal_js_1.default(ele));
+    });
+    return total.toFixed(0);
+}
+exports.calculateAmountSameType = calculateAmountSameType;
 //# sourceMappingURL=common.js.map

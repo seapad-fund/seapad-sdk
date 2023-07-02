@@ -163,7 +163,15 @@ export async function getCoinObjects(
 export function calculateAmount(a: string[], b: string[]): string {
   let total = new Decimal(0);
   a.map((ele, i) => {
-    total = new Decimal(ele).mul(new Decimal(b[i]));
+    total = total.add(new Decimal(ele).mul(new Decimal(b[i])));
+  });
+  return total.toFixed(0);
+}
+
+export function calculateAmountSameType(a: string[]): string {
+  let total = new Decimal(0);
+  a.map((ele) => {
+    total = total.add(new Decimal(ele));
   });
   return total.toFixed(0);
 }
