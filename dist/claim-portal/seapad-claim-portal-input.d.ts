@@ -12,5 +12,17 @@ export declare class SeaPadClaimPortalInput extends SeaPadClaimPortalFunc<Transa
         project: string;
         version: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
+    addFunds(types: {
+        COIN: string;
+    }, args: {
+        admin: string;
+        owners: string[];
+        values: string[];
+        coins: string[];
+        totalFund: string;
+        project: string;
+        registry: string;
+        version: string;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
 }
 //# sourceMappingURL=seapad-claim-portal-input.d.ts.map

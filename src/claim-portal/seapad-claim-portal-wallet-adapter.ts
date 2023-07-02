@@ -2,6 +2,7 @@ import { SeaPadClaimPortalFunc } from './seapad-claim-portal-func';
 import { SeaPadClaimPortalInput } from './seapad-claim-portal-input';
 import { WalletContextState } from '@suiet/wallet-kit';
 import { JsonRpcProvider, TransactionBlock } from '@mysten/sui.js';
+
 import {
   SuiSignAndExecuteTransactionBlockInput,
   SuiSignAndExecuteTransactionBlockOutput,
@@ -9,6 +10,7 @@ import {
 import {
   GasBudget,
   OptionTx,
+  getCoinObjects
 } from '../common';
 
 export class SeapadWalletClaimPortalAdapter extends SeaPadClaimPortalFunc<
@@ -31,7 +33,7 @@ export class SeapadWalletClaimPortalAdapter extends SeaPadClaimPortalFunc<
   }
 
   async claim(
-    types: {COIN: string},
+    types: { COIN: string },
     args: { project: string, version: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
@@ -49,6 +51,39 @@ export class SeapadWalletClaimPortalAdapter extends SeaPadClaimPortalFunc<
     );
   }
 
+  async addFunds(
+    types: { COIN: string },
+    args: {
+      admin: string,
+      owners: string[],
+      values: string[],
+      totalFund: string,
+      project: string,
+      registry: string,
+      version: string
+    },
+    optionTx?: OptionTx,
+    gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null,
+  ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const userAddress = this._walletContextState.account?.address || '';
+    const _coins: string[] = await getCoinObjects(
+      types.COIN,
+      args.totalFund,
+      userAddress,
+      this._suiProvider,
+    );
+    const message = this._seaPadClaimPortalInput.addFunds(
+      types,
+      { ...args, coins: _coins },
+      optionTx,
+      gasBudget,
+      packageObjectId,
+    );
+    return await this._walletContextState.signAndExecuteTransactionBlock(
+      this.buildTx(message),
+    );
+  }
 
   buildTx(
     message: TransactionBlock,

@@ -15,6 +15,17 @@ export declare class SeapadWalletClaimPortalAdapter extends SeaPadClaimPortalFun
         project: string;
         version: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
+    addFunds(types: {
+        COIN: string;
+    }, args: {
+        admin: string;
+        owners: string[];
+        values: string[];
+        totalFund: string;
+        project: string;
+        registry: string;
+        version: string;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     buildTx(message: TransactionBlock): Omit<SuiSignAndExecuteTransactionBlockInput, 'account' | 'chain'>;
 }
 //# sourceMappingURL=seapad-claim-portal-wallet-adapter.d.ts.map

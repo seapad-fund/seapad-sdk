@@ -1,17 +1,20 @@
 import { GasBudget, OptionTx } from '../common';
 export declare abstract class SeaPadClaimPortalFunc<T> {
-    /**
-     *
-     * @param types
-     * @param args campaign: &mut Campaign
-     * @param optionTx
-     * @param gasBudget
-     * @param packageObjectId
-     */
     abstract claim(types: {
         COIN: string;
     }, args: {
         project: string;
+        version: string;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
+    abstract addFunds(types: {
+        COIN: string;
+    }, args: {
+        admin: string;
+        owners: string[];
+        values: string[];
+        totalFund: string;
+        project: string;
+        registry: string;
         version: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;
 }

@@ -1,4 +1,4 @@
-import { TransactionBlock } from '@mysten/sui.js';
+import { TransactionBlock, TransactionArgument } from '@mysten/sui.js';
 import { SeaPadClaimPortalFunc } from './seapad-claim-portal-func';
 import { GasBudget, OptionTx, configGasBudget, getGasBudget, manageObjectCoin } from '../common';
 
@@ -42,10 +42,50 @@ export class SeaPadClaimPortalInput extends SeaPadClaimPortalFunc<TransactionBlo
         tx.pure(clock),
         tx.pure(args.version),
       ],
-      typeArguments: [],
+      typeArguments: [types.COIN],
     });
     tx = configGasBudget(tx, gasBudget)
     return tx;
   }
 
+  addFunds(
+    types: {COIN: string },
+    args: {
+      admin: string,
+      owners: string[],
+      values: string[],
+      coins: string[],
+      totalFund: string,
+      project: string,
+      registry: string,
+      version: string
+    },
+    optionTx?: OptionTx,
+    gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null,
+  ): TransactionBlock {
+    let tx = new TransactionBlock();
+    const coins: TransactionArgument = manageObjectCoin(
+      types.COIN,
+      args.coins,
+      args.totalFund,
+      tx,
+    );
+    tx.moveCall({
+      target: `${this._getPackageObjectId(packageObjectId)}::${this._module
+        }::addFunds`,
+      arguments: [
+        tx.pure(args.admin),
+        tx.pure(args.owners),
+        tx.pure(args.values),
+        coins,
+        tx.pure(args.project),
+        tx.pure(args.registry),
+        tx.pure(args.version),
+      ],
+      typeArguments: [types.COIN],
+    });
+    tx = configGasBudget(tx, gasBudget)
+    return tx;
+  }
 }
