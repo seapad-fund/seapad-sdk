@@ -11,6 +11,8 @@ export declare class SeaPadClaimPortalInput extends SeaPadClaimPortalFunc<Transa
     }, args: {
         project: string;
         version: string;
+        coinsFee: string[];
+        fee: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): TransactionBlock;
     addFunds(types: {
         COIN: string;

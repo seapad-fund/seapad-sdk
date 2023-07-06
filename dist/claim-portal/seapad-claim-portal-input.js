@@ -19,9 +19,11 @@ class SeaPadClaimPortalInput extends seapad_claim_portal_func_1.SeaPadClaimPorta
     }
     claim(types, args, optionTx, gasBudget, packageObjectId) {
         let tx = new sui_js_1.TransactionBlock();
+        const coin_trans = (0, common_1.manageObjectCoin)("0x2::sui::SUI", args.coinsFee, args.fee, tx);
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::claim`,
             arguments: [
+                coin_trans,
                 tx.pure(args.project),
                 tx.pure(clock),
                 tx.pure(args.version),

@@ -10,9 +10,10 @@ export declare class SeaPadClaimPortalAdapter extends SeaPadClaimPortalFunc<Prom
     claim(types: {
         COIN: string;
     }, args: {
+        fee: string;
         project: string;
         version: string;
-    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null | undefined): Promise<SuiTransactionBlockResponse>;
+    }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiTransactionBlockResponse>;
     addFunds(types: {
         COIN: string;
     }, args: {

@@ -3,6 +3,8 @@ export declare abstract class SeaPadClaimPortalFunc<T> {
     abstract claim(types: {
         COIN: string;
     }, args: {
+        fee: string;
+        coinsFee?: string[];
         project: string;
         version: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget, packageObjectId?: string | null): T;

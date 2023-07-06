@@ -27,17 +27,26 @@ export class SeaPadClaimPortalInput extends SeaPadClaimPortalFunc<TransactionBlo
     types: {COIN: string },
     args: {
       project: string,
-      version: string
+      version: string,
+      coinsFee: string[]
+      fee: string
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null,
   ): TransactionBlock {
     let tx = new TransactionBlock();
+    const coin_trans: TransactionArgument = manageObjectCoin(
+      "0x2::sui::SUI",
+      args.coinsFee,
+      args.fee,
+      tx,
+    );
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module
         }::claim`,
       arguments: [
+        coin_trans,
         tx.pure(args.project),
         tx.pure(clock),
         tx.pure(args.version),

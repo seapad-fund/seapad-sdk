@@ -34,14 +34,21 @@ export class SeapadWalletClaimPortalAdapter extends SeaPadClaimPortalFunc<
 
   async claim(
     types: { COIN: string },
-    args: { project: string, version: string },
+    args: { fee: string, project: string, version: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null,
   ): Promise<SuiSignAndExecuteTransactionBlockOutput> {
+    const userAddress = this._walletContextState.account?.address || '';
+    const _coins: string[] = await getCoinObjects(
+      "0x2::sui::SUI",
+      args.fee,
+      userAddress,
+      this._suiProvider,
+    );
     const message = this._seaPadClaimPortalInput.claim(
       types,
-      args,
+      {...args, coinsFee: _coins},
       optionTx,
       gasBudget,
       packageObjectId,

@@ -27,9 +27,33 @@ export class SeaPadClaimPortalAdapter extends SeaPadClaimPortalFunc<
     this._signer = signer;
     this._suiProvider = signer.provider;
   }
-  
-  async claim(types: { COIN: string; }, args: { project: string; version: string; }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null | undefined): Promise<SuiTransactionBlockResponse> {
-    throw new Error('Method not implemented.');
+
+  async claim(
+    types: { COIN: string },
+    args: { fee: string, project: string, version: string },
+    optionTx?: OptionTx,
+    gasBudget?: GasBudget | undefined,
+    packageObjectId?: string | null,
+  ): Promise<SuiTransactionBlockResponse> {
+    const userAddress = await this._signer.getAddress();
+    const _coins: string[] = await getCoinObjects(
+      "0x2::sui::SUI",
+      args.fee,
+      userAddress,
+      this._suiProvider,
+    );
+    return await this._signer.signAndExecuteTransactionBlock(
+      {
+        transactionBlock: this._seaPadNftPoolInput.claim(
+          types,
+          { ...args, coinsFee: _coins },
+          optionTx,
+          gasBudget,
+          packageObjectId,
+        ),
+        ...this._getOptionTx(optionTx),
+      }
+    );
   }
 
   async addFunds(
