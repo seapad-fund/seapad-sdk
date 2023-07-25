@@ -29,7 +29,8 @@ export class SeaPadClaimPortalInput extends SeaPadClaimPortalFunc<TransactionBlo
       project: string,
       version: string,
       coinsFee: string[]
-      fee: string
+      fee: string,
+      projectRegistry: string
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
@@ -50,6 +51,7 @@ export class SeaPadClaimPortalInput extends SeaPadClaimPortalFunc<TransactionBlo
         tx.pure(args.project),
         tx.pure(clock),
         tx.pure(args.version),
+        tx.pure(args.projectRegistry),
       ],
       typeArguments: [types.COIN],
     });

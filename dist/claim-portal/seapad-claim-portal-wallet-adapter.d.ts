@@ -15,6 +15,7 @@ export declare class SeapadWalletClaimPortalAdapter extends SeaPadClaimPortalFun
         fee: string;
         project: string;
         version: string;
+        projectRegistry: string;
     }, optionTx?: OptionTx, gasBudget?: GasBudget | undefined, packageObjectId?: string | null): Promise<SuiSignAndExecuteTransactionBlockOutput>;
     addFunds(types: {
         COIN: string;

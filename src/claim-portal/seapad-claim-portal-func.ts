@@ -10,6 +10,7 @@ export abstract class SeaPadClaimPortalFunc<T> {
       coinsFee?: string[],
       project: string,
       version: string,
+      projectRegistry: string
     },
     optionTx?: OptionTx,
     gasBudget?: GasBudget,

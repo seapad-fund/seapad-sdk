@@ -30,7 +30,7 @@ export class SeaPadClaimPortalAdapter extends SeaPadClaimPortalFunc<
 
   async claim(
     types: { COIN: string },
-    args: { fee: string, project: string, version: string },
+    args: { fee: string, project: string, version: string, projectRegistry: string },
     optionTx?: OptionTx,
     gasBudget?: GasBudget | undefined,
     packageObjectId?: string | null,

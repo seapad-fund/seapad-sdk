@@ -27,6 +27,7 @@ class SeaPadClaimPortalInput extends seapad_claim_portal_func_1.SeaPadClaimPorta
                 tx.pure(args.project),
                 tx.pure(clock),
                 tx.pure(args.version),
+                tx.pure(args.projectRegistry),
             ],
             typeArguments: [types.COIN],
         });
