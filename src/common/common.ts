@@ -95,14 +95,14 @@ export const pickupCoin = async (
   if (
     totalBalance < expect_balance
   ) {
-    throw new Error('Not enough balance');
+    throw new Error(`Not enough balance (${coinType})`);
   }
 
   // console.log(totalBalance, coins);
 
   return {
     coin: coin?.coinObjectId as string,
-    isPicked: coin !== undefined,
+    isPicked: false,
     coinTrans: coins,
   };
 };
