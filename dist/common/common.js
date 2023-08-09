@@ -43,10 +43,11 @@ const getCoins = async (walletAddress, coinType, suiProvider) => {
                 cursor: nextCursor,
                 limit: 100,
             });
-            data = response.data.filter((coin) => Number(coin.balance) > 0);
+            data = response.data;
             nextCursor = response.nextCursor;
             hasNextPage = response.hasNextPage;
         }
+        console.log(`getCoins data`, data);
         return data;
     }
     catch (error) {
@@ -56,11 +57,6 @@ const getCoins = async (walletAddress, coinType, suiProvider) => {
 exports.getCoins = getCoins;
 const pickupCoin = async (coinType, expect_balance, userAddress, suiProvider) => {
     const allCoin = await (0, exports.getCoins)(userAddress, coinType, suiProvider);
-    const coin = allCoin
-        ?.sort((a, b) => b.balance - a.balance)
-        .find((coin) => {
-        return Number(coin.balance) >= expect_balance;
-    });
     let totalBalance = 0;
     const coins = allCoin?.map((ele) => {
         totalBalance += Number(ele?.balance);
@@ -69,12 +65,8 @@ const pickupCoin = async (coinType, expect_balance, userAddress, suiProvider) =>
     if (totalBalance < expect_balance) {
         throw new Error(`Not enough balance (${coinType})`);
     }
-    // console.log(totalBalance, coins);
-    return {
-        coin: coin?.coinObjectId,
-        isPicked: false,
-        coinTrans: coins,
-    };
+    console.log(totalBalance, coins);
+    return coins;
 };
 exports.pickupCoin = pickupCoin;
 function manageObjectCoin(coin_type, coins, amount, tx) {
@@ -82,6 +74,7 @@ function manageObjectCoin(coin_type, coins, amount, tx) {
     if (coins === null || coins === undefined || coins.length === 0) {
         throw new Error('Not coin transfer');
     }
+    console.log(`manageObjectCoin coins`, coins, coins.length);
     if (coins.length === 1) {
         if (coin_type === '0x2::sui::SUI') {
             const [sui_trans] = tx.splitCoins(tx.gas, [tx.pure(amount)]);
@@ -93,6 +86,7 @@ function manageObjectCoin(coin_type, coins, amount, tx) {
         }
     }
     else {
+        console.log(`manageObjectCoin mergeCoins`);
         const [mergeObj] = tx.mergeCoins(tx.object(coins.pop()), coins.map((coin) => tx.object(coin)));
         const [splitCoin] = tx.splitCoins(mergeObj, [tx.pure(amount)]);
         coin_trans = splitCoin;
@@ -102,15 +96,8 @@ function manageObjectCoin(coin_type, coins, amount, tx) {
 }
 exports.manageObjectCoin = manageObjectCoin;
 async function getCoinObjects(coin_type, amount, address, suiProvider) {
-    let coins;
     const pickCoinTrans = await (0, exports.pickupCoin)(coin_type, Number(amount), address, suiProvider);
-    if (pickCoinTrans.isPicked) {
-        coins = [pickCoinTrans.coin];
-    }
-    else {
-        coins = pickCoinTrans.coinTrans;
-    }
-    return coins;
+    return pickCoinTrans;
 }
 exports.getCoinObjects = getCoinObjects;
 function calculateAmount(a, b) {
