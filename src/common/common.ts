@@ -119,12 +119,16 @@ export function manageObjectCoin(
       coin_trans = _coin_trans;
     }
   } else {
-    console.log(`manageObjectCoin mergeCoins`)
+    console.log(`manageObjectCoin mergeCoins coins`, coins)
     const [mergeObj] = tx.mergeCoins(
       tx.object(coins.pop() as string),
-      coins.map((coin) => tx.object(coin)),
+      tx.makeMoveVec({ objects: coins.map(coin => tx.object(coin)) })
     );
+    console.log(`manageObjectCoin mergeCoins ok`, mergeObj)
+
     const [splitCoin] = tx.splitCoins(mergeObj, [tx.pure(amount)]);
+    console.log(`manageObjectCoin mergeCoisplitCoinss ok`, mergeObj)
+
     coin_trans = splitCoin;
   }
   //check balance
