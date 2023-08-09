@@ -38,8 +38,8 @@ export function configGasBudget(tx: TransactionBlock, gasBudget?: GasBudget): Tr
   ) {
     return tx
   } else {
-   tx.setGasBudget(gasBudget);
-   return tx
+    tx.setGasBudget(gasBudget);
+    return tx
   }
 }
 
@@ -64,11 +64,11 @@ export const getCoins = async (
         cursor: nextCursor,
         limit: 100,
       });
-      data = response.data.filter((coin) => Number(coin.balance) > 0);
+      data = response.data;
       nextCursor = response.nextCursor;
       hasNextPage = response.hasNextPage;
     }
-
+    console.log(`getCoins data`, data)
     return data;
   } catch (error: any) {
     return [];
@@ -81,11 +81,6 @@ export const pickupCoin = async (
   suiProvider: JsonRpcProvider,
 ) => {
   const allCoin = await getCoins(userAddress, coinType, suiProvider);
-  const coin: any = allCoin
-    ?.sort((a: any, b: any) => b.balance - a.balance)
-    .find((coin: any) => {
-      return Number(coin.balance) >= expect_balance;
-    });
   let totalBalance = 0;
   const coins: string[] = allCoin?.map((ele: any) => {
     totalBalance += Number(ele?.balance);
@@ -98,13 +93,9 @@ export const pickupCoin = async (
     throw new Error(`Not enough balance (${coinType})`);
   }
 
-  // console.log(totalBalance, coins);
+  console.log(totalBalance, coins);
 
-  return {
-    coin: coin?.coinObjectId as string,
-    isPicked: false,
-    coinTrans: coins,
-  };
+  return coins;
 };
 
 export function manageObjectCoin(
@@ -117,6 +108,7 @@ export function manageObjectCoin(
   if (coins === null || coins === undefined || coins.length === 0) {
     throw new Error('Not coin transfer');
   }
+  console.log(`manageObjectCoin coins`, coins, coins.length)
 
   if (coins.length === 1) {
     if (coin_type === '0x2::sui::SUI') {
@@ -127,6 +119,7 @@ export function manageObjectCoin(
       coin_trans = _coin_trans;
     }
   } else {
+    console.log(`manageObjectCoin mergeCoins`)
     const [mergeObj] = tx.mergeCoins(
       tx.object(coins.pop() as string),
       coins.map((coin) => tx.object(coin)),
@@ -144,20 +137,14 @@ export async function getCoinObjects(
   address: string,
   suiProvider: JsonRpcProvider,
 ) {
-  let coins: string[];
-
   const pickCoinTrans = await pickupCoin(
     coin_type,
     Number(amount),
     address,
     suiProvider,
   );
-  if (pickCoinTrans.isPicked) {
-    coins = [pickCoinTrans.coin];
-  } else {
-    coins = pickCoinTrans.coinTrans;
-  }
-  return coins;
+
+  return pickCoinTrans;
 }
 
 export function calculateAmount(a: string[], b: string[]): string {
