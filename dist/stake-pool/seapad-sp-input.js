@@ -40,8 +40,6 @@ class SeaPadStakePoolInput extends seapad_sp_func_1.SeaPadStakePoolFunc {
     stake(types, args, optionTx, gasBudget, packageObjectId) {
         let tx = new sui_js_1.TransactionBlock();
         let coin_trans = (0, common_1.manageObjectCoin)(types.S, args.coins, args.amount, tx);
-        console.log(`coin_trans`, coin_trans);
-        console.log(`data input`, args);
         tx.moveCall({
             target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::stake`,
             arguments: [

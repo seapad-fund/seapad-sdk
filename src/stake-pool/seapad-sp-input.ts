@@ -67,8 +67,6 @@ export class SeaPadStakePoolInput extends SeaPadStakePoolFunc<TransactionBlock> 
   ): TransactionBlock {
     let tx = new TransactionBlock();
     let coin_trans: TransactionArgument = manageObjectCoin(types.S, args.coins, args.amount, tx)
-    console.log(`coin_trans`, coin_trans)
-    console.log(`data input`, args)
     tx.moveCall({
       target: `${this._getPackageObjectId(packageObjectId)}::${this._module}::stake`,
       arguments: [

@@ -108,7 +108,6 @@ export function manageObjectCoin(
   if (coins === null || coins === undefined || coins.length === 0) {
     throw new Error('Not coin transfer');
   }
-  console.log(`manageObjectCoin coins`, coins, coins.length)
 
   if (coins.length === 1) {
     if (coin_type === '0x2::sui::SUI') {
@@ -119,19 +118,15 @@ export function manageObjectCoin(
       coin_trans = _coin_trans;
     }
   } else {
-    console.log(`manageObjectCoin mergeCoins coins`, coins)
-    const [mergeObj] = tx.mergeCoins(
-      tx.object(coins[0] as string),
+    tx.mergeCoins(
+      tx.pure(coins[0] as string),
       (coins.slice(1)).map(coin => tx.object(coin as string))
     );
-    console.log(`manageObjectCoin mergeCoins ok`, mergeObj)
 
-    const [splitCoin] = tx.splitCoins(mergeObj, [tx.pure(amount)]);
-    console.log(`manageObjectCoin mergeCoisplitCoinss ok`, splitCoin)
+    const [splitCoin] = tx.splitCoins(tx.object(coins[0]), [tx.pure(amount)]);
 
     coin_trans = splitCoin;
   }
-  console.log(`coin_trans`, coin_trans)
   //check balance
   return coin_trans;
 }
