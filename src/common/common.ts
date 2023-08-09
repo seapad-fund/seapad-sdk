@@ -120,7 +120,7 @@ export function manageObjectCoin(
   } else {
     tx.mergeCoins(
       tx.pure(coins[0] as string),
-      (coins.slice(1)).map(coin => tx.object(coin as string))
+      (coins.slice(1)).map(coin => tx.object(coin))
     );
 
     const [splitCoin] = tx.splitCoins(tx.object(coins[0]), [tx.pure(amount)]);
