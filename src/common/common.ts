@@ -121,8 +121,8 @@ export function manageObjectCoin(
   } else {
     console.log(`manageObjectCoin mergeCoins coins`, coins)
     const [mergeObj] = tx.mergeCoins(
-      tx.object(coins.pop() as string),
-      coins.map(coin => tx.object(coin as string))
+      tx.object(coins[0] as string),
+      (coins.slice(1)).map(coin => tx.object(coin as string))
     );
     console.log(`manageObjectCoin mergeCoins ok`, mergeObj)
 
