@@ -127,10 +127,11 @@ export function manageObjectCoin(
     console.log(`manageObjectCoin mergeCoins ok`, mergeObj)
 
     const [splitCoin] = tx.splitCoins(mergeObj, [tx.pure(amount)]);
-    console.log(`manageObjectCoin mergeCoisplitCoinss ok`, mergeObj)
+    console.log(`manageObjectCoin mergeCoisplitCoinss ok`, splitCoin)
 
     coin_trans = splitCoin;
   }
+  console.log(`coin_trans`, coin_trans)
   //check balance
   return coin_trans;
 }
