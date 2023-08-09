@@ -122,7 +122,7 @@ export function manageObjectCoin(
     console.log(`manageObjectCoin mergeCoins coins`, coins)
     const [mergeObj] = tx.mergeCoins(
       tx.object(coins.pop() as string),
-      tx.makeMoveVec({ objects: coins.map(coin => tx.object(coin)) })
+      coins.map(coin => tx.object(coin as string))
     );
     console.log(`manageObjectCoin mergeCoins ok`, mergeObj)
 
