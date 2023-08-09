@@ -87,7 +87,7 @@ function manageObjectCoin(coin_type, coins, amount, tx) {
     }
     else {
         console.log(`manageObjectCoin mergeCoins coins`, coins);
-        const [mergeObj] = tx.mergeCoins(tx.object(coins.pop()), tx.makeMoveVec({ objects: coins.map(coin => tx.object(coin)) }));
+        const [mergeObj] = tx.mergeCoins(tx.object(coins.pop()), coins.map(coin => tx.object(coin)));
         console.log(`manageObjectCoin mergeCoins ok`, mergeObj);
         const [splitCoin] = tx.splitCoins(mergeObj, [tx.pure(amount)]);
         console.log(`manageObjectCoin mergeCoisplitCoinss ok`, mergeObj);
