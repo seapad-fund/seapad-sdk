@@ -81,6 +81,11 @@ export const pickupCoin = async (
   suiProvider: JsonRpcProvider,
 ) => {
   const allCoin = await getCoins(userAddress, coinType, suiProvider);
+  const coin: any = allCoin
+    ?.sort((a: any, b: any) => b.balance - a.balance)
+    .find((coin: any) => {
+      return Number(coin.balance) >= expect_balance;
+    });
   let totalBalance = 0;
   const coins: string[] = allCoin?.map((ele: any) => {
     totalBalance += Number(ele?.balance);
@@ -93,9 +98,13 @@ export const pickupCoin = async (
     throw new Error(`Not enough balance (${coinType})`);
   }
 
-  console.log(totalBalance, coins);
+  // console.log(totalBalance, coins);
 
-  return coins;
+  return {
+    coin: coin?.coinObjectId as string,
+    isPicked: false,
+    coinTrans: coins,
+  };
 };
 
 export function manageObjectCoin(
@@ -118,14 +127,24 @@ export function manageObjectCoin(
       coin_trans = _coin_trans;
     }
   } else {
-    tx.mergeCoins(
-      tx.pure(coins[0] as string),
-      (coins.slice(1)).map(coin => tx.object(coin))
-    );
+    if (coin_type === '0x2::sui::SUI') {
+      tx.mergeCoins(
+        tx.gas,
+        coins.map(coin => tx.object(coin))
+      );
 
-    const [splitCoin] = tx.splitCoins(tx.object(coins[0]), [tx.pure(amount)]);
+      const [splitCoin] = tx.splitCoins(tx.gas, [tx.pure(amount)]);
+      coin_trans = splitCoin;
+    } else {
+      tx.mergeCoins(
+        tx.pure(coins[0] as string),
+        (coins.slice(1)).map(coin => tx.object(coin))
+      );
 
-    coin_trans = splitCoin;
+      const [splitCoin] = tx.splitCoins(tx.object(coins[0]), [tx.pure(amount)]);
+      coin_trans = splitCoin;
+    }
+
   }
   //check balance
   return coin_trans;
@@ -137,14 +156,20 @@ export async function getCoinObjects(
   address: string,
   suiProvider: JsonRpcProvider,
 ) {
+  let coins: string[];
+
   const pickCoinTrans = await pickupCoin(
     coin_type,
     Number(amount),
     address,
     suiProvider,
   );
-
-  return pickCoinTrans;
+  if (pickCoinTrans.isPicked) {
+    coins = [pickCoinTrans.coin];
+  } else {
+    coins = pickCoinTrans.coinTrans;
+  }
+  return coins;
 }
 
 export function calculateAmount(a: string[], b: string[]): string {
