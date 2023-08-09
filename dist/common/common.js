@@ -73,7 +73,7 @@ const pickupCoin = async (coinType, expect_balance, userAddress, suiProvider) =>
     // console.log(totalBalance, coins);
     return {
         coin: coin?.coinObjectId,
-        isPicked: false,
+        isPicked: coin !== undefined,
         coinTrans: coins,
     };
 };
@@ -83,6 +83,7 @@ function manageObjectCoin(coin_type, coins, amount, tx) {
     if (coins === null || coins === undefined || coins.length === 0) {
         throw new Error('Not coin transfer');
     }
+    console.log(`coins`, coins);
     if (coins.length === 1) {
         if (coin_type === '0x2::sui::SUI') {
             const [sui_trans] = tx.splitCoins(tx.gas, [tx.pure(amount)]);
@@ -100,8 +101,10 @@ function manageObjectCoin(coin_type, coins, amount, tx) {
             coin_trans = splitCoin;
         }
         else {
-            tx.mergeCoins(tx.pure(coins[0]), (coins.slice(1)).map(coin => tx.object(coin)));
+            tx.mergeCoins(tx.object(coins[0]), (coins.slice(1)).map(coin => tx.object(coin)));
+            console.log(`mergecoin ok`, coins[0]);
             const [splitCoin] = tx.splitCoins(tx.object(coins[0]), [tx.pure(amount)]);
+            console.log(`splitcoin ok`, coins[0]);
             coin_trans = splitCoin;
         }
     }

@@ -102,7 +102,7 @@ export const pickupCoin = async (
 
   return {
     coin: coin?.coinObjectId as string,
-    isPicked: false,
+    isPicked: coin !== undefined,
     coinTrans: coins,
   };
 };
@@ -117,6 +117,7 @@ export function manageObjectCoin(
   if (coins === null || coins === undefined || coins.length === 0) {
     throw new Error('Not coin transfer');
   }
+  console.log(`coins`, coins)
 
   if (coins.length === 1) {
     if (coin_type === '0x2::sui::SUI') {
@@ -137,11 +138,12 @@ export function manageObjectCoin(
       coin_trans = splitCoin;
     } else {
       tx.mergeCoins(
-        tx.pure(coins[0] as string),
+        tx.object(coins[0]),
         (coins.slice(1)).map(coin => tx.object(coin))
       );
-
+      console.log(`mergecoin ok`, coins[0])
       const [splitCoin] = tx.splitCoins(tx.object(coins[0]), [tx.pure(amount)]);
+      console.log(`splitcoin ok`, coins[0])
       coin_trans = splitCoin;
     }
 
